@@ -1,0 +1,25 @@
+#process-area {
+  width: 750px;
+  padding: 1rem;
+  margin-right: 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.050),
+    0 2px 6px 2px rgba(60, 64, 67, 0.050);
+
+  .process-area__header {
+    @include flexCenter(normal, space-between, row);
+
+    div {
+      width: 20px;
+
+      svg {
+        fill: #000;
+      }
+    }
+
+  }
+
+  .main-info {
+    border: 1px solid rgba(60, 64, 67, 0.170)
+  }
+}
