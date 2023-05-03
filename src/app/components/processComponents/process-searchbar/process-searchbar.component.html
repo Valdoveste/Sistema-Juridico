@@ -1,1 +1,72 @@
-<p>process-searchbar works!</p>
+<form class="process-searchbar">
+  <h1>Painel de Processos</h1>
+
+  <ul class="process-searchbar__list">
+    <li class="process-searchbar__list__item">
+      <input input type="input" placeholder="Incio" class="process-searchbar__list__item--input-text"
+        id="start-datepicker">
+      <input input type="input" placeholder="Finalização" class="process-searchbar__list__item--input-text"
+        id="end-datepicker">
+    </li>
+
+    <li class="process-searchbar__list__item">
+
+      <select class="process-searchbar__list__item--input-select js-example-basic-multiple" name="states[]"
+        multiple="multiple">
+        <option value="AL">SP</option>
+        ...
+        <option value="WY">MG</option>
+      </select>
+      <select class="process-searchbar__list__item--input-select js-example-basic-multiple" name="states[]"
+        multiple="multiple">
+        <option value="AL"></option>
+        ...
+        <option value="WY"></option>
+      </select>
+      <!-- <input type="text" placeholder="Número Processo" class="process-searchbar__list__item--input-text"> -->
+    </li>
+
+    <li class="process-searchbar__list__item">
+      <select class="process-searchbar__list__item--input-select js-example-basic-multiple" name="states[]"
+        multiple="multiple">
+        <option value="AL"></option>
+        ...
+        <option value="WY"></option>
+      </select>
+      <select class="process-searchbar__list__item--input-select js-example-basic-multiple" name="states[]"
+        multiple="multiple">
+        <option value="AL"></option>
+        ...
+        <option value="WY"></option>
+      </select>
+      <!-- <input type="text" placeholder="Área Direito" class="process-searchbar__list__item--input-text">
+      <input type="text" placeholder="Âmbito" class="process-searchbar__list__item--input-text"> -->
+    </li>
+
+    <li class="process-searchbar__list__item">
+      <select class="process-searchbar__list__item--input-select js-example-basic-multiple" name="states[]"
+        multiple="multiple">
+        <option value="AL"></option>
+        ...
+        <option value="WY"></option>
+      </select>
+      <select class="process-searchbar__list__item--input-select js-example-basic-multiple" name="states[]"
+        multiple="multiple">
+        <option value="AL"></option>
+        ...
+        <option value="WY"></option>
+      </select>
+      <!-- <input type="text" placeholder="Tipo de ação" class="process-searchbar__list__item--input-text">
+      <input type="text" placeholder="Estado" class="process-searchbar__list__item--input-text"> -->
+    </li>
+
+    <li class="process-searchbar__list__item">
+      <button type="submit" class="process-searchbar__list__item--search-button"> Buscar
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path
+            d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+        </svg>
+      </button>
+    </li>
+  </ul>
+</form>
