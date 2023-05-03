@@ -1,0 +1,88 @@
+#process-container {
+  gap: 0.25rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(355px, 1fr));
+
+  .process {
+    padding: 10px;
+    overflow: hidden;
+    user-select: none;
+    border-radius: 5px;
+    position: relative;
+    height: min-content;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    transition: box-shadow ease-in 250ms;
+    border: 1px solid rgba(60, 64, 67, 0.163);
+    @include flexCenter(unset, space-between, column);
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.020), 0 2px 6px 2px rgba(60, 64, 67, 0.020);
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.100), 0 2px 6px 2px rgba(60, 64, 67, 0.100);
+    }
+
+    .process-header {
+      .process-header__list {
+        @include flexCenter(center, space-between, row);
+
+        .process-header__list__item-process-number {
+          font-size: 1.2rem;
+        }
+
+        .process-header__list__item-process-status {
+          padding: 4px;
+          color: #fff;
+          font-weight: 700;
+          font-size: 0.72rem;
+        }
+
+        .status-ongoin,
+        .status-closed {
+          border-radius: 2px;
+        }
+
+        .status-ongoin {
+          background-color: #32b332;
+          box-shadow:
+            0 1px 1px 0 #32b3323c,
+            0 1px 6px 1px #32b33220;
+        }
+
+        .status-closed {
+          background-color: #df2c3e;
+          box-shadow:
+            0 1px 1px 0 #df2c3e5a,
+            0 1px 6px 1px #df2c3e43;
+          // background-color: rgb(101, 109, 118);
+        }
+
+      }
+    }
+
+    .process-body {
+      margin: 15px 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: unset !important;
+
+      .process-body__list__item {
+        p:not(.process-body__company-name) {
+          margin-bottom: 8px;
+        }
+      }
+    }
+
+    .process-footer {
+      .process-footer__list {
+        color: rgb(101, 109, 118);
+        @include flexCenter(center, space-between, row);
+
+        li span {
+          display: block;
+        }
+      }
+    }
+
+  }
+}
