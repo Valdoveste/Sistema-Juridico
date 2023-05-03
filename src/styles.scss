@@ -54,4 +54,16 @@ html {
   }
 }
 
+// HeaderComponent
+@import './app/components/header/header.component.scss';
+// MainComponent
 @import './app/components/main/main.component.scss';
+
+// ProcessComponents
+@import './app/components/processComponents/process-area/process-area.component.scss';
+@import './app/components/processComponents/process-section/process-section.component.scss';
+@import './app/components/processComponents/process-searchbar/process-searchbar.component.scss';
+@import './app/components/processComponents/process-container/process-container.component.scss';
+
+// FooterComponent
+@import './app/components/footer/footer.component.scss';
