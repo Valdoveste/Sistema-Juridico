@@ -1,0 +1,37 @@
+#header {
+  // height: 75px;
+  background-color: #292929;
+
+  .header__navbar {
+    height: 100%;
+    padding: 20px;
+    margin-bottom: 1rem;
+    color: #fff;
+    @include flexCenter(center, space-between, row);
+
+    .header__navbar__list:last-child {
+      @include flexCenter(center, space-between, row);
+
+      .header__navbar__item-user-name {
+        margin-right: 15px;
+      }
+
+      .header__navbar__item-btn-create-process {
+        padding: 10px;
+        color: white;
+        text-align: center;
+        border-radius: 4.5px;
+        background: #e20474;
+        border: 1px solid #e20474;
+        box-shadow:
+          0 1px 1px 0 #e204735c,
+          0 1px 6px 1px #e2047334;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+  }
+}

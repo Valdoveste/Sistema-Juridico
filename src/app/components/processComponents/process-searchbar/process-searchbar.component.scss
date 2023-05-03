@@ -1,0 +1,46 @@
+.process-searchbar {
+  margin: 20px 0;
+  padding: 1rem;
+  border: 1px solid #8f8f9d;
+  // background-color: #292929;
+
+  .process-searchbar__list {
+    margin-top: 1rem;
+    @include flexCenter(center, space-between, column);
+
+    .process-searchbar__list__item {
+      width: 100%;
+      margin-bottom: 15px;
+      @include flexCenter(center, space-between, row);
+
+      .process-searchbar__list__item--input-text:first-child {
+        margin-right: 5px;
+      }
+
+      .process-searchbar__list__item--input-select,
+      .process-searchbar__list__item--input-text {
+        width: 50%;
+        height: 35px;
+        padding: 15px;
+        font-size: 1rem;
+      }
+
+      .process-searchbar__list__item--input-date {
+        width: 50%;
+        padding: 5px;
+        margin: unset;
+      }
+
+      .process-searchbar__list__item--search-button {
+        @include flexCenter(center, center, row);
+        height: 35px;
+
+        svg {
+          height: 20px;
+          width: 20px;
+        }
+      }
+
+    }
+  }
+}
