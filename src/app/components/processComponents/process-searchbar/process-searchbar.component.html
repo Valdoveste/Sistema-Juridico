@@ -3,69 +3,85 @@
 
   <ul class="process-searchbar__list">
     <li class="process-searchbar__list__item">
-      <input input type="input" placeholder="Incio" class="process-searchbar__list__item--input-text"
-        id="start-datepicker">
-      <input input type="input" placeholder="Finalização" class="process-searchbar__list__item--input-text"
-        id="end-datepicker">
+      <input type="text" placeholder="Número do Processo" id="inputProcessNumber"
+        class="process-searchbar__list__item--input-text">
     </li>
 
     <li class="process-searchbar__list__item">
+      <select name="" id="selectProcessPhase" class="process-searchbar__list__item--input-select">
+        <option value="ProcessPhase" selected>Fase do Processo</option>
+        <option value="Pré Processual">Pré Processual</option>
+        <option value=" 1ª instância"> 1ª instância</option>
+        <option value="2ª Instância">2ª Instância</option>
+        <option value="3ª Instância">3ª Instância</option>
+        <option value="Instância Extraordinária">Instância Extraordinária</option>
+        <option value="Não se aplica">Não se aplica</option>
+      </select>
 
-      <select class="process-searchbar__list__item--input-select js-example-basic-multiple" name="states[]"
-        multiple="multiple">
-        <option value="AL">SP</option>
-        ...
-        <option value="WY">MG</option>
+      <select name="" id="selectProcessStatus" class="process-searchbar__list__item--input-select">
+        <option value="ProcessStatus" selected>Status do Processo</option>
+        <option value="Ativo">Ativo</option>
+        <option value="Baixa Provisória">Baixa Provisória</option>
+        <option value="Encerrado">Encerrado</option>
       </select>
-      <select class="process-searchbar__list__item--input-select js-example-basic-multiple" name="states[]"
-        multiple="multiple">
-        <option value="AL"></option>
-        ...
-        <option value="WY"></option>
-      </select>
-      <!-- <input type="text" placeholder="Número Processo" class="process-searchbar__list__item--input-text"> -->
     </li>
 
     <li class="process-searchbar__list__item">
-      <select class="process-searchbar__list__item--input-select js-example-basic-multiple" name="states[]"
-        multiple="multiple">
-        <option value="AL"></option>
-        ...
-        <option value="WY"></option>
+      <select name="" id="selectProcessArea" class="process-searchbar__list__item--input-select">
+        <option value="Área do Processo" selected>Área do Processo</option>
+        <option value="Trabalhista">Trabalhista</option>
+        <option value="Consumidor">Consumidor</option>
+        <option value="Cível">Cível</option>
+        <option value="Tributário">Tributário</option>
+        <option value="Societário">Societário</option>
       </select>
-      <select class="process-searchbar__list__item--input-select js-example-basic-multiple" name="states[]"
-        multiple="multiple">
-        <option value="AL"></option>
-        ...
-        <option value="WY"></option>
+
+      <select name="" id="selectProcessTOA" class="process-searchbar__list__item--input-select">
+        <option value="TOA" selected>Tipo de Ação</option>
+        <option value="Ação de Cobrança">Ação de Cobrança</option>
+        <option value="Reclamação Trabalhista">Reclamação Trabalhista</option>
+        <option value="Ação coletiva">Ação coletiva</option>
+        <option value="Ação Indenizatória">Ação Indenizatória</option>
+        <option value="Ação de obrigação de fazer">Ação de obrigação de fazer</option>
+        <option value="Ação de repetição de indébito">Ação de repetição de indébito</option>
+        <option value="Ação de consignação em pagamento">Ação de consignação em pagamento</option>
+        <option value="Cumprimento de sentença">Cumprimento de sentença</option>
+        <option value="Cumprimento provisório de sentença">Cumprimento provisório de sentença</option>
+        <option value="Execução de título extrajudicial">Execução de título extrajudicial</option>
+        <option value=" Execução de título judicial"> Execução de título judicial</option>
+        <option value="Ação de Regresso">Ação de Regresso</option>
+        <option value="Tutela provisória">Tutela provisória</option>
+        <option value="Ação de exigir contas">Ação de exigir contas</option>
+        <option value="Ação de dissolução parcial de sociedade">Ação de dissolução parcial de sociedade</option>
+        <option value="Embargos de terceiro">Embargos de terceiro</option>
+        <option value="Ação monitória">Ação monitória</option>
+        <option value="Ação Rescisória">Ação Rescisória</option>
+        <option value="Procedimento Administrativo">Procedimento Administrativo</option>
+        <option value="Processo Administrativo">Processo Administrativo</option>
+        <option value="Notificação extrajudicial;">Notificação extrajudicial</option>
       </select>
-      <!-- <input type="text" placeholder="Área Direito" class="process-searchbar__list__item--input-text">
-      <input type="text" placeholder="Âmbito" class="process-searchbar__list__item--input-text"> -->
     </li>
 
     <li class="process-searchbar__list__item">
-      <select class="process-searchbar__list__item--input-select js-example-basic-multiple" name="states[]"
-        multiple="multiple">
-        <option value="AL"></option>
-        ...
-        <option value="WY"></option>
+      <select name="" id="" class="process-searchbar__list__item--input-select">
+        <option value="PatroResp" selected>Patrono Responsável</option>
+        <option value="USE29.65">Use Comunicações e Telecomunicações LTDA. (29.568.281/0001-65)</option>
+        <option value="USE09.00">Use Telecomunicações LTDA. (09.540.627/0001-00)</option>
+        <option value="USE39.05">Use Service LTDA. (39.512.524/0001-05)</option>
+        <option value="TASCOM14.98">Tascom Telecomunicações LTDA. (14.691.508/0001-98)</option>
+        <option value="TNG29.51">TGN - BR Internet LTDA. (29.339.296/0001-51)</option>
+        <option value="L&A8.08">L & A Patrimonial LTDA. (28.122.328/0001-08)</option>
+        <option value="André Jorge">André Jorge Lima Dantas Costa</option>
+        <option value="Leila Cláudia">Leila Cláudia Farias de Jesus Costa</option>
       </select>
-      <select class="process-searchbar__list__item--input-select js-example-basic-multiple" name="states[]"
-        multiple="multiple">
-        <option value="AL"></option>
-        ...
-        <option value="WY"></option>
-      </select>
-      <!-- <input type="text" placeholder="Tipo de ação" class="process-searchbar__list__item--input-text">
-      <input type="text" placeholder="Estado" class="process-searchbar__list__item--input-text"> -->
+
+      <input type="text" placeholder="Parte Contrária" id="inputOuterParte"
+        class="process-searchbar__list__item--input-text">
     </li>
 
     <li class="process-searchbar__list__item">
-      <button type="submit" class="process-searchbar__list__item--search-button"> Buscar
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-          <path
-            d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
-        </svg>
+      <button type="submit" class="process-searchbar__list__item--search-button">
+        Buscar
       </button>
     </li>
   </ul>
