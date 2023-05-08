@@ -1,4 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+@mixin flexCenter($align_items, $justify_content, $flex_direction) {
+  display: flex;
+  align-items: $align_items;
+  justify-content: $justify_content;
+  flex-direction: $flex_direction;
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -12,16 +21,14 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
-@mixin flexCenter($align_items, $justify_content, $flex_direction) {
-  display: flex;
-  align-items: $align_items;
-  justify-content: $justify_content;
-  flex-direction: $flex_direction;
-}
-
-select,
 button {
+  border: unset;
   border-radius: unset;
+  background-color: unset;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .sm-text {
@@ -62,8 +69,6 @@ html {
 // ProcessComponents
 @import './app/components/processComponents/process-area/process-area.component.scss';
 @import './app/components/processComponents/process-section/process-section.component.scss';
-@import './app/components/processComponents/process-searchbar/process-searchbar.component.scss';
-@import './app/components/processComponents/process-container/process-container.component.scss';
 
 // FooterComponent
 @import './app/components/footer/footer.component.scss';
