@@ -47,7 +47,7 @@
         @include flexCenter(center, center, row);
         transition: background-color ease-in 250ms;
         border: 1px solid rgba(60, 64, 67, 0.100);
-        box-shadow: 4px 4px 5px 0.01rem rgba(60, 64, 67, 0.113);
+        box-shadow: 0px 0px 0px 1px rgba(60, 64, 67, 0.113);
 
         &:hover {
           background-color: #ececec7e;
