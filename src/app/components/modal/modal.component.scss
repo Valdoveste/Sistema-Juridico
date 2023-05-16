@@ -1,0 +1,61 @@
+// @import '../../../styles.scss';
+
+// .modal {
+//   top: 50%;
+//   left: 50%;
+//   width: 960px;
+//   height: 600px;
+//   position: fixed;
+//   background-color: #ffffff;
+//   transform: translate(-50%, -50%);
+//   @include flexCenter(normal, normal, row);
+//   border: 1px solid rgba(60, 64, 67, 0.163);
+//   box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.020), 0 2px 6px 2px rgba(60, 64, 67, 0.020);
+// }
+
+// .modal-underlay {
+//   top: 0;
+//   width: 100%;
+//   height: 100%;
+//   position: fixed;
+//   background-color: rgba(0, 0, 0, 0.5);
+// }
+
+// .teste {
+//   width: 100%;
+//   height: 100%;
+// }
+
+/* MODAL STYLES
+-------------------------------*/
+jw-modal {
+  /* modals are hidden by default */
+  display: none;
+
+  .jw-modal {
+    /* modal container fixed across whole screen */
+    position: fixed;
+    inset: 0;
+
+    /* z-index must be higher than everything else on the page */
+    z-index: 10000;
+
+    /* semi-transparent black background exposed by padding */
+    background-color: rgba(0, 0, 0, .75);
+    padding: 40px;
+
+    /* enables scrolling for tall modals */
+    overflow: auto;
+  }
+
+  .jw-modal-body {
+    padding: 20px;
+    width: 800px;
+    background: #fff;
+  }
+}
+
+body.jw-modal-open {
+  /* body overflow is hidden to hide main scrollbar when modal window is open */
+  overflow: hidden;
+}
