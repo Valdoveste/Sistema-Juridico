@@ -1,0 +1,34 @@
+@import '../../../../../styles.scss';
+
+input {
+  @extend .input;
+}
+
+.process-create-opposingparty {
+  .process-create-opposingparty__list {
+    .process-create-opposingparty__list__item {
+
+      .process-create-opposingparty__list__item--div {
+        margin: 15px;
+
+        .process-create-opposingparty--zipcode {
+          width: 200px
+        }
+
+        span {
+          width: 200px;
+          margin-right: 10px;
+
+          input {
+            width: 100%;
+          }
+        }
+
+        .process-create-opposingparty__list__item--clsp {
+          @include flexCenter(normal, normal, row);
+        }
+
+      }
+    }
+  }
+}
