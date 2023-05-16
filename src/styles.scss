@@ -43,6 +43,16 @@ html {
   background-color: #f4f4f4;
 }
 
+.input {
+  height: 35px;
+  padding: 0 15px;
+  font-size: 1rem;
+  border-radius: 2px;
+  width: calc(50% - 5px);
+  background-color: #ffffff;
+  border: 1px solid rgba(60, 64, 67, 0.5);
+}
+
 .process-searchbar__list__item {
 
   .process-searchbar__list__item--input-select:first-child {
@@ -61,14 +71,8 @@ html {
   }
 }
 
-// HeaderComponent
-@import './app/components/header/header.component.scss';
 // MainComponent
 @import './app/components/main/main.component.scss';
-
-// ProcessComponents
-@import './app/components/processComponents/process-area/process-area.component.scss';
-@import './app/components/processComponents/process-section/process-section.component.scss';
 
 // FooterComponent
 @import './app/components/footer/footer.component.scss';
