@@ -21,13 +21,7 @@
 
       .process-searchbar__list__item--input-select,
       .process-searchbar__list__item--input-text {
-        height: 35px;
-        padding: 0 15px;
-        font-size: 1rem;
-        border-radius: 2px;
-        width: calc(50% - 5px);
-        background-color: #ffffff;
-        border: 1px solid rgba(60, 64, 67, 0.5);
+        @extend .input;
       }
 
 
