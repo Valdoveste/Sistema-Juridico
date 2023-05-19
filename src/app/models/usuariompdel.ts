@@ -1,5 +1,5 @@
 export interface Usuario {
-  ID_USUARIO: Int16Array;
+  ID_USUARIO: Number;
   NOME_USUARIO: string;
   SENHA: string;
 }
