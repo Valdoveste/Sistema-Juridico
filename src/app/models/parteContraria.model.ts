@@ -1,5 +1,7 @@
+import { Data } from "@angular/router";
+
 export interface ParteContraria {
-  PF_PJ: Int16Array;
+  PF_PJ: Number;
   NOME: String;
   NOME_FANTASIA: String;
   CPF: String;
@@ -13,7 +15,7 @@ export interface ParteContraria {
   PAIS: String;
   OBSERVACAO: String;
   CARGO: String;
-  DATA_ADMISSAO: String;
-  DATA_DEMISSAO: String
-  ULTIMO_SALARIO: Int16Array;
+  DATA_ADMISSAO: Data;
+  DATA_DEMISSAO: Data
+  ULTIMO_SALARIO: Number;
 }
