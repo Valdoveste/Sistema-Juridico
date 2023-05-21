@@ -17,6 +17,7 @@ import { ProcessCreateOpposingpartyComponent } from './components/processCompone
 import { ProcessCreateProcessdetailsComponent } from './components/processComponents/process-create/process-create-processdetails/process-create-processdetails.component';
 import { ProcessCreateProgressComponent } from './components/processComponents/process-create/process-create-progress/process-create-progress.component';
 import { ProcessCreateAgreementComponent } from './components/processComponents/process-create/process-create-agreement/process-create-agreement.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ProcessCreateAgreementComponent } from './components/processComponents/
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
