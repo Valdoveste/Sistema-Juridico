@@ -1,33 +1,35 @@
-import { Data } from "@angular/router";
-
 export interface Processo {
-  ID_PROCESSO: String;
+  ID_PROCESSO: Number;
+  NUMERO_PROCESSO: string;
   ID_USUARIO: Number;
   STATUS: String;
   TIPO_DE_ACAO: String;
   AREA_DO_DIREITO: String;
   EMPPRESA: String;
+  EMPRESA_CNPJ: String,
   AMBITO: String;
   PARTE_CONTRARIA: String;
+  PARTE_CONTRARIA_CNPJ: String;
   ESTADO: String;
   CIDADE: String;
   PAIS: String;
   VARA: String;
   FORO_TRIBUNAL_ORGAO: String;
-  DATA_DISTRIBUICAO: Data;
-  DATA_CITACAO: Data;
+  FASE: String;
+  DATA_DISTRIBUICAO: String;
+  DATA_CITACAO: String;
   PATRONO_RESPONSAVEL: String;
-  PATRONOS_ANTERIORES: [];
+  PATRONOS_ANTERIORES: [String];
   TEXTO_DO_OBJETO: String;
   VALOR_DO_PEDIDO: String;
   VALOR_INSTANCIA1: Number;
   VALOR_INSTANCIA2: Number;
   VALOR_INSTANCIA3: Number;
   VALOR_INSTANCIA_EXTRAORDINARIA: Number;
-  DATA_CADASTRO_PROCESSO: Data;
-  DATA_ULITMO_PROCESSO: Data;
-  DATA_ULTIMO_ANDAMENTO: Data;
-  DATA_ENCERRAMENTO: Data;
+  DATA_CADASTRO_PROCESSO: String;
+  DATA_ULITMO_PROCESSO: String;
+  DATA_ULTIMO_ANDAMENTO: String;
+  DATA_ENCERRAMENTO: String;
   MOTIVO_ENCERRAMENTO: String;
   MOTIVO_BAIXA_PROVISORIA: String;
 }

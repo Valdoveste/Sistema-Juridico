@@ -1,11 +1,12 @@
 import { Data } from "@angular/router";
 
 export interface ParteContraria {
+  ID_PARTECONTRARIA: Number;
   PF_PJ: Number;
   NOME: String;
   NOME_FANTASIA: String;
   CPF: String;
-  CNPJF: String
+  CNPJ: String
   RG: String;
   ENDERECO: String;
   CEP: String;
