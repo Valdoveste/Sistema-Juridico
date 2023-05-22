@@ -1,5 +1,11 @@
 @import '../../../../../styles.scss';
+@import '../process-create.component.scss';
 
-input {
+input,
+select {
   @extend .input;
+}
+
+select {
+  width: auto;
 }
