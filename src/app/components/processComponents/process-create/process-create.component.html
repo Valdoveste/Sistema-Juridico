@@ -1,17 +1,396 @@
 <div id="process-create">
-  <div class="process-create-header">
-    <h3>Crição de Processo</h3>
-    <button type="button" class="active" (click)="swapTabs('processdetails')">Processo</button>
-    <button type="button" (click)="swapTabs('opposingparty')">Parte Contraria</button>
-    <!-- <button type="button" (click)="swapTabs('agreement')">Acordo</button>
-    <button type="button" (click)="swapTabs('progress')">Andamento</button> -->
-  </div>
-  <div class="process-create-body">
-    <ng-container [ngSwitch]="componentName">
-      <app-process-create-processdetails *ngSwitchDefault="'processdetails'"></app-process-create-processdetails>
-      <app-process-create-opposingparty *ngSwitchCase="'opposingparty'"></app-process-create-opposingparty>
-      <!-- <app-process-create-agreement *ngSwitchCase="'agreement'"></app-process-create-agreement>
-      <app-process-create-progress *ngSwitchCase="'progress'"></app-process-create-progress> -->
-    </ng-container>
-  </div>
+  <form (ngSubmit)="createProcess()" #formDir="ngForm" [formGroup]="createProcessForm">
+    <div class="process-create-header">
+      <h3>Crição de Processo</h3>
+      <!-- <button type="button" class="active" (click)="clickSwapTabs('processdetails')">Processo</button>
+          <button type="button" (click)="clickSwapTabs('opposingparty')">Parte Contraria</button> -->
+      <!-- <button type="button" (click)="swapTabs('agreement')">Acordo</button>
+          <button type="button" (click)="swapTabs('progress')">Andamento</button> -->
+    </div>
+    <div class="process-create-body">
+      <div class="process-create-processdetails">
+        <ul class="process-create-processdetails__list">
+          <li class="process-create-processdetails__list__item">
+            <p class="sm-text">Número Processo</p>
+            <input type="text" required formControlName="NUMERO_PROCESSO"
+              [(ngModel)]="createProcessResquest.NUMERO_PROCESSO" class="process-create-processdetails">
+          </li>
+          <li class="process-create-processdetails__list__item">
+            <div class="process-create-processdetails__list__item--div">
+              <div class="process-create-processdetails__list__item--row">
+                <span>
+                  <p class="sm-text">Status</p>
+                  <select required formControlName="STATUS" id="selectProcessStatus"
+                    [(ngModel)]="createProcessResquest.STATUS" class="process-searchbar__list__item--input-select">
+                    <option value="ProcessStatus" selected></option>
+                    <option value="Ativo">Ativo</option>
+                    <option value="Baixa Provisória">Baixa Provisória</option>
+                    <option value="Encerrado">Encerrado</option>
+                  </select>
+                </span>
+
+                <span>
+                  <p class="sm-text">Tipo de Ação</p>
+                  <select required formControlName="TIPO_DE_ACAO" id="selectProcessTOA"
+                    [(ngModel)]="createProcessResquest.TIPO_DE_ACAO"
+                    class="process-searchbar__list__item--input-select">
+                    <option value="TOA" selected></option>
+                    <option value="Ação de Cobrança">Ação de Cobrança</option>
+                    <option value="Reclamação Trabalhista">Reclamação Trabalhista</option>
+                    <option value="Ação coletiva">Ação coletiva</option>
+                    <option value="Ação Indenizatória">Ação Indenizatória</option>
+                    <option value="Ação de obrigação de fazer">Ação de obrigação de fazer</option>
+                    <option value="Ação de repetição de indébito">Ação de repetição de indébito</option>
+                    <option value="Ação de consignação em pagamento">Ação de consignação em pagamento</option>
+                    <option value="Cumprimento de sentença">Cumprimento de sentença</option>
+                    <option value="Cumprimento provisório de sentença">Cumprimento provisório de sentença</option>
+                    <option value="Execução de título extrajudicial">Execução de título extrajudicial</option>
+                    <option value=" Execução de título judicial"> Execução de título judicial</option>
+                    <option value="Ação de Regresso">Ação de Regresso</option>
+                    <option value="Tutela provisória">Tutela provisória</option>
+                    <option value="Ação de exigir contas">Ação de exigir contas</option>
+                    <option value="Ação de dissolução parcial de sociedade">Ação de dissolução parcial de sociedade
+                    </option>
+                    <option value="Embargos de terceiro">Embargos de terceiro</option>
+                    <option value="Ação monitória">Ação monitória</option>
+                    <option value="Ação Rescisória">Ação Rescisória</option>
+                    <option value="Procedimento Administrativo">Procedimento Administrativo</option>
+                    <option value="Processo Administrativo">Processo Administrativo</option>
+                    <option value="Notificação extrajudicial;">Notificação extrajudicial</option>
+                  </select>
+                </span>
+
+                <span>
+                  <p class="sm-text">Área do Direito</p>
+                  <select required formControlName="AREA_DO_DIREITO" id="selectProcessArea"
+                    [(ngModel)]="createProcessResquest.AREA_DO_DIREITO"
+                    class="process-searchbar__list__item--input-select">
+                    <option value="Área do Processo" selected></option>
+                    <option value="Trabalhista">Trabalhista</option>
+                    <option value="Consumidor">Consumidor</option>
+                    <option value="Cível">Cível</option>
+                    <option value="Tributário">Tributário</option>
+                    <option value="Societário">Societário</option>
+                  </select>
+                </span>
+
+                <span>
+                  <p class="sm-text">Âmbito</p>
+                  <select required formControlName="AMBITO" id="selectProcessPhase"
+                    [(ngModel)]="createProcessResquest.AMBITO" class="process-searchbar__list__item--input-select">
+                    <option value="ProcessPhase" selected></option>
+                    <option value="Pré Processual">Administradivo</option>
+                    <option value="Judicial">Judicial</option>
+                    <option value="Pré Judicial">Pré Judicial</option>
+                  </select>
+                </span>
+              </div>
+            </div>
+          </li>
+
+          <li class="process-create-processdetails__list__item">
+            <div class="process-create-processdetails__list__item--div">
+              <div class="process-create-processdetails__list__item--row">
+                <span>
+                  <p class="sm-text">Estado</p>
+                  <input type="text" required formControlName="ESTADO"
+                    [(ngModel)]="createProcessResquest.PROCESSO_ESTADO" class="process-create-processdetails">
+                </span>
+
+                <span class="mx-1">
+                  <p class="sm-text">Cidade</p>
+                  <input type="text" required formControlName="CIDADE"
+                    [(ngModel)]="createProcessResquest.PROCESSO_CIDADE" class="process-create-processdetails">
+                </span>
+
+                <span>
+                  <p class="sm-text">Pais</p>
+                  <input type="text" required formControlName="PAIS" [(ngModel)]="createProcessResquest.PROCESSO_PAIS"
+                    class="process-create-processdetails">
+                </span>
+              </div>
+            </div>
+          </li>
+
+          <li class="process-create-processdetails__list__item">
+            <div class="process-create-processdetails__list__item--div">
+              <div class="process-create-processdetails__list__item--row">
+
+                <span>
+                  <p class="sm-text">Patrono responsável</p>
+                  <select required formControlName="PATRONO_RESPONSAVEL" id=""
+                    [(ngModel)]="createProcessResquest.PATRONO_RESPONSAVEL"
+                    class="process-create-processdetails--input-select">
+                    <option value="PatroResp" selected></option>
+                    <option value="USE29.65">Use Comunicações e Telecomunicações LTDA. (29.568.281/0001-65)</option>
+                    <option value="USE09.00">Use Telecomunicações LTDA. (09.540.627/0001-00)</option>
+                    <option value="USE39.05">Use Service LTDA. (39.512.524/0001-05)</option>
+                    <option value="TASCOM14.98">Tascom Telecomunicações LTDA. (14.691.508/0001-98)</option>
+                    <option value="TNG29.51">TGN - BR Internet LTDA. (29.339.296/0001-51)</option>
+                    <option value="L&A8.08">L & A Patrimonial LTDA. (28.122.328/0001-08)</option>
+                    <option value="André Jorge">André Jorge Lima Dantas Costa</option>
+                    <option value="Leila Cláudia">Leila Cláudia Farias de Jesus Costa</option>
+                  </select>
+                </span>
+
+                <span>
+                  <p class="sm-text">Fase do processo</p>
+                  <select required formControlName="FASE" [(ngModel)]="createProcessResquest.FASE"
+                    id="selectProcessPhase" class="process-create-processdetails--input-select">
+                    <option value="ProcessPhase" selected></option>
+                    <option value="Administradivo">Administradivo</option>
+                    <option value="Judicial">Judicial</option>
+                    <option value="Pré Judicial">Pré Judicial</option>
+                  </select>
+                </span>
+              </div>
+            </div>
+          </li>
+
+          <li class="process-create-processdetails__list__item">
+            <div class="process-create-processdetails__list__item--div">
+              <div class="process-create-processdetails__list__item--row justify-content-normal">
+                <span>
+                  <p class="sm-text">Patronos anteriores</p>
+                  <input type="text" required formControlName="PATRONOS_ANTERIORES"
+                    [(ngModel)]="createProcessResquest.PATRONOS_ANTERIORES" class="process-create-processdetails">
+                </span>
+
+                <span>
+                  <p class="sm-text">Data de Distribuição</p>
+                  <input type="date" required formControlName="DATA_DISTRIBUICAO"
+                    [(ngModel)]="createProcessResquest.DATA_DISTRIBUICAO" class="process-create-processdetails">
+                </span>
+
+                <span>
+                  <p class="sm-text">Data da Citação</p>
+                  <input type="date" required formControlName="DATA_CITACAO"
+                    [(ngModel)]="createProcessResquest.DATA_CITACAO" class="process-create-processdetails">
+                </span>
+              </div>
+            </div>
+          </li>
+
+          <li class="process-create-processdetails__list__item">
+
+            <p class="sm-text">Texto do objeto</p>
+            <textarea required formControlName="TEXTO_DO_OBJETO" id=""
+              [(ngModel)]="createProcessResquest.TEXTO_DO_OBJETO" rows="10"
+              class="process-create-processdetails w-100"></textarea>
+
+            <div class="process-create-processdetails__list__item--row">
+              <p class="sm-text">Valor do Pedido</p>
+              <input type="number" required formControlName="VALOR_DO_PEDIDO"
+                [(ngModel)]="createProcessResquest.VALOR_DO_PEDIDO" class="process-create-processdetails">
+            </div>
+          </li>
+
+          <li class="process-create-processdetails__list__item">
+            <div class="process-create-processdetails__list__item--div">
+              <div class="process-create-processdetails__list__item--row">
+                <span>
+                  <p class="sm-text">Valor 1ª Instância</p>
+                  <input type="number" required formControlName="VALOR_INSTANCIA1"
+                    [(ngModel)]="createProcessResquest.VALOR_INSTANCIA1" class="process-create-processdetails">
+                </span>
+
+                <span class="mx-1">
+                  <p class="sm-text">Valor 2ª Instância</p>
+                  <input type="number" required formControlName="VALOR_INSTANCIA2"
+                    [(ngModel)]="createProcessResquest.VALOR_INSTANCIA2" class="process-create-processdetails">
+                </span>
+
+                <span style="margin-right: .25rem;">
+                  <p class="sm-text">Valor 3ª Instância</p>
+                  <input type="number" required formControlName="VALOR_INSTANCIA3"
+                    [(ngModel)]="createProcessResquest.VALOR_INSTANCIA3" class="process-create-processdetails">
+                </span>
+                <span>
+                  <p class="sm-text">Valor Instância Extraordinária</p>
+                  <input type="number" required formControlName="VALOR_INSTANCIA_EXTRAORDINARIA"
+                    [(ngModel)]="createProcessResquest.VALOR_INSTANCIA_EXTRAORDINARIA"
+                    class="process-create-processdetails">
+                </span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="process-create-opposingparty">
+        <h3>Parte Contrária</h3>
+        <hr>
+        <ul class="process-create-opposingparty__list">
+
+          <div *ngIf="STATUS.invalid && formDir.submitted">
+            <p class="sm-text" *ngIf="STATUS.errors?.['required']">Invaldio</p>
+          </div>
+          <label class="mb-2 process-create-checkbox" for="checkBox">
+            <input type="checkbox" #checkBox required formControlName="" id="checkBox">
+            <p class="sm-text">
+              Funcionário / Ex-funcionário
+            </p>
+          </label>
+
+          <div *ngIf="checkBox.checked; else elseBlock">
+            <li class="process-create-opposingparty__list__item">
+              <div class="process-create-opposingparty__list__item--div">
+                <p class="sm-text">Nome</p>
+                <input type="text" placeholder="" name="NOME" required formControlName="NOME" minlength="10"
+                  [(ngModel)]="createOpposingpartyResquest.NOME" class="process-create-opposingparty--name" required
+                  formControlName w-50>
+
+                <div class="process-create-opposingparty__list__item--row">
+                  <span style="width: 60%">
+                    <p class="sm-text">Nome Fantasia</p>
+                    <input type="text" required formControlName="NOME_FANTASIA"
+                      [(ngModel)]="createOpposingpartyResquest.NOME_FANTASIA" class="process-create-opposingparty">
+                  </span>
+
+                  <span>
+                    <p class="sm-text">CNPJ</p>
+                    <input type="text" required formControlName="CNPJ" [(ngModel)]="createOpposingpartyResquest.CNPJ"
+                      class="process-create-opposingparty">
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li class="process-create-opposingparty__list__item">
+              <div class="process-create-opposingparty__list__item--div">
+                <p class="sm-text">CEP</p>
+                <input type="text" required formControlName="CEP" placeholder="00000-000"
+                  [(ngModel)]="createOpposingpartyResquest.CEP" class="process-create-opposingparty--zipcode">
+                <div class="process-create-opposingparty__list__item--row">
+                  <span style="width: 40%;">
+                    <p class="sm-text">Endereço</p>
+                    <input type="text" required formControlName="ENDERECO" placeholder=""
+                      [(ngModel)]="createOpposingpartyResquest.ENDERECO" class="process-create-opposingparty--adress">
+                  </span>
+                  <span>
+                    <p class="sm-text">Número</p>
+                    <input type="text" required formControlName="NUMERO" placeholder=""
+                      [(ngModel)]="createOpposingpartyResquest.NUMERO"
+                      class="process-create-opposingparty-adressnumber">
+                  </span>
+
+                  <span>
+                    <p class="sm-text">Complemento</p>
+                    <input type="text" required formControlName="COMPLEMENTO" placeholder=""
+                      [(ngModel)]="createOpposingpartyResquest.COMPLEMENTO"
+                      class="process-create-opposingparty--adresscomplement">
+                  </span>
+                </div>
+              </div>
+            </li>
+
+            <li class="process-create-processdetails__list__item">
+              <div class="process-create-processdetails__list__item--div">
+                <div class="process-create-processdetails__list__item--row">
+                  <span>
+                    <p class="sm-text">Estado</p>
+                    <input type="text" required formControlName="ESTADO"
+                      [(ngModel)]="createOpposingpartyResquest.ESTADO" class="process-create-processdetails">
+                  </span>
+
+                  <span class="mx-1">
+                    <p class="sm-text">Cidade</p>
+                    <input type="text" required formControlName="CIDADE"
+                      [(ngModel)]="createOpposingpartyResquest.CIDADE" class="process-create-processdetails">
+                  </span>
+
+                  <span>
+                    <p class="sm-text">Pais</p>
+                    <input type="text" required formControlName="PAIS" [(ngModel)]="createOpposingpartyResquest.PAIS"
+                      class="process-create-processdetails">
+                  </span>
+                </div>
+              </div>
+            </li>
+          </div>
+          <ng-template #elseBlock>
+            <li class="process-create-opposingparty__list__item">
+              <div class="process-create-opposingparty__list__item--div">
+                <p class="sm-text">Nome</p>
+                <input type="text" placeholder="" name="NOME" required formControlName="NOME" minlength="10"
+                  [(ngModel)]="createOpposingpartyResquest.NOME" class="process-create-opposingparty--name" required
+                  formControlName w-50>
+
+                <div style="width: 60%;" class="process-create-opposingparty__list__item--row">
+                  <span>
+                    <p class="sm-text">CPF</p>
+                    <input type="text" required formControlName="CPF" placeholder="000.000.000-00"
+                      [(ngModel)]="createOpposingpartyResquest.CPF" class="process-create-opposingparty--id">
+                  </span>
+
+                  <span>
+                    <p class="sm-text">RG</p>
+                    <input type="text" required formControlName="RG" placeholder="00.000.000-0"
+                      [(ngModel)]="createOpposingpartyResquest.RG" class="process-create-opposingparty--rg">
+                  </span>
+                </div>
+              </div>
+            </li>
+
+            <li class="process-create-opposingparty__list__item">
+              <div class="process-create-opposingparty__list__item--div">
+                <p class="sm-text">CEP</p>
+                <input type="text" required formControlName="CEP" placeholder="00000-000"
+                  [(ngModel)]="createOpposingpartyResquest.CEP" class="process-create-opposingparty--zipcode">
+                <div class="process-create-opposingparty__list__item--row">
+                  <span style="width: 40%;">
+                    <p class="sm-text">Endereço</p>
+                    <input type="text" required formControlName="ENDERECO" placeholder=""
+                      [(ngModel)]="createOpposingpartyResquest.ENDERECO" class="process-create-opposingparty--adress">
+                  </span>
+                  <span>
+                    <p class="sm-text">Número</p>
+                    <input type="text" required formControlName="NUMERO" placeholder=""
+                      [(ngModel)]="createOpposingpartyResquest.NUMERO"
+                      class="process-create-opposingparty-adressnumber">
+                  </span>
+
+                  <span>
+                    <p class="sm-text">Complemento</p>
+                    <input type="text" required formControlName="COMPLEMENTO" placeholder=""
+                      [(ngModel)]="createOpposingpartyResquest.COMPLEMENTO"
+                      class="process-create-opposingparty--adresscomplement">
+                  </span>
+                </div>
+              </div>
+            </li>
+
+            <li class="process-create-opposingparty__list__item">
+              <div class="process-create-opposingparty__list__item--div">
+                <div class="process-create-opposingparty__list__item--row">
+                  <span>
+                    <p class="sm-text">Cargo</p>
+                    <input type="text" required formControlName="CARGO" placeholder=""
+                      [(ngModel)]="createOpposingpartyResquest.CARGO" class="process-create-opposingparty">
+                  </span>
+
+                  <span>
+                    <p class="sm-text">Ultimo Salário</p>
+                    <input type="number" required formControlName="ULTIMO_SALARIO" min="0" placeholder=""
+                      [(ngModel)]="createOpposingpartyResquest.ULTIMO_SALARIO" class="process-create-opposingparty">
+                  </span>
+
+                  <span>
+                    <p class="sm-text">Data de admissão</p>
+                    <input type="date" required formControlName="DATA_ADMISSAO"
+                      [(ngModel)]="createOpposingpartyResquest.DATA_ADMISSAO" class="process-create-opposingparty">
+                  </span>
+
+                  <span>
+                    <p class="sm-text">Data de demissão</p>
+                    <input type="date" required formControlName="DATA_DEMISSAO"
+                      [(ngModel)]="createOpposingpartyResquest.DATA_DEMISSAO" class="process-create-opposingparty">
+                  </span>
+                </div>
+              </div>
+            </li>
+          </ng-template>
+        </ul>
+      </div>
+    </div>
+    <button type="submit">SAve</button>
+  </form>
 </div>
