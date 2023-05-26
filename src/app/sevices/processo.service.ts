@@ -9,11 +9,16 @@ import { Observable } from 'rxjs';
 })
 export class ProcessoService {
 
-  baseApiUrl: string= environment.baseApiUrl;
+  baseApiUrl: string = environment.baseApiUrl;
 
   constructor(private http: HttpClient) { }
 
   getAllProcess(): Observable<Processo[]> {
-   return this.http.get<Processo[]>(this.baseApiUrl + '/api/Sistema')
+    return this.http.get<Processo[]>(this.baseApiUrl + '/api/Sistema')
+  }
+
+  createProcess(createProcessResquest: Processo): Observable<Processo> {
+    createProcessResquest.ID_PROCESSO = '00000000-0000-0000-0000-000000000000';
+    return this.http.post<Processo>(this.baseApiUrl + '/api/Sistema', createProcessResquest)
   }
 }
