@@ -1,7 +1,6 @@
 export interface Processo {
-  ID_PROCESSO: Number;
+  ID_PROCESSO: String;
   NUMERO_PROCESSO: string;
-  ID_USUARIO: Number;
   STATUS: String;
   TIPO_DE_ACAO: String;
   AREA_DO_DIREITO: String;
@@ -10,16 +9,16 @@ export interface Processo {
   AMBITO: String;
   PARTE_CONTRARIA: String;
   PARTE_CONTRARIA_CNPJ: String;
-  ESTADO: String;
-  CIDADE: String;
-  PAIS: String;
+  PROCESSO_ESTADO: String;
+  PROCESSO_CIDADE: String;
+  PROCESSO_PAIS: String;
   VARA: String;
   FORO_TRIBUNAL_ORGAO: String;
   FASE: String;
   DATA_DISTRIBUICAO: String;
   DATA_CITACAO: String;
   PATRONO_RESPONSAVEL: String;
-  PATRONOS_ANTERIORES: [String];
+  PATRONOS_ANTERIORES: String;
   TEXTO_DO_OBJETO: String;
   VALOR_DO_PEDIDO: String;
   VALOR_INSTANCIA1: Number;
