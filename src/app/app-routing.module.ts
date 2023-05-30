@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProcessPanelComponent } from './components/processComponents/process-panel/process-panel.component';
-import { ProcessSectionComponent } from './components/processComponents/process-section/process-section.component';
+import { ProcessCreateComponent } from './components/processComponents/process-create/process-create.component';
+import { ProcessAreaComponent } from './components/processComponents/process-area/process-area.component';
 
 const routes: Routes = [
   {
-    path: '', component: ProcessPanelComponent
+    path: 'painel-processos',
+    component: ProcessPanelComponent
   },
-  
   {
-    path: 'panel', component: ProcessSectionComponent
+    path: 'criar-processo',
+    component: ProcessCreateComponent
+  },
+  {
+    path: 'painel-processos/processo-detalhes/:id',
+    component: ProcessAreaComponent
   }
-
 ];
 
 @NgModule({
