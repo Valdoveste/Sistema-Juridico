@@ -19,7 +19,6 @@ export class ProcessContainerComponent implements OnInit {
       next: (processos: any) => {
         this.processos = processos;
         console.log(processos)
-        console.log(processos[0].STATUS)
       },
       error: (response: any) => {
         console.log(response)

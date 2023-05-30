@@ -1,7 +1,8 @@
 @import '../../../../styles.scss';
+@import '../process-create/process-create.component.scss';
 
 #process-area {
-  width: 750px;
+  width: 100%;
   padding: 1rem;
   margin-right: 2rem;
   background-color: #ffffff;
