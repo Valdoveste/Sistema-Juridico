@@ -15,6 +15,8 @@ import { ProcessCreateProgressComponent } from './components/processComponents/p
 import { ProcessCreateAgreementComponent } from './components/processComponents/process-create/process-create-agreement/process-create-agreement.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProcessAreaDetailsComponent } from './components/processComponents/process-area/process-area-details/process-area-details.component';
+import { ProcessAreaOpposingpartyComponent } from './components/processComponents/process-area/process-area-opposingparty/process-area-opposingparty.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProcessCreateComponent,
     ProcessCreateProgressComponent,
     ProcessCreateAgreementComponent,
+    ProcessAreaDetailsComponent,
+    ProcessAreaOpposingpartyComponent,
   ],
 
   imports: [
