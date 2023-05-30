@@ -54,6 +54,24 @@ html {
   border: 1px solid rgba(60, 64, 67, 0.5);
 }
 
+.btn-default {
+  padding: 10px;
+  color: black;
+  text-align: center;
+  border-radius: 4.5px;
+  background-color: #fbfbfb;
+  border: 1px solid #ededed;
+  box-shadow:
+    0 1px 1px 0 #ededed31,
+    0 1px 6px 1px #ededed1a;
+  transition: background-color ease-out 500ms;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #ffffff;
+  }
+}
+
 .process-searchbar__list__item {
 
   .process-searchbar__list__item--input-select:first-child {
