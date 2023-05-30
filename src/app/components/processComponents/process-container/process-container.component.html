@@ -17,7 +17,7 @@
         <li class="process-body__list__item">
           <span class="sm-text">Empresa</span>
           <p class="process-body__company-name">
-            {{processo.EMPPRESA}}
+            {{processo.EMPRESA}}
           </p>
           <p class="process-body__company-cnpj sm-text">
             {{processo.EMPRESA_CNPJ}}
@@ -42,7 +42,7 @@
         <li class="process-body__list__item">
           <span class="sm-text">Parte Contrária</span>
           <p class="process-body__opposingparty-name">
-            {{processo.PARTE_CONTRARIA}}
+            {{processo.PARTE_CONTRARIA_NOME}}
           </p>
           <p class="process-body__opposingparty-cnpj sm-text">
             {{processo.PARTE_CONTRARIA_CNPJ}}
@@ -63,7 +63,8 @@
     </div>
 
     <div class="process-footer">
-      <button routerLink="/panel" class="process-footer--button">Área do Processo</button>
+      <button [routerLink]="['/painel-processos', 'processo-detalhes', processo.ID_PROCESSO]"
+        class="process-footer--button">Área do Processo</button>
     </div>
   </div>
 
