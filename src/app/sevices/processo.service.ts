@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Processo } from '../models/PROCESSO.model';
 import { Observable } from 'rxjs';
-
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProcessoService {
 
   baseApiUrl: string = environment.baseApiUrl;
@@ -19,6 +19,13 @@ export class ProcessoService {
 
   createProcess(createProcessResquest: Processo): Observable<Processo> {
     createProcessResquest.ID_PROCESSO = '00000000-0000-0000-0000-000000000000';
+    createProcessResquest.DATA_CADASTRO_PROCESSO = new Date();
+    createProcessResquest.PARTE_CONTRARIA_DATA_ADMISSAO = new Date();
+    console.log(new Date())
     return this.http.post<Processo>(this.baseApiUrl + '/api/Sistema', createProcessResquest)
+  }
+
+  getProcess(id: String): Observable<Processo> {
+    return this.http.get<Processo>(this.baseApiUrl + '/api/Sistema/' + id)
   }
 }
