@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Processo } from 'src/app/models/PROCESSO.model';
 import { ProcessoService } from '../../../sevices/processo.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-process-create',
@@ -30,8 +30,8 @@ export class ProcessCreateComponent implements OnInit {
     VARA: '',
     FORO_TRIBUNAL_ORGAO: '',
     FASE: '',
-    DATA_DISTRIBUICAO: '',
-    DATA_CITACAO: '',
+    DATA_DISTRIBUICAO: new Date,
+    DATA_CITACAO: new Date,
     PATRONO_RESPONSAVEL: '',
     PATRONOS_ANTERIORES: '',
     TEXTO_DO_OBJETO: '',
@@ -41,8 +41,8 @@ export class ProcessCreateComponent implements OnInit {
     VALOR_INSTANCIA3: 0,
     VALOR_INSTANCIA_EXTRAORDINARIA: 0,
     DATA_CADASTRO_PROCESSO: new Date,
-    DATA_ULTIMO_ANDAMENTO: '',
-    DATA_ENCERRAMENTO: '',
+    DATA_ULTIMO_ANDAMENTO: new Date,
+    DATA_ENCERRAMENTO: new Date,
     MOTIVO_ENCERRAMENTO: '',
     MOTIVO_BAIXA_PROVISORIA: '',
     PARTE_CONTRARIA_NOME: '',
