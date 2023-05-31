@@ -20,8 +20,10 @@ export class ProcessoService {
   createProcess(createProcessResquest: Processo): Observable<Processo> {
     createProcessResquest.ID_PROCESSO = '00000000-0000-0000-0000-000000000000';
     createProcessResquest.DATA_CADASTRO_PROCESSO = new Date();
+    // createProcessResquest.PARTE_CONTRARIA_DATA_ADMISSAO = new Date("0000-00-00T00:00:00.000Z");
     createProcessResquest.PARTE_CONTRARIA_DATA_ADMISSAO = new Date();
-    console.log(new Date())
+    createProcessResquest.DATA_ULTIMO_ANDAMENTO = new Date();
+    createProcessResquest.PARTE_CONTRARIA_DATA_DEMISSAO = new Date();
     return this.http.post<Processo>(this.baseApiUrl + '/api/Sistema', createProcessResquest)
   }
 
