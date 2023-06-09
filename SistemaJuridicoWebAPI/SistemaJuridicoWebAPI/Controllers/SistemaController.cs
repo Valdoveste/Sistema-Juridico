@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SistemaJuridicoWebAPI.Data;
 using SistemaJuridicoWebAPI.Models;
@@ -24,6 +24,13 @@ namespace SistemaJuridicoWebAPI.Controllers
         {
 
             return Ok(await _sistemaJuridicoDbContext.PROCESSO.ToListAsync());
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AddAcordo()
+        {
+
+          return Ok(await _sistemaJuridicoDbContext.ACORDO.ToListAsync());
         }
 
         [HttpPost]
