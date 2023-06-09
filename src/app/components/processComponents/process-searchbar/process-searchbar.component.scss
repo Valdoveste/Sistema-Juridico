@@ -21,13 +21,7 @@
 
       .process-searchbar__list__item--input-select,
       .process-searchbar__list__item--input-text {
-        height: 35px;
-        padding: 0 15px;
-        font-size: 1rem;
-        border-radius: 2px;
-        width: calc(50% - 5px);
-        background-color: #ffffff;
-        border: 1px solid rgba(60, 64, 67, 0.5);
+        @extend .input;
       }
 
 
@@ -38,25 +32,7 @@
       }
 
       .process-searchbar__list__item--search-button {
-        width: 150px;
-        height: 40px;
-        font-weight: 700;
-        border-radius: 2px;
-        font-size: 0.75rem;
-        background-color: #ffffff;
-        @include flexCenter(center, center, row);
-        transition: background-color ease-in 250ms;
-        border: 1px solid rgba(60, 64, 67, 0.100);
-        box-shadow: 0px 0px 0px 1px rgba(60, 64, 67, 0.113);
-
-        &:hover {
-          background-color: #ececec7e;
-        }
-
-        svg {
-          height: 20px;
-          width: 20px;
-        }
+        width: 150px !important;
       }
 
     }

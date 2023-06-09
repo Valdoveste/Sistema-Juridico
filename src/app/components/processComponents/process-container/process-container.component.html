@@ -1,9 +1,14 @@
-<div id="process-container">
-  <div class="process">
+<div id="process-container" *ngIf="processos && processos.length > 0">
+
+  <div class="process" *ngFor="let processo of processos">
     <div class="process-header">
       <ul class="process-header__list">
-        <li class="process-header__list__item-process-number">203165789</li>
-        <li class="process-header__list__item-process-status status-ongoin">Ativo</li>
+        <li class="process-header__list__item-process-number">
+          {{processo.NUMERO_PROCESSO}}
+        </li>
+        <li class="process-header__list__item-process-status status-ongoin">
+          {{processo.STATUS}}
+        </li>
       </ul>
     </div>
 
@@ -11,85 +16,57 @@
       <ul class="process-body__list">
         <li class="process-body__list__item">
           <span class="sm-text">Empresa</span>
-          <p class="process-body__company-name">USE</p>
-          <p class="process-body__company-cnpj sm-text">00.000.000/0000-00</p>
+          <p class="process-body__company-name">
+            {{processo.EMPRESA}}
+          </p>
+          <p class="process-body__company-cnpj sm-text">
+            {{processo.EMPRESA_CNPJ}}
+          </p>
         </li>
 
         <li class="process-body__list__item">
           <div>
             <span class="sm-text">Área</span>
-            <p class="process-body__law-area">Trabalhista</p>
+            <p class="process-body__law-area">
+              {{processo.AREA_DO_DIREITO}}
+            </p>
           </div>
           <div>
             <span class="sm-text">Tipo de ação</span>
-            <p class="process-body__law-toa">Pagamento de horas extraordinárias</p>
+            <p class="process-body__law-toa">
+              {{processo.TIPO_DE_ACAO}}
+            </p>
           </div>
         </li>
 
         <li class="process-body__list__item">
           <span class="sm-text">Parte Contrária</span>
-          <p class="process-body__opposingparty-name">On On Bike Rocha Campos</p>
-          <p class="process-body__opposingparty-cnpj sm-text">00.000.000/0000-00</p>
+          <p class="process-body__opposingparty-name">
+            {{processo.PARTE_CONTRARIA_NOME}}
+          </p>
+          <p class="process-body__opposingparty-cnpj sm-text">
+            {{processo.PARTE_CONTRARIA_CNPJ}}
+          </p>
         </li>
 
         <li class="process-body__list__item">
           <span class="sm-text">Fase</span>
-          <p class="process-body__phase">Encerrado</p>
+          <p class="process-body__phase">
+            {{processo.FASE}}
+          </p>
           <span class="sm-text">Ult. Andamento</span>
-          <p class="process-footer__list__item-date-last-moviment">04/05/2023</p>
+          <p class="process-footer__list__item-date-last-moviment">
+            {{processo.DATA_ULTIMO_ANDAMENTO}}
+          </p>
         </li>
       </ul>
     </div>
 
     <div class="process-footer">
-      <button routerLink="/panel" class="process-footer--button">Área do Processo</button>
+      <button [routerLink]="['/painel-processos', 'processo-detalhes', processo.ID_PROCESSO]"
+        class="process-footer--button">Área do Processo</button>
     </div>
   </div>
 
-  <div class="process">
-    <div class="process-header">
-      <ul class="process-header__list">
-        <li class="process-header__list__item-process-number">203165789</li>
-        <li class="process-header__list__item-process-status status-closed">Encerrado</li>
-      </ul>
-    </div>
-
-    <div class="process-body">
-      <ul class="process-body__list">
-        <li class="process-body__list__item">
-          <span class="sm-text">Empresa</span>
-          <p class="process-body__company-name">USE</p>
-          <p class="process-body__company-cnpj sm-text">00.000.000/0000-00</p>
-        </li>
-
-        <li class="process-body__list__item">
-          <div>
-            <span class="sm-text">Área</span>
-            <p class="process-body__law-area">Trabalhista</p>
-          </div>
-          <div>
-            <span class="sm-text">Tipo de ação</span>
-            <p class="process-body__law-toa">Pagamento de horas extraordinárias</p>
-          </div>
-        </li>
-
-        <li class="process-body__list__item">
-          <span class="sm-text">Parte Contrária</span>
-          <p class="process-body__opposingparty-name">Paula Vanca Santos Paulo</p>
-          <p class="process-body__opposingparty-cnpj sm-text">***.***.***-**</p>
-        </li>
-
-        <li class="process-body__list__item">
-          <span class="sm-text">Fase</span>
-          <p class="process-body__phase">Fase</p>
-          <span class="sm-text">Ult. Andamento</span>
-          <p class="process-footer__list__item-date-last-moviment">04/05/2023</p>
-        </li>
-      </ul>
-    </div>
-
-    <div class="process-footer">
-      <button routerLink="/panel" class="process-footer--button">Área do Processo</button>
-    </div>
-  </div>
 </div>
+<p *ngIf="!processos || processos.length <= 0">Nenhum processo encontrado</p>
