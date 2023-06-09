@@ -17,6 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProcessAreaDetailsComponent } from './components/processComponents/process-area/process-area-details/process-area-details.component';
 import { ProcessAreaOpposingpartyComponent } from './components/processComponents/process-area/process-area-opposingparty/process-area-opposingparty.component';
+import { LoginComponent } from './components/login/login.component';
+import { ProcessAreaDealComponent } from './components/processComponents/process-area/process-area-deal/process-area-deal.component';
+import { ProcessAreaMovementComponent } from './components/processComponents/process-area/process-area-movement/process-area-movement.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { ProcessAreaOpposingpartyComponent } from './components/processComponent
     ProcessCreateAgreementComponent,
     ProcessAreaDetailsComponent,
     ProcessAreaOpposingpartyComponent,
+    LoginComponent,
+    ProcessAreaDealComponent,
+    ProcessAreaMovementComponent,
   ],
 
   imports: [
