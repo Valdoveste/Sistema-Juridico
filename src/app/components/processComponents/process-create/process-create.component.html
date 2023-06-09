@@ -24,7 +24,7 @@
                     <option value="Encerrado">Encerrado</option>
                   </select>
                 </span>
-
+<!-- 
                 <span>
                   <p class="sm-text"></p>
                   <select name="EMPRESA_CNPJ" formControlName="EMPRESA_CNPJ" id="selectProcessTOA"
@@ -54,7 +54,7 @@
                     <option value="Processo Administrativo">Processo Administrativo</option>
                     <option value="Notificação extrajudicial;">Notificação extrajudicial</option>
                   </select>
-                </span>
+                </span> -->
               </div>
             </div>
           </li>
@@ -246,10 +246,10 @@
               [(ngModel)]="createProcessResquest.TEXTO_DO_OBJETO" rows="10"
               class="process-create-processdetails w-100"></textarea>
 
-            <div class="process-create-processdetails__list__item--row">
+            <div class="process-create-processdetails__list__item--row mt-2">
               <p class="sm-text">Valor do Pedido</p>
               <input type="number" name="VALOR_DO_PEDIDO" formControlName="VALOR_DO_PEDIDO"
-                [(ngModel)]="createProcessResquest.VALOR_DO_PEDIDO" class="process-create-processdetails">
+                [(ngModel)]="createProcessResquest.VALOR_DO_PEDIDO" class="process-create-processdetails w-auto">
             </div>
           </li>
 
@@ -326,7 +326,7 @@
             </li>
             <li class="process-create-opposingparty__list__item">
               <div class="process-create-opposingparty__list__item--div">
-                <p class="sm-text">PARTE_CONTRARIA_CEP</p>
+                <p class="sm-text">CEP</p>
                 <input type="text" name="CEP" formControlName="PARTE_CONTRARIA_CEP" placeholder="00000-000"
                   [(ngModel)]="createProcessResquest.PARTE_CONTRARIA_CEP" class="process-create-opposingparty--zipcode">
                 <div class="process-create-opposingparty__list__item--row">
@@ -383,6 +383,7 @@
               </div>
             </li>
           </div>
+          
 
           <!-- <ng-template #elseBlock>
             <li class="process-create-opposingparty__list__item">

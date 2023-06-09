@@ -91,7 +91,7 @@ export class ProcessCreateComponent implements OnInit {
       // ID_PROCESSO: new FormControl(''),
       NUMERO_PROCESSO: new FormControl('', [Validators.required]),
       EMPRESA: new FormControl('', [Validators.required]),
-      EMPRESA_CNPJ: new FormControl('', [Validators.required]),
+      // EMPRESA_CNPJ: new FormControl('', [Validators.required]),
       STATUS: new FormControl('', [Validators.required]),
       TIPO_DE_ACAO: new FormControl('', [Validators.required]),
       AREA_DO_DIREITO: new FormControl('', [Validators.required]),
