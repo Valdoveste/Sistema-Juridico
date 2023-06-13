@@ -3771,24 +3771,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\caiov\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\caiov\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\caiov\\Desktop\\Projeto\\Sistema-Juridico\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI.csproj",
+      "projectUniqueName": "C:\\Users\\caiov\\OneDrive\\Área de Trabalho\\Sistema-Juridico\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI.csproj",
       "projectName": "SistemaJuridicoWebAPI",
-      "projectPath": "C:\\Users\\caiov\\Desktop\\Projeto\\Sistema-Juridico\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI.csproj",
+      "projectPath": "C:\\Users\\caiov\\OneDrive\\Área de Trabalho\\Sistema-Juridico\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI.csproj",
       "packagesPath": "C:\\Users\\caiov\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\caiov\\Desktop\\Projeto\\Sistema-Juridico\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI\\obj\\",
+      "outputPath": "C:\\Users\\caiov\\OneDrive\\Área de Trabalho\\Sistema-Juridico\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
         "C:\\Users\\caiov\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
