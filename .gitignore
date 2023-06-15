@@ -7,9 +7,9 @@
 /bazel-out
 
 #API
-# SistemaJuridicoWebAPI/
-# .SistemaJuridicoWebAPI/*
-# !.SistemaJuridicoWebAPI/*
+SistemaJuridicoWebAPI/
+.SistemaJuridicoWebAPI/*
+!.SistemaJuridicoWebAPI/*
 
 # Node
 /node_modules
