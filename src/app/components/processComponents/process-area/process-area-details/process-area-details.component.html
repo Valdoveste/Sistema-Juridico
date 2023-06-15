@@ -2,35 +2,35 @@
   <ul class="process-create-processdetails__list">
     <li class="process-create-processdetails__list__item">
       <p class="sm-text">Número Processo</p>
-      <p class="process-create-processdetails">{{processoDetalhes.NUMERO_PROCESSO}}</p>
-      <!-- <input type="text" disabled [(ngModel)]="processoDetalhes.NUMERO_PROCESSO" name="NUMERO_PROCESSO"> -->
+      <!-- <p class="process-create-processdetails">{{processoDetalhes.NUMERO_PROCESSO}}</p> -->
+      <input type="text" disabled [(ngModel)]="processoDetalhes.NUMERO_PROCESSO" name="NUMERO_PROCESSO">
     </li>
     <li class="process-create-processdetails__list__item">
 
       <div class="process-create-opposingparty__list__item--div">
         <p class="sm-text">Nome</p>
-        <p class="process-create-processdetails">{{processoDetalhes.PARTE_CONTRARIA_NOME}}</p>
-        <p class="sm-text">000.000.0000/00</p>
-        <!-- <input type="text" name="PARTE_CONTRARIA_NOME" disabled [(ngModel)]="processoDetalhes.PARTE_CONTRARIA_NOME"> -->
+        <!-- <p class="process-create-processdetails">{{processoDetalhes.PARTE_CONTRARIA_NOME}}</p>
+        <p class="sm-text">000.000.0000/00</p> -->
+        <input type="text" name="PARTE_CONTRARIA_NOME" disabled [(ngModel)]="processoDetalhes.PARTE_CONTRARIA_NOME">
       </div>
 
       <div class="process-create-processdetails__list__item--div">
         <div class="process-create-processdetails__list__item--row">
           <span>
             <p class="sm-text">Status</p>
-            <p class="process-create-processdetails">{{processoDetalhes.STATUS}}</p>
-            <!-- <select disabled name="STATUS" id="selectProcessStatus" [(ngModel)]="processoDetalhes.STATUS"
+            <!-- <p class="process-create-processdetails">{{processoDetalhes.STATUS}}</p> -->
+            <select disabled name="STATUS" id="selectProcessStatus" [(ngModel)]="processoDetalhes.STATUS"
               class="process-searchbar__list__item--input-select">
-              <option value="ProcessStatus" selected></option>
-              <option value="Ativo">Ativo</option>
-              <option value="Baixa Provisória">Baixa Provisória</option>
-              <option value="Encerrado">Encerrado</option>
-            </select> -->
+              <option ngValue="{{processoDetalhes.STATUS}}" selected>{{processoDetalhes.STATUS}}</option>
+            </select>
           </span>
 
           <span>
             <p class="sm-text">Tipo de Ação</p>
-            <p class="process-create-processdetails">{{processoDetalhes.TIPO_DE_ACAO}}</p>
+            <select disabled name="TIPO_DE_ACAO" id="selectProcessTOA" [(ngModel)]="processoDetalhes.TIPO_DE_ACAO"
+              class="process-searchbar__list__item--input-select">
+              <option ngValue="{{processoDetalhes.TIPO_DE_ACAO}}">{{processoDetalhes.TIPO_DE_ACAO}}</option>
+            </select>
             <!-- <select disabled name="TIPO_DE_ACAO" id="selectProcessTOA" [(ngModel)]="processoDetalhes.TIPO_DE_ACAO"
               class="process-searchbar__list__item--input-select">
               <option value="TOA" selected></option>
@@ -62,6 +62,11 @@
           <span>
             <p class="sm-text">Área do Direito</p>
             <p class="process-create-processdetails">{{processoDetalhes.AREA_DO_DIREITO}}</p>
+            <select disabled name="AREA_DO_DIREITO" id="selectProcessArea"
+              [(ngModel)]="processoDetalhes.AREA_DO_DIREITO" class="process-searchbar__list__item--input-select">
+              <option ngValue="{{processoDetalhes.AREA_DO_DIREITO}}" selected>{{processoDetalhes.AREA_DO_DIREITO}}
+              </option>
+            </select>
             <!-- <select disabled name="AREA_DO_DIREITO" id="selectProcessArea"
               [(ngModel)]="processoDetalhes.AREA_DO_DIREITO" class="process-searchbar__list__item--input-select">
               <option value="Área do Processo" selected></option>
@@ -76,6 +81,10 @@
           <span>
             <p class="sm-text">Âmbito</p>
             <p class="process-create-processdetails">{{processoDetalhes.AMBITO}}</p>
+            <select disabled name="AMBITO" id="selectProcessPhase" [(ngModel)]="processoDetalhes.AMBITO"
+              class="process-searchbar__list__item--input-select">
+              <option ngValue="{{processoDetalhes.AMBITO}}" selected>{{processoDetalhes.AMBITO}}</option>
+            </select>
             <!-- <select disabled name="AMBITO" id="selectProcessPhase" [(ngModel)]="processoDetalhes.AMBITO"
               class="process-searchbar__list__item--input-select">
               <option value="ProcessPhase" selected></option>
@@ -93,23 +102,23 @@
         <div class="process-create-processdetails__list__item--row">
           <span>
             <p class="sm-text">Estado</p>
-            <p class="process-create-processdetails">{{processoDetalhes.PROCESSO_ESTADO}}</p>
-            <!-- <input type="text" disabled name="PROCESSO_ESTADO" [(ngModel)]="processoDetalhes.PROCESSO_ESTADO" 
-              class="process-create-processdetails">-->
+            <!-- <p class="process-create-processdetails">{{processoDetalhes.PROCESSO_ESTADO}}</p> -->
+            <input type="text" disabled name="PROCESSO_ESTADO" [(ngModel)]="processoDetalhes.PROCESSO_ESTADO"
+              class="process-create-processdetails">
           </span>
 
           <span class="mx-1">
             <p class="sm-text">Cidade</p>
-            <p class="process-create-processdetails">{{processoDetalhes.PROCESSO_CIDADE}}</p>
-            <!-- <input type="text" disabled name="PROCESSO_CIDADE" [(ngModel)]="processoDetalhes.PROCESSO_CIDADE" 
-              class="process-create-processdetails">-->
+            <!-- <p class="process-create-processdetails">{{processoDetalhes.PROCESSO_CIDADE}}</p> -->
+            <input type="text" disabled name="PROCESSO_CIDADE" [(ngModel)]="processoDetalhes.PROCESSO_CIDADE"
+              class="process-create-processdetails">
           </span>
 
           <span>
             <p class="sm-text">Pais</p>
-            <p class="process-create-processdetails">{{processoDetalhes.PROCESSO_PAIS}}</p>
-            <!-- <input type="text" disabled name="PROCESSO_PAIS" [(ngModel)]="processoDetalhes.PROCESSO_PAIS" 
-              class="process-create-processdetails">-->
+            <!-- <p class="process-create-processdetails">{{processoDetalhes.PROCESSO_PAIS}}</p> -->
+            <input type="text" disabled name="PROCESSO_PAIS" [(ngModel)]="processoDetalhes.PROCESSO_PAIS"
+              class="process-create-processdetails">
           </span>
         </div>
       </div>
@@ -121,7 +130,11 @@
 
           <span>
             <p class="sm-text">Patrono responsável</p>
-            <p class="process-create-processdetails">{{processoDetalhes.PATRONO_RESPONSAVEL}}</p>
+            <select disabled name="PATRONO_RESPONSAVEL" [(ngModel)]="processoDetalhes.PATRONO_RESPONSAVEL"
+              class="process-create-processdetails--input-select">
+              <option ngValue="{{processoDetalhes.PATRONO_RESPONSAVEL}}" selected>
+                {{processoDetalhes.PATRONO_RESPONSAVEL}}</option>
+            </select>
             <!-- <select disabled name="PATRONO_RESPONSAVEL" [(ngModel)]="processoDetalhes.PATRONO_RESPONSAVEL"
               class="process-create-processdetails--input-select">
               <option value="PatroResp" selected></option>
@@ -138,7 +151,10 @@
 
           <span>
             <p class="sm-text">Fase do processo</p>
-            <p class="process-create-processdetails">{{processoDetalhes.FASE}}</p>
+            <select disabled name="FASE" [(ngModel)]="processoDetalhes.FASE" id="selectProcessPhase"
+              class="process-create-processdetails--input-select">
+              <option ngValue="{{processoDetalhes.FASE}}" selected>{{processoDetalhes.FASE}}</option>
+            </select>
             <!-- <select disabled name="FASE" [(ngModel)]="processoDetalhes.FASE" id="selectProcessPhase"
               class="process-create-processdetails--input-select">
               <option value="ProcessPhase" selected></option>
@@ -155,29 +171,20 @@
       <div class="process-create-processdetails__list__item--div">
         <div class="process-create-processdetails__list__item--row justify-content-normal">
           <span>
-            <p class="sm-text">Patronos anteriores</p>
-            <p class="process-create-processdetails">{{processoDetalhes.PATRONOS_ANTERIORES}}</p>
-            <!-- <input type="text" disabled name="PATRONOS_ANTERIORES" [(ngModel)]="processoDetalhes.PATRONOS_ANTERIORES"
-              class="process-create-processdetails"> -->
-          </span>
-
-          <span>
             <p class="sm-text">Data de Distribuição</p>
             <!-- processoDetalhes.DATA_DISTRIBUICAO.toString().split('/').reverse().join('/') -->
-            <p class="process-create-processdetails">{{
-              processoDetalhes.DATA_DISTRIBUICAO.toString().slice(0, 10).replaceAll("-", "/").split('/').reverse().join('/')
-            }}</p>
-            <!-- <input type="date" disabled name="DATA_DISTRIBUICAO" [(ngModel)]="processoDetalhes.DATA_DISTRIBUICAO"
-              class="process-create-processdetails"> -->
+            <!-- .slice(0, 10).replaceAll("-","/").split('/').reverse().join('/') -->
+            <input type="date" disabled name="DATA_DISTRIBUICAO"
+              value="{{processoDetalhes.DATA_DISTRIBUICAO.toString().slice(0,10)}}"
+              class="process-create-processdetails">
 
-              <!-- replaceAll("-", "/").slice(0, 19).replace("T", " ") -->
+            <!-- replaceAll("-", "/").slice(0, 19).replace("T", " ").slice(0, 10).replaceAll("-","/").split('/').reverse().join('/')  -->
           </span>
 
           <span>
             <p class="sm-text">Data da Citação</p>
-            <p class="process-create-processdetails">{{processoDetalhes.DATA_CITACAO}}</p>
-            <!-- <input type="date" disabled name="DATA_CITACAO" [(ngModel)]="processoDetalhes.DATA_CITACAO"
-              class="process-create-processdetails"> -->
+            <input type="date" disabled name="DATA_CITACAO"
+              value="{{processoDetalhes.DATA_CITACAO.toString().slice(0,10)}}" class="process-create-processdetails">
           </span>
         </div>
       </div>
@@ -192,9 +199,9 @@
 
       <div class="process-create-processdetails__list__item--row">
         <p class="sm-text">Valor do Pedido</p>
-        <p class="process-create-processdetails">{{processoDetalhes.VALOR_DO_PEDIDO}}</p>
-        <!-- <input type="number" disabled name="VALOR_DO_PEDIDO" [(ngModel)]="processoDetalhes.VALOR_DO_PEDIDO"
-          class="process-create-processdetails"> -->
+        <!-- <p class="process-create-processdetails">{{processoDetalhes.VALOR_DO_PEDIDO}}</p> -->
+        <input type="number" disabled name="VALOR_DO_PEDIDO" [(ngModel)]="processoDetalhes.VALOR_DO_PEDIDO"
+          class="process-create-processdetails">
       </div>
     </li>
 
@@ -203,29 +210,29 @@
         <div class="process-create-processdetails__list__item--row">
           <span>
             <p class="sm-text">Valor 1ª Instância</p>
-            <p class="process-create-processdetails">{{processoDetalhes.VALOR_INSTANCIA1}}</p>
-            <!-- <input type="number" disabled name="VALOR_INSTANCIA1" [(ngModel)]="processoDetalhes.VALOR_INSTANCIA1"
-              class="process-create-processdetails"> -->
+            <!-- <p class="process-create-processdetails">{{processoDetalhes.VALOR_INSTANCIA1}}</p> -->
+            <input type="number" disabled name="VALOR_INSTANCIA1" [(ngModel)]="processoDetalhes.VALOR_INSTANCIA1"
+              class="process-create-processdetails">
           </span>
 
           <span class="mx-1">
             <p class="sm-text">Valor 2ª Instância</p>
-            <p class="process-create-processdetails">{{processoDetalhes.VALOR_INSTANCIA2}}</p>
-            <!-- <input type="number" disabled name="VALOR_INSTANCIA2" [(ngModel)]="processoDetalhes.VALOR_INSTANCIA2"
-              class="process-create-processdetails"> -->
+            <!-- <p class="process-create-processdetails">{{processoDetalhes.VALOR_INSTANCIA2}}</p> -->
+            <input type="number" disabled name="VALOR_INSTANCIA2" [(ngModel)]="processoDetalhes.VALOR_INSTANCIA2"
+              class="process-create-processdetails">
           </span>
 
           <span style="margin-right: .25rem;">
             <p class="sm-text">Valor 3ª Instância</p>
-            <p class="process-create-processdetails">{{processoDetalhes.VALOR_INSTANCIA3}}</p>
-            <!-- <input type="number" disabled name="VALOR_INSTANCIA3" [(ngModel)]="processoDetalhes.VALOR_INSTANCIA3"
-              class="process-create-processdetails"> -->
+            <!-- <p class="process-create-processdetails">{{processoDetalhes.VALOR_INSTANCIA3}}</p> -->
+            <input type="number" disabled name="VALOR_INSTANCIA3" [(ngModel)]="processoDetalhes.VALOR_INSTANCIA3"
+              class="process-create-processdetails">
           </span>
           <span>
             <p class="sm-text">Valor Instância Extraordinária</p>
-            <p class="process-create-processdetails">{{processoDetalhes.VALOR_INSTANCIA_EXTRAORDINARIA}}</p>
-            <!-- <input type="number" disabled name="VALOR_INSTANCIA_EXTRAORDINARIA"
-              [(ngModel)]="processoDetalhes.VALOR_INSTANCIA_EXTRAORDINARIA" class="process-create-processdetails"> -->
+            <!-- <p class="process-create-processdetails">{{processoDetalhes.VALOR_INSTANCIA_EXTRAORDINARIA}}</p> -->
+            <input type="number" disabled name="VALOR_INSTANCIA_EXTRAORDINARIA"
+              [(ngModel)]="processoDetalhes.VALOR_INSTANCIA_EXTRAORDINARIA" class="process-create-processdetails">
           </span>
         </div>
       </div>
