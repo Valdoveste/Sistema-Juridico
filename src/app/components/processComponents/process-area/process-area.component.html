@@ -7,6 +7,7 @@
           <button type="button" (click)="swapTabs('opposingparty')">Parte Contraria</button>
           <button type="button" (click)="swapTabs('deal')">Acordo</button>
           <button type="button" (click)="swapTabs('movement')">Andamento</button>
+          <button type="button" (click)="swapTabs('previous-patrons')">Patronos Anteriores</button>
         </div>
         <div class="process-create-body">
           <ng-container [ngSwitch]="componentName">
@@ -21,6 +22,9 @@
             </ng-template>
             <ng-template [ngSwitchCase]="'movement'">
               <app-process-area-movement></app-process-area-movement>
+            </ng-template>
+            <ng-template [ngSwitchCase]="'previous-patrons'">
+              <app-process-area-previous-patrons></app-process-area-previous-patrons>
             </ng-template>
           </ng-container>
         </div>
