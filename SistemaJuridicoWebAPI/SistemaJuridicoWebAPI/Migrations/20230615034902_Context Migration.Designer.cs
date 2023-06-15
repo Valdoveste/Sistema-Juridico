@@ -12,7 +12,7 @@ using SistemaJuridicoWebAPI.Data;
 namespace SistemaJuridicoWebAPI.Migrations
 {
     [DbContext(typeof(SistemaJuridicoDbContext))]
-    [Migration("20230609120806_Context Migration")]
+    [Migration("20230615034902_Context Migration")]
     partial class ContextMigration
     {
         /// <inheritdoc />
