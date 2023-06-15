@@ -20,6 +20,8 @@ import { ProcessAreaOpposingpartyComponent } from './components/processComponent
 import { LoginComponent } from './components/login/login.component';
 import { ProcessAreaDealComponent } from './components/processComponents/process-area/process-area-deal/process-area-deal.component';
 import { ProcessAreaMovementComponent } from './components/processComponents/process-area/process-area-movement/process-area-movement.component';
+import { ManagementComponent } from './components/management/management.component';
+import { ProcessAreaPreviousPatronsComponent } from './components/processComponents/process-area/process-area-previous-patrons/process-area-previous-patrons.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { ProcessAreaMovementComponent } from './components/processComponents/pro
     LoginComponent,
     ProcessAreaDealComponent,
     ProcessAreaMovementComponent,
+    ManagementComponent,
+    ProcessAreaPreviousPatronsComponent,
   ],
 
   imports: [
