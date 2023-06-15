@@ -37,11 +37,12 @@ button {
   color: rgb(101, 109, 118);
 }
 
-body{
+body {
   height: 100vh;
+  background-color: #f6f7fb;
 }
 
-textarea{
+textarea {
   padding: 15px;
 }
 
@@ -52,9 +53,10 @@ html {
 }
 
 
-tbody tr{
-    transition: background-color ease-out 500ms;
-  &:hover{
+tbody tr {
+  transition: background-color ease-out 500ms;
+
+  &:hover {
     cursor: pointer;
     background-color: #efefef;
   }
