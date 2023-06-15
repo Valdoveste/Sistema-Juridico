@@ -1,11 +1,21 @@
 <header id="header">
   <nav class="header__navbar">
     <ul class="header__navbar__list">
-      <li class="header__navbar__item"> <img src="" alt="Sistema Jurídico Logo"> </li>
+      <li class="cursor-pointer header__navbar__item" routerLink="painel-processos"> <img src="" alt="Sistema Jurídico Logo"> a</li>
     </ul>
 
     <ul class="header__navbar__list">
-      <li class="header__navbar__item-user-name">Olá,</li>
+      <li class="header__navbar__item-user-name">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Ola, Usuário
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" routerLink="gestao">Gestão</a>
+          </div>
+        </div>
+      </li>
       <button routerLink="/criar-processo" class="header__navbar__item btn-default">Criar processo</button>
     </ul>
   </nav>

@@ -4,6 +4,7 @@ import { ProcessPanelComponent } from './components/processComponents/process-pa
 import { ProcessCreateComponent } from './components/processComponents/process-create/process-create.component';
 import { ProcessAreaComponent } from './components/processComponents/process-area/process-area.component';
 import { LoginComponent } from './components/login/login.component';
+import { ManagementComponent } from './components/management/management.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'painel-processos/processo-detalhes/:id',
     component: ProcessAreaComponent
+  },
+  {
+    path: 'gestao',
+    component: ManagementComponent
   }
 ];
 
