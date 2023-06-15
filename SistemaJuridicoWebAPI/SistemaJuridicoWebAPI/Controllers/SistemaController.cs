@@ -26,7 +26,7 @@ namespace SistemaJuridicoWebAPI.Controllers
             return Ok(await _sistemaJuridicoDbContext.PROCESSO.ToListAsync());
         }
 
-        [HttpGet]
+        [HttpGet("Acordo")]
         public async Task<IActionResult> AddAcordo()
         {
 
