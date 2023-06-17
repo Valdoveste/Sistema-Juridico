@@ -22,6 +22,12 @@ import { ProcessAreaDealComponent } from './components/processComponents/process
 import { ProcessAreaMovementComponent } from './components/processComponents/process-area/process-area-movement/process-area-movement.component';
 import { ManagementComponent } from './components/management/management.component';
 import { ProcessAreaPreviousPatronsComponent } from './components/processComponents/process-area/process-area-previous-patrons/process-area-previous-patrons.component';
+import { MAmbitoComponent } from './components/management/components/m-ambito/m-ambito.component';
+import { MVaraComponent } from './components/management/components/m-vara/m-vara.component';
+import { MFaseComponent } from './components/management/components/m-fase/m-fase.component';
+import { MAreaDireitoComponent } from './components/management/components/m-area-direito/m-area-direito.component';
+import { MTipoAcaoComponent } from './components/management/components/m-tipo-acao/m-tipo-acao.component';
+import { MForoTribunalOrgaoComponent } from './components/management/components/m-foro-tribunal-orgao/m-foro-tribunal-orgao.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +49,12 @@ import { ProcessAreaPreviousPatronsComponent } from './components/processCompone
     ProcessAreaMovementComponent,
     ManagementComponent,
     ProcessAreaPreviousPatronsComponent,
+    MAmbitoComponent,
+    MVaraComponent,
+    MFaseComponent,
+    MAreaDireitoComponent,
+    MTipoAcaoComponent,
+    MForoTribunalOrgaoComponent,
   ],
 
   imports: [
