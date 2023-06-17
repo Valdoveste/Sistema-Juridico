@@ -3,25 +3,27 @@
 #process-create {
   padding: 1.25rem 0;
   @include flexCenter(center, center, row);
-  
+
   form {
     width: 850px;
-    padding: 1.25rem;
+    padding: 1.10rem;
     background-color: #ffffff;
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.025), 0 2px 6px 2px rgba(60, 64, 67, 0.048);
+
     .process-create-header {
+
       // height: 50px;
       .active {
-        background-color: #838688c2 !important;
+        background-color: #f6f7fb !important;
       }
 
       button {
+        padding: 5px;
         min-width: 125px;
         min-height: 30px;
-        padding: 5px;
-        background-color: #f6f8fac2;
+        background-color: #f6f7fb;
 
-        &:nth-child(2) {
+        &:nth-child(1) {
           border-radius: 5px 0px 0px 0px;
         }
 
@@ -52,15 +54,6 @@
           .process-create-opposingparty__list__item {
             input {
               width: 100%;
-            }
-
-            .process-create-opposingparty__list__item--div {
-              // margin: 15px;
-
-              .process-create-opposingparty--zipcode {
-                width: 150px;
-              }
-
             }
           }
         }

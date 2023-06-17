@@ -88,13 +88,14 @@
         height: 100%;
         font-size: 1rem;
         color: #5e636a;
-        transition: background-color ease-in 250ms;
-        background-color: rgba(60, 64, 67, 0.020);
+        background-color: #f6f7fb;
         border-top: 1px solid rgba(60, 64, 67, 0.163);
+        
+        // transition: background-color ease-in 250ms;
 
-        &:hover {
-          background-color: rgba(60, 64, 67, 0.090);
-        }
+        // &:hover {
+        //   background-color: rgba(60, 64, 67, 0.090);
+        // }
       }
     }
 
