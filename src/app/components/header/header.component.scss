@@ -16,6 +16,12 @@
 
       .header__navbar__item-user-name {
         margin-right: 15px;
+
+        .dropdown {
+          .dropdown-menu {
+            padding: 5px 15px;
+          }
+        }
       }
 
     }
