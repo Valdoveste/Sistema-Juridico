@@ -5,6 +5,24 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AmbitoService } from 'src/app/services/ambito.service';
 import { ProcessoAmbito } from 'src/app/models/PROCESSO_AMBITO.model';
+import { AreaDoDireitoService } from 'src/app/services/area-do-direito.service';
+import { CondicoesTentativaAcordoService } from 'src/app/services/condicoes-tentativa-acordo.service';
+import { FaseService } from 'src/app/services/fase.service';
+import { ForoTribunalOrgaoService } from 'src/app/services/foro-tribunal-orgao.service';
+import { MotivoDoEncerramentoService } from 'src/app/services/motivo-do-encerramento.service';
+import { ProcessoPatronoResponsavel } from 'src/app/models/PROCESSO_PATRONO_RESPONSAVEL.model';
+import { StatusService } from 'src/app/services/status.service';
+import { TipoDeAcaoService } from 'src/app/services/tipo-de-acao.service';
+import { VaraService } from 'src/app/services/vara.service';
+import { ProcessoAreaDoDireito } from 'src/app/models/PROCESSO_AREA_DO_DIREITO.model';
+import { ProcessoCondicoesTentativaAcordo } from 'src/app/models/PROCESSO_CONDICOES_TENTATIVA_ACORDO.model';
+import { ProcessoFase } from 'src/app/models/PROCESSO_FASE.model';
+import { ProcessoForoTribunalOrgao } from 'src/app/models/PROCESSO_FORO_TRIBUNAL_ORGAO.model';
+import { ProcessoMotivoDoEncerramento } from 'src/app/models/PROCESSO_MOTIVO_DO_ENCERRAMENTO.model';
+import { ProcessoStatus } from 'src/app/models/PROCESSO_STATUS.model';
+import { ProcessoTipoDeAcao } from 'src/app/models/PROCESSO_TIPO_DE_ACAO.model';
+import { ProcessoVara } from 'src/app/models/PROCESSO_VARA.model';
+import { PatronoResponsavelService } from 'src/app/services/patrono-responsavel.service';
 
 @Component({
   selector: 'app-process-create',
@@ -15,8 +33,30 @@ export class ProcessCreateComponent implements OnInit {
   createProcessForm!: FormGroup;
 
   ambitos: ProcessoAmbito[] = [];
+  areasDoDireito: ProcessoAreaDoDireito[] = [];
+  condicoesTentativaAcordo: ProcessoCondicoesTentativaAcordo[] = [];
+  fases: ProcessoFase[] = [];
+  foroTribunalOrgaos: ProcessoForoTribunalOrgao[] = [];
+  motivosDoEncerramento: ProcessoMotivoDoEncerramento[] = [];
+  status: ProcessoStatus[] = [];
+  tiposDeAcoes: ProcessoTipoDeAcao[] = [];
+  varas: ProcessoVara[] = [];
+  patronosResonsaveis: ProcessoPatronoResponsavel[] = [];
 
-  constructor(private ProcessoService: ProcessoService, private router: Router, private ambitoService: AmbitoService) { }
+  constructor(
+    private router: Router,
+    private ProcessoService: ProcessoService,
+    private AmbitoService: AmbitoService,
+    private AreaDoDireito: AreaDoDireitoService,
+    private CondicoesTentaivaAcordo: CondicoesTentativaAcordoService,
+    private Fase: FaseService,
+    private ForoTribunalOrgao: ForoTribunalOrgaoService,
+    private MotivoDoEncerramento: MotivoDoEncerramentoService,
+    private Status: StatusService,
+    private TipoDeAcao: TipoDeAcaoService,
+    private Vara: VaraService,
+    private PatronoResponsavel: PatronoResponsavelService
+  ) { }
 
 
   createProcessResquest: Processo = {
@@ -72,7 +112,7 @@ export class ProcessCreateComponent implements OnInit {
 
     // constructor(private ambitoService: AmbitoService) { }
 
-    this.ambitoService.getAllAmbito()
+    this.AmbitoService.getAllAmbito()
       .subscribe({
         next: (ambitos: any) => {
           this.ambitos = ambitos;
@@ -83,6 +123,104 @@ export class ProcessCreateComponent implements OnInit {
         }
       })
 
+
+    this.AreaDoDireito.getAllAreaDoDireito()
+      .subscribe({
+        next: (areasDoDireito: any) => {
+          this.ambitos = areasDoDireito;
+          console.log(areasDoDireito)
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
+
+    this.CondicoesTentaivaAcordo.getAllCondicoesTentativaAcordo()
+      .subscribe({
+        next: (condicoesTentativaAcordo: any) => {
+          this.ambitos = condicoesTentativaAcordo;
+          console.log(condicoesTentativaAcordo)
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
+
+    this.Fase.getAllFase()
+      .subscribe({
+        next: (fases: any) => {
+          this.ambitos = fases;
+          console.log(fases)
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
+
+    this.ForoTribunalOrgao.getAllForoTribunalOrgao()
+      .subscribe({
+        next: (foroTribunalOrgaos: any) => {
+          this.ambitos = foroTribunalOrgaos;
+          console.log(foroTribunalOrgaos)
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
+
+    this.MotivoDoEncerramento.getAllMotivoDoEncerramento()
+      .subscribe({
+        next: (motivosDoEncerramento: any) => {
+          this.ambitos = motivosDoEncerramento;
+          console.log(motivosDoEncerramento)
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
+    this.Status.getAllStatus()
+      .subscribe({
+        next: (status: any) => {
+          this.ambitos = status;
+          console.log(status)
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
+
+    this.TipoDeAcao.getAllTipoDeAcao()
+      .subscribe({
+        next: (tiposDeAcoes: any) => {
+          this.ambitos = tiposDeAcoes;
+          console.log(tiposDeAcoes)
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
+
+    this.Vara.getAllVara()
+      .subscribe({
+        next: (varas: any) => {
+          this.ambitos = varas;
+          console.log(varas)
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
+
+    this.PatronoResponsavel.getAllPatronoResponsavel()
+      .subscribe({
+        next: (patronosResonsaveis: any) => {
+          this.ambitos = patronosResonsaveis;
+          console.log(patronosResonsaveis)
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
 
 
     this.createProcessForm = new FormGroup({

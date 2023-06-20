@@ -14,6 +14,6 @@ export class AmbitoService {
   constructor(private http: HttpClient) { }
 
   getAllAmbito(): Observable<ProcessoAmbito[]> {
-    return this.http.get<ProcessoAmbito[]>(this.baseApiUrl + '/api/Sistema/Ambito')
+    return this.http.get<ProcessoAmbito[]>(this.baseApiUrl + '/api/Sistema/ambito')
   }
 }

@@ -21,10 +21,12 @@
                   <p class="sm-text">Status</p>
                   <select name="STATUS" formControlName="STATUS" id="selectProcessStatus"
                     [(ngModel)]="createProcessResquest.STATUS" class="process-searchbar__list__item--input-select">
-                    <option value="ProcessStatus" selected></option>
+                    <option value="" selected></option>
+                    <option *ngFor="let status of status" value="{{status.STATUS}}" selected>{{status.STATUS}}</option>
+                    <!-- <option value="ProcessStatus" selected></option>
                     <option value="Ativo">Ativo</option>
                     <option value="Baixa Provisória">Baixa Provisória</option>
-                    <option value="Encerrado">Encerrado</option>
+                    <option value="Encerrado">Encerrado</option> -->
                   </select>
                 </span>
 
@@ -38,7 +40,10 @@
               <p class="sm-text">Empresa</p>
               <select name="EMPRESA" formControlName="EMPRESA" [(ngModel)]="createProcessResquest.EMPRESA"
                 class="process-searchbar__list__item--input-select">
-                <option value="ProcessStatus" selected></option>
+                <!-- <option value="" selected></option>
+                <option *ngFor="let status of status" value="{{status.STATUS}}" selected>
+                  {{status.STATUS}}
+                </option> -->
               </select>
 
             </div>
@@ -52,7 +57,11 @@
               <select name="PATRONO_RESPONSAVEL" formControlName="PATRONO_RESPONSAVEL"
                 [(ngModel)]="createProcessResquest.PATRONO_RESPONSAVEL"
                 class="process-create-processdetails--input-select">
-                <option value="PatroResp" selected></option>
+                <option value="" selected></option>
+                <option *ngFor="let patronoResponsavel of patronosResonsaveis"
+                  value="{{patronoResponsavel.PATRONO_RESPONSAVEL}}" selected>{{patronoResponsavel.PATRONO_RESPONSAVEL}}
+                </option>
+                <!-- <option value="PatroResp" selected></option>
                 <option value="USE29.65">Use Comunicações e Telecomunicações LTDA. (29.568.281/0001-65)</option>
                 <option value="USE09.00">Use Telecomunicações LTDA. (09.540.627/0001-00)</option>
                 <option value="USE39.05">Use Service LTDA. (39.512.524/0001-05)</option>
@@ -60,7 +69,7 @@
                 <option value="TNG29.51">TGN - BR Internet LTDA. (29.339.296/0001-51)</option>
                 <option value="L&A8.08">L & A Patrimonial LTDA. (28.122.328/0001-08)</option>
                 <option value="André Jorge">André Jorge Lima Dantas Costa</option>
-                <option value="Leila Cláudia">Leila Cláudia Farias de Jesus Costa</option>
+                <option value="Leila Cláudia">Leila Cláudia Farias de Jesus Costa</option> -->
               </select>
 
             </div>
@@ -71,10 +80,13 @@
               <div class="process-create-processdetails__list__item--row">
                 <span>
                   <p class="sm-text">Tipo de Ação</p>
-                  <select name="TIPO_DE_ACAO" formControlName="TIPO_DE_ACAO" id="selectProcessTOA"
+                  <select name="TIPO_DE_ACAO" formControlName="TIPO_DE_ACAO"
                     [(ngModel)]="createProcessResquest.TIPO_DE_ACAO"
                     class="process-searchbar__list__item--input-select">
-                    <option value="TOA" selected></option>
+                    <option value="" selected></option>
+                    <option *ngFor="let tipodeAcao of tiposDeAcoes" value="{{tipodeAcao.TIPO_DE_ACAO}}" selected>
+                      {{tipodeAcao.TIPO_DE_ACAO}}</option>
+                    <!-- <option value="TOA" selected></option>
                     <option value="Ação de Cobrança">Ação de Cobrança</option>
                     <option value="Reclamação Trabalhista">Reclamação Trabalhista</option>
                     <option value="Ação coletiva">Ação coletiva</option>
@@ -96,27 +108,32 @@
                     <option value="Ação Rescisória">Ação Rescisória</option>
                     <option value="Procedimento Administrativo">Procedimento Administrativo</option>
                     <option value="Processo Administrativo">Processo Administrativo</option>
-                    <option value="Notificação extrajudicial;">Notificação extrajudicial</option>
+                    <option value="Notificação extrajudicial;">Notificação extrajudicial</option> -->
                   </select>
                 </span>
 
                 <span>
                   <p class="sm-text">Área do Direito</p>
-                  <select name="AREA_DO_DIREITO" formControlName="AREA_DO_DIREITO" id="selectProcessArea"
+                  <select name="AREA_DO_DIREITO" formControlName="AREA_DO_DIREITO"
                     [(ngModel)]="createProcessResquest.AREA_DO_DIREITO"
                     class="process-searchbar__list__item--input-select">
-                    <option value="Área do Processo" selected></option>
+                    <option value="" selected></option>
+                    <option *ngFor="let areaDoDireito of areasDoDireito" value="{{areaDoDireito.AREA_DO_DIREITO}}"
+                      selected>
+                      {{areaDoDireito.AREA_DO_DIREITO}}</option>
+                    <!-- <option value="Área do Processo" selected></option>
                     <option value="Trabalhista">Trabalhista</option>
                     <option value="Consumidor">Consumidor</option>
                     <option value="Cível">Cível</option>
                     <option value="Tributário">Tributário</option>
-                    <option value="Societário">Societário</option>
+                    <option value="Societário">Societário</option> -->
                   </select>
                 </span>
 
                 <span>
                   <p class="sm-text">Âmbito</p>
-                  <select name="AMBITO" formControlName="AMBITO" class="process-searchbar__list__item--input-select">
+                  <select name="AMBITO" formControlName="AMBITO" [(ngModel)]="createProcessResquest.AMBITO"
+                    class="process-searchbar__list__item--input-select">
                     <option value="" selected></option>
                     <option *ngFor="let ambito of ambitos" value="{{ambito.AMBITO}}" selected>{{ambito.AMBITO}}</option>
                   </select>
@@ -131,34 +148,43 @@
                 <span>
                   <p class="sm-text">Vara</p>
                   <select name="VARA" formControlName="VARA" [(ngModel)]="createProcessResquest.VARA"
-                    id="selectProcessPhase" class="process-create-processdetails--input-select">
-                    <option value="ProcessPhase" selected></option>
+                    class="process-create-processdetails--input-select">
+                    <option value="" selected></option>
+                    <option *ngFor="let vara of varas" value="{{vara.VARA}}" selected>{{vara.VARA}}</option>
+                    <!-- <option value="ProcessPhase" selected></option>
                     <option value="Administradivo">Administradivo</option>
                     <option value="Judicial">Judicial</option>
-                    <option value="Pré Judicial">Pré Judicial</option>
+                    <option value="Pré Judicial">Pré Judicial</option> -->
                   </select>
                 </span>
 
                 <span>
                   <p class="sm-text">Foro/Tribunal/Orgão</p>
                   <select name="FORO_TRIBUNAL_ORGAO" formControlName="FORO_TRIBUNAL_ORGAO"
-                    [(ngModel)]="createProcessResquest.FORO_TRIBUNAL_ORGAO" id="selectProcessPhase"
+                    [(ngModel)]="createProcessResquest.FORO_TRIBUNAL_ORGAO"
                     class="process-create-processdetails--input-select">
-                    <option value="ProcessPhase" selected></option>
+                    <option value="" selected></option>
+                    <option *ngFor="let foroTribunalOrgao of foroTribunalOrgaos"
+                      value="{{foroTribunalOrgao.FORO_TRIBUNAL_ORGAO}}" selected>
+                      {{foroTribunalOrgao.FORO_TRIBUNAL_ORGAO}}</option>
+                    <!-- <option value="ProcessPhase" selected></option>
                     <option value="Administradivo">Administradivo</option>
                     <option value="Judicial">Judicial</option>
-                    <option value="Pré Judicial">Pré Judicial</option>
+                    <option value="Pré Judicial">Pré Judicial</option> -->
                   </select>
                 </span>
 
                 <span>
                   <p class="sm-text">Fase do processo</p>
                   <select name="FASE" formControlName="FASE" [(ngModel)]="createProcessResquest.FASE"
-                    id="selectProcessPhase" class="process-create-processdetails--input-select">
-                    <option value="ProcessPhase" selected></option>
+                    class="process-create-processdetails--input-select">
+                    <option value="" selected></option>
+                    <option *ngFor="let fase of fases" value="{{fase.FASE}}" selected>
+                      {{fase.FASE}}</option>
+                    <!-- <option value="ProcessPhase" selected></option>
                     <option value="Administradivo">Administradivo</option>
                     <option value="Judicial">Judicial</option>
-                    <option value="Pré Judicial">Pré Judicial</option>
+                    <option value="Pré Judicial">Pré Judicial</option> -->
                   </select>
                 </span>
               </div>
