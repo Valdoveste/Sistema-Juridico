@@ -26,11 +26,11 @@ namespace SistemaJuridicoWebAPI.Controllers
             return Ok(await _sistemaJuridicoDbContext.PROCESSO.ToListAsync());
         }
 
-        [HttpGet("Acordo")]
-        public async Task<IActionResult> AddAcordo()
+        [HttpGet("Ambito")]
+        public async Task<IActionResult> GetAllAmbito()
         {
 
-          return Ok(await _sistemaJuridicoDbContext.ACORDO.ToListAsync());
+          return Ok(await _sistemaJuridicoDbContext.PROCESSO_AMBITO.ToListAsync());
         }
 
         [HttpPost]
@@ -46,8 +46,7 @@ namespace SistemaJuridicoWebAPI.Controllers
         }
 
 
-        [HttpGet]
-        [Route("{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetProcess([FromRoute]Guid id)
         {
           var processo = await  _sistemaJuridicoDbContext.PROCESSO.FirstOrDefaultAsync(x => x.ID_PROCESSO.Equals(id));
