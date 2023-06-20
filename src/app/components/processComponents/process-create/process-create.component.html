@@ -116,12 +116,9 @@
 
                 <span>
                   <p class="sm-text">Âmbito</p>
-                  <select name="AMBITO" formControlName="AMBITO" id="selectProcessPhase"
-                    [(ngModel)]="createProcessResquest.AMBITO" class="process-searchbar__list__item--input-select">
-                    <option value="ProcessPhase" selected></option>
-                    <option value="Pré Processual">Administradivo</option>
-                    <option value="Judicial">Judicial</option>
-                    <option value="Pré Judicial">Pré Judicial</option>
+                  <select name="AMBITO" formControlName="AMBITO" class="process-searchbar__list__item--input-select">
+                    <option value="" selected></option>
+                    <option *ngFor="let ambito of ambitos" value="{{ambito.AMBITO}}" selected>{{ambito.AMBITO}}</option>
                   </select>
                 </span>
               </div>
