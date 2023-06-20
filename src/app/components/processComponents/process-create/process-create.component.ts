@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Processo } from 'src/app/models/PROCESSO.model';
-import { ProcessoService } from '../../../sevices/processo.service';
+import { ProcessoService } from '../../../services/processo.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AmbitoService } from 'src/app/services/ambito.service';
+import { ProcessoAmbito } from 'src/app/models/PROCESSO_AMBITO.model';
 
 @Component({
   selector: 'app-process-create',
@@ -12,7 +14,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class ProcessCreateComponent implements OnInit {
   createProcessForm!: FormGroup;
 
-  constructor(private ProcessoService: ProcessoService, private router: Router) { }
+  ambitos: ProcessoAmbito[] = [];
+
+  constructor(private ProcessoService: ProcessoService, private router: Router, private ambitoService: AmbitoService) { }
 
 
   createProcessResquest: Processo = {
@@ -64,29 +68,23 @@ export class ProcessCreateComponent implements OnInit {
     PARTE_CONTRARIA_ULTIMO_SALARIO: 0
   }
 
-  // createOpposingpartyResquest: ParteContraria = {
-  //   ID_PARTECONTRARIA: '',
-  //   PF_PJ: 0,
-  //   NOME: '',
-  //   NOME_FANTASIA: '',
-  //   CPF: '',
-  //   CNPJ: '',
-  //   RG: '',
-  //   ENDERECO: '',
-  //   CEP: '',
-  //   NUMERO: '',
-  //   COMPLEMENTO: '',
-  //   ESTADO: '',
-  //   CIDADE: '',
-  //   PAIS: '',
-  //   OBSERVACAO: '',
-  //   CARGO: '',
-  //   DATA_ADMISSAO: '',
-  //   DATA_DEMISSAO: '',
-  //   ULTIMO_SALARIO: 0,
-  // }
-
   ngOnInit(): void {
+
+    // constructor(private ambitoService: AmbitoService) { }
+
+    this.ambitoService.getAllAmbito()
+      .subscribe({
+        next: (ambitos: any) => {
+          this.ambitos = ambitos;
+          console.log(ambitos)
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
+
+
+
     this.createProcessForm = new FormGroup({
       // ID_PROCESSO: new FormControl(''),
       NUMERO_PROCESSO: new FormControl('', [Validators.required]),
