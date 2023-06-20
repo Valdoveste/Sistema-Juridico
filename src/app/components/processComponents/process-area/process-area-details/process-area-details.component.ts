@@ -8,4 +8,5 @@ import { ProcessAreaComponent } from '../process-area.component';
 })
 export class ProcessAreaDetailsComponent extends ProcessAreaComponent implements OnInit {
 
+    override ngOnInit(): void {  }
 }
