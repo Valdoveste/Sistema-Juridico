@@ -18,7 +18,7 @@ export class ProcessoService {
   }
 
   getProcess(id: String): Observable<Processo> {
-    return this.http.get<Processo>(this.baseApiUrl + '/api/Sistema/processo' + id)
+    return this.http.get<Processo>(this.baseApiUrl + '/api/Sistema/processo/' + id)
   }
 
   createProcess(createProcessResquest: Processo): Observable<Processo> {
