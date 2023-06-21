@@ -41,7 +41,7 @@ export class ProcessCreateComponent implements OnInit {
   status: ProcessoStatus[] = [];
   tiposDeAcoes: ProcessoTipoDeAcao[] = [];
   varas: ProcessoVara[] = [];
-  patronosResonsaveis: ProcessoPatronoResponsavel[] = [];
+  patronoResponsavel: ProcessoPatronoResponsavel[] = [];
 
   constructor(
     private router: Router,
@@ -127,7 +127,7 @@ export class ProcessCreateComponent implements OnInit {
     this.AreaDoDireito.getAllAreaDoDireito()
       .subscribe({
         next: (areasDoDireito: any) => {
-          this.ambitos = areasDoDireito;
+          this.areasDoDireito = areasDoDireito;
           console.log(areasDoDireito)
         },
         error: (response: any) => {
@@ -138,7 +138,7 @@ export class ProcessCreateComponent implements OnInit {
     this.CondicoesTentaivaAcordo.getAllCondicoesTentativaAcordo()
       .subscribe({
         next: (condicoesTentativaAcordo: any) => {
-          this.ambitos = condicoesTentativaAcordo;
+          this.condicoesTentativaAcordo = condicoesTentativaAcordo;
           console.log(condicoesTentativaAcordo)
         },
         error: (response: any) => {
@@ -149,7 +149,7 @@ export class ProcessCreateComponent implements OnInit {
     this.Fase.getAllFase()
       .subscribe({
         next: (fases: any) => {
-          this.ambitos = fases;
+          this.fases = fases;
           console.log(fases)
         },
         error: (response: any) => {
@@ -160,7 +160,7 @@ export class ProcessCreateComponent implements OnInit {
     this.ForoTribunalOrgao.getAllForoTribunalOrgao()
       .subscribe({
         next: (foroTribunalOrgaos: any) => {
-          this.ambitos = foroTribunalOrgaos;
+          this.foroTribunalOrgaos = foroTribunalOrgaos;
           console.log(foroTribunalOrgaos)
         },
         error: (response: any) => {
@@ -171,17 +171,18 @@ export class ProcessCreateComponent implements OnInit {
     this.MotivoDoEncerramento.getAllMotivoDoEncerramento()
       .subscribe({
         next: (motivosDoEncerramento: any) => {
-          this.ambitos = motivosDoEncerramento;
+          this.motivosDoEncerramento = motivosDoEncerramento;
           console.log(motivosDoEncerramento)
         },
         error: (response: any) => {
           console.log(response)
         }
       })
+      
     this.Status.getAllStatus()
       .subscribe({
         next: (status: any) => {
-          this.ambitos = status;
+          this.status = status;
           console.log(status)
         },
         error: (response: any) => {
@@ -192,7 +193,7 @@ export class ProcessCreateComponent implements OnInit {
     this.TipoDeAcao.getAllTipoDeAcao()
       .subscribe({
         next: (tiposDeAcoes: any) => {
-          this.ambitos = tiposDeAcoes;
+          this.tiposDeAcoes = tiposDeAcoes;
           console.log(tiposDeAcoes)
         },
         error: (response: any) => {
@@ -203,7 +204,7 @@ export class ProcessCreateComponent implements OnInit {
     this.Vara.getAllVara()
       .subscribe({
         next: (varas: any) => {
-          this.ambitos = varas;
+          this.varas = varas;
           console.log(varas)
         },
         error: (response: any) => {
@@ -213,9 +214,9 @@ export class ProcessCreateComponent implements OnInit {
 
     this.PatronoResponsavel.getAllPatronoResponsavel()
       .subscribe({
-        next: (patronosResonsaveis: any) => {
-          this.ambitos = patronosResonsaveis;
-          console.log(patronosResonsaveis)
+        next: (patronoResponsavel: any) => {
+          this.patronoResponsavel = patronoResponsavel;
+          console.log(patronoResponsavel)
         },
         error: (response: any) => {
           console.log(response)
