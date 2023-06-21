@@ -3,19 +3,13 @@
 
   <ul class="process-searchbar__list">
     <li class="process-searchbar__list__item">
-      <input type="text" placeholder="Número do Processo" id="inputProcessNumber"
-        class="process-searchbar__list__item--input-text">
+      <input type="text" placeholder="Número do Processo" class="process-searchbar__list__item--input-text">
     </li>
 
     <li class="process-searchbar__list__item">
-      <select name="" id="selectProcessPhase" class="process-searchbar__list__item--input-select">
-        <!-- <option value="" selected></option>
-        <div  *ngFor="let x of xs">
-          <option value="{{x}}" selected>{{x}}</option>
-        </div> -->
-
-
-
+      <select name="" class="process-searchbar__list__item--input-select">
+        <option value="" selected></option>
+        <option *ngFor="let fase of fases" value="{{fase.FASE}}">{{fase.FASE}}</option>
         <!-- <option value="Pré Processual">Pré Processual</option>
         <option value=" 1ª instância"> 1ª instância</option>
         <option value="2ª Instância">2ª Instância</option>
@@ -24,14 +18,9 @@
         <option value="Não se aplica">Não se aplica</option> -->
       </select>
 
-      <select name="" id="selectProcessStatus" class="process-searchbar__list__item--input-select">
-        <!-- <option value="" selected></option>
-          <div  *ngFor="let x of xs">
-            <option value="{{x}}" selected>{{x}}</option>
-          </div> -->
-
-
-
+      <select name="" class="process-searchbar__list__item--input-select">
+        <option value="" selected></option>
+        <option *ngFor="let status of status" value="{{status.STATUS}}">{{status.STATUS}}</option>
         <!-- <option value="ProcessStatus" selected>Status do Processo</option>
           <option value="Ativo">Ativo</option>
           <option value="Baixa Provisória">Baixa Provisória</option>
@@ -40,14 +29,10 @@
     </li>
 
     <li class="process-searchbar__list__item">
-      <select name="" id="selectProcessArea" class="process-searchbar__list__item--input-select">
-        <!-- <option value="" selected></option>
-        <div  *ngFor="let x of xs">
-          <option value="{{x}}" selected>{{x}}</option>
-        </div> -->
-
-
-
+      <select name="" class="process-searchbar__list__item--input-select">
+        <option value="" selected></option>
+        <option *ngFor="let areaDoDireito of areasDoDireito" value="{{areaDoDireito.AREA_DO_DIREITO}}">
+          {{areaDoDireito.AREA_DO_DIREITO}}</option>
         <!-- <option value="Área do Processo" selected>Área do Direito</option>
         <option value="Trabalhista">Trabalhista</option>
         <option value="Consumidor">Consumidor</option>
@@ -56,14 +41,10 @@
         <option value="Societário">Societário</option> -->
       </select>
 
-      <select name="" id="selectProcessTOA" class="process-searchbar__list__item--input-select">
-        <!-- <option value="" selected></option>
-        <div  *ngFor="let x of xs">
-          <option value="{{x}}" selected>{{x}}</option>
-        </div> -->
-
-
-
+      <select name="" class="process-searchbar__list__item--input-select">
+        <option value="" selected></option>
+        <option *ngFor="let tipoDeAcao of tiposDeAcoes" value="{{tipoDeAcao.TIPO_DE_ACAO}}">{{tipoDeAcao.TIPO_DE_ACAO}}
+        </option>
         <!-- <option value="TOA" selected>Tipo de Ação</option>
         <option value="Ação de Cobrança">Ação de Cobrança</option>
         <option value="Reclamação Trabalhista">Reclamação Trabalhista</option>
@@ -91,13 +72,9 @@
 
     <li class="process-searchbar__list__item">
       <select name="" id="" class="process-searchbar__list__item--input-select">
-        <!-- <option value="" selected></option>
-        <div  *ngFor="let x of xs">
-          <option value="{{x}}" selected>{{x}}</option>
-        </div> -->
-
-
-
+        <option value="" selected></option>
+        <option *ngFor="let patronoResponsavel of patronoResponsavel"
+          value="{{patronoResponsavel.PATRONO_RESPONSAVEL}}">{{patronoResponsavel.PATRONO_RESPONSAVEL}}</option>
         <!-- <option value="PatroResp" selected>Patrono Responsável</option>
         <option value="USE29.65">Use Comunicações e Telecomunicações LTDA. (29.568.281/0001-65)</option>
         <option value="USE09.00">Use Telecomunicações LTDA. (09.540.627/0001-00)</option>
