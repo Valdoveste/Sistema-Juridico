@@ -62,7 +62,7 @@ import { MForoTribunalOrgaoComponent } from './components/management/components/
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
