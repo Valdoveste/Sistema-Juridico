@@ -1,4 +1,4 @@
 export interface ProcessoAmbito {
-    ID: Number;
+    ID?: String;
     AMBITO: String;   
 }
