@@ -217,8 +217,8 @@
 
           <li class="process-create-processdetails__list__item">
             <div class="process-create-processdetails__list__item--div">
-              <div class="process-create-processdetails__list__item--row justify-content-normal">
-                <span>
+              <div class="process-create-processdetails__list__item--row" style="justify-content: flex-start;">
+                <span class="mr-1">
                   <p class="sm-text">Data de Distribuição</p>
                   <input type="date" name="DATA_DISTRIBUICAO" formControlName="DATA_DISTRIBUICAO"
                     [(ngModel)]="createProcessResquest.DATA_DISTRIBUICAO" class="process-create-processdetails">
@@ -464,7 +464,7 @@
           </ng-template> -->
         </ul>
       </div>
+      <button type="submit" class="btn-default mt-2">Criar processo</button>
     </div>
-    <button type="submit" class="btn-default">Criar processo</button>
   </form>
 </div>
