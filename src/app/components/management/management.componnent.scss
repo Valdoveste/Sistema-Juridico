@@ -1,0 +1,39 @@
+tbody tr {
+    &:hover {
+        cursor: default !important;
+    }
+}
+
+input {
+    height: 35px !important;
+    font-size: 1rem !important;
+}
+
+.mat-mdc-form-field {
+    width: 100%;
+    height: 35px;
+    border-radius: 2px;
+    border: 1px solid rgba(60, 64, 67, 0.5);
+}
+
+button {
+    margin-top: 0.75rem;
+    padding: 10px;
+    color: black;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 4.5px;
+    background-color: #f6f7fb;
+    border: 1px solid #ededed;
+}
+
+svg {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.table-borderless > thead > tr > td,
+.table-borderless > thead > tr > th {
+    border: none;
+}
