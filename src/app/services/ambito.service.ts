@@ -16,4 +16,9 @@ export class AmbitoService {
   getAllAmbito(): Observable<ProcessoAmbito[]> {
     return this.http.get<ProcessoAmbito[]>(this.baseApiUrl + '/api/Sistema/ambito')
   }
+
+  createAmbito(createAmbitoRequest: ProcessoAmbito): Observable<ProcessoAmbito> {
+    delete createAmbitoRequest.ID;  
+    return this.http.post<ProcessoAmbito>(this.baseApiUrl + '/api/Sistema/add-ambito', createAmbitoRequest);
+  }
 }
