@@ -24,7 +24,20 @@ namespace SistemaJuridicoWebAPI.Controllers
           return Ok(await _sistemaJuridicoDbContext.PROCESSO_AMBITO.ToListAsync());
         }
 
-        [HttpGet("area-do-direito")]
+
+        [HttpPost("add-ambito")]
+        public async Task<IActionResult> AddAmbito([FromBody] PROCESSO_AMBITO ambitoRequest)
+        {
+          ambitoRequest.ID = Guid.NewGuid();
+
+          await _sistemaJuridicoDbContext.PROCESSO_AMBITO.AddAsync(ambitoRequest);
+
+          await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+          return Ok(ambitoRequest);
+        }
+
+    [HttpGet("area-do-direito")]
         public async Task<IActionResult> GetAllAreaDoDireito()
         {
 
@@ -123,5 +136,11 @@ namespace SistemaJuridicoWebAPI.Controllers
 
           return Ok(processoRequest);
         }
+
+    [HttpPost]
+    public async Task<IActionResult> EditProcess([FromBody] PROCESSO processoResquest)
+    {
+      return Ok();
+    }
   }
 }

@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Microsoft.EntityFrameworkCore;
 using SistemaJuridicoWebAPI.Models;
 
 namespace SistemaJuridicoWebAPI.Data
@@ -32,9 +31,9 @@ namespace SistemaJuridicoWebAPI.Data
 
             modelBuilder.Entity<PROCESSO_AMBITO>()
               .HasData(
-                  new PROCESSO_AMBITO { ID = 1, AMBITO = "Administradivo" },
-                  new PROCESSO_AMBITO { ID = 2, AMBITO = "Judicial" },
-                  new PROCESSO_AMBITO { ID = 3, AMBITO = "Pré Judicial" }
+                  new PROCESSO_AMBITO { ID = Guid.NewGuid(), AMBITO = "Administradivo" },
+                  new PROCESSO_AMBITO { ID = Guid.NewGuid(), AMBITO = "Judicial" },
+                  new PROCESSO_AMBITO { ID = Guid.NewGuid(), AMBITO = "Pré Judicial" }
                );
 
 

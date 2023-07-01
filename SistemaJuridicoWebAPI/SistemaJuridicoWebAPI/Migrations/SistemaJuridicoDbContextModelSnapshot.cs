@@ -287,11 +287,9 @@ namespace SistemaJuridicoWebAPI.Migrations
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_AMBITO", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("AMBITO")
                         .HasColumnType("nvarchar(max)");
@@ -303,17 +301,17 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            ID = 1,
+                            ID = new Guid("4093c3ee-fe24-4276-9df9-523b0f55f67b"),
                             AMBITO = "Administradivo"
                         },
                         new
                         {
-                            ID = 2,
+                            ID = new Guid("4a66913d-2b12-4366-95cb-21a53fb7e1da"),
                             AMBITO = "Judicial"
                         },
                         new
                         {
-                            ID = 3,
+                            ID = new Guid("5c8f795d-4925-4b12-97a3-4ff25e12f8bb"),
                             AMBITO = "Pré Judicial"
                         });
                 });
@@ -467,6 +465,9 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.Property<Guid>("ID_USUARIO")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("ACESSO_GESTAO")
+                        .HasColumnType("int");
 
                     b.Property<string>("NOME_USUARIO")
                         .HasColumnType("nvarchar(max)");
