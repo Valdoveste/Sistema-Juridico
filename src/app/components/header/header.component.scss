@@ -19,7 +19,10 @@
 
         .dropdown {
           .dropdown-menu {
-            padding: 5px 15px;
+            .dropdown-item{
+              padding: 5px 15px;
+
+            }
           }
         }
       }
