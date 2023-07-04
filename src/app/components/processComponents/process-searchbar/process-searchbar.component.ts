@@ -38,7 +38,6 @@ export class ProcessSearchbarComponent implements OnInit {
       .subscribe({
         next: (status: any) => {
           this.status = status;
-          console.log(status)
         },
         error: (response: any) => {
           console.log(response)
@@ -49,7 +48,6 @@ export class ProcessSearchbarComponent implements OnInit {
       .subscribe({
         next: (fases: any) => {
           this.fases = fases;
-          console.log(fases)
         },
         error: (response: any) => {
           console.log(response)
@@ -60,7 +58,6 @@ export class ProcessSearchbarComponent implements OnInit {
       .subscribe({
         next: (areasDoDireito: any) => {
           this.areasDoDireito = areasDoDireito;
-          console.log(areasDoDireito)
         },
         error: (response: any) => {
           console.log(response)
@@ -71,7 +68,6 @@ export class ProcessSearchbarComponent implements OnInit {
       .subscribe({
         next: (tiposDeAcoes: any) => {
           this.tiposDeAcoes = tiposDeAcoes;
-          console.log(tiposDeAcoes)
         },
         error: (response: any) => {
           console.log(response)
@@ -82,7 +78,6 @@ export class ProcessSearchbarComponent implements OnInit {
       .subscribe({
         next: (patronoResponsavel: any) => {
           this.patronoResponsavel = patronoResponsavel;
-          console.log(patronoResponsavel)
         },
         error: (response: any) => {
           console.log(response)
