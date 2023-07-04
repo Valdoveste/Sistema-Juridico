@@ -18,7 +18,6 @@ export class ProcessContainerComponent implements OnInit {
     .subscribe({
       next: (processos: any) => {
         this.processos = processos;
-        console.log(processos)
       },
       error: (response: any) => {
         console.log(response)

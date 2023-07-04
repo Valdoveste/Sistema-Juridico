@@ -178,7 +178,7 @@ export class ProcessCreateComponent implements OnInit {
           console.log(response)
         }
       })
-      
+
     this.Status.getAllStatus()
       .subscribe({
         next: (status: any) => {
@@ -274,32 +274,19 @@ export class ProcessCreateComponent implements OnInit {
     });
   }
 
-  // get STATUS() {
-  //   return this.createProcessForm.get('STATUS')!;
-  // }
-
-  // get NOME_FANTASIA() {
-  //   return this.createProcessForm.get('NOME_FANTASIA')!;
-  // }
-
   createProcess() {
     console.log(this.createProcessForm.errors)
     if (this.createProcessForm.valid) {
-      console.log("Valido")
       this.ProcessoService.createProcess(this.createProcessResquest)
         .subscribe({
-          next: (process) => {
+          next: (response) => {
             this.router.navigate(['painel-processos'])
           },
-          error: (processError) => {
-            console.log(processError)
+          error: (response) => {
+            console.log(response)
           }
         });
-    } else {
-      console.log("Nao Valido")
-
     }
-
     return;
   }
 }
