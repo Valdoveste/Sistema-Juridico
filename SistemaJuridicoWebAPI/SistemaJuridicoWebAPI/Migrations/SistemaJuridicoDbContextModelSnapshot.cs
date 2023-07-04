@@ -151,17 +151,17 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.Property<string>("AREA_DO_DIREITO")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("DATA_CADASTRO_PROCESSO")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("DATA_CADASTRO_PROCESSO")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("DATA_CITACAO")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("DATA_CITACAO")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("DATA_DISTRIBUICAO")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("DATA_DISTRIBUICAO")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("DATA_ULTIMO_ANDAMENTO")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("DATA_ULTIMO_ANDAMENTO")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EMPPRESA")
                         .HasColumnType("nvarchar(max)");
@@ -205,11 +205,11 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.Property<string>("PARTE_CONTRARIA_CPF")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("PARTE_CONTRARIA_DATA_ADMISSAO")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("PARTE_CONTRARIA_DATA_ADMISSAO")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("PARTE_CONTRARIA_DATA_DEMISSAO")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("PARTE_CONTRARIA_DATA_DEMISSAO")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PARTE_CONTRARIA_ENDERECO")
                         .HasColumnType("nvarchar(max)");
@@ -301,17 +301,17 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            ID = new Guid("4093c3ee-fe24-4276-9df9-523b0f55f67b"),
+                            ID = new Guid("62cb7d78-a391-45af-b1dc-dbca0d81a2e3"),
                             AMBITO = "Administradivo"
                         },
                         new
                         {
-                            ID = new Guid("4a66913d-2b12-4366-95cb-21a53fb7e1da"),
+                            ID = new Guid("3d1749dd-ece8-456f-ba50-8c8e9f28bc9a"),
                             AMBITO = "Judicial"
                         },
                         new
                         {
-                            ID = new Guid("5c8f795d-4925-4b12-97a3-4ff25e12f8bb"),
+                            ID = new Guid("6325fc74-b6c9-4532-a2d4-4735c3270fc5"),
                             AMBITO = "Pré Judicial"
                         });
                 });

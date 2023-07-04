@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace SistemaJuridicoWebAPI.Models
 {
@@ -19,8 +19,8 @@ namespace SistemaJuridicoWebAPI.Models
         public string VARA { get; set; }
         public string FORO_TRIBUNAL_ORGAO { get; set; }
         public string FASE { get; set; }
-        public DateTime? DATA_DISTRIBUICAO { get; set; }
-        public DateTime? DATA_CITACAO { get; set; }
+        public string DATA_DISTRIBUICAO { get; set; }
+        public string DATA_CITACAO { get; set; }
         public string PATRONO_RESPONSAVEL { get; set; }
         public string PATRONOS_ANTERIORES { get; set; }
         public string TEXTO_DO_OBJETO { get; set; }
@@ -29,8 +29,8 @@ namespace SistemaJuridicoWebAPI.Models
         public int VALOR_INSTANCIA2 { get; set; }
         public int VALOR_INSTANCIA3 { get; set; }
         public int VALOR_INSTANCIA_EXTRAORDINARIA { get; set; }
-        public DateTime? DATA_CADASTRO_PROCESSO { get; set; }
-        public DateTime? DATA_ULTIMO_ANDAMENTO { get; set; }
+        public string DATA_CADASTRO_PROCESSO { get; set; }
+        public string DATA_ULTIMO_ANDAMENTO { get; set; }
         public string MOTIVO_ENCERRAMENTO { get; set; }
         public string MOTIVO_BAIXA_PROVISORIA { get; set; }
         public string PARTE_CONTRARIA_NOME { get; set; }
@@ -47,8 +47,8 @@ namespace SistemaJuridicoWebAPI.Models
         public string PARTE_CONTRARIA_PAIS { get; set; }
         public string PARTE_CONTRARIA_OBSERVACAO { get; set; }
         public string PARTE_CONTRARIA_CARGO { get; set; }
-        public DateTime? PARTE_CONTRARIA_DATA_ADMISSAO { get; set; }
-        public DateTime? PARTE_CONTRARIA_DATA_DEMISSAO { get; set; }
+        public string PARTE_CONTRARIA_DATA_ADMISSAO { get; set; }
+        public string PARTE_CONTRARIA_DATA_DEMISSAO { get; set; }
         public int PARTE_CONTRARIA_ULTIMO_SALARIO { get; set; }
     }
 }

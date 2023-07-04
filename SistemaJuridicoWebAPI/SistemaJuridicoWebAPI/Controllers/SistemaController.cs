@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SistemaJuridicoWebAPI.Data;
 using SistemaJuridicoWebAPI.Models;
+using System.Reflection.Metadata.Ecma335;
 
 namespace SistemaJuridicoWebAPI.Controllers
 {
@@ -35,9 +36,40 @@ namespace SistemaJuridicoWebAPI.Controllers
           await _sistemaJuridicoDbContext.SaveChangesAsync();
 
           return Ok(ambitoRequest);
+
         }
 
-    [HttpGet("area-do-direito")]
+        [HttpPut("update-ambito/{id}")]
+        public async Task<IActionResult> UpdateAmbito([FromRoute] Guid id, PROCESSO_AMBITO updateAmbitoRequest)
+        {
+          var ambito = await _sistemaJuridicoDbContext.PROCESSO_AMBITO.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+          if (ambito == null)
+            return NotFound();
+
+          ambito.AMBITO = updateAmbitoRequest.AMBITO;
+
+          await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+          return Ok(ambito); 
+        }
+
+        [HttpDelete("delete-ambito/{id}")]
+        public async Task<IActionResult> DeleteAmbito([FromRoute] Guid id)
+        {
+          var ambito = await _sistemaJuridicoDbContext.PROCESSO_AMBITO.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+          if (ambito == null)
+            return NotFound();
+
+          _sistemaJuridicoDbContext.PROCESSO_AMBITO.Remove(ambito);
+
+          await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+          return Ok(ambito);
+        }
+
+        [HttpGet("area-do-direito")]
         public async Task<IActionResult> GetAllAreaDoDireito()
         {
 
@@ -136,11 +168,5 @@ namespace SistemaJuridicoWebAPI.Controllers
 
           return Ok(processoRequest);
         }
-
-    [HttpPost]
-    public async Task<IActionResult> EditProcess([FromBody] PROCESSO processoResquest)
-    {
-      return Ok();
-    }
   }
 }
