@@ -18,7 +18,17 @@ export class AmbitoService {
   }
 
   createAmbito(createAmbitoRequest: ProcessoAmbito): Observable<ProcessoAmbito> {
-    delete createAmbitoRequest.ID;  
+    delete createAmbitoRequest.ID;
     return this.http.post<ProcessoAmbito>(this.baseApiUrl + '/api/Sistema/add-ambito', createAmbitoRequest);
+  }
+
+  updateAmbito(id: String, updateAmbitoRequest: ProcessoAmbito): Observable<ProcessoAmbito> {
+    updateAmbitoRequest.ID = id;
+    return this.http.put<ProcessoAmbito>(this.baseApiUrl + '/api/Sistema/update-ambito/' + id, updateAmbitoRequest)
+
+  }
+
+  deleteAmbito(id: String): Observable<ProcessoAmbito> {
+    return this.http.delete<ProcessoAmbito>(this.baseApiUrl + '/api/Sistema/delete-ambito/' + id)
   }
 }
