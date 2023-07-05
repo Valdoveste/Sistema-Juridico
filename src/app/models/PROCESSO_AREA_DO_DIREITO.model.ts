@@ -1,4 +1,4 @@
 export interface ProcessoAreaDoDireito {
-    ID: Number;
+    ID?: String;
     AREA_DO_DIREITO: String;
 }

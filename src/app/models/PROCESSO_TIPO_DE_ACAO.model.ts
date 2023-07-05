@@ -1,4 +1,4 @@
 export interface ProcessoTipoDeAcao {
-    ID: Number; 
+    ID?: String; 
     TIPO_DE_ACAO: String;
 }

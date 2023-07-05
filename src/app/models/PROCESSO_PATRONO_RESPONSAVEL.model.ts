@@ -1,4 +1,4 @@
 export interface ProcessoPatronoResponsavel {
-    ID: Number; 
+    ID?: String;
     PATRONO_RESPONSAVEL: String;
 }
