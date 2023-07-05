@@ -76,6 +76,50 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok(await _sistemaJuridicoDbContext.PROCESSO_AREA_DO_DIREITO.ToListAsync());
     }
 
+    [HttpPost("add-area-do-direito")]
+    public async Task<IActionResult> AddAreaDoDireito([FromBody] PROCESSO_AREA_DO_DIREITO areaDoDireitoRequest)
+    {
+      areaDoDireitoRequest.ID = Guid.NewGuid();
+
+      await _sistemaJuridicoDbContext.PROCESSO_AREA_DO_DIREITO.AddAsync(areaDoDireitoRequest);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(areaDoDireitoRequest);
+
+    }
+
+    [HttpPut("update-area-do-direito/{id}")]
+    public async Task<IActionResult> UpdateAreaDoDireito([FromRoute] Guid id, PROCESSO_AREA_DO_DIREITO updateAreaDoDireitoRequest)
+    {
+      var areaDoDireito = await _sistemaJuridicoDbContext.PROCESSO_AREA_DO_DIREITO.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      if (areaDoDireito == null)
+        return NotFound();
+
+      areaDoDireito.AREA_DO_DIREITO = updateAreaDoDireitoRequest.AREA_DO_DIREITO;
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(areaDoDireito);
+    }
+
+    [HttpDelete("delete-area-do-direito/{id}")]
+    public async Task<IActionResult> DeleteAreaDoDireito([FromRoute] Guid id)
+    {
+      var areaDoDireito = await _sistemaJuridicoDbContext.PROCESSO_AREA_DO_DIREITO.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      if (areaDoDireito == null)
+        return NotFound();
+
+      _sistemaJuridicoDbContext.PROCESSO_AREA_DO_DIREITO.Remove(areaDoDireito);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(areaDoDireito);
+    }
+
+
     [HttpGet("condicoes-tentativa-acordo")]
     public async Task<IActionResult> GetAllCondicoesTentivaAcordo()
     {
@@ -132,8 +176,6 @@ namespace SistemaJuridicoWebAPI.Controllers
 
       return Ok(fase);
     }
-
-
 
     [HttpGet("foro-tribunal-orgao")]
     public async Task<IActionResult> GetAllForoTribunalOrgao()
@@ -213,6 +255,49 @@ namespace SistemaJuridicoWebAPI.Controllers
 
       return Ok(await _sistemaJuridicoDbContext.PROCESSO_TIPO_DE_ACAO.ToListAsync());
     }
+
+    [HttpPost("add-tipo-de-acao")]
+    public async Task<IActionResult> AddTipoDeAcao([FromBody] PROCESSO_TIPO_DE_ACAO tipoDeAcaoRequest)
+    {
+      tipoDeAcaoRequest.ID = Guid.NewGuid();
+
+      await _sistemaJuridicoDbContext.PROCESSO_TIPO_DE_ACAO.AddAsync(tipoDeAcaoRequest);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(tipoDeAcaoRequest);
+    }
+
+    [HttpPut("update-tipo-de-acao/{id}")]
+    public async Task<IActionResult> UpdateTipoDeAcao([FromRoute] Guid id, PROCESSO_TIPO_DE_ACAO updateTipoDeAcaoRequest)
+    {
+      var tipoDeAcao = await _sistemaJuridicoDbContext.PROCESSO_TIPO_DE_ACAO.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      if (tipoDeAcao == null)
+        return NotFound();
+
+      tipoDeAcao.TIPO_DE_ACAO = updateTipoDeAcaoRequest.TIPO_DE_ACAO;
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(tipoDeAcao);
+    }
+
+    [HttpDelete("delete-tipo-de-acao/{id}")]
+    public async Task<IActionResult> DeleteTipoDeAcao([FromRoute] Guid id)
+    {
+      var tipoDeAcao = await _sistemaJuridicoDbContext.PROCESSO_TIPO_DE_ACAO.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      if (tipoDeAcao == null)
+        return NotFound();
+
+      _sistemaJuridicoDbContext.PROCESSO_TIPO_DE_ACAO.Remove(tipoDeAcao);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(tipoDeAcao);
+    }
+
 
 
     [HttpGet("vara")]
