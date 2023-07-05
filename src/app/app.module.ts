@@ -28,6 +28,8 @@ import { MAmbitoComponent } from './components/management/components/m-ambito/m-
 import { MVaraComponent } from './components/management/components/m-vara/m-vara.component';
 import { MFaseComponent } from './components/management/components/m-fase/m-fase.component';
 import { MForoTribunalOrgaoComponent } from './components/management/components/m-foro-tribunal-orgao/m-foro-tribunal-orgao.component';
+import { MAreaDoDireitoComponent } from './components/management/components/m-area-do-direito/m-area-do-direito.component';
+import { MTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/m-tipo-de-acao.component';
 
 // Dialog & Material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -55,6 +57,14 @@ import { DialogAddForoTribunalOrgaoComponent } from './components/management/com
 import { DialogDeleteForoTribunalOrgaoComponent } from './components/management/components/m-foro-tribunal-orgao/dialog-delete-foro-tribunal-orgao/dialog-delete-foro-tribunal-orgao.component';
 import { DialogEditForoTribunalOrgaoComponent } from './components/management/components/m-foro-tribunal-orgao/dialog-edit-foro-tribunal-orgao/dialog-edit-foro-tribunal-orgao.component';
 
+import { DialogAddAreaDoDireitoComponent } from './components/management/components/m-area-do-direito/dialog-add-area-do-direito/dialog-add-area-do-direito.component';
+import { DialogDeleteAreaDoDireitoComponent } from './components/management/components/m-area-do-direito/dialog-delete-area-do-direito/dialog-delete-area-do-direito.component';
+import { DialogEditAreaDoDireitoComponent } from './components/management/components/m-area-do-direito/dialog-edit-area-do-direito/dialog-edit-area-do-direito.component';
+
+import { DialogAddTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/dialog-add-tipo-de-acao/dialog-add-tipo-de-acao.component';
+import { DialogDeleteTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/dialog-delete-tipo-de-acao/dialog-delete-tipo-de-acao.component';
+import { DialogEditTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/dialog-edit-tipo-de-acao/dialog-edit-tipo-de-acao.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,6 +91,8 @@ import { DialogEditForoTribunalOrgaoComponent } from './components/management/co
     MVaraComponent,
     MFaseComponent,
     MForoTribunalOrgaoComponent,
+    MAreaDoDireitoComponent,
+    MTipoDeAcaoComponent,
 
     DialogEditAmbitoComponent,
     DialogDeleteAmbitoComponent,
@@ -96,7 +108,15 @@ import { DialogEditForoTribunalOrgaoComponent } from './components/management/co
 
     DialogAddForoTribunalOrgaoComponent,
     DialogDeleteForoTribunalOrgaoComponent,
-    DialogEditForoTribunalOrgaoComponent
+    DialogEditForoTribunalOrgaoComponent,
+
+    DialogAddAreaDoDireitoComponent,
+    DialogDeleteAreaDoDireitoComponent,
+    DialogEditAreaDoDireitoComponent,
+
+    DialogAddTipoDeAcaoComponent,
+    DialogDeleteTipoDeAcaoComponent,
+    DialogEditTipoDeAcaoComponent
 
   ],
 
