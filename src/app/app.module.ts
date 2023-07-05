@@ -27,8 +27,6 @@ import { ProcessAreaPreviousPatronsComponent } from './components/processCompone
 import { MAmbitoComponent } from './components/management/components/m-ambito/m-ambito.component';
 import { MVaraComponent } from './components/management/components/m-vara/m-vara.component';
 import { MFaseComponent } from './components/management/components/m-fase/m-fase.component';
-import { MAreaDireitoComponent } from './components/management/components/m-area-direito/m-area-direito.component';
-import { MTipoAcaoComponent } from './components/management/components/m-tipo-acao/m-tipo-acao.component';
 import { MForoTribunalOrgaoComponent } from './components/management/components/m-foro-tribunal-orgao/m-foro-tribunal-orgao.component';
 
 // Dialog & Material
@@ -40,9 +38,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
+
 import { DialogEditAmbitoComponent } from './components/management/components/m-ambito/dialog-edit-ambito/dialog-edit-ambito.component';
 import { DialogDeleteAmbitoComponent } from './components/management/components/m-ambito/dialog-delete-ambito/dialog-delete-ambito.component';
 import { DialogAddAmbitoComponent } from './components/management/components/m-ambito/dialog-add-ambito/dialog-add-ambito.component';
+
+import { DialogDeleteFaseComponent } from './components/management/components/m-fase/dialog-delete-fase/dialog-delete-fase.component';
+import { DialogAddFaseComponent } from './components/management/components/m-fase/dialog-add-fase/dialog-add-fase.component';
+import { DialogEditFaseComponent } from './components/management/components/m-fase/dialog-edit-fase/dialog-edit-fase.component';
+
+import { DialogEditVaraComponent } from './components/management/components/m-vara/dialog-edit-vara/dialog-edit-vara.component';
+import { DialogDeleteVaraComponent } from './components/management/components/m-vara/dialog-delete-vara/dialog-delete-vara.component';
+import { DialogAddVaraComponent } from './components/management/components/m-vara/dialog-add-vara/dialog-add-vara.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +57,9 @@ import { DialogAddAmbitoComponent } from './components/management/components/m-a
     FooterComponent,
     HeaderComponent,
     MainComponent,
+
+    LoginComponent,
+
     ProcessContainerComponent,
     ProcessAreaComponent,
     ProcessPanelComponent,
@@ -59,19 +69,27 @@ import { DialogAddAmbitoComponent } from './components/management/components/m-a
     ProcessCreateAgreementComponent,
     ProcessAreaDetailsComponent,
     ProcessAreaOpposingpartyComponent,
-    LoginComponent,
     ProcessAreaDealComponent,
     ProcessAreaMovementComponent,
     ProcessAreaPreviousPatronsComponent,
+
     MAmbitoComponent,
     MVaraComponent,
     MFaseComponent,
-    MAreaDireitoComponent,
-    MTipoAcaoComponent,
     MForoTribunalOrgaoComponent,
+
     DialogEditAmbitoComponent,
     DialogDeleteAmbitoComponent,
-    DialogAddAmbitoComponent
+    DialogAddAmbitoComponent,
+
+    DialogEditVaraComponent,
+    DialogDeleteVaraComponent,
+    DialogAddVaraComponent,
+
+    DialogAddFaseComponent,
+    DialogDeleteFaseComponent,
+    DialogEditFaseComponent,
+
   ],
 
   imports: [
