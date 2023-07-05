@@ -142,6 +142,49 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok(await _sistemaJuridicoDbContext.PROCESSO_FORO_TRIBUNAL_ORGAO.ToListAsync());
     }
 
+    [HttpPost("add-foro-tribunal-orgao")]
+    public async Task<IActionResult> AddForoTribunalOrgao([FromBody] PROCESSO_FORO_TRIBUNAL_ORGAO foroTribunalOrgaoRequest)
+    {
+      foroTribunalOrgaoRequest.ID = Guid.NewGuid();
+
+      await _sistemaJuridicoDbContext.PROCESSO_FORO_TRIBUNAL_ORGAO.AddAsync(foroTribunalOrgaoRequest);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(foroTribunalOrgaoRequest);
+    }
+
+    [HttpPut("update-foro-tribunal-orgao/{id}")]
+    public async Task<IActionResult> UpdateForoTribunalOrgao([FromRoute] Guid id, PROCESSO_FORO_TRIBUNAL_ORGAO updateForoTribunalOrgaoRequest)
+    {
+      var foroTribunalOrgao = await _sistemaJuridicoDbContext.PROCESSO_FORO_TRIBUNAL_ORGAO.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      if (foroTribunalOrgao == null)
+        return NotFound();
+
+      foroTribunalOrgao.FORO_TRIBUNAL_ORGAO = updateForoTribunalOrgaoRequest.FORO_TRIBUNAL_ORGAO;
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(foroTribunalOrgao);
+    }
+
+    [HttpDelete("delete-foro-tribunal-orgao/{id}")]
+    public async Task<IActionResult> DeleteForoTribunalOrgao([FromRoute] Guid id)
+    {
+      var foroTribunalOrgao = await _sistemaJuridicoDbContext.PROCESSO_FORO_TRIBUNAL_ORGAO.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      if (foroTribunalOrgao == null)
+        return NotFound();
+
+      _sistemaJuridicoDbContext.PROCESSO_FORO_TRIBUNAL_ORGAO.Remove(foroTribunalOrgao);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(foroTribunalOrgao);
+    }
+
+
     [HttpGet("motivo-do-encerramento")]
     public async Task<IActionResult> GetAllMotivoDoEncerramento()
     {
