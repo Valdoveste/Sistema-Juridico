@@ -51,6 +51,10 @@ import { DialogEditVaraComponent } from './components/management/components/m-va
 import { DialogDeleteVaraComponent } from './components/management/components/m-vara/dialog-delete-vara/dialog-delete-vara.component';
 import { DialogAddVaraComponent } from './components/management/components/m-vara/dialog-add-vara/dialog-add-vara.component';
 
+import { DialogAddForoTribunalOrgaoComponent } from './components/management/components/m-foro-tribunal-orgao/dialog-add-foro-tribunal-orgao/dialog-add-foro-tribunal-orgao.component';
+import { DialogDeleteForoTribunalOrgaoComponent } from './components/management/components/m-foro-tribunal-orgao/dialog-delete-foro-tribunal-orgao/dialog-delete-foro-tribunal-orgao.component';
+import { DialogEditForoTribunalOrgaoComponent } from './components/management/components/m-foro-tribunal-orgao/dialog-edit-foro-tribunal-orgao/dialog-edit-foro-tribunal-orgao.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,6 +93,10 @@ import { DialogAddVaraComponent } from './components/management/components/m-var
     DialogAddFaseComponent,
     DialogDeleteFaseComponent,
     DialogEditFaseComponent,
+
+    DialogAddForoTribunalOrgaoComponent,
+    DialogDeleteForoTribunalOrgaoComponent,
+    DialogEditForoTribunalOrgaoComponent
 
   ],
 
