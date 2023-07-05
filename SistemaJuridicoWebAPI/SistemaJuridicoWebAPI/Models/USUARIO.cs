@@ -7,7 +7,6 @@ namespace SistemaJuridicoWebAPI.Models
     public class USUARIO
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid ID_USUARIO { get; set; }
 
         public string NOME_USUARIO { get; set; }
