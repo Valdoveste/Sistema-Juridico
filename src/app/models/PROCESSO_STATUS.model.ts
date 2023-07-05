@@ -1,4 +1,4 @@
 export interface ProcessoStatus {
-    ID: Number; 
+    ID?: String;
     STATUS: String;
 }

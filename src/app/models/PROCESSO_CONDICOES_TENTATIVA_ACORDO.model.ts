@@ -1,5 +1,5 @@
 export interface ProcessoCondicoesTentativaAcordo
  {
-    ID: Number;
+    ID?: String;
     CONDICOES_TENTATIVA_ACORDO: String;
 }
