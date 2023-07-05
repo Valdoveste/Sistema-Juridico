@@ -301,28 +301,26 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            ID = new Guid("62cb7d78-a391-45af-b1dc-dbca0d81a2e3"),
+                            ID = new Guid("67311d03-0444-497d-b7b0-bd7bdabf6544"),
                             AMBITO = "Administradivo"
                         },
                         new
                         {
-                            ID = new Guid("3d1749dd-ece8-456f-ba50-8c8e9f28bc9a"),
+                            ID = new Guid("d118ed15-beb0-43f4-8a60-b3b32f8bd3ef"),
                             AMBITO = "Judicial"
                         },
                         new
                         {
-                            ID = new Guid("6325fc74-b6c9-4532-a2d4-4735c3270fc5"),
+                            ID = new Guid("06228d1f-653c-4e2b-8959-4fe4f8633ead"),
                             AMBITO = "Pré Judicial"
                         });
                 });
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_AREA_DO_DIREITO", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("AREA_DO_DIREITO")
                         .HasColumnType("nvarchar(max)");
@@ -334,11 +332,9 @@ namespace SistemaJuridicoWebAPI.Migrations
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_CONDICOES_TENTATIVA_ACORDO", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CONDICOES_TENTATIVA_ACORDO")
                         .HasColumnType("nvarchar(max)");
@@ -350,11 +346,9 @@ namespace SistemaJuridicoWebAPI.Migrations
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_FASE", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("FASE")
                         .HasColumnType("nvarchar(max)");
@@ -366,11 +360,9 @@ namespace SistemaJuridicoWebAPI.Migrations
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_FORO_TRIBUNAL_ORGAO", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("FORO_TRIBUNAL_ORGAO")
                         .HasColumnType("nvarchar(max)");
@@ -382,11 +374,9 @@ namespace SistemaJuridicoWebAPI.Migrations
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_MOTIVO_DO_ENCERRAMENTO", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("MOTIVO_DO_ENCERRAMENTO")
                         .HasColumnType("nvarchar(max)");
@@ -398,11 +388,9 @@ namespace SistemaJuridicoWebAPI.Migrations
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_PATRONO_RESPONSAVEL", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("PATRONO_RESPONSAVEL")
                         .HasColumnType("nvarchar(max)");
@@ -414,11 +402,9 @@ namespace SistemaJuridicoWebAPI.Migrations
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_STATUS", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("STATUS")
                         .HasColumnType("nvarchar(max)");
@@ -430,11 +416,9 @@ namespace SistemaJuridicoWebAPI.Migrations
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_TIPO_DE_ACAO", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("TIPO_DE_ACAO")
                         .HasColumnType("nvarchar(max)");
@@ -446,11 +430,9 @@ namespace SistemaJuridicoWebAPI.Migrations
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_VARA", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("VARA")
                         .HasColumnType("nvarchar(max)");
