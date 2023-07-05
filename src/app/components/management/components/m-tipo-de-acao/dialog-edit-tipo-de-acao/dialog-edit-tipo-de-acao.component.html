@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Editar Tipo de Ação</h1>
+<form (ngSubmit)="updateTiposDeAcao()" #formDir="ngForm" [formGroup]="updateTipoDeAcaoForm">
+    <div mat-dialog-content>
+        <mat-form-field>
+            <input name="TIPO_DE_ACAO" formControlName="TIPO_DE_ACAO" matInput required [(ngModel)]="updateData.value">
+        </mat-form-field>
+
+        <div mat-raised-action class="float-right">
+            <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+            <button mat-button>Salvar</button>
+        </div>
+    </div>
+</form>
