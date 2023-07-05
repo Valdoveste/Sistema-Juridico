@@ -1,40 +1,52 @@
 <div id="process-area">
-    <div class="process-area__body">
-        <div id="process-create">
-            <div class="management">
-                <h3 class="mb-3">Fase</h3>
-                <table class="table">
-                    <thead style="border-top: unset;">
-                        <tr>
-                            <!-- <th scope="col">Protocol</th> -->
-                            <th scope="col">Valor Acordo</th>
-                            <th scope="col">Data/Hora</th>
-                            <th scope="col">Aberto por</th>
-                            <!-- <th scope="col">Condições da tentativa de acordo</th> -->
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <!-- <td>46058</td> -->
-                            <td>20.0000,00</td>
-                            <td>20/05/2023</td>
-                            <td>Nigela Santos</td>
-                        </tr>
-                        <tr>
-                            <!-- <td>46058</td> -->
-                            <td>20.0000,00</td>
-                            <td>20/05/2023</td>
-                            <td>Nigela Santos</td>
-                        </tr>
-                        <tr>
-                            <!-- <td>46058</td> -->
-                            <td>20.0000,00</td>
-                            <td>20/05/2023</td>
-                            <td>Nigela Santos</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+  <div class="process-area__body">
+      <div id="process-create">
+          <div class="management">
+              <div class="mb-3">
+                  <h3>Fases</h3>
+                  <button type="submit" class="btn-default float-right" (click)="openDialogAdd('250ms', '100ms')">
+                      Criar Fase
+                  </button>
+              </div>
+              <table class="table table-borderless">
+                  <thead>
+                      <tr style="border-top: none;">
+                          <th scope="col">Fase</th>
+                          <th scope="col"></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let fase of fases">
+                          <td>{{ fase.FASE }}</td>
+                          <td style="width: 40px;" title="Editar" (click)="openDialogEdit('250ms', '100ms', $event, fase.ID)">
+                              <svg width="20px" height="20px" viewBox="0 0 18 18" version="1.1"
+                                  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                  xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                                  <g id="out" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+                                      sketch:type="MSPage">
+                                      <path
+                                          d="M2.25,12.9378906 L2.25,15.75 L5.06210943,15.75 L13.3559575,7.45615192 L10.5438481,4.64404249 L2.25,12.9378906 L2.25,12.9378906 L2.25,12.9378906 Z M15.5306555,5.28145396 C15.8231148,4.98899458 15.8231148,4.5165602 15.5306555,4.22410082 L13.7758992,2.46934454 C13.4834398,2.17688515 13.0110054,2.17688515 12.718546,2.46934454 L11.3462366,3.84165394 L14.1583461,6.65376337 L15.5306555,5.28145396 L15.5306555,5.28145396 L15.5306555,5.28145396 Z"
+                                          id="path" fill="#000000" sketch:type="MSShapeGroup">
+
+                                      </path>
+                                  </g>
+                              </svg>
+                          </td>
+                          <td style="width: 40px;" title="Remover" (click)="openDialogRemove('250ms', '100ms', $event, fase.ID)">
+                              <svg title="Remover" width="20px"
+                                  height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                      d="M8 1.5V2.5H3C2.44772 2.5 2 2.94772 2 3.5V4.5C2 5.05228 2.44772 5.5 3 5.5H21C21.5523 5.5 22 5.05228 22 4.5V3.5C22 2.94772 21.5523 2.5 21 2.5H16V1.5C16 0.947715 15.5523 0.5 15 0.5H9C8.44772 0.5 8 0.947715 8 1.5Z"
+                                      fill="#000000" />
+                                  <path
+                                      d="M3.9231 7.5H20.0767L19.1344 20.2216C19.0183 21.7882 17.7135 23 16.1426 23H7.85724C6.28636 23 4.98148 21.7882 4.86544 20.2216L3.9231 7.5Z"
+                                      fill="#000000" />
+                              </svg>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
 </div>
