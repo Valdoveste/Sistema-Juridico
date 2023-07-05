@@ -1,4 +1,4 @@
 export interface ProcessoForoTribunalOrgao {
-    ID: Number; 
+    ID?: String; 
     FORO_TRIBUNAL_ORGAO: String;
 }

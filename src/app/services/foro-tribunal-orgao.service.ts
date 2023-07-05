@@ -14,6 +14,20 @@ export class ForoTribunalOrgaoService {
   constructor(private http: HttpClient) { }
 
   getAllForoTribunalOrgao(): Observable<ProcessoForoTribunalOrgao[]> {
-    return this.http.get<ProcessoForoTribunalOrgao[]>(this.baseApiUrl + '/api/Sistema/ambito')
+    return this.http.get<ProcessoForoTribunalOrgao[]>(this.baseApiUrl + '/api/Sistema/foro-tribunal-orgao')
+  }
+
+  createForoTribunalOrgao(createForoTribunalOrgaoRequest: ProcessoForoTribunalOrgao): Observable<ProcessoForoTribunalOrgao> {
+    delete createForoTribunalOrgaoRequest.ID;
+    return this.http.post<ProcessoForoTribunalOrgao>(this.baseApiUrl + '/api/Sistema/add-foro-tribunal-orgao', createForoTribunalOrgaoRequest);
+  }
+
+  updateForoTribunalOrgao(id: string, updateForoTribunalOrgaoRequest: ProcessoForoTribunalOrgao): Observable<ProcessoForoTribunalOrgao> {
+    updateForoTribunalOrgaoRequest.ID = id;
+    return this.http.put<ProcessoForoTribunalOrgao>(this.baseApiUrl + '/api/Sistema/update-foro-tribunal-orgao/' + id, updateForoTribunalOrgaoRequest);
+  }
+
+  deleteForoTribunalOrgao(id: string): Observable<ProcessoForoTribunalOrgao> {
+    return this.http.delete<ProcessoForoTribunalOrgao>(this.baseApiUrl + '/api/Sistema/delete-foro-tribunal-orgao/' + id);
   }
 }
