@@ -1,4 +1,4 @@
 export interface ProcessoVara {
-    ID: Number;
+    ID?: String;
     VARA: String;
 }

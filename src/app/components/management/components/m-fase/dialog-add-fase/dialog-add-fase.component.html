@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Criar Fase</h1>
+<form (ngSubmit)="createFase()" #formDir="ngForm" [formGroup]="createFaseForm">
+    <div mat-dialog-content>
+        <mat-form-field>
+            <input name="FASE" formControlName="FASE" matInput required [(ngModel)]="createFaseRequest.FASE">
+        </mat-form-field>   
+
+        <div mat-raised-action class="float-right">
+            <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+            <button mat-button type="submit">Adicionar</button>
+        </div>
+    </div>
+</form>
