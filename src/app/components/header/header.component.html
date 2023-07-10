@@ -1,11 +1,35 @@
 <header id="header">
   <nav class="header__navbar">
     <ul class="header__navbar__list">
-      <li class="header__navbar__item"> <img src="" alt="Sistema Jurídico Logo"> </li>
+      <li class="header__navbar__item" routerLink="painel-processos" style="cursor: pointer;">
+        <!-- <img src="" alt="Sistema Jurídico Logo"> -->
+      </li>
     </ul>
 
     <ul class="header__navbar__list">
-      <li class="header__navbar__item-user-name">Olá,</li>
+      <li class="header__navbar__item-user-name">
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Ola, Usuário
+            <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li class="dropdown-submenu">
+              <a class="test dropdown-item" tabindex="-1" href="#">Gestão <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" routerLink="gestao/ambito">Âmbito</a></li>
+                <li><a class="dropdown-item" routerLink="gestao/vara">Vara</a></li>
+                <li><a class="dropdown-item" routerLink="gestao/patrono-responsavel">Patrono Responsavel</a></li>
+                <li><a class="dropdown-item" routerLink="gestao/area-do-direito">Área do Direito</a></li>
+                <li><a class="dropdown-item" routerLink="gestao/tipo-de-acao">Tipo de ação</a></li>
+                <li><a class="dropdown-item" routerLink="gestao/foro-tribunal-orgao">Foro/Tribunal/Orgão</a></li>
+              </ul>
+            </li>
+            <div class="dropdown-divider"></div>
+            <a class="test dropdown-item" tabindex="-1" routerLink="#">Sair <span class="caret"></span></a>
+          </ul>
+        </div>
+      </li>
       <button routerLink="/criar-processo" class="header__navbar__item btn-default">Criar processo</button>
     </ul>
   </nav>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Processo } from 'src/app/models/PROCESSO.model';
-import { ProcessoService } from 'src/app/sevices/processo.service';
+import { ProcessoService } from 'src/app/services/processo.service';
 
 @Component({
   selector: 'app-process-container',
@@ -18,7 +18,6 @@ export class ProcessContainerComponent implements OnInit {
     .subscribe({
       next: (processos: any) => {
         this.processos = processos;
-        console.log(processos)
       },
       error: (response: any) => {
         console.log(response)

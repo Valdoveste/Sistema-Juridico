@@ -1,19 +1,22 @@
 <!-- d-flex align-items-center justify-content-center -->
 
 <div class="col-12 h-100 container d-flex align-items-center justify-content-center">
-  <div class="row align-items-start">
-    <div class="">
-      <div class="row mt-1">
-        <p class="sm-text text-left">Usuário</p>
-        <input type="text" name="" id="" class="input w-100">
+  <div class="bg-white p-4 login-container">
+    <form>
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <p class="sm-text">Usuário</p>
+        <input type="email" class="form-control sm-text" />
       </div>
-      <div class="row mt-1">
+      
+      <!-- Password input -->
+      <div class="form-outline mb-4">
         <p class="sm-text">Senha</p>
-        <input type="password" name="" id="" class="input w-100">
+        <input type="password" class="form-control" />
       </div>
-      <div class="row mt-1">
-        <button class="btn-default" routerLink="/painel-processos" type="submit">Logar</button>
-      </div>
-    </div>
+
+      <!-- Submit button -->
+      <button type="button" class="btn-default w-100">Logar</button>
+    </form>
   </div>
 </div>

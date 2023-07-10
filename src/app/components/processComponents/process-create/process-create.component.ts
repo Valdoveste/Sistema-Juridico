@@ -1,8 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { Processo } from 'src/app/models/PROCESSO.model';
-import { ProcessoService } from '../../../sevices/processo.service';
+import { ProcessoService } from '../../../services/processo.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AmbitoService } from 'src/app/services/ambito.service';
+import { ProcessoAmbito } from 'src/app/models/PROCESSO_AMBITO.model';
+import { AreaDoDireitoService } from 'src/app/services/area-do-direito.service';
+import { CondicoesTentativaAcordoService } from 'src/app/services/condicoes-tentativa-acordo.service';
+import { FaseService } from 'src/app/services/fase.service';
+import { ForoTribunalOrgaoService } from 'src/app/services/foro-tribunal-orgao.service';
+import { MotivoDoEncerramentoService } from 'src/app/services/motivo-do-encerramento.service';
+import { ProcessoPatronoResponsavel } from 'src/app/models/PROCESSO_PATRONO_RESPONSAVEL.model';
+import { StatusService } from 'src/app/services/status.service';
+import { TipoDeAcaoService } from 'src/app/services/tipo-de-acao.service';
+import { VaraService } from 'src/app/services/vara.service';
+import { ProcessoAreaDoDireito } from 'src/app/models/PROCESSO_AREA_DO_DIREITO.model';
+import { ProcessoCondicoesTentativaAcordo } from 'src/app/models/PROCESSO_CONDICOES_TENTATIVA_ACORDO.model';
+import { ProcessoFase } from 'src/app/models/PROCESSO_FASE.model';
+import { ProcessoForoTribunalOrgao } from 'src/app/models/PROCESSO_FORO_TRIBUNAL_ORGAO.model';
+import { ProcessoMotivoDoEncerramento } from 'src/app/models/PROCESSO_MOTIVO_DO_ENCERRAMENTO.model';
+import { ProcessoStatus } from 'src/app/models/PROCESSO_STATUS.model';
+import { ProcessoTipoDeAcao } from 'src/app/models/PROCESSO_TIPO_DE_ACAO.model';
+import { ProcessoVara } from 'src/app/models/PROCESSO_VARA.model';
+import { PatronoResponsavelService } from 'src/app/services/patrono-responsavel.service';
 
 @Component({
   selector: 'app-process-create',
@@ -12,7 +32,31 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class ProcessCreateComponent implements OnInit {
   createProcessForm!: FormGroup;
 
-  constructor(private ProcessoService: ProcessoService, private router: Router) { }
+  ambitos: ProcessoAmbito[] = [];
+  areasDoDireito: ProcessoAreaDoDireito[] = [];
+  condicoesTentativaAcordo: ProcessoCondicoesTentativaAcordo[] = [];
+  fases: ProcessoFase[] = [];
+  foroTribunalOrgaos: ProcessoForoTribunalOrgao[] = [];
+  motivosDoEncerramento: ProcessoMotivoDoEncerramento[] = [];
+  status: ProcessoStatus[] = [];
+  tiposDeAcoes: ProcessoTipoDeAcao[] = [];
+  varas: ProcessoVara[] = [];
+  patronoResponsavel: ProcessoPatronoResponsavel[] = [];
+
+  constructor(
+    private router: Router,
+    private ProcessoService: ProcessoService,
+    private AmbitoService: AmbitoService,
+    private AreaDoDireito: AreaDoDireitoService,
+    private CondicoesTentaivaAcordo: CondicoesTentativaAcordoService,
+    private Fase: FaseService,
+    private ForoTribunalOrgao: ForoTribunalOrgaoService,
+    private MotivoDoEncerramento: MotivoDoEncerramentoService,
+    private Status: StatusService,
+    private TipoDeAcao: TipoDeAcaoService,
+    private Vara: VaraService,
+    private PatronoResponsavel: PatronoResponsavelService
+  ) { }
 
 
   createProcessResquest: Processo = {
@@ -64,29 +108,122 @@ export class ProcessCreateComponent implements OnInit {
     PARTE_CONTRARIA_ULTIMO_SALARIO: 0
   }
 
-  // createOpposingpartyResquest: ParteContraria = {
-  //   ID_PARTECONTRARIA: '',
-  //   PF_PJ: 0,
-  //   NOME: '',
-  //   NOME_FANTASIA: '',
-  //   CPF: '',
-  //   CNPJ: '',
-  //   RG: '',
-  //   ENDERECO: '',
-  //   CEP: '',
-  //   NUMERO: '',
-  //   COMPLEMENTO: '',
-  //   ESTADO: '',
-  //   CIDADE: '',
-  //   PAIS: '',
-  //   OBSERVACAO: '',
-  //   CARGO: '',
-  //   DATA_ADMISSAO: '',
-  //   DATA_DEMISSAO: '',
-  //   ULTIMO_SALARIO: 0,
-  // }
-
   ngOnInit(): void {
+
+    // constructor(private ambitoService: AmbitoService) { }
+
+    this.AmbitoService.getAllAmbito()
+      .subscribe({
+        next: (ambitos: any) => {
+          this.ambitos = ambitos;
+          console.log(ambitos)
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
+
+
+    this.AreaDoDireito.getAllAreaDoDireito()
+      .subscribe({
+        next: (areasDoDireito: any) => {
+          this.areasDoDireito = areasDoDireito;
+          console.log(areasDoDireito)
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
+
+    this.CondicoesTentaivaAcordo.getAllCondicoesTentativaAcordo()
+      .subscribe({
+        next: (condicoesTentativaAcordo: any) => {
+          this.condicoesTentativaAcordo = condicoesTentativaAcordo;
+          console.log(condicoesTentativaAcordo)
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
+
+    this.Fase.getAllFase()
+      .subscribe({
+        next: (fases: any) => {
+          this.fases = fases;
+          console.log(fases)
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
+
+    this.ForoTribunalOrgao.getAllForoTribunalOrgao()
+      .subscribe({
+        next: (foroTribunalOrgaos: any) => {
+          this.foroTribunalOrgaos = foroTribunalOrgaos;
+          console.log(foroTribunalOrgaos)
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
+
+    this.MotivoDoEncerramento.getAllMotivoDoEncerramento()
+      .subscribe({
+        next: (motivosDoEncerramento: any) => {
+          this.motivosDoEncerramento = motivosDoEncerramento;
+          console.log(motivosDoEncerramento)
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
+
+    this.Status.getAllStatus()
+      .subscribe({
+        next: (status: any) => {
+          this.status = status;
+          console.log(status)
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
+
+    this.TipoDeAcao.getAllTipoDeAcao()
+      .subscribe({
+        next: (tiposDeAcoes: any) => {
+          this.tiposDeAcoes = tiposDeAcoes;
+          console.log(tiposDeAcoes)
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
+
+    this.Vara.getAllVara()
+      .subscribe({
+        next: (varas: any) => {
+          this.varas = varas;
+          console.log(varas)
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
+
+    this.PatronoResponsavel.getAllPatronoResponsavel()
+      .subscribe({
+        next: (patronoResponsavel: any) => {
+          this.patronoResponsavel = patronoResponsavel;
+          console.log(patronoResponsavel)
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
+
+
     this.createProcessForm = new FormGroup({
       // ID_PROCESSO: new FormControl(''),
       NUMERO_PROCESSO: new FormControl('', [Validators.required]),
@@ -137,32 +274,19 @@ export class ProcessCreateComponent implements OnInit {
     });
   }
 
-  // get STATUS() {
-  //   return this.createProcessForm.get('STATUS')!;
-  // }
-
-  // get NOME_FANTASIA() {
-  //   return this.createProcessForm.get('NOME_FANTASIA')!;
-  // }
-
   createProcess() {
     console.log(this.createProcessForm.errors)
     if (this.createProcessForm.valid) {
-      console.log("Valido")
       this.ProcessoService.createProcess(this.createProcessResquest)
         .subscribe({
-          next: (process) => {
+          next: (response) => {
             this.router.navigate(['painel-processos'])
           },
-          error: (processError) => {
-            console.log(processError)
+          error: (response) => {
+            console.log(response)
           }
         });
-    } else {
-      console.log("Nao Valido")
-
     }
-
     return;
   }
 }

@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Criar PatronoResponsavel</h1>
+<form (ngSubmit)="createPatronoResponsavel()" #formDir="ngForm" [formGroup]="createPatronoResponsavelForm">
+    <div mat-dialog-content>
+        <mat-form-field>
+            <input name="PATRONORESPONSAVEL" formControlName="PATRONORESPONSAVEL" matInput required [(ngModel)]="createPatronoResponsavelRequest.PATRONO_RESPONSAVEL">
+        </mat-form-field>   
+
+        <div mat-raised-action class="float-right">
+            <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+            <button mat-button type="submit">Adicionar</button>
+        </div>
+    </div>
+</form>

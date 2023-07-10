@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Criar Tipo de Ação</h1>
+<form (ngSubmit)="createTipoDeAcao()" #formDir="ngForm" [formGroup]="createTipoDeAcaoForm">
+    <div mat-dialog-content>
+        <mat-form-field>
+            <input name="TIPO_DE_ACAO" formControlName="TIPO_DE_ACAO" matInput required [(ngModel)]="createTipoDeAcaoRequest.TIPO_DE_ACAO">
+        </mat-form-field>   
+
+        <div mat-raised-action class="float-right">
+            <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+            <button mat-button type="submit">Adicionar</button>
+        </div>
+    </div>
+</form>

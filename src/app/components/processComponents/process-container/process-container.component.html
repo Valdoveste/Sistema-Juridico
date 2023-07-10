@@ -6,7 +6,8 @@
         <li class="process-header__list__item-process-number">
           {{processo.NUMERO_PROCESSO}}
         </li>
-        <li class="process-header__list__item-process-status status-ongoin">
+        <li
+          class="process-header__list__item-process-status status-{{processo.STATUS.replaceAll(' ', '-').toLowerCase()}}">
           {{processo.STATUS}}
         </li>
       </ul>
@@ -56,7 +57,8 @@
           </p>
           <span class="sm-text">Ult. Andamento</span>
           <p class="process-footer__list__item-date-last-moviment">
-            {{processo.DATA_ULTIMO_ANDAMENTO}}
+            {{processo.DATA_ULTIMO_ANDAMENTO.toString().replaceAll("-", "/").slice(0, 19).replace("T", " ").slice(0,
+            10).replaceAll("-","/").split('/').reverse().join('/')}}
           </p>
         </li>
       </ul>

@@ -10,6 +10,7 @@
     border-radius: 5px;
     position: relative;
     height: min-content;
+    min-height: 335px;
     transition: box-shadow ease-in 250ms;
     border: 1px solid rgba(60, 64, 67, 0.163);
     @include flexCenter(unset, space-between, column);
@@ -39,24 +40,33 @@
           font-size: 0.72rem;
         }
 
-        .status-ongoin,
-        .status-closed {
+        .status-ativo,
+        .status-encerrado,
+        .status-baixa-provisória {
           border-radius: 2px;
         }
 
-        .status-ongoin {
+        .status-ativo {
           background-color: #32b332;
           box-shadow:
             0 1px 1px 0 #32b3323c,
             0 1px 6px 1px #32b33220;
         }
 
-        .status-closed {
+        .status-baixa-provisória {
+          background-color: #dfdc2c;
+          box-shadow:
+            0 1px 1px 0 #dfdc2c49,
+            0 1px 6px 1px #dfdc2c21;
+        }
+
+        .status-encerrado {
           background-color: #df2c3e;
           box-shadow:
             0 1px 1px 0 #df2c3e5a,
             0 1px 6px 1px #df2c3e43;
         }
+
 
       }
     }
@@ -87,13 +97,14 @@
         height: 100%;
         font-size: 1rem;
         color: #5e636a;
-        transition: background-color ease-in 250ms;
-        background-color: rgba(60, 64, 67, 0.020);
+        background-color: #f6f7fb;
         border-top: 1px solid rgba(60, 64, 67, 0.163);
 
-        &:hover {
-          background-color: rgba(60, 64, 67, 0.090);
-        }
+        // transition: background-color ease-in 250ms;
+
+        // &:hover {
+        //   background-color: rgba(60, 64, 67, 0.090);
+        // }
       }
     }
 

@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Criar Âmbito</h1>
+<form (ngSubmit)="createAmbito()" #formDir="ngForm" [formGroup]="createAmbitoForm">
+    <div mat-dialog-content>
+        <mat-form-field>
+            <input name="AMBITO" formControlName="AMBITO" matInput required [(ngModel)]="createAmbitoRequest.AMBITO">
+        </mat-form-field>   
+
+        <div mat-raised-action class="float-right">
+            <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+            <button mat-button type="submit">Adicionar</button>
+        </div>
+    </div>
+</form>
