@@ -25,15 +25,15 @@ namespace SistemaJuridicoWebAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<PROCESSO_AMBITO>()
+            modelBuilder.Entity<PROCESSO_STATUS>()
               .Property(c => c.ID)
               .ValueGeneratedOnAdd();
 
-            modelBuilder.Entity<PROCESSO_AMBITO>()
+            modelBuilder.Entity<PROCESSO_STATUS>()
               .HasData(
-                  new PROCESSO_AMBITO { ID = Guid.NewGuid(), AMBITO = "Administradivo" },
-                  new PROCESSO_AMBITO { ID = Guid.NewGuid(), AMBITO = "Judicial" },
-                  new PROCESSO_AMBITO { ID = Guid.NewGuid(), AMBITO = "Pré Judicial" }
+                  new PROCESSO_STATUS { ID = Guid.NewGuid(), STATUS = "Ativo" },
+                  new PROCESSO_STATUS { ID = Guid.NewGuid(), STATUS = "Baixa Provisória" },
+                  new PROCESSO_STATUS { ID = Guid.NewGuid(), STATUS = "Encerrado" }
                );
 
 

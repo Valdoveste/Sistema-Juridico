@@ -297,23 +297,6 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("PROCESSO_AMBITO");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = new Guid("67311d03-0444-497d-b7b0-bd7bdabf6544"),
-                            AMBITO = "Administradivo"
-                        },
-                        new
-                        {
-                            ID = new Guid("d118ed15-beb0-43f4-8a60-b3b32f8bd3ef"),
-                            AMBITO = "Judicial"
-                        },
-                        new
-                        {
-                            ID = new Guid("06228d1f-653c-4e2b-8959-4fe4f8633ead"),
-                            AMBITO = "Pré Judicial"
-                        });
                 });
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_AREA_DO_DIREITO", b =>
@@ -412,6 +395,23 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("PROCESSO_STATUS");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = new Guid("a7e8ab7a-3153-4123-a727-fd6cfcfe525d"),
+                            STATUS = "Ativo"
+                        },
+                        new
+                        {
+                            ID = new Guid("744fce50-1e66-4eb0-adfe-c383d498ae3d"),
+                            STATUS = "Baixa Provisória"
+                        },
+                        new
+                        {
+                            ID = new Guid("d793be38-50a7-4bf2-b7d5-9ec8f5c329da"),
+                            STATUS = "Encerrado"
+                        });
                 });
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_TIPO_DE_ACAO", b =>
