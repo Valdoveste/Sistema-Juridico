@@ -69,6 +69,7 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok(ambito);
     }
 
+
     [HttpGet("area-do-direito")]
     public async Task<IActionResult> GetAllAreaDoDireito()
     {
@@ -128,54 +129,55 @@ namespace SistemaJuridicoWebAPI.Controllers
     }
 
 
-    [HttpGet("fase")]
-    public async Task<IActionResult> GetAllFase()
+    [HttpGet("patrono-responsavel")]
+    public async Task<IActionResult> GetAllPatronoResponsavel()
     {
 
-      return Ok(await _sistemaJuridicoDbContext.PROCESSO_FASE.ToListAsync());
+      return Ok(await _sistemaJuridicoDbContext.PROCESSO_PATRONO_RESPONSAVEL.ToListAsync());
     }
 
-    [HttpPost("add-fase")]
-    public async Task<IActionResult> AddFase([FromBody] PROCESSO_FASE faseRequest)
+    [HttpPost("add-patrono-responsavel")]
+    public async Task<IActionResult> AddPatronoResponsavel([FromBody] PROCESSO_PATRONO_RESPONSAVEL patronoresponsavelRequest)
     {
-      faseRequest.ID = Guid.NewGuid();
+      patronoresponsavelRequest.ID = Guid.NewGuid();
 
-      await _sistemaJuridicoDbContext.PROCESSO_FASE.AddAsync(faseRequest);
+      await _sistemaJuridicoDbContext.PROCESSO_PATRONO_RESPONSAVEL.AddAsync(patronoresponsavelRequest);
 
       await _sistemaJuridicoDbContext.SaveChangesAsync();
 
-      return Ok(faseRequest);
+      return Ok(patronoresponsavelRequest);
     }
 
-    [HttpPut("update-fase/{id}")]
-    public async Task<IActionResult> UpdateFase([FromRoute] Guid id, PROCESSO_FASE updateFaseRequest)
+    [HttpPut("update-patrono-responsavel/{id}")]
+    public async Task<IActionResult> UpdatePatronoResponsavel([FromRoute] Guid id, PROCESSO_PATRONO_RESPONSAVEL updateFaseRequest)
     {
-      var fase = await _sistemaJuridicoDbContext.PROCESSO_FASE.FirstOrDefaultAsync(x => x.ID.Equals(id));
+      var patronoresponsavel = await _sistemaJuridicoDbContext.PROCESSO_PATRONO_RESPONSAVEL.FirstOrDefaultAsync(x => x.ID.Equals(id));
 
-      if (fase == null)
+      if (patronoresponsavel == null)
         return NotFound();
 
-      fase.FASE = updateFaseRequest.FASE;
+      patronoresponsavel.PATRONO_RESPONSAVEL = updateFaseRequest.PATRONO_RESPONSAVEL;
 
       await _sistemaJuridicoDbContext.SaveChangesAsync();
 
-      return Ok(fase);
+      return Ok(patronoresponsavel);
     }
 
-    [HttpDelete("delete-fase/{id}")]
-    public async Task<IActionResult> DeleteFase([FromRoute] Guid id)
+    [HttpDelete("delete-patrono-responsavel/{id}")]
+    public async Task<IActionResult> DeletePatronoResponsavel([FromRoute] Guid id)
     {
-      var fase = await _sistemaJuridicoDbContext.PROCESSO_FASE.FirstOrDefaultAsync(x => x.ID.Equals(id));
+      var patronoresponsavel = await _sistemaJuridicoDbContext.PROCESSO_PATRONO_RESPONSAVEL.FirstOrDefaultAsync(x => x.ID.Equals(id));
 
-      if (fase == null)
+      if (patronoresponsavel == null)
         return NotFound();
 
-      _sistemaJuridicoDbContext.PROCESSO_FASE.Remove(fase);
+      _sistemaJuridicoDbContext.PROCESSO_PATRONO_RESPONSAVEL.Remove(patronoresponsavel);
 
       await _sistemaJuridicoDbContext.SaveChangesAsync();
 
-      return Ok(fase);
+      return Ok(patronoresponsavel);
     }
+
 
     [HttpGet("foro-tribunal-orgao")]
     public async Task<IActionResult> GetAllForoTribunalOrgao()
@@ -234,13 +236,6 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok(await _sistemaJuridicoDbContext.PROCESSO_MOTIVO_DO_ENCERRAMENTO.ToListAsync());
     }
 
-    [HttpGet("patrono-responsavel")]
-    public async Task<IActionResult> GetAllPatronoResponsavel()
-    {
-
-      return Ok(await _sistemaJuridicoDbContext.PROCESSO_PATRONO_RESPONSAVEL.ToListAsync());
-    }
-
     [HttpGet("status")]
     public async Task<IActionResult> GetAllStatus()
     {
@@ -297,7 +292,6 @@ namespace SistemaJuridicoWebAPI.Controllers
 
       return Ok(tipoDeAcao);
     }
-
 
 
     [HttpGet("vara")]
