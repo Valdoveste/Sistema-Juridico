@@ -6,7 +6,7 @@ import { ProcessAreaComponent } from './components/processComponents/process-are
 import { LoginComponent } from './components/login/login.component';
 import { MAmbitoComponent } from './components/management/components/m-ambito/m-ambito.component';
 import { MVaraComponent } from './components/management/components/m-vara/m-vara.component';
-import { MFaseComponent } from './components/management/components/m-fase/m-fase.component';
+import { MPatronoResponsavelComponent } from './components/management/components/m-patrono-responsavel/m-patrono-responsavel.component';
 import { MAreaDoDireitoComponent } from './components/management/components/m-area-do-direito/m-area-do-direito.component';
 import { MTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/m-tipo-de-acao.component';
 import { MForoTribunalOrgaoComponent } from './components/management/components/m-foro-tribunal-orgao/m-foro-tribunal-orgao.component';
@@ -41,8 +41,8 @@ const routes: Routes = [
   }
   ,
   {
-    path: 'gestao/fase',
-    component: MFaseComponent
+    path: 'gestao/patrono-responsavel',
+    component: MPatronoResponsavelComponent
   }
   ,
   {
