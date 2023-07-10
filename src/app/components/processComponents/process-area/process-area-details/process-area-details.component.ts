@@ -6,6 +6,4 @@ import { ProcessAreaComponent } from '../process-area.component';
   templateUrl: './process-area-details.component.html',
   styleUrls: ['./process-area-details.component.scss']
 })
-export class ProcessAreaDetailsComponent extends ProcessAreaComponent implements OnInit {
-
-}
+export class ProcessAreaDetailsComponent extends ProcessAreaComponent implements OnInit {}

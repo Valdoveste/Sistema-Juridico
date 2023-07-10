@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SistemaJuridicoWebAPI.Models
@@ -6,7 +6,6 @@ namespace SistemaJuridicoWebAPI.Models
     public class ACORDO
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid ID_ACORDO { get; set; }
 
         public string ID_USUARIO { get; set; }

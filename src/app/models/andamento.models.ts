@@ -1,7 +1,7 @@
 import { Data } from "@angular/router";
 
 export interface Andamento {
-  ID_ANDAMENTO: Number;
+  ID_ANDAMENTO?: String;
   ID_USUARIO: Number;
   TIPO_ANDAMENTO: String;
   INFO_ANDAMENTO: String;

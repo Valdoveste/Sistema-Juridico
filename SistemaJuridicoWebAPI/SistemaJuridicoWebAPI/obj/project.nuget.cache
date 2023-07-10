@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SrrjFljK2S47w948KgjSt4neLOOPSaz2Pyw8R8IMZy52u0pKr54QnGY6fSuXKUnee5/OCvyrB+LtA9MA4o7bYg==",
+  "dgSpecHash": "XgratCWgbukiuk+HNGUCedxKyWp/zzVWVtRdU1ozNQ/N52gYLqEPedSq6iSSXZf+YZS9dDQj6U89p9wN4s8EyQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\caiov\\Desktop\\Projeto\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI.csproj",
+  "projectFilePath": "C:\\Users\\caiov\\OneDrive\\Área de Trabalho\\Sistema-Juridico\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\caiov\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\caiov\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Processo } from 'src/app/models/PROCESSO.model';
-import { ProcessoService } from 'src/app/sevices/processo.service';
+import { ProcessoService } from 'src/app/services/processo.service';
 
 @Component({
   selector: 'app-process-area',

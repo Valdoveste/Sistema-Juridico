@@ -151,17 +151,17 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.Property<string>("AREA_DO_DIREITO")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("DATA_CADASTRO_PROCESSO")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("DATA_CADASTRO_PROCESSO")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("DATA_CITACAO")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("DATA_CITACAO")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("DATA_DISTRIBUICAO")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("DATA_DISTRIBUICAO")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("DATA_ULTIMO_ANDAMENTO")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("DATA_ULTIMO_ANDAMENTO")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EMPPRESA")
                         .HasColumnType("nvarchar(max)");
@@ -205,11 +205,11 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.Property<string>("PARTE_CONTRARIA_CPF")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("PARTE_CONTRARIA_DATA_ADMISSAO")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("PARTE_CONTRARIA_DATA_ADMISSAO")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("PARTE_CONTRARIA_DATA_DEMISSAO")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("PARTE_CONTRARIA_DATA_DEMISSAO")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PARTE_CONTRARIA_ENDERECO")
                         .HasColumnType("nvarchar(max)");
@@ -287,11 +287,9 @@ namespace SistemaJuridicoWebAPI.Migrations
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_AMBITO", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("AMBITO")
                         .HasColumnType("nvarchar(max)");
@@ -303,28 +301,26 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            ID = 1,
+                            ID = new Guid("67311d03-0444-497d-b7b0-bd7bdabf6544"),
                             AMBITO = "Administradivo"
                         },
                         new
                         {
-                            ID = 2,
+                            ID = new Guid("d118ed15-beb0-43f4-8a60-b3b32f8bd3ef"),
                             AMBITO = "Judicial"
                         },
                         new
                         {
-                            ID = 3,
+                            ID = new Guid("06228d1f-653c-4e2b-8959-4fe4f8633ead"),
                             AMBITO = "Pré Judicial"
                         });
                 });
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_AREA_DO_DIREITO", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("AREA_DO_DIREITO")
                         .HasColumnType("nvarchar(max)");
@@ -336,11 +332,9 @@ namespace SistemaJuridicoWebAPI.Migrations
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_CONDICOES_TENTATIVA_ACORDO", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CONDICOES_TENTATIVA_ACORDO")
                         .HasColumnType("nvarchar(max)");
@@ -352,11 +346,9 @@ namespace SistemaJuridicoWebAPI.Migrations
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_FASE", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("FASE")
                         .HasColumnType("nvarchar(max)");
@@ -368,11 +360,9 @@ namespace SistemaJuridicoWebAPI.Migrations
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_FORO_TRIBUNAL_ORGAO", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("FORO_TRIBUNAL_ORGAO")
                         .HasColumnType("nvarchar(max)");
@@ -384,11 +374,9 @@ namespace SistemaJuridicoWebAPI.Migrations
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_MOTIVO_DO_ENCERRAMENTO", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("MOTIVO_DO_ENCERRAMENTO")
                         .HasColumnType("nvarchar(max)");
@@ -400,11 +388,9 @@ namespace SistemaJuridicoWebAPI.Migrations
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_PATRONO_RESPONSAVEL", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("PATRONO_RESPONSAVEL")
                         .HasColumnType("nvarchar(max)");
@@ -416,11 +402,9 @@ namespace SistemaJuridicoWebAPI.Migrations
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_STATUS", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("STATUS")
                         .HasColumnType("nvarchar(max)");
@@ -432,11 +416,9 @@ namespace SistemaJuridicoWebAPI.Migrations
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_TIPO_DE_ACAO", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("TIPO_DE_ACAO")
                         .HasColumnType("nvarchar(max)");
@@ -448,11 +430,9 @@ namespace SistemaJuridicoWebAPI.Migrations
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_VARA", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("VARA")
                         .HasColumnType("nvarchar(max)");
@@ -467,6 +447,9 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.Property<Guid>("ID_USUARIO")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("ACESSO_GESTAO")
+                        .HasColumnType("int");
 
                     b.Property<string>("NOME_USUARIO")
                         .HasColumnType("nvarchar(max)");
