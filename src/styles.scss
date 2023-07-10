@@ -143,9 +143,9 @@ input[type=number] {
   display: none !important;
 }
 
-.table-borderless > thead > tr > td,
-.table-borderless > thead > tr > th {
-    border: none;
+.table-borderless>thead>tr>td,
+.table-borderless>thead>tr>th {
+  border: none;
 }
 
 // MainComponent
