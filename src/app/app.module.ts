@@ -26,7 +26,7 @@ import { ProcessAreaPreviousPatronsComponent } from './components/processCompone
 // Managements components
 import { MAmbitoComponent } from './components/management/components/m-ambito/m-ambito.component';
 import { MVaraComponent } from './components/management/components/m-vara/m-vara.component';
-import { MFaseComponent } from './components/management/components/m-fase/m-fase.component';
+import { MPatronoResponsavelComponent } from './components/management/components/m-patrono-responsavel/m-patrono-responsavel.component';
 import { MForoTribunalOrgaoComponent } from './components/management/components/m-foro-tribunal-orgao/m-foro-tribunal-orgao.component';
 import { MAreaDoDireitoComponent } from './components/management/components/m-area-do-direito/m-area-do-direito.component';
 import { MTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/m-tipo-de-acao.component';
@@ -40,14 +40,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatRadioModule} from '@angular/material/radio'; 
 
 import { DialogEditAmbitoComponent } from './components/management/components/m-ambito/dialog-edit-ambito/dialog-edit-ambito.component';
 import { DialogDeleteAmbitoComponent } from './components/management/components/m-ambito/dialog-delete-ambito/dialog-delete-ambito.component';
 import { DialogAddAmbitoComponent } from './components/management/components/m-ambito/dialog-add-ambito/dialog-add-ambito.component';
 
-import { DialogDeleteFaseComponent } from './components/management/components/m-fase/dialog-delete-fase/dialog-delete-fase.component';
-import { DialogAddFaseComponent } from './components/management/components/m-fase/dialog-add-fase/dialog-add-fase.component';
-import { DialogEditFaseComponent } from './components/management/components/m-fase/dialog-edit-fase/dialog-edit-fase.component';
+import { DialogAddPatronoResponsavelComponent } from './components/management/components/m-patrono-responsavel/dialog-add-patrono-responsavel/dialog-add-patrono-responsavel.component';
+import { DialogEditPatronoResponsavelComponent } from './components/management/components/m-patrono-responsavel/dialog-edit-patrono-responsavel/dialog-edit-patrono-responsavel.component';
+import { DialogDeletePatronoResponsavelComponent } from './components/management/components/m-patrono-responsavel/dialog-delete-patrono-responsavel/dialog-delete-patrono-responsavel.component';
 
 import { DialogEditVaraComponent } from './components/management/components/m-vara/dialog-edit-vara/dialog-edit-vara.component';
 import { DialogDeleteVaraComponent } from './components/management/components/m-vara/dialog-delete-vara/dialog-delete-vara.component';
@@ -89,10 +90,10 @@ import { DialogEditTipoDeAcaoComponent } from './components/management/component
 
     MAmbitoComponent,
     MVaraComponent,
-    MFaseComponent,
     MForoTribunalOrgaoComponent,
     MAreaDoDireitoComponent,
     MTipoDeAcaoComponent,
+    MPatronoResponsavelComponent,
 
     DialogEditAmbitoComponent,
     DialogDeleteAmbitoComponent,
@@ -102,9 +103,9 @@ import { DialogEditTipoDeAcaoComponent } from './components/management/component
     DialogDeleteVaraComponent,
     DialogAddVaraComponent,
 
-    DialogAddFaseComponent,
-    DialogDeleteFaseComponent,
-    DialogEditFaseComponent,
+    DialogAddPatronoResponsavelComponent,
+    DialogDeletePatronoResponsavelComponent,
+    DialogEditPatronoResponsavelComponent,
 
     DialogAddForoTribunalOrgaoComponent,
     DialogDeleteForoTribunalOrgaoComponent,
@@ -133,6 +134,7 @@ import { DialogEditTipoDeAcaoComponent } from './components/management/component
     MatIconModule,
     MatButtonModule,
     MatInputModule,
+    MatRadioModule,
     MatNativeDateModule
   ],
   providers: [],
