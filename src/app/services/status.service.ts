@@ -14,6 +14,6 @@ export class StatusService {
   constructor(private http: HttpClient) { }
 
   getAllStatus(): Observable<ProcessoStatus[]> {
-    return this.http.get<ProcessoStatus[]>(this.baseApiUrl + '/api/Sistema/ambito')
+    return this.http.get<ProcessoStatus[]>(this.baseApiUrl + '/api/Sistema/status')
   }
 }
