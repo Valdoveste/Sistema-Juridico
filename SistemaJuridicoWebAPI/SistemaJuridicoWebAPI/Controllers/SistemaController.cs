@@ -120,7 +120,6 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok(areaDoDireito);
     }
 
-
     [HttpGet("fase")]
     public async Task<IActionResult> GetAllFase()
     {
