@@ -30,19 +30,6 @@ import { PatronoResponsavelService } from 'src/app/services/patrono-responsavel.
   styleUrls: ['./process-create.component.scss']
 })
 export class ProcessCreateComponent implements OnInit {
-  createProcessForm!: FormGroup;
-
-  ambitos: ProcessoAmbito[] = [];
-  areasDoDireito: ProcessoAreaDoDireito[] = [];
-  condicoesTentativaAcordo: ProcessoCondicoesTentativaAcordo[] = [];
-  fases: ProcessoFase[] = [];
-  foroTribunalOrgaos: ProcessoForoTribunalOrgao[] = [];
-  motivosDoEncerramento: ProcessoMotivoDoEncerramento[] = [];
-  status: ProcessoStatus[] = [];
-  tiposDeAcoes: ProcessoTipoDeAcao[] = [];
-  varas: ProcessoVara[] = [];
-  patronoResponsavel: ProcessoPatronoResponsavel[] = [];
-
   constructor(
     private router: Router,
     private ProcessoService: ProcessoService,
@@ -57,6 +44,25 @@ export class ProcessCreateComponent implements OnInit {
     private Vara: VaraService,
     private PatronoResponsavel: PatronoResponsavelService
   ) { }
+
+  createProcessForm!: FormGroup;
+
+  ambitos: ProcessoAmbito[] = [];
+  areasDoDireito: ProcessoAreaDoDireito[] = [];
+  condicoesTentativaAcordo: ProcessoCondicoesTentativaAcordo[] = [];
+  fases: ProcessoFase[] = [];
+  foroTribunalOrgaos: ProcessoForoTribunalOrgao[] = [];
+  motivosDoEncerramento: ProcessoMotivoDoEncerramento[] = [];
+  status: ProcessoStatus[] = [];
+  tiposDeAcoes: ProcessoTipoDeAcao[] = [];
+  varas: ProcessoVara[] = [];
+  patronoResponsavel: ProcessoPatronoResponsavel[] = [];
+
+  componentName: string = '';
+
+  swapTabs(componentName: string): void {
+    this.componentName = componentName;
+  }
 
 
   createProcessResquest: Processo = {
@@ -116,7 +122,6 @@ export class ProcessCreateComponent implements OnInit {
       .subscribe({
         next: (ambitos: any) => {
           this.ambitos = ambitos;
-          console.log(ambitos)
         },
         error: (response: any) => {
           console.log(response)
@@ -128,7 +133,6 @@ export class ProcessCreateComponent implements OnInit {
       .subscribe({
         next: (areasDoDireito: any) => {
           this.areasDoDireito = areasDoDireito;
-          console.log(areasDoDireito)
         },
         error: (response: any) => {
           console.log(response)
@@ -139,7 +143,6 @@ export class ProcessCreateComponent implements OnInit {
       .subscribe({
         next: (condicoesTentativaAcordo: any) => {
           this.condicoesTentativaAcordo = condicoesTentativaAcordo;
-          console.log(condicoesTentativaAcordo)
         },
         error: (response: any) => {
           console.log(response)
@@ -150,7 +153,6 @@ export class ProcessCreateComponent implements OnInit {
       .subscribe({
         next: (fases: any) => {
           this.fases = fases;
-          console.log(fases)
         },
         error: (response: any) => {
           console.log(response)
@@ -161,7 +163,6 @@ export class ProcessCreateComponent implements OnInit {
       .subscribe({
         next: (foroTribunalOrgaos: any) => {
           this.foroTribunalOrgaos = foroTribunalOrgaos;
-          console.log(foroTribunalOrgaos)
         },
         error: (response: any) => {
           console.log(response)
@@ -172,7 +173,6 @@ export class ProcessCreateComponent implements OnInit {
       .subscribe({
         next: (motivosDoEncerramento: any) => {
           this.motivosDoEncerramento = motivosDoEncerramento;
-          console.log(motivosDoEncerramento)
         },
         error: (response: any) => {
           console.log(response)
@@ -183,7 +183,6 @@ export class ProcessCreateComponent implements OnInit {
       .subscribe({
         next: (status: any) => {
           this.status = status;
-          console.log(status)
         },
         error: (response: any) => {
           console.log(response)
@@ -194,7 +193,6 @@ export class ProcessCreateComponent implements OnInit {
       .subscribe({
         next: (tiposDeAcoes: any) => {
           this.tiposDeAcoes = tiposDeAcoes;
-          console.log(tiposDeAcoes)
         },
         error: (response: any) => {
           console.log(response)
@@ -205,7 +203,6 @@ export class ProcessCreateComponent implements OnInit {
       .subscribe({
         next: (varas: any) => {
           this.varas = varas;
-          console.log(varas)
         },
         error: (response: any) => {
           console.log(response)
@@ -216,7 +213,6 @@ export class ProcessCreateComponent implements OnInit {
       .subscribe({
         next: (patronoResponsavel: any) => {
           this.patronoResponsavel = patronoResponsavel;
-          console.log(patronoResponsavel)
         },
         error: (response: any) => {
           console.log(response)
@@ -254,23 +250,23 @@ export class ProcessCreateComponent implements OnInit {
       DATA_ENCERRAMENTO: new FormControl(''),
       MOTIVO_ENCERRAMENTO: new FormControl(''),
       MOTIVO_BAIXA_PROVISORIA: new FormControl(''),
-      PARTE_CONTRARIA_NOME: new FormControl('', [Validators.required]),
-      PARTE_CONTRARIA_NOME_FANTASIA: new FormControl(''),
-      PARTE_CONTRARIA_CPF: new FormControl(''),
-      PARTE_CONTRARIA_CNPJ: new FormControl(''),
-      PARTE_CONTRARIA_RG: new FormControl(''),
-      PARTE_CONTRARIA_ENDERECO: new FormControl('', [Validators.required]),
-      PARTE_CONTRARIA_CEP: new FormControl('', [Validators.required]),
-      PARTE_CONTRARIA_NUMERO: new FormControl('', [Validators.required]),
-      PARTE_CONTRARIA_COMPLEMENTO: new FormControl('', [Validators.required]),
-      PARTE_CONTRARIA_ESTADO: new FormControl('', [Validators.required]),
-      PARTE_CONTRARIA_PAIS: new FormControl('', [Validators.required]),
-      PARTE_CONTRARIA_OBSERVACAO: new FormControl(''),
-      PARTE_CONTRARIA_CIDADE: new FormControl('', [Validators.required]),
-      PARTE_CONTRARIA_CARGO: new FormControl(''),
-      PARTE_CONTRARIA_DATA_ADMISSAO: new FormControl(''),
-      PARTE_CONTRARIA_DATA_DEMISSAO: new FormControl(''),
-      PARTE_CONTRARIA_ULTIMO_SALARIO: new FormControl('')
+      // PARTE_CONTRARIA_NOME: new FormControl('', [Validators.required]),
+      // PARTE_CONTRARIA_NOME_FANTASIA: new FormControl(''),
+      // PARTE_CONTRARIA_CPF: new FormControl(''),
+      // PARTE_CONTRARIA_CNPJ: new FormControl(''),
+      // PARTE_CONTRARIA_RG: new FormControl(''),
+      // PARTE_CONTRARIA_ENDERECO: new FormControl('', [Validators.required]),
+      // PARTE_CONTRARIA_CEP: new FormControl('', [Validators.required]),
+      // PARTE_CONTRARIA_NUMERO: new FormControl('', [Validators.required]),
+      // PARTE_CONTRARIA_COMPLEMENTO: new FormControl('', [Validators.required]),
+      // PARTE_CONTRARIA_ESTADO: new FormControl('', [Validators.required]),
+      // PARTE_CONTRARIA_PAIS: new FormControl('', [Validators.required]),
+      // PARTE_CONTRARIA_OBSERVACAO: new FormControl(''),
+      // PARTE_CONTRARIA_CIDADE: new FormControl('', [Validators.required]),
+      // PARTE_CONTRARIA_CARGO: new FormControl(''),
+      // PARTE_CONTRARIA_DATA_ADMISSAO: new FormControl(''),
+      // PARTE_CONTRARIA_DATA_DEMISSAO: new FormControl(''),
+      // PARTE_CONTRARIA_ULTIMO_SALARIO: new FormControl('')
     });
   }
 
