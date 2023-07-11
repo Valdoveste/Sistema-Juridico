@@ -279,192 +279,33 @@
           </li>
         </ul>
       </div>
-      <div class="process-create-opposingparty">
+      <div class="process-create-opposingparty mt-3">
         <h3>Parte Contrária</h3>
-        <!-- <hr> -->
-        <ul class="process-create-opposingparty__list">
+        <ul class="process-create-opposingparty__list" class="mt-2">
+          <li class="process-create-opposingparty__list__item mb-2">
+            <div class="process-create-opposingparty__list__item--div">
+              <p class="sm-text">Relação jurídica</p>
+            </div>
+            <div class="process-create-opposingparty__list__item--div">
+              <select name="EMPRESA" class="process-create-processdetails--input-select">
+                <option value="0" (click)="swapTabs('fisical-person')">Fornecedor / Ex-fornecedor / Cliente / Ex-cliente
+                </option>
+                <option value="1" (click)="swapTabs('legal-person')">Funcionário / Ex-funcionário</option>
+              </select>
+            </div>
+          </li>
 
-          <!-- <div *ngIf="STATUS.invalid && formDir.submitted">
-            <p class="sm-text" *ngIf="STATUS.errors?.[']">Invaldio</p>
-          </div> -->
-
-          <label class="mb-2 process-create-checkbox" for="checkBox">
-            <input type="checkbox" #checkBox id="checkBox">
-            <p class="sm-text">
-              Funcionário / Ex-funcionário
-            </p>
-          </label>
-
-          <div>
-            <li class="process-create-opposingparty__list__item">
-              <div class="process-create-opposingparty__list__item--div">
-                <p class="sm-text">Nome</p>
-                <input type="text" name="PARTE_CONTRARIA_NOME" formControlName="PARTE_CONTRARIA_NOME"
-                  [(ngModel)]="createProcessResquest.PARTE_CONTRARIA_NOME" class="process-create-opposingparty--name">
-
-                <div class="process-create-opposingparty__list__item--row">
-                  <span style="width: 60%">
-                    <p class="sm-text">Nome Fantasia</p>
-                    <input type="text" name="PARTE_CONTRARIA_NOME_FANTASIA"
-                      formControlName="PARTE_CONTRARIA_NOME_FANTASIA"
-                      [(ngModel)]="createProcessResquest.PARTE_CONTRARIA_NOME_FANTASIA"
-                      class="process-create-opposingparty">
-                  </span>
-
-                  <span>
-                    <p class="sm-text">CNPJ</p>
-                    <input type="text" name="PARTE_CONTRARIA_CNPJ" formControlName="PARTE_CONTRARIA_CNPJ"
-                      [(ngModel)]="createProcessResquest.PARTE_CONTRARIA_CNPJ" class="process-create-opposingparty">
-                  </span>
-                </div>
-              </div>
-            </li>
-            <li class="process-create-opposingparty__list__item">
-              <div class="process-create-opposingparty__list__item--div">
-                <p class="sm-text">CEP</p>
-                <input type="text" name="CEP" formControlName="PARTE_CONTRARIA_CEP" placeholder="00000-000"
-                  [(ngModel)]="createProcessResquest.PARTE_CONTRARIA_CEP" class="process-create-opposingparty"
-                  style="width: 150px;">
-                <div class="process-create-opposingparty__list__item--row">
-                  <span style="width: 40%;">
-                    <p class="sm-text">Endereço</p>
-                    <input type="text" name="PARTE_CONTRARIA_ENDERECO" formControlName="PARTE_CONTRARIA_ENDERECO"
-                      placeholder="" [(ngModel)]="createProcessResquest.PARTE_CONTRARIA_ENDERECO"
-                      class="process-create-opposingparty--adress">
-                  </span>
-                  <span>
-                    <p class="sm-text">Número</p>
-                    <input type="text" name="PARTE_CONTRARIA_NUMERO" formControlName="PARTE_CONTRARIA_NUMERO"
-                      placeholder="" [(ngModel)]="createProcessResquest.PARTE_CONTRARIA_NUMERO"
-                      class="process-create-opposingparty-adressnumber">
-                  </span>
-
-                  <span>
-                    <p class="sm-text">Complemento</p>
-                    <input type="text" name="PARTE_CONTRARIA_COMPLEMENTO" formControlName="PARTE_CONTRARIA_COMPLEMENTO"
-                      placeholder="" [(ngModel)]="createProcessResquest.PARTE_CONTRARIA_COMPLEMENTO"
-                      class="process-create-opposingparty--adresscomplement">
-                  </span>
-                </div>
-              </div>
-            </li>
-
-            <li class="process-create-processdetails__list__item">
-              <div class="process-create-processdetails__list__item--div">
-                <div class="process-create-processdetails__list__item--row">
-                  <span>
-                    <p class="sm-text">Estado</p>
-                    <input type="text" name="PARTE_CONTRARIA_ESTADO" formControlName="PARTE_CONTRARIA_ESTADO"
-                      [(ngModel)]="createProcessResquest.PARTE_CONTRARIA_ESTADO" class="process-create-processdetails">
-                  </span>
-
-                  <span class="mx-1">
-                    <p class="sm-text">Cidade</p>
-                    <input type="text" name="PARTE_CONTRARIA_CIDADE" formControlName="PARTE_CONTRARIA_CIDADE"
-                      [(ngModel)]="createProcessResquest.PARTE_CONTRARIA_CIDADE" class="process-create-processdetails">
-                  </span>
-
-                  <span>
-                    <p class="sm-text">Pais</p>
-                    <input type="text" name="PARTE_CONTRARIA_PAIS" formControlName="PARTE_CONTRARIA_PAIS"
-                      [(ngModel)]="createProcessResquest.PARTE_CONTRARIA_PAIS" class="process-create-processdetails">
-                  </span>
-                </div>
-                <span>
-                  <p class="sm-text">Observação</p>
-                  <textarea name="PARTE_CONTRARIA_OBSERVACAO" formControlName="PARTE_CONTRARIA_OBSERVACAO"
-                    [(ngModel)]="createProcessResquest.PARTE_CONTRARIA_OBSERVACAO" rows="10"
-                    class="process-create-processdetails w-100"></textarea>
-                </span>
-              </div>
-            </li>
-          </div>
-
-
-          <!-- <ng-template #elseBlock>
-            <li class="process-create-opposingparty__list__item">
-              <div class="process-create-opposingparty__list__item--div">
-                <p class="sm-text">Nome</p>
-                <input type="text" name="NOME" formControlName="NOME" minlength="10"
-                  [(ngModel)]="createOpposingpartyResquest.NOME" class="process-create-opposingparty--name">
-
-                <div style="width: 60%;" class="process-create-opposingparty__list__item--row">
-                  <span>
-                    <p class="sm-text">CPF</p>
-                    <input type="text" formControlName="CPF" placeholder="000.000.000-00"
-                      [(ngModel)]="createOpposingpartyResquest.CPF" class="process-create-opposingparty--id">
-                  </span>
-
-                  <span>
-                    <p class="sm-text">RG</p>
-                    <input type="text" formControlName="RG" placeholder="00.000.000-0"
-                      [(ngModel)]="createOpposingpartyResquest.RG" class="process-create-opposingparty--rg">
-                  </span>
-                </div>
-              </div>
-            </li>
-
-            <li class="process-create-opposingparty__list__item">
-              <div class="process-create-opposingparty__list__item--div">
-                <p class="sm-text">CEP</p>
-                <input type="text" formControlName="CEP" placeholder="00000-000"
-                  [(ngModel)]="createOpposingpartyResquest.CEP" class="process-create-opposingparty--zipcode">
-                <div class="process-create-opposingparty__list__item--row">
-                  <span style="width: 40%;">
-                    <p class="sm-text">Endereço</p>
-                    <input type="text" formControlName="ENDERECO" placeholder=""
-                      [(ngModel)]="createOpposingpartyResquest.ENDERECO" class="process-create-opposingparty--adress">
-                  </span>
-                  <span>
-                    <p class="sm-text">Número</p>
-                    <input type="text" formControlName="NUMERO" placeholder=""
-                      [(ngModel)]="createOpposingpartyResquest.NUMERO"
-                      class="process-create-opposingparty-adressnumber">
-                  </span>
-
-                  <span>
-                    <p class="sm-text">Complemento</p>
-                    <input type="text" formControlName="COMPLEMENTO" placeholder=""
-                      [(ngModel)]="createOpposingpartyResquest.COMPLEMENTO"
-                      class="process-create-opposingparty--adresscomplement">
-                  </span>
-                </div>
-              </div>
-            </li>
-
-            <li class="process-create-opposingparty__list__item">
-              <div class="process-create-opposingparty__list__item--div">
-                <div class="process-create-opposingparty__list__item--row">
-                  <span>
-                    <p class="sm-text">Cargo</p>
-                    <input type="text" formControlName="CARGO" placeholder=""
-                      [(ngModel)]="createOpposingpartyResquest.CARGO" class="process-create-opposingparty">
-                  </span>
-
-                  <span>
-                    <p class="sm-text">Ultimo Salário</p>
-                    <input type="number" formControlName="ULTIMO_SALARIO" min="0" placeholder=""
-                      [(ngModel)]="createOpposingpartyResquest.ULTIMO_SALARIO" class="process-create-opposingparty">
-                  </span>
-
-                  <span>
-                    <p class="sm-text">Data de admissão</p>
-                    <input type="date" formControlName="DATA_ADMISSAO"
-                      [(ngModel)]="createOpposingpartyResquest.DATA_ADMISSAO" class="process-create-opposingparty">
-                  </span>
-
-                  <span>
-                    <p class="sm-text">Data de demissão</p>
-                    <input type="date" formControlName="DATA_DEMISSAO"
-                      [(ngModel)]="createOpposingpartyResquest.DATA_DEMISSAO" class="process-create-opposingparty">
-                  </span>
-                </div>
-              </div>
-            </li>
-          </ng-template> -->
+          <ng-container [ngSwitch]="componentName">
+            <ng-template ngSwitchDefault="'fisical-person'">
+              <app-process-create-fisical-person></app-process-create-fisical-person>
+            </ng-template>
+            <ng-template [ngSwitchCase]="'legal-person'">
+              <app-process-create-legal-person></app-process-create-legal-person>
+            </ng-template>
+          </ng-container>
         </ul>
       </div>
-      <button type="submit" class="btn-default mt-2">Criar processo</button>
+      <button type="submit" class="btn-default mt-2 float-right">Criar processo</button>
     </div>
   </form>
 </div>
