@@ -121,6 +121,12 @@ namespace SistemaJuridicoWebAPI.Controllers
     }
 
 
+    [HttpGet("fase")]
+    public async Task<IActionResult> GetAllFase()
+    {
+      return Ok(await _sistemaJuridicoDbContext.PROCESSO_FASE.ToListAsync());
+    }
+
     [HttpGet("condicoes-tentativa-acordo")]
     public async Task<IActionResult> GetAllCondicoesTentivaAcordo()
     {
