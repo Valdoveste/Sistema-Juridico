@@ -19,12 +19,14 @@ export class DialogAddPatronoResponsavelComponent implements OnInit {
 
   createPatronoResponsavelRequest: ProcessoPatronoResponsavel = {
     ID: '',
-    PATRONO_RESPONSAVEL: ''
+    PATRONO_RESPONSAVEL: '',
+    PATRONO_RESPONSAVEL_CPF_CNPJ: ''
   }
 
   ngOnInit(): void {
     this.createPatronoResponsavelForm = new FormGroup({
-      PATRONORESPONSAVEL: new FormControl('', [Validators.required])
+      PATRONO_RESPONSAVEL: new FormControl('', [Validators.required]),
+      PATRONO_RESPONSAVEL_CPF_CNPJ: new FormControl('',)
     });
   }
 
@@ -34,6 +36,7 @@ export class DialogAddPatronoResponsavelComponent implements OnInit {
         .subscribe({
           next: (response) => {
             this.dialogRef.close(true);
+            console.log(response)
             this.createPatronoResponsavelForm.reset();
           },
           error: (response) => {
