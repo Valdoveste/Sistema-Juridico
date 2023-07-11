@@ -40,7 +40,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatRadioModule} from '@angular/material/radio'; 
+import { MatRadioModule } from '@angular/material/radio';
 
 import { DialogEditAmbitoComponent } from './components/management/components/m-ambito/dialog-edit-ambito/dialog-edit-ambito.component';
 import { DialogDeleteAmbitoComponent } from './components/management/components/m-ambito/dialog-delete-ambito/dialog-delete-ambito.component';
@@ -65,6 +65,8 @@ import { DialogEditAreaDoDireitoComponent } from './components/management/compon
 import { DialogAddTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/dialog-add-tipo-de-acao/dialog-add-tipo-de-acao.component';
 import { DialogDeleteTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/dialog-delete-tipo-de-acao/dialog-delete-tipo-de-acao.component';
 import { DialogEditTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/dialog-edit-tipo-de-acao/dialog-edit-tipo-de-acao.component';
+import { ProcessCreateLegalPersonComponent } from './components/processComponents/process-create/process-create-legal-person/process-create-legal-person.component';
+import { ProcessCreateFisicalPersonComponent } from './components/processComponents/process-create/process-create-fisical-person/process-create-fisical-person.component';
 
 @NgModule({
   declarations: [
@@ -117,8 +119,10 @@ import { DialogEditTipoDeAcaoComponent } from './components/management/component
 
     DialogAddTipoDeAcaoComponent,
     DialogDeleteTipoDeAcaoComponent,
-    DialogEditTipoDeAcaoComponent
+    DialogEditTipoDeAcaoComponent,
 
+    ProcessCreateLegalPersonComponent,
+    ProcessCreateFisicalPersonComponent
   ],
 
   imports: [
