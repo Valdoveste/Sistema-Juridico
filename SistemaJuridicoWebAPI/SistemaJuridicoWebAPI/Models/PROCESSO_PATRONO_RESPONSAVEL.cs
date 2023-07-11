@@ -7,6 +7,7 @@ namespace SistemaJuridicoWebAPI.Models
     {
         [Key]
         public Guid ID { get; set; }
-        public string PATRONO_RESPONSAVEL { get ; set; }    
+        public string PATRONO_RESPONSAVEL { get ; set; }
+        public string  PATRONO_RESPONSAVEL_CPF_CNPJ { get; set; }
     }
 }
