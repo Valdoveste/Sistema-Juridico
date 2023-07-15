@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Adicionar Andamento</h1>
+<form (ngSubmit)="createAndamento()" #formDir="ngForm" style="height: 549px" [formGroup]="createAndamentoForm">
+    <div mat-dialog-content>
+        <mat-form-field class="mb-3" style="width: 40%">
+            <!-- <select name="" class="process-searchbar__list__item--input-select">
+                <option value="">Selecionar Fase</option>
+                <option *ngFor="let fase of fases" value="{{fase.FASE}}">{{fase.FASE}}</option>
+                Recebimento de Citação; Recebimento de Notificação; Protocolo da Inicial; Defesa; Recurso
+            </select> -->
+            <input name="TIPO_ANDAMENTO" formControlName="TIPO_ANDAMENTO" matInput required
+                [(ngModel)]="createAndamentoRequest.TIPO_ANDAMENTO">
+        </mat-form-field>
+
+        <textarea style="height: 400px;" class="w-100" rows="10" name="DESC_ANDAMENTO" formControlName="DESC_ANDAMENTO"
+            matInput required [(ngModel)]="createAndamentoRequest.DESC_ANDAMENTO"></textarea>
+
+        <div class="float-right">
+            <div mat-raised-action>
+                <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+                <button mat-button type="submit">Adicionar</button>
+            </div>
+        </div>
+    </div>
+</form>

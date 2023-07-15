@@ -1,0 +1,67 @@
+<div id="process-area">
+  <div class="process-area__body">
+    <div id="process-create">
+      <div class="management">
+        <div class="mb-3">
+          <h3>Andamento</h3>
+
+          <button type="submit" class="btn-default float-right" (click)="openDialogAdd('250ms', '100ms')">
+            Criar Andamento
+          </button>
+        </div>
+        <table class="table table-borderless">
+          <thead>
+            <tr style="border-top: none;">
+              <th scope="col">Tipo de andamento</th>
+              <th scope="col">Data/Hora</th>
+              <th scope="col">Aberto por</th>
+              <!-- <th scope="col"></th> -->
+              <!-- <th scope="col"></th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let andamento of andamentos">
+              <td>
+                {{ andamento.TIPO_ANDAMENTO }}
+              </td>
+
+              <td>
+                {{
+                andamento.DATA_ANDAMENTO
+                .replaceAll("PM","")
+                .replaceAll("AM","")
+                .slice(0, (andamento.DATA_ANDAMENTO.length - 1) - 5)
+                }}
+              </td>
+
+              <td> {{andamento.CRIADOR_ANDAMENTO }} </td>
+
+              <!-- <td style="width: 40px;" title="Editar" (click)="openDialogEdit('250ms', '100ms', $event, andamento.ID)">
+                <svg width="20px" height="20px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                  <g id="out" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                    <path
+                      d="M2.25,12.9378906 L2.25,15.75 L5.06210943,15.75 L13.3559575,7.45615192 L10.5438481,4.64404249 L2.25,12.9378906 L2.25,12.9378906 L2.25,12.9378906 Z M15.5306555,5.28145396 C15.8231148,4.98899458 15.8231148,4.5165602 15.5306555,4.22410082 L13.7758992,2.46934454 C13.4834398,2.17688515 13.0110054,2.17688515 12.718546,2.46934454 L11.3462366,3.84165394 L14.1583461,6.65376337 L15.5306555,5.28145396 L15.5306555,5.28145396 L15.5306555,5.28145396 Z"
+                      id="path" fill="#000000" sketch:type="MSShapeGroup">
+
+                    </path>
+                  </g>
+                </svg>
+              </td> -->
+              <!-- <td style="width: 40px;" title="Visualizar Condições"
+                (click)="openDialogView('250ms', '100ms', $event, andamento.ID)">
+                <svg width="20px" height="20px" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round"
+                  stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m11.998 5c-4.078 0-7.742 3.093-9.853 6.483-.096.159-.145.338-.145.517s.048.358.144.517c2.112 3.39 5.776 6.483 9.854 6.483 4.143 0 7.796-3.09 
+                  9.864-6.493.092-.156.138-.332.138-.507s-.046-.351-.138-.507c-2.068-3.403-5.721-6.493-9.864-6.493zm.002 3c2.208 0 4 1.792 4 4s-1.792 4-4 4-4-1.792-4-4 
+                  1.792-4 4-4zm0 1.5c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5-2.5-1.12-2.5-2.5 1.12-2.5 2.5-2.5z"
+                    fill-rule="nonzero" />
+                </svg>
+              </td> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

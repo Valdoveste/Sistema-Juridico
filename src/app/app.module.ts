@@ -68,7 +68,7 @@ import { DialogEditTipoDeAcaoComponent } from './components/management/component
 import { ProcessCreateLegalPersonComponent } from './components/processComponents/process-create/process-create-legal-person/process-create-legal-person.component';
 import { ProcessCreateFisicalPersonComponent } from './components/processComponents/process-create/process-create-fisical-person/process-create-fisical-person.component';
 
-import { DialogAddAndamentoComponent } from './components/processComponents/process-area/process-area-andamento/dialog-add-movement/dialog-add-andamento.component';
+import { DialogAddAndamentoComponent } from './components/processComponents/process-area/process-area-andamento/dialog-add-andamento/dialog-add-andamento.component';
 
 import { DialogAddAcordoComponent } from './components/processComponents/process-area/process-area-acordo/dialog-add-acordo/dialog-add-acordo.component';
 import { DialogEditAcordoComponent } from './components/processComponents/process-area/process-area-acordo/dialog-edit-acordo/dialog-edit-acordo.component';
