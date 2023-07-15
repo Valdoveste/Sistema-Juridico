@@ -3,6 +3,8 @@ import { ProcessoAndamento } from '../../../../../models/PROCESSO_ANDAMENTO.mode
 import { AndamentoService } from 'src/app/services/andamento.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { TipoDeAndamentoService } from 'src/app/services/tipo-de-andamento.service';
+import { ProcessoTipoDeAndamento } from 'src/app/models/PROCESSO_TIPO_DE_ANDAMENTO.model';
 
 @Component({
   selector: 'app-dialog-add-andamento',
@@ -13,14 +15,17 @@ export class DialogAddAndamentoComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public addData: any,
     private andamentoService: AndamentoService,
+    private tipoDeAndamentoService: TipoDeAndamentoService,
     public dialogRef: MatDialogRef<DialogAddAndamentoComponent>,
   ) { }
+
+  tiposAndamentos: ProcessoTipoDeAndamento[] = [];
 
   createAndamentoForm!: FormGroup;
 
   createAndamentoRequest: ProcessoAndamento = {
     ID: '',
-    TIPO_ANDAMENTO: '',
+    TIPO_DE_ANDAMENTO: '',
     DATA_ANDAMENTO: '',
     ID_PROCESSO: '',
     CRIADOR_ANDAMENTO: '',
@@ -29,9 +34,20 @@ export class DialogAddAndamentoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.tipoDeAndamentoService.getAllTipoDeAndamento()
+      .subscribe({
+        next: (response) => {
+          this.tiposAndamentos = response;
+        },
+        error: (response) => {
+          console.log(response)
+        }
+      })
+
     this.createAndamentoForm = new FormGroup({
-      VALOR_ANDAMENTO: new FormControl('', [Validators.required]),
-      CONDICOES_TENTATIVA_DE_ANDAMENTO: new FormControl('', [Validators.required])
+      DESC_ANDAMENTO: new FormControl('', [Validators.required]),
+      TIPO_DE_ANDAMENTO: new FormControl('', [Validators.required])
     });
   }
 

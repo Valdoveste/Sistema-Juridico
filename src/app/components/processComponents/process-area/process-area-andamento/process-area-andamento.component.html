@@ -15,14 +15,14 @@
               <th scope="col">Tipo de andamento</th>
               <th scope="col">Data/Hora</th>
               <th scope="col">Aberto por</th>
-              <!-- <th scope="col"></th> -->
+              <th scope="col"></th>
               <!-- <th scope="col"></th> -->
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let andamento of andamentos">
               <td>
-                {{ andamento.TIPO_ANDAMENTO }}
+                {{ andamento.TIPO_DE_ANDAMENTO }}
               </td>
 
               <td>
@@ -48,7 +48,7 @@
                   </g>
                 </svg>
               </td> -->
-              <!-- <td style="width: 40px;" title="Visualizar Condições"
+              <td style="width: 40px;" title="Visualizar Condições"
                 (click)="openDialogView('250ms', '100ms', $event, andamento.ID)">
                 <svg width="20px" height="20px" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round"
                   stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +57,7 @@
                   1.792-4 4-4zm0 1.5c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5-2.5-1.12-2.5-2.5 1.12-2.5 2.5-2.5z"
                     fill-rule="nonzero" />
                 </svg>
-              </td> -->
+              </td>
             </tr>
           </tbody>
         </table>
