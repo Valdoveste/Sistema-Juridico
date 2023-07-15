@@ -73,6 +73,10 @@ import { DialogAddAndamentoComponent } from './components/processComponents/proc
 import { DialogAddAcordoComponent } from './components/processComponents/process-area/process-area-acordo/dialog-add-acordo/dialog-add-acordo.component';
 import { DialogEditAcordoComponent } from './components/processComponents/process-area/process-area-acordo/dialog-edit-acordo/dialog-edit-acordo.component';
 import { DialogViewAcordoComponent } from './components/processComponents/process-area/process-area-acordo/dialog-view-acordo/dialog-view-acordo.component';
+import { MTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/m-tipo-de-andamento.component';
+import { DialogDeleteTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/dialog-delete-tipo-de-andamento/dialog-delete-tipo-de-andamento.component';
+import { DialogEditTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/dialog-edit-tipo-de-andamento/dialog-edit-tipo-de-andamento.component';
+import { DialogAddTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/dialog-add-tipo-de-andamento/dialog-add-tipo-de-andamento.component';
 
 @NgModule({
   declarations: [
@@ -134,7 +138,11 @@ import { DialogViewAcordoComponent } from './components/processComponents/proces
 
     DialogAddAcordoComponent,
     DialogEditAcordoComponent,
-    DialogViewAcordoComponent
+    DialogViewAcordoComponent,
+    MTipoDeAndamentoComponent,
+    DialogDeleteTipoDeAndamentoComponent,
+    DialogEditTipoDeAndamentoComponent,
+    DialogAddTipoDeAndamentoComponent
   ],
 
   imports: [
