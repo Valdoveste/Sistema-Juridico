@@ -25,7 +25,6 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok(await _sistemaJuridicoDbContext.PROCESSO_AMBITO.ToListAsync());
     }
 
-
     [HttpPost("add-ambito")]
     public async Task<IActionResult> AddAmbito([FromBody] PROCESSO_AMBITO ambitoRequest)
     {
@@ -68,6 +67,7 @@ namespace SistemaJuridicoWebAPI.Controllers
 
       return Ok(ambito);
     }
+
 
 
     [HttpGet("area-do-direito")]
@@ -120,11 +120,15 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok(areaDoDireito);
     }
 
+
+
     [HttpGet("fase")]
     public async Task<IActionResult> GetAllFase()
     {
       return Ok(await _sistemaJuridicoDbContext.PROCESSO_FASE.ToListAsync());
     }
+
+
 
     [HttpGet("patrono-responsavel")]
     public async Task<IActionResult> GetAllPatronoResponsavel()
@@ -174,6 +178,7 @@ namespace SistemaJuridicoWebAPI.Controllers
 
       return Ok(patronoresponsavel);
     }
+
 
 
     [HttpGet("foro-tribunal-orgao")]
@@ -226,6 +231,7 @@ namespace SistemaJuridicoWebAPI.Controllers
     }
 
 
+
     [HttpGet("motivo-do-encerramento")]
     public async Task<IActionResult> GetAllMotivoDoEncerramento()
     {
@@ -233,12 +239,15 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok(await _sistemaJuridicoDbContext.PROCESSO_MOTIVO_DO_ENCERRAMENTO.ToListAsync());
     }
 
+
+
     [HttpGet("status")]
     public async Task<IActionResult> GetAllStatus()
     {
 
       return Ok(await _sistemaJuridicoDbContext.PROCESSO_STATUS.ToListAsync());
     }
+
 
 
     [HttpGet("tipo-de-acao")]
@@ -291,6 +300,7 @@ namespace SistemaJuridicoWebAPI.Controllers
     }
 
 
+
     [HttpGet("vara")]
     public async Task<IActionResult> GetAllVara()
     {
@@ -341,6 +351,7 @@ namespace SistemaJuridicoWebAPI.Controllers
     }
 
 
+
     [HttpGet("acordo")]
     public async Task<IActionResult> GetAllAcordo()
     {
@@ -381,6 +392,8 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok();
     }
 
+
+
     [HttpGet("processo")]
     public async Task<IActionResult> GetAllProcess()
     {
@@ -412,5 +425,48 @@ namespace SistemaJuridicoWebAPI.Controllers
 
       return Ok(processoRequest);
     }
+
+
+
+    [HttpGet("andamento")]
+    public async Task<IActionResult> GetAllAndamento()
+    {
+      return Ok(await _sistemaJuridicoDbContext.PROCESSO_ANDAMENTO.ToListAsync());
+    }
+
+    [HttpGet("processo/all/andamento/{id}")]
+    public async Task<IActionResult> GetAllProcessoAndamento([FromRoute] string id)
+    {
+      var processoAndamento = await _sistemaJuridicoDbContext.PROCESSO_ANDAMENTO
+          .Where(x => x.ID_PROCESSO.Equals(id))
+          .ToListAsync();
+
+      return Ok(processoAndamento);
+    }
+
+    [HttpGet("processo/andamento/{id}")]
+    public async Task<IActionResult> GetProcessoAndamento([FromRoute] Guid id)
+    {
+      var andamentoRequest = await _sistemaJuridicoDbContext.PROCESSO_ANDAMENTO.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      return Ok(andamentoRequest);
+    }
+
+    [HttpPost("add-andamento")]
+    public async Task<IActionResult> AddAndamento([FromBody] PROCESSO_ANDAMENTO andamentoRequest)
+    {
+      TimeZoneInfo brazilTimeZone = TimeZoneInfo.FindSystemTimeZoneById("America/Sao_Paulo");
+
+      andamentoRequest.ID = Guid.NewGuid();
+
+      andamentoRequest.DATA_ANDAMENTO = TimeZoneInfo.ConvertTime(DateTime.Now, brazilTimeZone).ToString();
+
+      await _sistemaJuridicoDbContext.PROCESSO_ANDAMENTO.AddAsync(andamentoRequest);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok();
+    }
+
   }
 }
