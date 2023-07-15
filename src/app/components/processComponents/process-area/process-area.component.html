@@ -9,7 +9,7 @@
             Contraria</button>
           <button class="process-create-header--rbutton" type="button" (click)="swapTabs('deal')">Acordos</button>
           <button class="process-create-header--rbutton" type="button"
-            (click)="swapTabs('movement')">Andamentos</button>
+            (click)="swapTabs('andamento')">Andamentos</button>
           <button class="process-create-header--rbutton" type="button" (click)="swapTabs('previous-patrons')">Patronos
             Anteriores</button>
         </div>
@@ -24,8 +24,8 @@
             <ng-template [ngSwitchCase]="'deal'">
               <app-process-area-acordo></app-process-area-acordo>
             </ng-template>
-            <ng-template [ngSwitchCase]="'movement'">
-              <app-process-area-movement></app-process-area-movement>
+            <ng-template [ngSwitchCase]="'andamento'">
+              <app-process-area-andamento></app-process-area-andamento>
             </ng-template>
             <ng-template [ngSwitchCase]="'previous-patrons'">
               <app-process-area-previous-patrons></app-process-area-previous-patrons>
