@@ -10,6 +10,7 @@ import { MPatronoResponsavelComponent } from './components/management/components
 import { MAreaDoDireitoComponent } from './components/management/components/m-area-do-direito/m-area-do-direito.component';
 import { MTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/m-tipo-de-acao.component';
 import { MForoTribunalOrgaoComponent } from './components/management/components/m-foro-tribunal-orgao/m-foro-tribunal-orgao.component';
+import { MTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/m-tipo-de-andamento.component';
 
 const routes: Routes = [
   {
@@ -58,6 +59,10 @@ const routes: Routes = [
   {
     path: 'gestao/foro-tribunal-orgao',
     component: MForoTribunalOrgaoComponent
+  },
+  {
+    path: 'gestao/tipo-de-andamento',
+    component: MTipoDeAndamentoComponent
   }
 ];
 

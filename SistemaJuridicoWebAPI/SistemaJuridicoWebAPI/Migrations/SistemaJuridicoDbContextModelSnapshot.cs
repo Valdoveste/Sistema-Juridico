@@ -285,6 +285,29 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.ToTable("PROCESSO");
                 });
 
+            modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_ACORDO", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CONDICOES_TENTATIVA_DE_ACORDO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DATA_ACORDO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ID_PROCESSO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VALOR_ACORDO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("PROCESSO_ACORDO");
+                });
+
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_AMBITO", b =>
                 {
                     b.Property<Guid>("ID")
@@ -297,23 +320,6 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("PROCESSO_AMBITO");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = new Guid("67311d03-0444-497d-b7b0-bd7bdabf6544"),
-                            AMBITO = "Administradivo"
-                        },
-                        new
-                        {
-                            ID = new Guid("d118ed15-beb0-43f4-8a60-b3b32f8bd3ef"),
-                            AMBITO = "Judicial"
-                        },
-                        new
-                        {
-                            ID = new Guid("06228d1f-653c-4e2b-8959-4fe4f8633ead"),
-                            AMBITO = "Pré Judicial"
-                        });
                 });
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_AREA_DO_DIREITO", b =>
@@ -328,20 +334,6 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("PROCESSO_AREA_DO_DIREITO");
-                });
-
-            modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_CONDICOES_TENTATIVA_ACORDO", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CONDICOES_TENTATIVA_ACORDO")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("PROCESSO_CONDICOES_TENTATIVA_ACORDO");
                 });
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_FASE", b =>
@@ -395,6 +387,9 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.Property<string>("PATRONO_RESPONSAVEL")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PATRONO_RESPONSAVEL_CPF_CNPJ")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ID");
 
                     b.ToTable("PROCESSO_PATRONO_RESPONSAVEL");
@@ -412,6 +407,23 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("PROCESSO_STATUS");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = new Guid("232727c4-3af7-411c-8d72-643305fb2d57"),
+                            STATUS = "Ativo"
+                        },
+                        new
+                        {
+                            ID = new Guid("818c9240-d6f9-416f-946f-106ee0384fc0"),
+                            STATUS = "Baixa Provisória"
+                        },
+                        new
+                        {
+                            ID = new Guid("28345ac7-9514-4416-b195-78e5645bb95e"),
+                            STATUS = "Encerrado"
+                        });
                 });
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_TIPO_DE_ACAO", b =>

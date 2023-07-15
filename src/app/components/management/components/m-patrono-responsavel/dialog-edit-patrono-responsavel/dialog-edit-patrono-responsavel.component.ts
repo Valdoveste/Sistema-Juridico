@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { PatronoResponsavelService } from 'src/app/services/patrono-responsavel.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ProcessoPatronoResponsavel } from 'src/app/models/PROCESSO_PATRONORESPONSAVEL.model';
+import { ProcessoPatronoResponsavel } from 'src/app/models/PROCESSO_PATRONO_RESPONSAVEL.model';
 
 @Component({
   selector: 'app-dialog-edit-patrono-responsavel',
@@ -20,7 +20,8 @@ export class DialogEditPatronoResponsavelComponent implements OnInit {
 
   updatePatronoResponsavelRequest: ProcessoPatronoResponsavel = {
     ID: '',
-    PATRONO_RESPONSAVEL: ''
+    PATRONO_RESPONSAVEL: '',
+    PATRONO_RESPONSAVEL_CPF_CNPJ: ''
   }
 
   ngOnInit(): void {

@@ -76,6 +76,14 @@ tbody tr {
   }
 }
 
+.mat-mdc-dialog-surface {
+  overflow: hidden !important;
+}
+
+.mdc-dialog__surface {
+  overflow: hidden !important;
+}
+
 .input {
   height: 35px;
   padding: 0 15px;

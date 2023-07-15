@@ -1,0 +1,21 @@
+<h1 style="padding: 0 24px;" mat-dialog-title>Adicionar Andamento</h1>
+<form (ngSubmit)="createAndamento()" #formDir="ngForm" style="height: 549px" [formGroup]="createAndamentoForm">
+    <div mat-dialog-content>
+        <select class="process-searchbar__list__item--input-select mb-2" name="TIPO_DE_ANDAMENTO"
+            formControlName="TIPO_DE_ANDAMENTO" [(ngModel)]="createAndamentoRequest.TIPO_DE_ANDAMENTO" matInput>
+            <option value="">Selecionar Tipo De Andamento</option>
+            <option *ngFor="let andamento of tiposAndamentos" value="{{andamento.TIPO_DE_ANDAMENTO}}">
+                {{andamento.TIPO_DE_ANDAMENTO}}</option>
+        </select>
+
+        <textarea style="height: 400px;" class="w-100" rows="10" name="DESC_ANDAMENTO" formControlName="DESC_ANDAMENTO"
+            matInput required [(ngModel)]="createAndamentoRequest.DESC_ANDAMENTO"></textarea>
+
+        <div class="float-right">
+            <div mat-raised-action>
+                <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+                <button mat-button type="submit">Adicionar</button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -19,8 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProcessAreaDetailsComponent } from './components/processComponents/process-area/process-area-details/process-area-details.component';
 import { ProcessAreaOpposingpartyComponent } from './components/processComponents/process-area/process-area-opposingparty/process-area-opposingparty.component';
-import { ProcessAreaDealComponent } from './components/processComponents/process-area/process-area-deal/process-area-deal.component';
-import { ProcessAreaMovementComponent } from './components/processComponents/process-area/process-area-movement/process-area-movement.component';
+import { ProcessAreaAcordoComponent } from './components/processComponents/process-area/process-area-acordo/process-area-acordo.component';
+import { ProcessAreaAndamentoComponent } from './components/processComponents/process-area/process-area-andamento/process-area-andamento.component';
 import { ProcessAreaPreviousPatronsComponent } from './components/processComponents/process-area/process-area-previous-patrons/process-area-previous-patrons.component';
 
 // Managements components
@@ -40,7 +40,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatRadioModule} from '@angular/material/radio'; 
+import { MatRadioModule } from '@angular/material/radio';
 
 import { DialogEditAmbitoComponent } from './components/management/components/m-ambito/dialog-edit-ambito/dialog-edit-ambito.component';
 import { DialogDeleteAmbitoComponent } from './components/management/components/m-ambito/dialog-delete-ambito/dialog-delete-ambito.component';
@@ -65,6 +65,19 @@ import { DialogEditAreaDoDireitoComponent } from './components/management/compon
 import { DialogAddTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/dialog-add-tipo-de-acao/dialog-add-tipo-de-acao.component';
 import { DialogDeleteTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/dialog-delete-tipo-de-acao/dialog-delete-tipo-de-acao.component';
 import { DialogEditTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/dialog-edit-tipo-de-acao/dialog-edit-tipo-de-acao.component';
+import { ProcessCreateLegalPersonComponent } from './components/processComponents/process-create/process-create-legal-person/process-create-legal-person.component';
+import { ProcessCreateFisicalPersonComponent } from './components/processComponents/process-create/process-create-fisical-person/process-create-fisical-person.component';
+
+import { DialogAddAndamentoComponent } from './components/processComponents/process-area/process-area-andamento/dialog-add-andamento/dialog-add-andamento.component';
+
+import { DialogAddAcordoComponent } from './components/processComponents/process-area/process-area-acordo/dialog-add-acordo/dialog-add-acordo.component';
+import { DialogEditAcordoComponent } from './components/processComponents/process-area/process-area-acordo/dialog-edit-acordo/dialog-edit-acordo.component';
+import { DialogViewAcordoComponent } from './components/processComponents/process-area/process-area-acordo/dialog-view-acordo/dialog-view-acordo.component';
+import { MTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/m-tipo-de-andamento.component';
+import { DialogDeleteTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/dialog-delete-tipo-de-andamento/dialog-delete-tipo-de-andamento.component';
+import { DialogEditTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/dialog-edit-tipo-de-andamento/dialog-edit-tipo-de-andamento.component';
+import { DialogAddTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/dialog-add-tipo-de-andamento/dialog-add-tipo-de-andamento.component';
+import { DialogViewAndamentoComponent } from './components/processComponents/process-area/process-area-andamento/dialog-view-andamento/dialog-view-andamento.component';
 
 @NgModule({
   declarations: [
@@ -84,8 +97,8 @@ import { DialogEditTipoDeAcaoComponent } from './components/management/component
     ProcessCreateAgreementComponent,
     ProcessAreaDetailsComponent,
     ProcessAreaOpposingpartyComponent,
-    ProcessAreaDealComponent,
-    ProcessAreaMovementComponent,
+    ProcessAreaAcordoComponent,
+    ProcessAreaAndamentoComponent,
     ProcessAreaPreviousPatronsComponent,
 
     MAmbitoComponent,
@@ -117,8 +130,21 @@ import { DialogEditTipoDeAcaoComponent } from './components/management/component
 
     DialogAddTipoDeAcaoComponent,
     DialogDeleteTipoDeAcaoComponent,
-    DialogEditTipoDeAcaoComponent
+    DialogEditTipoDeAcaoComponent,
 
+    ProcessCreateLegalPersonComponent,
+    ProcessCreateFisicalPersonComponent,
+
+    DialogAddAndamentoComponent,
+
+    DialogAddAcordoComponent,
+    DialogEditAcordoComponent,
+    DialogViewAcordoComponent,
+    MTipoDeAndamentoComponent,
+    DialogDeleteTipoDeAndamentoComponent,
+    DialogEditTipoDeAndamentoComponent,
+    DialogAddTipoDeAndamentoComponent,
+    DialogViewAndamentoComponent
   ],
 
   imports: [

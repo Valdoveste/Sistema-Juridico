@@ -1,9 +1,15 @@
-<h1 mat-dialog-title>Criar PatronoResponsavel</h1>
+<h1 mat-dialog-title>Criar Patrono Responsavel</h1>
 <form (ngSubmit)="createPatronoResponsavel()" #formDir="ngForm" [formGroup]="createPatronoResponsavelForm">
     <div mat-dialog-content>
+        <mat-form-field class="mb-2">
+            <input name="PATRONO_RESPONSAVEL" placeholder="Nome" formControlName="PATRONO_RESPONSAVEL" matInput required
+                [(ngModel)]="createPatronoResponsavelRequest.PATRONO_RESPONSAVEL">
+        </mat-form-field>
+
         <mat-form-field>
-            <input name="PATRONORESPONSAVEL" formControlName="PATRONORESPONSAVEL" matInput required [(ngModel)]="createPatronoResponsavelRequest.PATRONO_RESPONSAVEL">
-        </mat-form-field>   
+            <input name="PATRONO_RESPONSAVEL_CPF_CNPJ" placeholder="CPF/CNPJ" formControlName="PATRONO_RESPONSAVEL_CPF_CNPJ" matInput
+                [(ngModel)]="createPatronoResponsavelRequest.PATRONO_RESPONSAVEL_CPF_CNPJ">
+        </mat-form-field>
 
         <div mat-raised-action class="float-right">
             <button mat-button mat-dialog-close class="mr-2">Fechar</button>
@@ -11,3 +17,14 @@
         </div>
     </div>
 </form>
+
+        <!-- 
+        Use Comunicações e Telecomunicações LTDA. (29.568.281/0001-65)
+        Use Telecomunicações LTDA. (09.540.627/0001-00)
+        Use Service LTDA. (39.512.524/0001-05)
+        Tascom Telecomunicações LTDA. (14.691.508/0001-98)
+        TGN - BR Internet LTDA. (29.339.296/0001-51)
+        L & A Patrimonial LTDA. (28.122.328/0001-08)
+        André Jorge Lima Dantas Costa
+        Leila Cláudia Farias de Jesus Costa 
+        -->

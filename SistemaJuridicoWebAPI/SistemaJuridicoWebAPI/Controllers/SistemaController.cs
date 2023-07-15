@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SistemaJuridicoWebAPI.Data;
 using SistemaJuridicoWebAPI.Models;
-using System.Reflection.Metadata.Ecma335;
+using System;
 
 namespace SistemaJuridicoWebAPI.Controllers
 {
@@ -24,7 +24,6 @@ namespace SistemaJuridicoWebAPI.Controllers
 
       return Ok(await _sistemaJuridicoDbContext.PROCESSO_AMBITO.ToListAsync());
     }
-
 
     [HttpPost("add-ambito")]
     public async Task<IActionResult> AddAmbito([FromBody] PROCESSO_AMBITO ambitoRequest)
@@ -68,6 +67,8 @@ namespace SistemaJuridicoWebAPI.Controllers
 
       return Ok(ambito);
     }
+
+
 
     [HttpGet("area-do-direito")]
     public async Task<IActionResult> GetAllAreaDoDireito()
@@ -120,62 +121,65 @@ namespace SistemaJuridicoWebAPI.Controllers
     }
 
 
-    [HttpGet("condicoes-tentativa-acordo")]
-    public async Task<IActionResult> GetAllCondicoesTentivaAcordo()
-    {
-
-      return Ok(await _sistemaJuridicoDbContext.PROCESSO_CONDICOES_TENTATIVA_ACORDO.ToListAsync());
-    }
-
 
     [HttpGet("fase")]
     public async Task<IActionResult> GetAllFase()
     {
-
       return Ok(await _sistemaJuridicoDbContext.PROCESSO_FASE.ToListAsync());
     }
 
-    [HttpPost("add-fase")]
-    public async Task<IActionResult> AddFase([FromBody] PROCESSO_FASE faseRequest)
-    {
-      faseRequest.ID = Guid.NewGuid();
 
-      await _sistemaJuridicoDbContext.PROCESSO_FASE.AddAsync(faseRequest);
+
+    [HttpGet("patrono-responsavel")]
+    public async Task<IActionResult> GetAllPatronoResponsavel()
+    {
+
+      return Ok(await _sistemaJuridicoDbContext.PROCESSO_PATRONO_RESPONSAVEL.ToListAsync());
+    }
+
+    [HttpPost("add-patrono-responsavel")]
+    public async Task<IActionResult> AddPatronoResponsavel([FromBody] PROCESSO_PATRONO_RESPONSAVEL patronoresponsavelRequest)
+    {
+      patronoresponsavelRequest.ID = Guid.NewGuid();
+
+      await _sistemaJuridicoDbContext.PROCESSO_PATRONO_RESPONSAVEL.AddAsync(patronoresponsavelRequest);
 
       await _sistemaJuridicoDbContext.SaveChangesAsync();
 
-      return Ok(faseRequest);
+      return Ok(patronoresponsavelRequest);
     }
 
-    [HttpPut("update-fase/{id}")]
-    public async Task<IActionResult> UpdateFase([FromRoute] Guid id, PROCESSO_FASE updateFaseRequest)
+    [HttpPut("update-patrono-responsavel/{id}")]
+    public async Task<IActionResult> UpdatePatronoResponsavel([FromRoute] Guid id, PROCESSO_PATRONO_RESPONSAVEL updateFaseRequest)
     {
-      var fase = await _sistemaJuridicoDbContext.PROCESSO_FASE.FirstOrDefaultAsync(x => x.ID.Equals(id));
+      var patronoresponsavel = await _sistemaJuridicoDbContext.PROCESSO_PATRONO_RESPONSAVEL.FirstOrDefaultAsync(x => x.ID.Equals(id));
 
-      if (fase == null)
+      if (patronoresponsavel == null)
         return NotFound();
 
-      fase.FASE = updateFaseRequest.FASE;
+      patronoresponsavel.PATRONO_RESPONSAVEL = updateFaseRequest.PATRONO_RESPONSAVEL;
 
       await _sistemaJuridicoDbContext.SaveChangesAsync();
 
-      return Ok(fase);
+      return Ok(patronoresponsavel);
     }
 
-    [HttpDelete("delete-fase/{id}")]
-    public async Task<IActionResult> DeleteFase([FromRoute] Guid id)
+    [HttpDelete("delete-patrono-responsavel/{id}")]
+    public async Task<IActionResult> DeletePatronoResponsavel([FromRoute] Guid id)
     {
-      var fase = await _sistemaJuridicoDbContext.PROCESSO_FASE.FirstOrDefaultAsync(x => x.ID.Equals(id));
+      var patronoresponsavel = await _sistemaJuridicoDbContext.PROCESSO_PATRONO_RESPONSAVEL.FirstOrDefaultAsync(x => x.ID.Equals(id));
 
-      if (fase == null)
+      if (patronoresponsavel == null)
         return NotFound();
 
-      _sistemaJuridicoDbContext.PROCESSO_FASE.Remove(fase);
+      _sistemaJuridicoDbContext.PROCESSO_PATRONO_RESPONSAVEL.Remove(patronoresponsavel);
 
       await _sistemaJuridicoDbContext.SaveChangesAsync();
 
-      return Ok(fase);
+      return Ok(patronoresponsavel);
     }
+
+
 
     [HttpGet("foro-tribunal-orgao")]
     public async Task<IActionResult> GetAllForoTribunalOrgao()
@@ -227,6 +231,7 @@ namespace SistemaJuridicoWebAPI.Controllers
     }
 
 
+
     [HttpGet("motivo-do-encerramento")]
     public async Task<IActionResult> GetAllMotivoDoEncerramento()
     {
@@ -234,12 +239,7 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok(await _sistemaJuridicoDbContext.PROCESSO_MOTIVO_DO_ENCERRAMENTO.ToListAsync());
     }
 
-    [HttpGet("patrono-responsavel")]
-    public async Task<IActionResult> GetAllPatronoResponsavel()
-    {
 
-      return Ok(await _sistemaJuridicoDbContext.PROCESSO_PATRONO_RESPONSAVEL.ToListAsync());
-    }
 
     [HttpGet("status")]
     public async Task<IActionResult> GetAllStatus()
@@ -247,6 +247,7 @@ namespace SistemaJuridicoWebAPI.Controllers
 
       return Ok(await _sistemaJuridicoDbContext.PROCESSO_STATUS.ToListAsync());
     }
+
 
 
     [HttpGet("tipo-de-acao")]
@@ -300,6 +301,58 @@ namespace SistemaJuridicoWebAPI.Controllers
 
 
 
+
+    [HttpGet("tipo-de-andamento")]
+    public async Task<IActionResult> GetAllTipoDeAndamento()
+    {
+      return Ok(await _sistemaJuridicoDbContext.PROCESSO_TIPO_DE_ANDAMENTO.ToListAsync());
+    }
+
+    [HttpPost("add-tipo-de-andamento")]
+    public async Task<IActionResult> AddTipoDeAndamento([FromBody] PROCESSO_TIPO_DE_ANDAMENTO tipoDeAndamentoRequest)
+    {
+      tipoDeAndamentoRequest.ID = Guid.NewGuid();
+
+      await _sistemaJuridicoDbContext.PROCESSO_TIPO_DE_ANDAMENTO.AddAsync(tipoDeAndamentoRequest);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(tipoDeAndamentoRequest);
+    }
+
+    [HttpPut("update-tipo-de-andamento/{id}")]
+    public async Task<IActionResult> UpdateTipoDeAndamento([FromRoute] Guid id, PROCESSO_TIPO_DE_ANDAMENTO updateTipoDeAndamentoRequest)
+    {
+      var tipoDeAndamento = await _sistemaJuridicoDbContext.PROCESSO_TIPO_DE_ANDAMENTO.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      if (tipoDeAndamento == null)
+        return NotFound();
+
+      tipoDeAndamento.TIPO_DE_ANDAMENTO = updateTipoDeAndamentoRequest.TIPO_DE_ANDAMENTO;
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(tipoDeAndamento);
+    }
+
+    [HttpDelete("delete-tipo-de-andamento/{id}")]
+    public async Task<IActionResult> DeleteTipoDeAndamento([FromRoute] Guid id)
+    {
+      var tipoDeAndamento = await _sistemaJuridicoDbContext.PROCESSO_TIPO_DE_ANDAMENTO.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      if (tipoDeAndamento == null)
+        return NotFound();
+
+      _sistemaJuridicoDbContext.PROCESSO_TIPO_DE_ANDAMENTO.Remove(tipoDeAndamento);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(tipoDeAndamento);
+    }
+
+
+
+
     [HttpGet("vara")]
     public async Task<IActionResult> GetAllVara()
     {
@@ -350,13 +403,55 @@ namespace SistemaJuridicoWebAPI.Controllers
     }
 
 
+
+    [HttpGet("acordo")]
+    public async Task<IActionResult> GetAllAcordo()
+    {
+      return Ok(await _sistemaJuridicoDbContext.PROCESSO_ACORDO.ToListAsync());
+    }
+
+    [HttpGet("processo/all/acordo/{id}")]
+    public async Task<IActionResult> GetAllProcessoAcordo([FromRoute] string id)
+    {
+      var processoAcordo = await _sistemaJuridicoDbContext.PROCESSO_ACORDO
+          .Where(x => x.ID_PROCESSO.Equals(id))
+          .ToListAsync();
+
+      return Ok(processoAcordo);
+    }
+
+    [HttpGet("processo/acordo/{id}")]
+    public async Task<IActionResult> GetProcessoAcordo([FromRoute] Guid id)
+    {
+      var acordoRequest = await _sistemaJuridicoDbContext.PROCESSO_ACORDO.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      return Ok(acordoRequest);
+    }
+
+    [HttpPost("add-acordo")]
+    public async Task<IActionResult> AddAcordo([FromBody] PROCESSO_ACORDO acordoRequest)
+    {
+      TimeZoneInfo brazilTimeZone = TimeZoneInfo.FindSystemTimeZoneById("America/Sao_Paulo");
+
+      acordoRequest.ID = Guid.NewGuid();
+
+      acordoRequest.DATA_ACORDO = TimeZoneInfo.ConvertTime(DateTime.Now, brazilTimeZone).ToString();
+
+      await _sistemaJuridicoDbContext.PROCESSO_ACORDO.AddAsync(acordoRequest);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok();
+    }
+
+
+
     [HttpGet("processo")]
     public async Task<IActionResult> GetAllProcess()
     {
 
       return Ok(await _sistemaJuridicoDbContext.PROCESSO.ToListAsync());
     }
-
 
     [HttpGet("processo/{id}")]
     public async Task<IActionResult> GetProcess([FromRoute] Guid id)
@@ -382,5 +477,48 @@ namespace SistemaJuridicoWebAPI.Controllers
 
       return Ok(processoRequest);
     }
+
+
+
+    [HttpGet("andamento")]
+    public async Task<IActionResult> GetAllAndamento()
+    {
+      return Ok(await _sistemaJuridicoDbContext.PROCESSO_ANDAMENTO.ToListAsync());
+    }
+
+    [HttpGet("processo/all/andamento/{id}")]
+    public async Task<IActionResult> GetAllProcessoAndamento([FromRoute] string id)
+    {
+      var processoAndamento = await _sistemaJuridicoDbContext.PROCESSO_ANDAMENTO
+          .Where(x => x.ID_PROCESSO.Equals(id))
+          .ToListAsync();
+
+      return Ok(processoAndamento);
+    }
+
+    [HttpGet("processo/andamento/{id}")]
+    public async Task<IActionResult> GetProcessoAndamento([FromRoute] Guid id)
+    {
+      var andamentoRequest = await _sistemaJuridicoDbContext.PROCESSO_ANDAMENTO.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      return Ok(andamentoRequest);
+    }
+
+    [HttpPost("add-andamento")]
+    public async Task<IActionResult> AddAndamento([FromBody] PROCESSO_ANDAMENTO andamentoRequest)
+    {
+      TimeZoneInfo brazilTimeZone = TimeZoneInfo.FindSystemTimeZoneById("America/Sao_Paulo");
+
+      andamentoRequest.ID = Guid.NewGuid();
+
+      andamentoRequest.DATA_ANDAMENTO = TimeZoneInfo.ConvertTime(DateTime.Now, brazilTimeZone).ToString();
+
+      await _sistemaJuridicoDbContext.PROCESSO_ANDAMENTO.AddAsync(andamentoRequest);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok();
+    }
+
   }
 }
