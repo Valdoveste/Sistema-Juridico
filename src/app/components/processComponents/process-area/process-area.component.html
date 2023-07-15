@@ -15,14 +15,14 @@
         </div>
         <div class="process-create-body">
           <ng-container [ngSwitch]="componentName">
-            <ng-template [ngSwitchDefault]="'processdetails'">
+            <ng-template ngSwitchDefault="'processdetails'">
               <app-process-area-details></app-process-area-details>
             </ng-template>
             <ng-template [ngSwitchCase]="'opposingparty'">
               <app-process-area-opposingparty></app-process-area-opposingparty>
             </ng-template>
             <ng-template [ngSwitchCase]="'deal'">
-              <app-process-area-deal></app-process-area-deal>
+              <app-process-area-acordo></app-process-area-acordo>
             </ng-template>
             <ng-template [ngSwitchCase]="'movement'">
               <app-process-area-movement></app-process-area-movement>
