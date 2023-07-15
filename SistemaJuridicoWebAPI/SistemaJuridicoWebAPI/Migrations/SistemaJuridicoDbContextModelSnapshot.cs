@@ -285,6 +285,29 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.ToTable("PROCESSO");
                 });
 
+            modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_ACORDO", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CONDICOES_TENTATIVA_DE_ACORDO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DATA_ACORDO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ID_PROCESSO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VALOR_ACORDO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("PROCESSO_ACORDO");
+                });
+
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_AMBITO", b =>
                 {
                     b.Property<Guid>("ID")
@@ -311,20 +334,6 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("PROCESSO_AREA_DO_DIREITO");
-                });
-
-            modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_CONDICOES_TENTATIVA_ACORDO", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CONDICOES_TENTATIVA_ACORDO")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("PROCESSO_CONDICOES_TENTATIVA_ACORDO");
                 });
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_FASE", b =>
@@ -378,6 +387,9 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.Property<string>("PATRONO_RESPONSAVEL")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PATRONO_RESPONSAVEL_CPF_CNPJ")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ID");
 
                     b.ToTable("PROCESSO_PATRONO_RESPONSAVEL");
@@ -399,17 +411,17 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            ID = new Guid("a7e8ab7a-3153-4123-a727-fd6cfcfe525d"),
+                            ID = new Guid("232727c4-3af7-411c-8d72-643305fb2d57"),
                             STATUS = "Ativo"
                         },
                         new
                         {
-                            ID = new Guid("744fce50-1e66-4eb0-adfe-c383d498ae3d"),
+                            ID = new Guid("818c9240-d6f9-416f-946f-106ee0384fc0"),
                             STATUS = "Baixa Provisória"
                         },
                         new
                         {
-                            ID = new Guid("d793be38-50a7-4bf2-b7d5-9ec8f5c329da"),
+                            ID = new Guid("28345ac7-9514-4416-b195-78e5645bb95e"),
                             STATUS = "Encerrado"
                         });
                 });
