@@ -15,8 +15,8 @@ import { TipoDeAcaoService } from 'src/app/services/tipo-de-acao.service';
   templateUrl: './process-searchbar.component.html',
   styleUrls: ['./process-searchbar.component.scss']
 })
-export class ProcessSearchbarComponent implements OnInit {
 
+export class ProcessSearchbarComponent implements OnInit {
   status: ProcessoStatus[] = [];
   fases: ProcessoFase[] = [];
   areasDoDireito: ProcessoAreaDoDireito[] = [];

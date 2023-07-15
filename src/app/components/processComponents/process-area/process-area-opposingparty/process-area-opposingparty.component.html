@@ -94,19 +94,19 @@
       <li class="process-create-opposingparty__list__item">
         <div class="process-create-opposingparty__list__item--div">
           <p class="sm-text">Nome</p>
-          <input type="text" name="NOME" disabled="NOME" inlength="10"
+          <input type="text" name="NOME" disabled inlength="10"
             [(ngModel)]="processoDetalhes.PARTE_CONTRARIA_NOME" class="process-create-opposingparty--name">
 
           <div style="width: 60%;" class="process-create-opposingparty__list__item--row">
             <span>
               <p class="sm-text">CPF</p>
-              <input type="text" disabled="CPF" aceholder="000.000.000-00"
+              <input type="text" disabled aceholder="000.000.000-00"
                 [(ngModel)]="processoDetalhes.PARTE_CONTRARIA_CPF" class="process-create-opposingparty--id">
             </span>
 
             <span>
               <p class="sm-text">RG</p>
-              <input type="text" disabled="RG" ceholder="00.000.000-0" [(ngModel)]="processoDetalhes.PARTE_CONTRARIA_RG"
+              <input type="text" disabled ceholder="00.000.000-0" [(ngModel)]="processoDetalhes.PARTE_CONTRARIA_RG"
                 class="process-create-opposingparty--rg">
             </span>
           </div>
@@ -116,23 +116,24 @@
       <li class="process-create-opposingparty__list__item">
         <div class="process-create-opposingparty__list__item--div">
           <p class="sm-text">CEP</p>
-          <input type="text" disabled="CEP" aceholder="00000-000" [(ngModel)]="processoDetalhes.PARTE_CONTRARIA_CEP"
+          <input type="text" disabled aceholder="00000-000" [(ngModel)]="processoDetalhes.PARTE_CONTRARIA_CEP"
             class="process-create-opposingparty--zipcode">
           <div class="process-create-opposingparty__list__item--row">
             <span style="width: 40%;">
               <p class="sm-text">Endereço</p>
-              <input type="text" disabled="O" placeholder="" [(ngModel)]="processoDetalhes.PARTE_CONTRARIA_ENDERECO"
+              <input type="text" disabled placeholder="" [(ngModel)]="processoDetalhes.PARTE_CONTRARIA_ENDERECO"
                 class="process-create-opposingparty--adress">
             </span>
             <span>
               <p class="sm-text">Número</p>
-              <input type="text" disabled="NUMERO" [(ngModel)]=" processoDetalhes.PARTE_CONTRARIA_NUMERO"
+              <input type="text" disabled [(ngModel)]=" processoDetalhes.PARTE_CONTRARIA_NUMERO"
                 class="process-create-opposingparty-adressnumber">
             </span>
 
             <span>
               <p class="sm-text">Complemento</p>
-              <input type="text" disabled="ENTO" placeholder="" [(ngModel)]="processoDetalhes.PARTE_CONTRARIA_COMPLEMENTO"
+              <input type="text" disabled placeholder=""
+                [(ngModel)]="processoDetalhes.PARTE_CONTRARIA_COMPLEMENTO"
                 class="process-create-opposingparty--adresscomplement">
             </span>
           </div>
@@ -144,24 +145,25 @@
           <div class="process-create-opposingparty__list__item--row">
             <span>
               <p class="sm-text">Cargo</p>
-              <input type="text" disabled [(ngModel)]=" processoDetalhes.PARTE_CONTRARIA_CARGO" class="process-create-opposingparty">
+              <input type="text" disabled [(ngModel)]=" processoDetalhes.PARTE_CONTRARIA_CARGO"
+                class="process-create-opposingparty">
             </span>
 
             <span>
               <p class="sm-text">Ultimo Salário</p>
-              <input type="number" disabled="SALARIO" min="0" placeholder=""
+              <input type="number" disabled min="0" placeholder=""
                 [(ngModel)]="processoDetalhes.PARTE_CONTRARIA_ULTIMO_SALARIO" class="process-create-opposingparty">
             </span>
 
             <span>
               <p class="sm-text">Data de admissão</p>
-              <input type="date" disabled="MISSAO" [(ngModel)]="processoDetalhes.PARTE_CONTRARIA_DATA_ADMISSAO"
+              <input type="date" disabled [(ngModel)]="processoDetalhes.PARTE_CONTRARIA_DATA_ADMISSAO"
                 class="process-create-opposingparty">
             </span>
 
             <span>
               <p class="sm-text">Data de demissão</p>
-              <input type="date" disabled="MISSAO" [(ngModel)]="processoDetalhes.PARTE_CONTRARIA_DATA_DEMISSAO"
+              <input type="date" disabled [(ngModel)]="processoDetalhes.PARTE_CONTRARIA_DATA_DEMISSAO"
                 class="process-create-opposingparty">
             </span>
           </div>

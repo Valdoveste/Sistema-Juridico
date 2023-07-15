@@ -10,7 +10,10 @@ import { ProcessoService } from 'src/app/services/processo.service';
 })
 export class ProcessAreaComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private processoService: ProcessoService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private processoService: ProcessoService
+  ) { }
 
   componentName: string = '';
 

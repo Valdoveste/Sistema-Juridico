@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ProcessoPatronoResponsavel } from 'src/app/models/PROCESSO_PATRONORESPONSAVEL.model';
+import { ProcessoPatronoResponsavel } from 'src/app/models/PROCESSO_PATRONO_RESPONSAVEL.model';
 import { PatronoResponsavelService } from 'src/app/services/patrono-responsavel.service';
 
 import { DialogAddPatronoResponsavelComponent } from './dialog-add-patrono-responsavel/dialog-add-patrono-responsavel.component';

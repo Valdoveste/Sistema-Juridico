@@ -1,0 +1,7 @@
+@import '../../../../../../styles.scss';
+@import '../process-area-andamento.component.scss';
+@import '../../../../management/management.componnent.scss';
+
+select {
+    @extend .input;
+}

@@ -3,42 +3,29 @@
     <div id="process-create">
       <form #form="ngForm" style="min-height: 725px;">
         <div class="process-create-header">
-          <mat-radio-group aria-label="Select an option">
-            <mat-radio-button (click)="swapTabs('processdetails')"
-              class="process-create-header--rbutton">Processo</mat-radio-button>
-            <mat-radio-button (click)="swapTabs('opposingparty')" class="process-create-header--rbutton">Parte
-              Contraria</mat-radio-button>
-            <mat-radio-button (click)="swapTabs('deal')"
-              class="process-create-header--rbutton">Acordos</mat-radio-button>
-            <mat-radio-button (click)="swapTabs('movement')"
-              class="process-create-header--rbutton">Andamentos</mat-radio-button>
-            <mat-radio-button (click)="swapTabs('previous-patrons')" class="process-create-header--rbutton">Patronos
-              Anteriores</mat-radio-button>
-          </mat-radio-group>
-          
-          <!-- <button class="process-create-header--rbutton" type="button"
+          <button class="process-create-header--rbutton" type="button"
             (click)="swapTabs('processdetails')">Processo</button>
           <button class="process-create-header--rbutton" type="button" (click)="swapTabs('opposingparty')">Parte
             Contraria</button>
           <button class="process-create-header--rbutton" type="button" (click)="swapTabs('deal')">Acordos</button>
           <button class="process-create-header--rbutton" type="button"
-            (click)="swapTabs('movement')">Andamentos</button>
+            (click)="swapTabs('andamento')">Andamentos</button>
           <button class="process-create-header--rbutton" type="button" (click)="swapTabs('previous-patrons')">Patronos
-            Anteriores</button> -->
+            Anteriores</button>
         </div>
         <div class="process-create-body">
           <ng-container [ngSwitch]="componentName">
-            <ng-template [ngSwitchDefault]="'processdetails'">
+            <ng-template ngSwitchDefault="'processdetails'">
               <app-process-area-details></app-process-area-details>
             </ng-template>
             <ng-template [ngSwitchCase]="'opposingparty'">
               <app-process-area-opposingparty></app-process-area-opposingparty>
             </ng-template>
             <ng-template [ngSwitchCase]="'deal'">
-              <app-process-area-deal></app-process-area-deal>
+              <app-process-area-acordo></app-process-area-acordo>
             </ng-template>
-            <ng-template [ngSwitchCase]="'movement'">
-              <app-process-area-movement></app-process-area-movement>
+            <ng-template [ngSwitchCase]="'andamento'">
+              <app-process-area-andamento></app-process-area-andamento>
             </ng-template>
             <ng-template [ngSwitchCase]="'previous-patrons'">
               <app-process-area-previous-patrons></app-process-area-previous-patrons>
