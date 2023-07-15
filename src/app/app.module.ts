@@ -67,6 +67,11 @@ import { DialogDeleteTipoDeAcaoComponent } from './components/management/compone
 import { DialogEditTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/dialog-edit-tipo-de-acao/dialog-edit-tipo-de-acao.component';
 import { ProcessCreateLegalPersonComponent } from './components/processComponents/process-create/process-create-legal-person/process-create-legal-person.component';
 import { ProcessCreateFisicalPersonComponent } from './components/processComponents/process-create/process-create-fisical-person/process-create-fisical-person.component';
+import { DialogAddMovementComponent } from './components/processComponents/process-area/process-area-movement/dialog-add-movement/dialog-add-movement.component';
+import { DialogEditMovementComponent } from './components/processComponents/process-area/process-area-movement/dialog-edit-movement/dialog-edit-movement.component';
+import { DialogAddAcordoComponent } from './components/processComponents/process-area/process-area-deal/dialog-add-acordo/dialog-add-acordo.component';
+import { DialogEditAcordoComponent } from './components/processComponents/process-area/process-area-deal/dialog-edit-acordo/dialog-edit-acordo.component';
+import { DialogViewAcordoComponent } from './components/processComponents/process-area/process-area-deal/dialog-view-acordo/dialog-view-acordo.component';
 
 @NgModule({
   declarations: [
@@ -122,7 +127,12 @@ import { ProcessCreateFisicalPersonComponent } from './components/processCompone
     DialogEditTipoDeAcaoComponent,
 
     ProcessCreateLegalPersonComponent,
-    ProcessCreateFisicalPersonComponent
+    ProcessCreateFisicalPersonComponent,
+    DialogAddMovementComponent,
+    DialogEditMovementComponent,
+    DialogAddAcordoComponent,
+    DialogEditAcordoComponent,
+    DialogViewAcordoComponent
   ],
 
   imports: [
