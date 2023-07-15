@@ -77,6 +77,7 @@ import { MTipoDeAndamentoComponent } from './components/management/components/m-
 import { DialogDeleteTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/dialog-delete-tipo-de-andamento/dialog-delete-tipo-de-andamento.component';
 import { DialogEditTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/dialog-edit-tipo-de-andamento/dialog-edit-tipo-de-andamento.component';
 import { DialogAddTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/dialog-add-tipo-de-andamento/dialog-add-tipo-de-andamento.component';
+import { DialogViewAndamentoComponent } from './components/processComponents/process-area/process-area-andamento/dialog-view-andamento/dialog-view-andamento.component';
 
 @NgModule({
   declarations: [
@@ -142,7 +143,8 @@ import { DialogAddTipoDeAndamentoComponent } from './components/management/compo
     MTipoDeAndamentoComponent,
     DialogDeleteTipoDeAndamentoComponent,
     DialogEditTipoDeAndamentoComponent,
-    DialogAddTipoDeAndamentoComponent
+    DialogAddTipoDeAndamentoComponent,
+    DialogViewAndamentoComponent
   ],
 
   imports: [
