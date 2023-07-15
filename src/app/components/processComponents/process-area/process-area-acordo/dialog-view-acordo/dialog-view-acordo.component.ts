@@ -36,7 +36,7 @@ export class DialogViewAcordoComponent implements OnInit {
     this.acordoService.getProcessoAcordo(this.viewData.id)
       .subscribe({
         next: (response) => {
-          response.VALOR_ACORDO += ",00"
+          // response.VALOR_ACORDO += ",00"
           this.acordoDetalhes = response;
         },
         error: (response) => {
