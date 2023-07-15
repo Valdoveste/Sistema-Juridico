@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SistemaJuridicoWebAPI.Data;
 using SistemaJuridicoWebAPI.Models;
-using System.Reflection.Metadata.Ecma335;
+using System;
 
 namespace SistemaJuridicoWebAPI.Controllers
 {
@@ -125,14 +125,6 @@ namespace SistemaJuridicoWebAPI.Controllers
     {
       return Ok(await _sistemaJuridicoDbContext.PROCESSO_FASE.ToListAsync());
     }
-
-    [HttpGet("condicoes-tentativa-acordo")]
-    public async Task<IActionResult> GetAllCondicoesTentivaAcordo()
-    {
-
-      return Ok(await _sistemaJuridicoDbContext.PROCESSO_CONDICOES_TENTATIVA_ACORDO.ToListAsync());
-    }
-
 
     [HttpGet("patrono-responsavel")]
     public async Task<IActionResult> GetAllPatronoResponsavel()
@@ -349,13 +341,52 @@ namespace SistemaJuridicoWebAPI.Controllers
     }
 
 
+    [HttpGet("acordo")]
+    public async Task<IActionResult> GetAllAcordo()
+    {
+      return Ok(await _sistemaJuridicoDbContext.PROCESSO_ACORDO.ToListAsync());
+    }
+
+    [HttpGet("processo/all/acordo/{id}")]
+    public async Task<IActionResult> GetAllProcessoAcordo([FromRoute] string id)
+    {
+      var processoAcordo = await _sistemaJuridicoDbContext.PROCESSO_ACORDO
+          .Where(x => x.ID_PROCESSO.Equals(id))
+          .ToListAsync();
+
+      return Ok(processoAcordo);
+    }
+
+    [HttpGet("processo/acordo/{id}")]
+    public async Task<IActionResult> GetProcessoAcordo([FromRoute] Guid id)
+    {
+      var acordoRequest = await _sistemaJuridicoDbContext.PROCESSO_ACORDO.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      return Ok(acordoRequest);
+    }
+
+    [HttpPost("add-acordo")]
+    public async Task<IActionResult> AddAcordo([FromBody] PROCESSO_ACORDO acordoRequest)
+    {
+      TimeZoneInfo brazilTimeZone = TimeZoneInfo.FindSystemTimeZoneById("America/Sao_Paulo");
+
+      acordoRequest.ID = Guid.NewGuid();
+
+      acordoRequest.DATA_ACORDO = TimeZoneInfo.ConvertTime(DateTime.Now, brazilTimeZone).ToString();
+
+      await _sistemaJuridicoDbContext.PROCESSO_ACORDO.AddAsync(acordoRequest);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok();
+    }
+
     [HttpGet("processo")]
     public async Task<IActionResult> GetAllProcess()
     {
 
       return Ok(await _sistemaJuridicoDbContext.PROCESSO.ToListAsync());
     }
-
 
     [HttpGet("processo/{id}")]
     public async Task<IActionResult> GetProcess([FromRoute] Guid id)
