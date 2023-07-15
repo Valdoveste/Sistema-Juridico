@@ -301,6 +301,58 @@ namespace SistemaJuridicoWebAPI.Controllers
 
 
 
+
+    [HttpGet("tipo-de-andamento")]
+    public async Task<IActionResult> GetAllTipoDeAndamento()
+    {
+      return Ok(await _sistemaJuridicoDbContext.PROCESSO_TIPO_DE_ANDAMENTO.ToListAsync());
+    }
+
+    [HttpPost("add-tipo-de-andamento")]
+    public async Task<IActionResult> AddTipoDeAndamento([FromBody] PROCESSO_TIPO_DE_ANDAMENTO tipoDeAndamentoRequest)
+    {
+      tipoDeAndamentoRequest.ID = Guid.NewGuid();
+
+      await _sistemaJuridicoDbContext.PROCESSO_TIPO_DE_ANDAMENTO.AddAsync(tipoDeAndamentoRequest);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(tipoDeAndamentoRequest);
+    }
+
+    [HttpPut("update-tipo-de-andamento/{id}")]
+    public async Task<IActionResult> UpdateTipoDeAndamento([FromRoute] Guid id, PROCESSO_TIPO_DE_ANDAMENTO updateTipoDeAndamentoRequest)
+    {
+      var tipoDeAndamento = await _sistemaJuridicoDbContext.PROCESSO_TIPO_DE_ANDAMENTO.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      if (tipoDeAndamento == null)
+        return NotFound();
+
+      tipoDeAndamento.TIPO_DE_ANDAMENTO = updateTipoDeAndamentoRequest.TIPO_DE_ANDAMENTO;
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(tipoDeAndamento);
+    }
+
+    [HttpDelete("delete-tipo-de-andamento/{id}")]
+    public async Task<IActionResult> DeleteTipoDeAndamento([FromRoute] Guid id)
+    {
+      var tipoDeAndamento = await _sistemaJuridicoDbContext.PROCESSO_TIPO_DE_ANDAMENTO.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      if (tipoDeAndamento == null)
+        return NotFound();
+
+      _sistemaJuridicoDbContext.PROCESSO_TIPO_DE_ANDAMENTO.Remove(tipoDeAndamento);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(tipoDeAndamento);
+    }
+
+
+
+
     [HttpGet("vara")]
     public async Task<IActionResult> GetAllVara()
     {
