@@ -19,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProcessAreaDetailsComponent } from './components/processComponents/process-area/process-area-details/process-area-details.component';
 import { ProcessAreaOpposingpartyComponent } from './components/processComponents/process-area/process-area-opposingparty/process-area-opposingparty.component';
-import { ProcessAreaDealComponent } from './components/processComponents/process-area/process-area-deal/process-area-deal.component';
+import { ProcessAreaAcordoComponent } from './components/processComponents/process-area/process-area-acordo/process-area-acordo.component';
 import { ProcessAreaMovementComponent } from './components/processComponents/process-area/process-area-movement/process-area-movement.component';
 import { ProcessAreaPreviousPatronsComponent } from './components/processComponents/process-area/process-area-previous-patrons/process-area-previous-patrons.component';
 
@@ -69,9 +69,9 @@ import { ProcessCreateLegalPersonComponent } from './components/processComponent
 import { ProcessCreateFisicalPersonComponent } from './components/processComponents/process-create/process-create-fisical-person/process-create-fisical-person.component';
 import { DialogAddMovementComponent } from './components/processComponents/process-area/process-area-movement/dialog-add-movement/dialog-add-movement.component';
 import { DialogEditMovementComponent } from './components/processComponents/process-area/process-area-movement/dialog-edit-movement/dialog-edit-movement.component';
-import { DialogAddAcordoComponent } from './components/processComponents/process-area/process-area-deal/dialog-add-acordo/dialog-add-acordo.component';
-import { DialogEditAcordoComponent } from './components/processComponents/process-area/process-area-deal/dialog-edit-acordo/dialog-edit-acordo.component';
-import { DialogViewAcordoComponent } from './components/processComponents/process-area/process-area-deal/dialog-view-acordo/dialog-view-acordo.component';
+import { DialogAddAcordoComponent } from './components/processComponents/process-area/process-area-acordo/dialog-add-acordo/dialog-add-acordo.component';
+import { DialogEditAcordoComponent } from './components/processComponents/process-area/process-area-acordo/dialog-edit-acordo/dialog-edit-acordo.component';
+import { DialogViewAcordoComponent } from './components/processComponents/process-area/process-area-acordo/dialog-view-acordo/dialog-view-acordo.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +91,7 @@ import { DialogViewAcordoComponent } from './components/processComponents/proces
     ProcessCreateAgreementComponent,
     ProcessAreaDetailsComponent,
     ProcessAreaOpposingpartyComponent,
-    ProcessAreaDealComponent,
+    ProcessAreaAcordoComponent,
     ProcessAreaMovementComponent,
     ProcessAreaPreviousPatronsComponent,
 
