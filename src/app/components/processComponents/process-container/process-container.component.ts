@@ -10,19 +10,21 @@ import { ProcessoService } from 'src/app/services/processo.service';
 export class ProcessContainerComponent implements OnInit {
 
   processos: Processo[] = [];
-  
-  constructor(private processoService: ProcessoService) { }
+
+  constructor(
+    private processoService: ProcessoService,
+  ) { }
 
   ngOnInit(): void {
     this.processoService.getAllProcess()
-    .subscribe({
-      next: (processos: any) => {
-        this.processos = processos;
-      },
-      error: (response: any) => {
-        console.log(response)
-      }
-    })
+      .subscribe({
+        next: (processos: any) => {
+          this.processos = processos;
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
   }
 
 }
