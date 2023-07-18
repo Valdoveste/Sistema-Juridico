@@ -9,6 +9,7 @@
 @include mat.core();
 
 /* You can add global styles to this file, and also import other style files */
+@import "~@ng-select/ng-select/themes/default.theme.css";
 
 @mixin flexCenter($align_items, $justify_content, $flex_direction) {
   display: flex;
@@ -71,7 +72,7 @@ tbody tr {
   transition: background-color ease-out 500ms;
 
   &:hover {
-    cursor: pointer;
+    // cursor: pointer;
     background-color: #efefef;
   }
 }
@@ -154,6 +155,10 @@ input[type=number] {
 .table-borderless>thead>tr>td,
 .table-borderless>thead>tr>th {
   border: none;
+}
+
+.cursor-pointer{
+  cursor: pointer;
 }
 
 // MainComponent
