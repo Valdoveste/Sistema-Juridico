@@ -17,8 +17,11 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let ambito of ambitos">
-                            <td> {{ambito.AMBITO}} </td> 
-                            <td style="width: 40px;" title="Editar" (click)="openDialogEdit('250ms', '100ms', $event, ambito.ID)">
+
+                            <td> {{ambito.AMBITO}} </td>
+
+                            <td class="cursor-pointer" style="width: 40px;" title="Editar"
+                                (click)="openDialogEdit('250ms', '100ms', $event, ambito.ID)">
                                 <svg width="20px" height="20px" viewBox="0 0 18 18" version="1.1"
                                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                     xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
@@ -32,9 +35,10 @@
                                     </g>
                                 </svg>
                             </td>
-                            <td style="width: 40px;" title="Remover" (click)="openDialogRemove('250ms', '100ms', $event, ambito.ID)">
-                                <svg title="Remover" width="20px"
-                                    height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <td class="cursor-pointer" style="width: 40px;" title="Remover"
+                                (click)="openDialogRemove('250ms', '100ms', $event, ambito.ID)">
+                                <svg title="Remover" width="20px" height="20px" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M8 1.5V2.5H3C2.44772 2.5 2 2.94772 2 3.5V4.5C2 5.05228 2.44772 5.5 3 5.5H21C21.5523 5.5 22 5.05228 22 4.5V3.5C22 2.94772 21.5523 2.5 21 2.5H16V1.5C16 0.947715 15.5523 0.5 15 0.5H9C8.44772 0.5 8 0.947715 8 1.5Z"
                                         fill="#000000" />

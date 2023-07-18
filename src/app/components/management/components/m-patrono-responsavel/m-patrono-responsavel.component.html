@@ -29,8 +29,10 @@
         -->
                         <tr *ngFor="let patronoResponsavel of patronoResponsaveis">
                             <td>{{ patronoResponsavel.PATRONO_RESPONSAVEL }}</td>
+
                             <td>{{ patronoResponsavel.PATRONO_RESPONSAVEL_CPF_CNPJ }}</td>
-                            <td style="width: 40px;" title="Editar"
+
+                            <td class="cursor-pointer" style="width: 40px;" title="Editar"
                                 (click)="openDialogEdit('250ms', '100ms', $event, patronoResponsavel.ID)">
                                 <svg width="20px" height="20px" viewBox="0 0 18 18" version="1.1"
                                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -45,7 +47,7 @@
                                     </g>
                                 </svg>
                             </td>
-                            <td style="width: 40px;" title="Remover"
+                            <td class="cursor-pointer" style="width: 40px;" title="Remover"
                                 (click)="openDialogRemove('250ms', '100ms', $event, patronoResponsavel.ID)">
                                 <svg title="Remover" width="20px" height="20px" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
