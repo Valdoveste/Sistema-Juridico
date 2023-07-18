@@ -79,6 +79,8 @@ import { DialogEditTipoDeAndamentoComponent } from './components/management/comp
 import { DialogAddTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/dialog-add-tipo-de-andamento/dialog-add-tipo-de-andamento.component';
 import { DialogViewAndamentoComponent } from './components/processComponents/process-area/process-area-andamento/dialog-view-andamento/dialog-view-andamento.component';
 
+import { NgSelectModule } from '@ng-select/ng-select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -161,7 +163,8 @@ import { DialogViewAndamentoComponent } from './components/processComponents/pro
     MatButtonModule,
     MatInputModule,
     MatRadioModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

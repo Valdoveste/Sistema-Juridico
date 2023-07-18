@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Processo } from 'src/app/models/PROCESSO.model';
 import { ProcessoService } from '../../../services/processo.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -23,6 +22,7 @@ import { ProcessoStatus } from 'src/app/models/PROCESSO_STATUS.model';
 import { ProcessoTipoDeAcao } from 'src/app/models/PROCESSO_TIPO_DE_ACAO.model';
 import { ProcessoVara } from 'src/app/models/PROCESSO_VARA.model';
 import { PatronoResponsavelService } from 'src/app/services/patrono-responsavel.service';
+import { Processo } from 'src/app/models/PROCESSO.model';
 
 @Component({
   selector: 'app-process-create',
