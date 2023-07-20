@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Criar ParteContraria</h1>
+<form (ngSubmit)="createParteContraria()" #formDir="ngForm" [formGroup]="createParteContrariaForm">
+    <div mat-dialog-content>
+        <mat-form-field>
+            <input name="PARTECONTRARIA" formControlName="PARTECONTRARIA" matInput required [(ngModel)]="createParteContrariaRequest.NOME">
+        </mat-form-field>   
+
+        <div mat-raised-action class="float-right">
+            <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+            <button mat-button type="submit">Adicionar</button>
+        </div>
+    </div>
+</form>
