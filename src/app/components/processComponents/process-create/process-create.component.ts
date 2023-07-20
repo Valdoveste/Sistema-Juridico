@@ -29,6 +29,7 @@ import { Processo } from 'src/app/models/PROCESSO.model';
   templateUrl: './process-create.component.html',
   styleUrls: ['./process-create.component.scss']
 })
+
 export class ProcessCreateComponent implements OnInit {
   constructor(
     private router: Router,
@@ -64,6 +65,31 @@ export class ProcessCreateComponent implements OnInit {
     this.componentName = componentName;
   }
 
+  personRG: string = '';
+  personCPF: string = '';
+  personCNPJ: string = '';
+
+  onPersonRGChange() {
+    this.personRG = this.personRG.replace(/\D/g, '');
+    this.personRG = this.personRG.replace(/(\d{2})(\d)/, '$1.$2');
+    this.personRG = this.personRG.replace(/(\d{3})(\d)/, '$1.$2');
+    this.personRG = this.personRG.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+  }
+
+  onPersonCPFChange() {
+    this.personCPF = this.personCPF.replace(/\D/g, '');
+    this.personCPF = this.personCPF.replace(/(\d{3})(\d)/, '$1.$2');
+    this.personCPF = this.personCPF.replace(/(\d{3})(\d)/, '$1.$2');
+    this.personCPF = this.personCPF.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+  }
+
+  onPersonCNPJChange() {
+    this.personCNPJ = this.personCNPJ.replace(/\D/g, '');
+    this.personCNPJ = this.personCNPJ.replace(/(\d{2})(\d)/, '$1.$2');
+    this.personCNPJ = this.personCNPJ.replace(/(\d{3})(\d)/, '$1.$2');
+    this.personCNPJ = this.personCNPJ.replace(/(\d{3})(\d)/, '$1/$2');
+    this.personCNPJ = this.personCNPJ.replace(/(\d{4})(\d)/, '$1-$2');
+  }
 
   createProcessResquest: Processo = {
     ID_PROCESSO: '',

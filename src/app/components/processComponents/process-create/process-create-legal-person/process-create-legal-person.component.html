@@ -14,8 +14,9 @@
 
         <span>
           <p class="sm-text">CNPJ</p>
-          <input type="text" name="PARTE_CONTRARIA_CNPJ" formControlName="PARTE_CONTRARIA_CNPJ"
-            [(ngModel)]="createProcessResquest.PARTE_CONTRARIA_CNPJ" class="process-create-opposingparty">
+          <input type="text" mask="00.000.000/0000-00" placeholder="00.000.000/0000-00" [maxlength]="18" [(ngModel)]="personCNPJ"
+            name="PARTE_CONTRARIA_CNPJ" formControlName="PARTE_CONTRARIA_CNPJ" (ngModelChange)="onPersonCNPJChange()"
+            class="process-create-opposingparty">
         </span>
       </div>
     </div>
