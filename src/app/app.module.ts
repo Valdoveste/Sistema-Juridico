@@ -80,6 +80,14 @@ import { DialogAddTipoDeAndamentoComponent } from './components/management/compo
 import { DialogViewAndamentoComponent } from './components/processComponents/process-area/process-area-andamento/dialog-view-andamento/dialog-view-andamento.component';
 
 import { NgSelectModule } from '@ng-select/ng-select';
+import { MParteContrariaComponent } from './components/management/components/m-parte-contraria/m-parte-contraria.component';
+import { MEmpresasComponent } from './components/management/components/m-empresas/m-empresas.component';
+import { DialogAddParteContrariaComponent } from './components/management/components/m-parte-contraria/dialog-add-parte-contraria/dialog-add-parte-contraria.component';
+import { DialogDeleteParteContrariaComponent } from './components/management/components/m-parte-contraria/dialog-delete-parte-contraria/dialog-delete-parte-contraria.component';
+import { DialogEditParteContriaComponent } from './components/management/components/m-parte-contraria/dialog-edit-parte-contraria/dialog-edit-parte-contraria.component';
+import { DialogAddEmpresasComponent } from './components/management/components/m-empresas/dialog-add-empresas/dialog-add-empresas.component';
+import { DialogDeleteEmpresasComponent } from './components/management/components/m-empresas/dialog-delete-empresas/dialog-delete-empresas.component';
+import { DialogEditEmpresasComponent } from './components/management/components/m-empresas/dialog-edit-empresas/dialog-edit-empresas.component';
 
 @NgModule({
   declarations: [
@@ -146,7 +154,16 @@ import { NgSelectModule } from '@ng-select/ng-select';
     DialogDeleteTipoDeAndamentoComponent,
     DialogEditTipoDeAndamentoComponent,
     DialogAddTipoDeAndamentoComponent,
-    DialogViewAndamentoComponent
+    DialogViewAndamentoComponent,
+    MParteContrariaComponent,
+    MEmpresasComponent,
+    DialogAddParteContrariaComponent,
+    DialogDeleteParteContrariaComponent,
+    DialogEditParteContriaComponent,
+
+    DialogAddEmpresasComponent,
+    DialogDeleteEmpresasComponent,
+    DialogEditEmpresasComponent
   ],
 
   imports: [
