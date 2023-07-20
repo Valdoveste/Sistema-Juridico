@@ -11,6 +11,8 @@ import { MAreaDoDireitoComponent } from './components/management/components/m-ar
 import { MTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/m-tipo-de-acao.component';
 import { MForoTribunalOrgaoComponent } from './components/management/components/m-foro-tribunal-orgao/m-foro-tribunal-orgao.component';
 import { MTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/m-tipo-de-andamento.component';
+import { MEmpresasComponent } from './components/management/components/m-empresas/m-empresas.component';
+import { MParteContrariaComponent } from './components/management/components/m-parte-contraria/m-parte-contraria.component';
 
 const routes: Routes = [
   {
@@ -63,6 +65,14 @@ const routes: Routes = [
   {
     path: 'gestao/tipo-de-andamento',
     component: MTipoDeAndamentoComponent
+  },
+  {
+    path: 'gestao/empresas',
+    component: MEmpresasComponent
+  },
+  {
+    path: 'gestao/parte-contraria',
+    component: MParteContrariaComponent
   }
 ];
 
