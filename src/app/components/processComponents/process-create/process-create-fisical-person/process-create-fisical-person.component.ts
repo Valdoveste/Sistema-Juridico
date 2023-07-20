@@ -8,8 +8,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./process-create-fisical-person.component.scss']
 })
 export class ProcessCreateFisicalPersonComponent extends ProcessCreateComponent implements OnInit {
-  createProcessFisicalPersonForm!: FormGroup;
 
+  createProcessFisicalPersonForm!: FormGroup;
 
   override ngOnInit(): void {
     this.createProcessFisicalPersonForm = new FormGroup({
@@ -26,6 +26,5 @@ export class ProcessCreateFisicalPersonComponent extends ProcessCreateComponent 
       PARTE_CONTRARIA_ULTIMO_SALARIO: new FormControl('', [Validators.required])
     });
   }
-
 
 }
