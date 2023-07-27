@@ -18,6 +18,38 @@ namespace SistemaJuridicoWebAPI.Controllers
       _sistemaJuridicoDbContext = sistemaJuridicoDbContext;
     }
 
+    [HttpGet("processo")]
+    public async Task<IActionResult> GetAllProcess()
+    {
+
+      return Ok(await _sistemaJuridicoDbContext.PROCESSO.ToListAsync());
+    }
+
+    [HttpGet("processo/{id}")]
+    public async Task<IActionResult> GetProcess([FromRoute] Guid id)
+    {
+      var processo = await _sistemaJuridicoDbContext.PROCESSO.FirstOrDefaultAsync(x => x.ID_PROCESSO.Equals(id));
+      if (processo == null)
+      {
+        return NotFound();
+      }
+
+      return Ok(processo);
+
+    }
+
+    [HttpPost("add-processo")]
+    public async Task<IActionResult> AddProcess([FromBody] PROCESSO processoRequest)
+    {
+      processoRequest.ID_PROCESSO = Guid.NewGuid();
+
+      await _sistemaJuridicoDbContext.PROCESSO.AddAsync(processoRequest);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(processoRequest);
+    }
+
     [HttpGet("ambito")]
     public async Task<IActionResult> GetAllAmbito()
     {
@@ -420,14 +452,6 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok(processoAcordo);
     }
 
-    [HttpGet("processo/acordo/{id}")]
-    public async Task<IActionResult> GetProcessoAcordo([FromRoute] Guid id)
-    {
-      var acordoRequest = await _sistemaJuridicoDbContext.PROCESSO_ACORDO.FirstOrDefaultAsync(x => x.ID.Equals(id));
-
-      return Ok(acordoRequest);
-    }
-
     [HttpPost("add-acordo")]
     public async Task<IActionResult> AddAcordo([FromBody] PROCESSO_ACORDO acordoRequest)
     {
@@ -443,42 +467,6 @@ namespace SistemaJuridicoWebAPI.Controllers
 
       return Ok();
     }
-
-
-
-    [HttpGet("processo")]
-    public async Task<IActionResult> GetAllProcess()
-    {
-
-      return Ok(await _sistemaJuridicoDbContext.PROCESSO.ToListAsync());
-    }
-
-    [HttpGet("processo/{id}")]
-    public async Task<IActionResult> GetProcess([FromRoute] Guid id)
-    {
-      var processo = await _sistemaJuridicoDbContext.PROCESSO.FirstOrDefaultAsync(x => x.ID_PROCESSO.Equals(id));
-      if (processo == null)
-      {
-        return NotFound();
-      }
-
-      return Ok(processo);
-
-    }
-
-    [HttpPost("add-processo")]
-    public async Task<IActionResult> AddProcess([FromBody] PROCESSO processoRequest)
-    {
-      processoRequest.ID_PROCESSO = Guid.NewGuid();
-
-      await _sistemaJuridicoDbContext.PROCESSO.AddAsync(processoRequest);
-
-      await _sistemaJuridicoDbContext.SaveChangesAsync();
-
-      return Ok(processoRequest);
-    }
-
-
 
     [HttpGet("andamento")]
     public async Task<IActionResult> GetAllAndamento()
@@ -519,6 +507,101 @@ namespace SistemaJuridicoWebAPI.Controllers
 
       return Ok();
     }
+
+    [HttpGet("parte-contraria")]
+    public async Task<IActionResult> GetAllParteContraria() => Ok(await _sistemaJuridicoDbContext.PROCESSO_PARTE_CONTRARIA.ToListAsync());
+
+    [HttpPost("add-parte-contraria")]
+    public async Task<IActionResult> AddParteContraria([FromBody] PROCESSO_PARTE_CONTRARIA parteContrariaRequest)
+    {
+      parteContrariaRequest.ID = Guid.NewGuid();
+
+      await _sistemaJuridicoDbContext.PROCESSO_PARTE_CONTRARIA.AddAsync(parteContrariaRequest);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(parteContrariaRequest);
+    }
+
+    [HttpPut("update-parte-contraria/{id}")]
+    public async Task<IActionResult> UpdateParteContraria([FromRoute] Guid id, PROCESSO_PARTE_CONTRARIA updateParteContrariaRequest)
+    {
+      var parteContraria = await _sistemaJuridicoDbContext.PROCESSO_PARTE_CONTRARIA.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      if (parteContraria == null)
+        return NotFound();
+
+      parteContraria.NOME = updateParteContrariaRequest.NOME;
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(parteContraria);
+    }
+
+    [HttpDelete("delete-parte-contraria/{id}")]
+    public async Task<IActionResult> DeleteParteContraria([FromRoute] Guid id)
+    {
+      var parteContraria = await _sistemaJuridicoDbContext.PROCESSO_PARTE_CONTRARIA.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      if (parteContraria == null)
+        return NotFound();
+
+      _sistemaJuridicoDbContext.PROCESSO_PARTE_CONTRARIA.Remove(parteContraria);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(parteContraria);
+    }
+
+    [HttpGet("empresas")]
+    public async Task<IActionResult> GetAllEmpresas()
+    {
+      return Ok(await _sistemaJuridicoDbContext.PROCESSO_EMPRESAS.ToListAsync());
+    }
+
+    [HttpPost("add-empresas")]
+    public async Task<IActionResult> AddEmpresas([FromBody] PROCESSO_EMPRESAS empresasRequest)
+    {
+      empresasRequest.ID = Guid.NewGuid();
+
+      await _sistemaJuridicoDbContext.PROCESSO_EMPRESAS.AddAsync(empresasRequest);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(empresasRequest);
+    }
+
+    [HttpPut("update-empresas/{id}")]
+    public async Task<IActionResult> UpdateEmpresas([FromRoute] Guid id, PROCESSO_EMPRESAS updateEmpresasRequest)
+    {
+      var empresas = await _sistemaJuridicoDbContext.PROCESSO_EMPRESAS.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      if (empresas == null)
+        return NotFound();
+
+      empresas.EMPRESA = updateEmpresasRequest.EMPRESA;
+      empresas.CPF_CNPJ = updateEmpresasRequest.CPF_CNPJ;
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(empresas);
+    }
+
+    [HttpDelete("delete-empresas/{id}")]
+    public async Task<IActionResult> DeleteEmpresas([FromRoute] Guid id)
+    {
+      var empresas = await _sistemaJuridicoDbContext.PROCESSO_EMPRESAS.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      if (empresas == null)
+        return NotFound();
+
+      _sistemaJuridicoDbContext.PROCESSO_EMPRESAS.Remove(empresas);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(empresas);
+    }
+
 
   }
 }

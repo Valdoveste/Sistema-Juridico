@@ -16,7 +16,8 @@ namespace SistemaJuridicoWebAPI.Data
     public DbSet<PROCESSO_AREA_DO_DIREITO> PROCESSO_AREA_DO_DIREITO { get; set; }
     public DbSet<PROCESSO_ACORDO> PROCESSO_ACORDO { get; set; }
     public DbSet<PROCESSO_FASE> PROCESSO_FASE { get; set; }
-
+    public DbSet<PROCESSO_EMPRESAS> PROCESSO_EMPRESAS { get; set; }
+    public DbSet<PROCESSO_PARTE_CONTRARIA> PROCESSO_PARTE_CONTRARIA { get; set; }
     public DbSet<PROCESSO_TIPO_DE_ANDAMENTO> PROCESSO_TIPO_DE_ANDAMENTO { get; set; }
     public DbSet<PROCESSO_ANDAMENTO> PROCESSO_ANDAMENTO { get; set; }
     public DbSet<PROCESSO_FORO_TRIBUNAL_ORGAO> PROCESSO_FORO_TRIBUNAL_ORGAO { get; set; }
