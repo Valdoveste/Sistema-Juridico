@@ -9,7 +9,7 @@ export interface ProcessoParteContraria {
   RG: String;
   ENDERECO: String;
   CEP: String;
-  NUMERO: String;
+  NUMERO: Number;
   COMPLEMENTO: String;
   ESTADO: String;
   PAIS: String;

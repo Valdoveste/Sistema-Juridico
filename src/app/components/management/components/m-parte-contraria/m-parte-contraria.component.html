@@ -11,14 +11,26 @@
                 <table class="table table-borderless">
                     <thead>
                         <tr style="border-top: none;">
-                            <th scope="col">Parte Contria</th>
-                            <th scope="col"></th>
+                            <!-- <th scope="col">Parte Contria</th> -->
+                            <th scope="col">Nome</th>
+                            <th scope="col">Nome fantasia</th>
+                            <th scope="col">CPF</th>
+                            <th scope="col">RG</th>
+                            <th scope="col">CNPJ</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let parteContria of partecontrarias">
 
-                            <td> {{parteContria.NOME}} </td>
+                            <td class="{{parteContria.ID}}"> {{parteContria.NOME}} </td>
+
+                            <td class="{{parteContria.ID}}"> {{parteContria.NOME_FANTASIA}} </td>
+
+                            <td class="{{parteContria.ID}}"> {{parteContria.CPF}} </td>
+
+                            <td class="{{parteContria.ID}}"> {{parteContria.RG}} </td>
+
+                            <td class="{{parteContria.ID}}"> {{parteContria.CNPJ}} </td>
 
                             <td class="cursor-pointer" style="width: 40px;" title="Editar"
                                 (click)="openDialogEdit('250ms', '100ms', $event, parteContria.ID)">
@@ -35,6 +47,7 @@
                                     </g>
                                 </svg>
                             </td>
+
                             <td class="cursor-pointer" style="width: 40px;" title="Remover"
                                 (click)="openDialogRemove('250ms', '100ms', $event, parteContria.ID)">
                                 <svg title="Remover" width="20px" height="20px" viewBox="0 0 24 24" fill="none"

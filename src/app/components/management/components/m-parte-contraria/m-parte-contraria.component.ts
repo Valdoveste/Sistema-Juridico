@@ -15,10 +15,36 @@ import { DialogEditParteContriaComponent } from './dialog-edit-parte-contraria/d
 export class MParteContrariaComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
-    private ParteContrariaService: ParteContrariaService
+    protected ParteContrariaService: ParteContrariaService
   ) { }
 
   partecontrarias: ProcessoParteContraria[] = [];
+
+  personRG: string = '';
+  personCPF: string = '';
+  personCNPJ: string = '';
+
+  onPersonRGChange() {
+    this.personRG = this.personRG.replace(/\D/g, '');
+    this.personRG = this.personRG.replace(/(\d{2})(\d)/, '$1.$2');
+    this.personRG = this.personRG.replace(/(\d{3})(\d)/, '$1.$2');
+    this.personRG = this.personRG.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+  }
+
+  onPersonCPFChange() {
+    this.personCPF = this.personCPF.replace(/\D/g, '');
+    this.personCPF = this.personCPF.replace(/(\d{3})(\d)/, '$1.$2');
+    this.personCPF = this.personCPF.replace(/(\d{3})(\d)/, '$1.$2');
+    this.personCPF = this.personCPF.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+  }
+
+  onPersonCNPJChange() {
+    this.personCNPJ = this.personCNPJ.replace(/\D/g, '');
+    this.personCNPJ = this.personCNPJ.replace(/(\d{2})(\d)/, '$1.$2');
+    this.personCNPJ = this.personCNPJ.replace(/(\d{3})(\d)/, '$1.$2');
+    this.personCNPJ = this.personCNPJ.replace(/(\d{3})(\d)/, '$1/$2');
+    this.personCNPJ = this.personCNPJ.replace(/(\d{4})(\d)/, '$1-$2');
+  }
 
   ngOnInit(): void {
     this.loadParteContrarias();
@@ -36,20 +62,22 @@ export class MParteContrariaComponent implements OnInit {
       })
   }
 
+
+
   openDialogAdd(enterAnimationDuration: string, exitAnimationDuration: string): void {
     const dialogRefAdd = this.dialog.open(DialogAddParteContrariaComponent, {
-      width: '350px',
+      width: '750px',
       enterAnimationDuration,
       exitAnimationDuration,
     });
 
-    dialogRefAdd.afterClosed().subscribe(result => { result ? this.loadParteContrarias() : null; })
+    dialogRefAdd.afterClosed().subscribe(result => { result ? this.loadParteContrarias() : null; }) 
   }
 
   openDialogRemove(enterAnimationDuration: string, exitAnimationDuration: string, event: Event, id: String | undefined): void {
     const dialogRefRemove = this.dialog.open(DialogDeleteParteContrariaComponent, {
-      width: '350px',
-      data: { value: (event.currentTarget as HTMLElement).previousElementSibling?.previousElementSibling?.innerHTML, id: id },
+      width: '750px',
+      data: { value: document.getElementsByClassName(id as string), id: id },
       enterAnimationDuration,
       exitAnimationDuration,
     });
@@ -58,9 +86,11 @@ export class MParteContrariaComponent implements OnInit {
   }
 
   openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string, event: Event, id: String | undefined): void {
+    let teste = document.getElementsByClassName(id as string);
+    console.log(teste)
     const dialogRefEdit = this.dialog.open(DialogEditParteContriaComponent, {
-      width: '350px',
-      data: { value: (event.currentTarget as HTMLElement).previousElementSibling?.innerHTML, id: id },
+      width: '750px',
+      data: { value: document.getElementsByClassName(id as string), id: id },
       enterAnimationDuration,
       exitAnimationDuration,
     });
