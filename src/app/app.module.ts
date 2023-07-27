@@ -117,6 +117,9 @@ import { DialogEditEmpresasComponent } from './components/management/components/
     MAreaDoDireitoComponent,
     MTipoDeAcaoComponent,
     MPatronoResponsavelComponent,
+    MEmpresasComponent,
+    MTipoDeAndamentoComponent,
+    MParteContrariaComponent,
 
     DialogEditAmbitoComponent,
     DialogDeleteAmbitoComponent,
@@ -150,13 +153,12 @@ import { DialogEditEmpresasComponent } from './components/management/components/
     DialogAddAcordoComponent,
     DialogEditAcordoComponent,
     DialogViewAcordoComponent,
-    MTipoDeAndamentoComponent,
+
     DialogDeleteTipoDeAndamentoComponent,
     DialogEditTipoDeAndamentoComponent,
     DialogAddTipoDeAndamentoComponent,
     DialogViewAndamentoComponent,
-    MParteContrariaComponent,
-    MEmpresasComponent,
+
     DialogAddParteContrariaComponent,
     DialogDeleteParteContrariaComponent,
     DialogEditParteContriaComponent,
