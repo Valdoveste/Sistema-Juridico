@@ -1,19 +1,30 @@
-tbody tr {
-    &:hover {
-        cursor: default !important;
-    }
-}
-
-input {
-    height: 35px !important;
-    font-size: 1rem !important;
-}
+@import '../../../styles.scss';
 
 .mat-mdc-form-field {
     width: 100%;
     min-height: 35px;
     border-radius: 2px;
     border: 1px solid rgba(60, 64, 67, 0.5);
+}
+
+input {
+    @extend .input;
+    width: 100% !important;
+}
+
+tbody tr {
+    &:hover {
+        cursor: default !important;
+    }
+}
+
+h1 {
+    padding: 0 24px 9px 24px;
+}
+
+input {
+    height: 35px !important;
+    font-size: 1rem !important;
 }
 
 button {
