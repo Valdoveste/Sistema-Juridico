@@ -23,6 +23,8 @@ import { ProcessoTipoDeAcao } from 'src/app/models/PROCESSO_TIPO_DE_ACAO.model';
 import { ProcessoVara } from 'src/app/models/PROCESSO_VARA.model';
 import { PatronoResponsavelService } from 'src/app/services/patrono-responsavel.service';
 import { Processo } from 'src/app/models/PROCESSO.model';
+import { ProcessoEmpresas } from 'src/app/models/PROCESSO_EMPRESAS.model';
+import { EmpresasService } from 'src/app/services/empresas.service';
 
 @Component({
   selector: 'app-process-create',
@@ -43,7 +45,8 @@ export class ProcessCreateComponent implements OnInit {
     private Status: StatusService,
     private TipoDeAcao: TipoDeAcaoService,
     private Vara: VaraService,
-    private PatronoResponsavel: PatronoResponsavelService
+    private PatronoResponsavel: PatronoResponsavelService,
+    private EmpresasService: EmpresasService
   ) { }
 
   createProcessForm!: FormGroup;
@@ -58,37 +61,12 @@ export class ProcessCreateComponent implements OnInit {
   tiposDeAcoes: ProcessoTipoDeAcao[] = [];
   varas: ProcessoVara[] = [];
   patronoResponsavel: ProcessoPatronoResponsavel[] = [];
+  empresas: ProcessoEmpresas[] = [];
 
   componentName: string = '';
 
   swapTabs(componentName: string): void {
     this.componentName = componentName;
-  }
-
-  personRG: string = '';
-  personCPF: string = '';
-  personCNPJ: string = '';
-
-  onPersonRGChange() {
-    this.personRG = this.personRG.replace(/\D/g, '');
-    this.personRG = this.personRG.replace(/(\d{2})(\d)/, '$1.$2');
-    this.personRG = this.personRG.replace(/(\d{3})(\d)/, '$1.$2');
-    this.personRG = this.personRG.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-  }
-
-  onPersonCPFChange() {
-    this.personCPF = this.personCPF.replace(/\D/g, '');
-    this.personCPF = this.personCPF.replace(/(\d{3})(\d)/, '$1.$2');
-    this.personCPF = this.personCPF.replace(/(\d{3})(\d)/, '$1.$2');
-    this.personCPF = this.personCPF.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-  }
-
-  onPersonCNPJChange() {
-    this.personCNPJ = this.personCNPJ.replace(/\D/g, '');
-    this.personCNPJ = this.personCNPJ.replace(/(\d{2})(\d)/, '$1.$2');
-    this.personCNPJ = this.personCNPJ.replace(/(\d{3})(\d)/, '$1.$2');
-    this.personCNPJ = this.personCNPJ.replace(/(\d{3})(\d)/, '$1/$2');
-    this.personCNPJ = this.personCNPJ.replace(/(\d{4})(\d)/, '$1-$2');
   }
 
   createProcessResquest: Processo = {
@@ -154,11 +132,21 @@ export class ProcessCreateComponent implements OnInit {
         }
       })
 
+    this.EmpresasService.getAllEmpresas()
+      .subscribe({
+        next: (response: any) => {
+          this.empresas = response;
+        },
+        error: (response: any) => {
+          console.log(response)
+        }
+      })
+
 
     this.AreaDoDireito.getAllAreaDoDireito()
       .subscribe({
-        next: (areasDoDireito: any) => {
-          this.areasDoDireito = areasDoDireito;
+        next: (response: any) => {
+          this.areasDoDireito = response;
         },
         error: (response: any) => {
           console.log(response)
@@ -167,8 +155,8 @@ export class ProcessCreateComponent implements OnInit {
 
     this.CondicoesTentaivaAcordo.getAllCondicoesTentativaAcordo()
       .subscribe({
-        next: (condicoesTentativaAcordo: any) => {
-          this.condicoesTentativaAcordo = condicoesTentativaAcordo;
+        next: (response: any) => {
+          this.condicoesTentativaAcordo = response;
         },
         error: (response: any) => {
           console.log(response)
@@ -177,8 +165,8 @@ export class ProcessCreateComponent implements OnInit {
 
     this.Fase.getAllFase()
       .subscribe({
-        next: (fases: any) => {
-          this.fases = fases;
+        next: (response: any) => {
+          this.fases = response;
         },
         error: (response: any) => {
           console.log(response)
@@ -187,8 +175,8 @@ export class ProcessCreateComponent implements OnInit {
 
     this.ForoTribunalOrgao.getAllForoTribunalOrgao()
       .subscribe({
-        next: (foroTribunalOrgaos: any) => {
-          this.foroTribunalOrgaos = foroTribunalOrgaos;
+        next: (response: any) => {
+          this.foroTribunalOrgaos = response;
         },
         error: (response: any) => {
           console.log(response)
@@ -197,8 +185,8 @@ export class ProcessCreateComponent implements OnInit {
 
     this.MotivoDoEncerramento.getAllMotivoDoEncerramento()
       .subscribe({
-        next: (motivosDoEncerramento: any) => {
-          this.motivosDoEncerramento = motivosDoEncerramento;
+        next: (response: any) => {
+          this.motivosDoEncerramento = response;
         },
         error: (response: any) => {
           console.log(response)
@@ -207,8 +195,8 @@ export class ProcessCreateComponent implements OnInit {
 
     this.Status.getAllStatus()
       .subscribe({
-        next: (status: any) => {
-          this.status = status;
+        next: (response: any) => {
+          this.status = response;
         },
         error: (response: any) => {
           console.log(response)
@@ -217,8 +205,8 @@ export class ProcessCreateComponent implements OnInit {
 
     this.TipoDeAcao.getAllTipoDeAcao()
       .subscribe({
-        next: (tiposDeAcoes: any) => {
-          this.tiposDeAcoes = tiposDeAcoes;
+        next: (response: any) => {
+          this.tiposDeAcoes = response;
         },
         error: (response: any) => {
           console.log(response)
@@ -227,8 +215,8 @@ export class ProcessCreateComponent implements OnInit {
 
     this.Vara.getAllVara()
       .subscribe({
-        next: (varas: any) => {
-          this.varas = varas;
+        next: (response: any) => {
+          this.varas = response;
         },
         error: (response: any) => {
           console.log(response)
@@ -237,8 +225,8 @@ export class ProcessCreateComponent implements OnInit {
 
     this.PatronoResponsavel.getAllPatronoResponsavel()
       .subscribe({
-        next: (patronoResponsavel: any) => {
-          this.patronoResponsavel = patronoResponsavel;
+        next: (response: any) => {
+          this.patronoResponsavel = response;
         },
         error: (response: any) => {
           console.log(response)
@@ -310,5 +298,31 @@ export class ProcessCreateComponent implements OnInit {
         });
     }
     return;
+  }
+
+  personRG: string = '';
+  personCPF: string = '';
+  personCNPJ: string = '';
+
+  onPersonRGChange() {
+    this.personRG = this.personRG.replace(/\D/g, '');
+    this.personRG = this.personRG.replace(/(\d{2})(\d)/, '$1.$2');
+    this.personRG = this.personRG.replace(/(\d{3})(\d)/, '$1.$2');
+    this.personRG = this.personRG.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+  }
+
+  onPersonCPFChange() {
+    this.personCPF = this.personCPF.replace(/\D/g, '');
+    this.personCPF = this.personCPF.replace(/(\d{3})(\d)/, '$1.$2');
+    this.personCPF = this.personCPF.replace(/(\d{3})(\d)/, '$1.$2');
+    this.personCPF = this.personCPF.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+  }
+
+  onPersonCNPJChange() {
+    this.personCNPJ = this.personCNPJ.replace(/\D/g, '');
+    this.personCNPJ = this.personCNPJ.replace(/(\d{2})(\d)/, '$1.$2');
+    this.personCNPJ = this.personCNPJ.replace(/(\d{3})(\d)/, '$1.$2');
+    this.personCNPJ = this.personCNPJ.replace(/(\d{3})(\d)/, '$1/$2');
+    this.personCNPJ = this.personCNPJ.replace(/(\d{4})(\d)/, '$1-$2');
   }
 }
