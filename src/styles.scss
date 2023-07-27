@@ -46,12 +46,6 @@ button {
   }
 }
 
-.sm-text {
-  font-size: 0.80rem !important;
-  margin-bottom: 2.5px !important;
-  color: rgb(101, 109, 118) !important;
-}
-
 body {
   height: 100vh;
   background-color: #f6f7fb;
@@ -77,12 +71,50 @@ tbody tr {
   }
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+div[class*="--div"] {
+  div[class*="--row"] {
+    margin: 10px 0px;
+    @include flexCenter(center, space-between, row);
+
+    span {
+      // width: 100% !important;
+
+      // &:nth-child(odd) {
+      //   margin-right: 10px;
+      // }
+
+      input {
+        width: 100%;
+      }
+    }
+
+  }
+}
+
 .mat-mdc-dialog-surface {
   overflow: hidden !important;
 }
 
 .mdc-dialog__surface {
   overflow: hidden !important;
+}
+
+.sm-text {
+  font-size: 0.80rem !important;
+  margin-bottom: 2.5px !important;
+  color: rgb(101, 109, 118) !important;
 }
 
 .input {
@@ -92,7 +124,7 @@ tbody tr {
   border-radius: 2px;
   width: calc(50% - 5px);
   background-color: #ffffff;
-  border: 1px solid rgba(60, 64, 67, 0.5);
+  border: 1px solid rgba(60, 64, 67, 0.5) !important;
 }
 
 .btn-default {
@@ -132,16 +164,8 @@ tbody tr {
   }
 }
 
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
+.mat-mdc-dialog-content {
+  max-height: none !important;
 }
 
 .mdc-line-ripple {
@@ -157,12 +181,13 @@ input[type=number] {
   border: none;
 }
 
-.cursor-pointer{
+.mat-mdc-form-field {
+  border: none !important;
+}
+
+.cursor-pointer {
   cursor: pointer;
 }
 
 // MainComponent
 @import './app/components/main/main.component.scss';
-
-// FooterComponent
-@import './app/components/footer/footer.component.scss';
