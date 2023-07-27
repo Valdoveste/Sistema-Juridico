@@ -12,13 +12,17 @@
                     <thead>
                         <tr style="border-top: none;">
                             <th scope="col">Empresas</th>
+                            <th scope="col">CPF_CNPJ</th>
+                            <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let empresas of empresas">
 
-                            <td> {{empresas.EMPRESA}} </td>
+                            <td class="{{empresas.ID}}"> {{empresas.EMPRESA}} </td>
+
+                            <td class="{{empresas.ID}}"> {{empresas.CPF_CNPJ}} </td>
 
                             <td class="cursor-pointer" style="width: 40px;" title="Editar"
                                 (click)="openDialogEdit('250ms', '100ms', $event, empresas.ID)">

@@ -24,6 +24,10 @@ export class MEmpresasComponent implements OnInit {
     this.loadEmpresas();
   }
 
+  innerHTMLRow(element: HTMLCollectionOf<Element>){
+    return [element[0].innerHTML, element[1].innerHTML]
+  }
+
   loadEmpresas() {
     this.empresasService.getAllEmpresas()
       .subscribe({
@@ -49,7 +53,7 @@ export class MEmpresasComponent implements OnInit {
   openDialogRemove(enterAnimationDuration: string, exitAnimationDuration: string, event: Event, id: String | undefined): void {
     const dialogRefRemove = this.dialog.open(DialogDeleteEmpresasComponent, {
       width: '350px',
-      data: { value: (event.currentTarget as HTMLElement).previousElementSibling?.previousElementSibling?.innerHTML, id: id },
+      data: { empresas_data: this.innerHTMLRow(document.getElementsByClassName(id as string)), id: id },
       enterAnimationDuration,
       exitAnimationDuration,
     });
@@ -60,7 +64,7 @@ export class MEmpresasComponent implements OnInit {
   openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string, event: Event, id: String | undefined): void {
     const dialogRefEdit = this.dialog.open(DialogEditEmpresasComponent, {
       width: '350px',
-      data: { value: (event.currentTarget as HTMLElement).previousElementSibling?.innerHTML, id: id },
+      data: { empresas_data: this.innerHTMLRow(document.getElementsByClassName(id as string)),  id: id },
       enterAnimationDuration,
       exitAnimationDuration,
     });
