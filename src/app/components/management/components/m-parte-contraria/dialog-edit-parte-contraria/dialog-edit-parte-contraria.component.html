@@ -2,8 +2,90 @@
 <form (ngSubmit)="updateParteContria()" #formDir="ngForm" [formGroup]="updateParteContriaForm">
     <div mat-dialog-content>
         <mat-form-field>
-            <input name="PARTE_CONTRIA" formControlName="PARTE_CONTRIA" matInput required [(ngModel)]="updateData.value">
+            <span class="sm-text">Nome</span>
+            <input name="NOME" placeholder="" formControlName="NOME" matInput
+                [(ngModel)]="updateData.value">
         </mat-form-field>
+
+        <div class="--div">
+            <div class="--row">
+                <mat-form-field>
+                    <span class="sm-text">CPF</span>
+                    <input type="text" class="teste" mask="000.000.000-00" placeholder="000.000.000-00" [maxlength]="14" matInput
+                        [(ngModel)]="updateData.value[0].innerHTML" name="CPF"
+                        formControlName="CPF">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <span class="sm-text">RG</span>
+                    <input type="text" mask="00.000.000-0" placeholder="00.000.000-0" [maxlength]="12" matInput
+                        [(ngModel)]="updateData.value" name="RG"
+                        formControlName="RG">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <mat-form-field style="width: 30%">
+            <span class="sm-text">CEP</span>
+            <input name="CEP" placeholder="0000-000" formControlName="CEP" matInput
+                [(ngModel)]="updateData.value">
+        </mat-form-field>
+
+        <div class="--div">
+            <div class="--row">
+                <mat-form-field>
+                    <span class="sm-text">Enderço</span>
+                    <input name="ENDERECO" placeholder="" formControlName="ENDERECO" matInput
+                        [(ngModel)]="updateData.value">
+                </mat-form-field>
+
+                <mat-form-field style="width: 35%;">
+                    <span class="sm-text">Número</span>
+                    <input name="NUMERO" placeholder="" formControlName="NUMERO" matInput
+                        [(ngModel)]="updateData.value">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <mat-form-field>
+            <span class="sm-text">Complemento</span>
+            <input name="COMPLEMENTO" placeholder="" formControlName="COMPLEMENTO" matInput
+                [(ngModel)]="updateData.value">
+        </mat-form-field>
+
+        <div>
+            <div class="--div">
+                <div class="--row">
+                    <mat-form-field>
+                        <span class="sm-text">Cargo</span>
+                        <input name="CARGO" placeholder="" formControlName="CARGO" matInput
+                            [(ngModel)]="updateData.value">
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <span class="sm-text">Ultimo salário</span>
+                        <input name="ULTIMO_SALARIO" placeholder="" formControlName="ULTIMO_SALARIO" matInput
+                            [(ngModel)]="updateData.value">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="--div">
+                <div class="--row" style="justify-content: flex-start !important">
+                    <mat-form-field style="width: auto;">
+                        <span class="sm-text">Data admissão</span>
+                        <input name="DATA_ADMISSAO" placeholder="" type="date" formControlName="DATA_ADMISSAO" matInput
+                            [(ngModel)]="updateData.value">
+                    </mat-form-field>
+
+                    <mat-form-field style="width: auto;">
+                        <span class="sm-text">Data demissão</span>
+                        <input name="DATA_DEMISSAO" placeholder="" type="date" formControlName="DATA_DEMISSAO" matInput
+                            [(ngModel)]="updateData.value">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
 
         <div mat-raised-action class="float-right">
             <button mat-button mat-dialog-close class="mr-2">Fechar</button>
