@@ -26,13 +26,15 @@ export class DialogEditEmpresasComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateEmpresasForm = new FormGroup({
-      EMPRESAS: new FormControl("", [Validators.required])
+      EMPRESA: new FormControl('', [Validators.required]),
+      CPF_CNPJ: new FormControl('', [Validators.required])
     });
   }
 
   updateEmpresas() {
     if (this.updateEmpresasForm.valid) {
-      this.updateEmpresasRequest.EMPRESA = this.updateData.value;
+      this.updateEmpresasRequest.EMPRESA = this.updateData.empresas_data[0];
+      this.updateEmpresasRequest.CPF_CNPJ = this.updateData.empresas_data[1];
       this.empresasService.updateEmpresas(this.updateData.id, this.updateEmpresasRequest)
         .subscribe({
           next: (response) => {

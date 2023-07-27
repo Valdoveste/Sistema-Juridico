@@ -25,7 +25,8 @@ export class DialogAddEmpresasComponent implements OnInit {
 
   ngOnInit(): void {
     this.createEmpresasForm = new FormGroup({
-      EMPRESAS: new FormControl('', [Validators.required])
+      EMPRESA: new FormControl('', [Validators.required]),
+      CPF_CNPJ: new FormControl('', [Validators.required])
     });
   }
 
