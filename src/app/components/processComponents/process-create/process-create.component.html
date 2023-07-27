@@ -40,10 +40,10 @@
               <p class="sm-text">Empresa</p>
               <select name="EMPRESA" formControlName="EMPRESA" [(ngModel)]="createProcessResquest.EMPRESA"
                 class="process-searchbar__list__item--input-select">
-                <!-- <option value="" selected></option>
-                <option *ngFor="let status of status" value="{{status.STATUS}}" selected>
-                  {{status.STATUS}}
-                </option> -->
+                <option value="" selected></option>
+                <option *ngFor="let empresa of empresas" value="{{empresa.EMPRESA}}" selected>
+                  {{empresa.EMPRESA}}
+                </option>
               </select>
 
             </div>
