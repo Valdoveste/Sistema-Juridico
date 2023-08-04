@@ -21,9 +21,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let acordo of acordos">
-              <td>
-                {{ acordo.VALOR_ACORDO }}
-              </td>
+              <td>{{ acordo.VALOR_ACORDO | mask: 'separator.2': {thousandSeparator: '.', suffix: ',00'} }}</td>
 
               <td>
                 {{
