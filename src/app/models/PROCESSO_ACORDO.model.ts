@@ -1,8 +1,8 @@
 export interface ProcessoAcordo {
-    ID?: String;
-    DATA_ACORDO: String;
-    VALOR_ACORDO: String;
-    ID_PROCESSO: String;
-    CRIADOR_ACORDO: String;
-    CONDICOES_TENTATIVA_DE_ACORDO: String;
+    ID?: string | String;
+    DATA_ACORDO: string | String;
+    VALOR_ACORDO: number;
+    ID_PROCESSO: string | String;
+    CRIADOR_ACORDO: string | String;
+    CONDICOES_TENTATIVA_DE_ACORDO: string | String;
 }

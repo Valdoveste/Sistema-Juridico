@@ -1,22 +1,22 @@
 export interface ProcessoParteContraria {
-  ID?: String;
-  ID_PROCESSO: String;
-  PF_PJ: Number;
-  NOME: String;
-  NOME_FANTASIA: String;
-  CPF: String;
-  CNPJ: String
-  RG: String;
-  ENDERECO: String;
-  CEP: String;
-  NUMERO: Number;
-  COMPLEMENTO: String;
-  ESTADO: String;
-  PAIS: String;
-  CIDADE: String;
-  OBSERVACAO: String;
-  CARGO: String;
-  DATA_ADMISSAO: String;
-  DATA_DEMISSAO: String
-  ULTIMO_SALARIO: Number;
+  ID?: string | String;
+  ID_PROCESSO: string | String;
+  PF_PJ: number;
+  NOME: string | String;
+  NOME_FANTASIA: string | String;
+  CPF: string;
+  CNPJ: string;
+  RG: string;
+  ENDERECO: string | String;
+  CEP: string | String;
+  NUMERO: number;
+  COMPLEMENTO: string | String;
+  ESTADO: string | String;
+  PAIS: string | String;
+  CIDADE: string | String;
+  OBSERVACAO: string | String;
+  CARGO: string | String;
+  DATA_ADMISSAO: string | String;
+  DATA_DEMISSAO: string | String
+  ULTIMO_SALARIO: number;
 }

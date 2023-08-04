@@ -1,4 +1,4 @@
 export interface ProcessoTipoDeAndamento {
-    ID?: String;
-    TIPO_DE_ANDAMENTO: String;
+    ID?: string | String;
+    TIPO_DE_ANDAMENTO: string | String;
 }
