@@ -2,12 +2,15 @@
 <form (ngSubmit)="createPatronoResponsavel()" #formDir="ngForm" [formGroup]="createPatronoResponsavelForm">
     <div mat-dialog-content>
         <mat-form-field class="mb-2">
-            <input name="PATRONO_RESPONSAVEL" placeholder="Nome" formControlName="PATRONO_RESPONSAVEL" matInput required
+            <span class="sm-text">Nome</span>
+            <input name="PATRONO_RESPONSAVEL" formControlName="PATRONO_RESPONSAVEL" matInput required
                 [(ngModel)]="createPatronoResponsavelRequest.PATRONO_RESPONSAVEL">
         </mat-form-field>
 
         <mat-form-field>
-            <input name="PATRONO_RESPONSAVEL_CPF_CNPJ" placeholder="CPF/CNPJ" formControlName="PATRONO_RESPONSAVEL_CPF_CNPJ" matInput
+            <span class="sm-text">CPF_CNPJ</span>
+            <input name="PATRONO_RESPONSAVEL_CPF_CNPJ" formControlName="PATRONO_RESPONSAVEL_CPF_CNPJ" matInput
+                mask="000.000.000-00||00.000.000/0000-00"
                 [(ngModel)]="createPatronoResponsavelRequest.PATRONO_RESPONSAVEL_CPF_CNPJ">
         </mat-form-field>
 
@@ -18,7 +21,7 @@
     </div>
 </form>
 
-        <!-- 
+<!-- 
         Use Comunicações e Telecomunicações LTDA. (29.568.281/0001-65)
         Use Telecomunicações LTDA. (09.540.627/0001-00)
         Use Service LTDA. (39.512.524/0001-05)
