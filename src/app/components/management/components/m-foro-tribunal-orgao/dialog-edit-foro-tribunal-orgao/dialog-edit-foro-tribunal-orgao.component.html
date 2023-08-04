@@ -1,7 +1,8 @@
-<h1 mat-dialog-title>Editar ForoTribunalOrgao</h1>
+<h1 mat-dialog-title>Editar Foro/Tribunal/Orgão</h1>
 <form (ngSubmit)="updateForoTribunalOrgaos()" #formDir="ngForm" [formGroup]="updateForoTribunalOrgaoForm">
     <div mat-dialog-content>
         <mat-form-field>
+            <p class="sm-text">Foro/Tribunal/Orgão</p>
             <input name="ForoTribunalOrgao" formControlName="ForoTribunalOrgao" matInput required [(ngModel)]="updateData.value">
         </mat-form-field>
 

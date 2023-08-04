@@ -2,6 +2,7 @@
 <form (ngSubmit)="createTipoDeAndamento()" #formDir="ngForm" [formGroup]="createTipoDeAndamentoForm">
     <div mat-dialog-content>
         <mat-form-field>
+            <p class="sm-text">Tipo de andamento</p>
             <input name="TIPO_DE_ANDAMENTO" formControlName="TIPO_DE_ANDAMENTO" matInput required [(ngModel)]="createTipoDeAndamentoRequest.TIPO_DE_ANDAMENTO">
         </mat-form-field>   
 

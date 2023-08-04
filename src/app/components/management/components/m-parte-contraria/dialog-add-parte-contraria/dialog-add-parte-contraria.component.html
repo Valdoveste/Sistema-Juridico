@@ -1,8 +1,7 @@
-<h1 mat-dialog-title>Criar ParteContraria</h1>
+<h1 mat-dialog-title>Criar Parte contraria</h1>
 <div class="process-create-opposingparty mt-3">
-    <h3>Parte Contrária</h3>
     <ul class="process-create-opposingparty__list" class="mt-2">
-        <li class="process-create-opposingparty__list__item mb-2">
+        <li class="process-create-opposingparty__list__item mb-2" style="padding: 0 40px;">
             <div class="process-create-opposingparty__list__item--div">
                 <p class="sm-text">Relação jurídica</p>
             </div>
@@ -31,23 +30,21 @@
                             <div class="--row">
                                 <mat-form-field>
                                     <span class="sm-text">CPF</span>
-                                    <input type="text" mask="000.000.000-00" placeholder="000.000.000-00"
-                                        [maxlength]="14" matInput [(ngModel)]="createParteContrariaRequest.CPF"
-                                        (ngModelChange)="onPersonCPFChange()" name="CPF" formControlName="CPF">
+                                    <input type="text" mask="000.000.000-00" placeholder="000.000.000-00" matInput
+                                        [(ngModel)]="createParteContrariaRequest.CPF" name="CPF" formControlName="CPF">
                                 </mat-form-field>
 
                                 <mat-form-field>
                                     <span class="sm-text">RG</span>
-                                    <input type="text" mask="00.000.000-0" placeholder="00.000.000-0" [maxlength]="12"
-                                        matInput [(ngModel)]="createParteContrariaRequest.RG"
-                                        (ngModelChange)="onPersonRGChange()" name="RG" formControlName="RG">
+                                    <input type="text" mask="00.000.000-0" placeholder="00.000.000-0" matInput
+                                        [(ngModel)]="createParteContrariaRequest.RG" name="RG" formControlName="RG">
                                 </mat-form-field>
                             </div>
                         </div>
 
                         <mat-form-field style="width: 30%">
                             <span class="sm-text">CEP</span>
-                            <input name="CEP" placeholder="0000-000" formControlName="CEP" matInput
+                            <input name="CEP" mask="0000-000" placeholder="0000-000" formControlName="CEP" matInput
                                 [(ngModel)]="createParteContrariaRequest.CEP">
                         </mat-form-field>
 
@@ -85,6 +82,7 @@
                                     <mat-form-field>
                                         <span class="sm-text">Ultimo salário</span>
                                         <input name="ULTIMO_SALARIO" formControlName="ULTIMO_SALARIO" matInput
+                                            mask="separator.2" thousandSeparator="." suffix=",00"
                                             [(ngModel)]="createParteContrariaRequest.ULTIMO_SALARIO">
                                     </mat-form-field>
                                 </div>
@@ -136,15 +134,15 @@
                                 <mat-form-field>
                                     <span class="sm-text">CNPJ</span>
                                     <input type="text" mask="00.000.000/0000-00" placeholder="00.000.000/0000-00"
-                                        [maxlength]="18" matInput [(ngModel)]="createParteContrariaRequest.CNPJ"
-                                        (ngModelChange)="onPersonCNPJChange()" name="CNPJ" formControlName="CNPJ">
+                                        matInput [(ngModel)]="createParteContrariaRequest.CNPJ" name="CNPJ"
+                                        formControlName="CNPJ">
                                 </mat-form-field>
                             </div>
                         </div>
 
                         <mat-form-field style="width: 30%">
                             <span class="sm-text">CEP</span>
-                            <input name="CEP" placeholder="0000-000" formControlName="CEP" matInput
+                            <input name="CEP" mask="0000-000" placeholder="0000-000" formControlName="CEP" matInput
                                 [(ngModel)]="createParteContrariaRequest.CEP">
                         </mat-form-field>
 
@@ -161,24 +159,53 @@
                                     <input name="NUMERO" formControlName="NUMERO" matInput
                                         [(ngModel)]="createParteContrariaRequest.NUMERO">
                                 </mat-form-field>
-
-                                <mat-form-field>
-                                    <span class="sm-text">Complemento</span>
-                                    <input name="COMPLEMENTO" formControlName="COMPLEMENTO" matInput
-                                        [(ngModel)]="createParteContrariaRequest.COMPLEMENTO">
-                                </mat-form-field>
                             </div>
                         </div>
+
+                        <mat-form-field>
+                            <span class="sm-text">Complemento</span>
+                            <input name="COMPLEMENTO" formControlName="COMPLEMENTO" matInput
+                                [(ngModel)]="createParteContrariaRequest.COMPLEMENTO">
+                        </mat-form-field>
 
                         <div class="--div">
                             <div class="--row">
                                 <mat-form-field>
                                     <span class="sm-text">Estado</span>
-                                    <input name="ESTADO" formControlName="ESTADO" matInput
+                                    <select name="ESTADO" formControlName="ESTADO" matInput
                                         [(ngModel)]="createParteContrariaRequest.ESTADO">
+                                        <option value="">Selcionar estado</option>
+                                        <option value="AC">Acre</option>
+                                        <option value="AL">Alagoas</option>
+                                        <option value="AP">Amapá</option>
+                                        <option value="AM">Amazonas</option>
+                                        <option value="BA">Bahia</option>
+                                        <option value="CE">Ceará</option>
+                                        <option value="DF">Distrito Federal</option>
+                                        <option value="ES">Espírito Santo</option>
+                                        <option value="GO">Goiás</option>
+                                        <option value="MA">Maranhão</option>
+                                        <option value="MT">Mato Grosso</option>
+                                        <option value="MS">Mato Grosso do Sul</option>
+                                        <option value="MG">Minas Gerais</option>
+                                        <option value="PA">Pará</option>
+                                        <option value="PB">Paraíba</option>
+                                        <option value="PR">Paraná</option>
+                                        <option value="PE">Pernambuco</option>
+                                        <option value="PI">Piauí</option>
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option value="RN">Rio Grande do Norte</option>
+                                        <option value="RS">Rio Grande do Sul</option>
+                                        <option value="RO">Rondônia</option>
+                                        <option value="RR">Roraima</option>
+                                        <option value="SC">Santa Catarina</option>
+                                        <option value="SP">São Paulo</option>
+                                        <option value="SE">Sergipe</option>
+                                        <option value="TO">Tocantins</option>
+                                    </select>
                                 </mat-form-field>
 
-                                <mat-form-field style="width: 35%;">
+                                <mat-form-field>
                                     <span class="sm-text">Cidade</span>
                                     <input name="CIDADE" formControlName="CIDADE" matInput
                                         [(ngModel)]="createParteContrariaRequest.CIDADE">
@@ -200,8 +227,8 @@
                         </mat-form-field>
 
                         <div mat-raised-action class="float-right">
-                            <button mat-button mat-dialog-close class="mr-2">Fechar</button>
-                            <button mat-button type="submit">Adicionar</button>
+                            <button class="btn-default" mat-button mat-dialog-close class="mr-2">Fechar</button>
+                            <button class="btn-default" mat-button type="submit">Adicionar</button>
                         </div>
                     </div>
                 </form>

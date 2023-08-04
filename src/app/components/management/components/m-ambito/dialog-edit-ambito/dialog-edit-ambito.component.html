@@ -2,6 +2,7 @@
 <form (ngSubmit)="updateAmbitos()" #formDir="ngForm" [formGroup]="updateAmbitoForm">
     <div mat-dialog-content>
         <mat-form-field>
+            <p class="sm-text">Âmbito</p>
             <input name="AMBITO" formControlName="AMBITO" matInput required [(ngModel)]="updateData.value">
         </mat-form-field>
 

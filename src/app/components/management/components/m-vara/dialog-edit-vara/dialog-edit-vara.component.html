@@ -2,6 +2,7 @@
 <form (ngSubmit)="updateVaras()" #formDir="ngForm" [formGroup]="updateVaraForm">
     <div mat-dialog-content>
         <mat-form-field>
+            <p class="sm-text">Vara</p>
             <input name="VARA" formControlName="VARA" matInput required [(ngModel)]="updateData.value">
         </mat-form-field>
 
