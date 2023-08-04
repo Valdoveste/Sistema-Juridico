@@ -22,7 +22,7 @@ export class DialogEditAcordoComponent implements OnInit {
     ID: '',
     DATA_ACORDO: '',
     CRIADOR_ACORDO: '',
-    VALOR_ACORDO: '',
+    VALOR_ACORDO: 0,
     ID_PROCESSO: '',
     CONDICOES_TENTATIVA_DE_ACORDO: ''
   }
