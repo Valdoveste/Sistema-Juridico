@@ -3,9 +3,9 @@
         <div id="process-create">
             <div class="management">
                 <div class="mb-3">
-                    <h3>Parte Contria</h3>
+                    <h3>Parte Contraria</h3>
                     <button type="submit" class="btn-default float-right" (click)="openDialogAdd('250ms', '100ms')">
-                        Criar Parte Contria
+                        Criar Parte Contraria
                     </button>
                 </div>
                 <table class="table table-borderless">
@@ -14,9 +14,9 @@
                             <!-- <th scope="col">Parte Contria</th> -->
                             <th scope="col">Nome</th>
                             <th scope="col">Nome fantasia</th>
-                            <th scope="col">CPF</th>
+                            <th scope="col">CPF/CNPJ</th>
                             <th scope="col">RG</th>
-                            <th scope="col">CNPJ</th>
+                            <!-- <th scope="col">CNPJ</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -26,11 +26,15 @@
 
                             <td class="{{parteContria.ID}}"> {{parteContria.NOME_FANTASIA}} </td>
 
-                            <td class="{{parteContria.ID}}"> {{parteContria.CPF}} </td>
+                            <td class="{{parteContria.ID}}" *ngIf="parteContria.PF_PJ == 0; else testeTD">
+                                {{parteContria.CPF | mask: '000.000.000-00'}} </td>
 
-                            <td class="{{parteContria.ID}}"> {{parteContria.RG}} </td>
+                            <ng-template #testeTD>
+                                <td class="{{parteContria.ID}}"> {{parteContria.CNPJ | mask: '00.000.000/0000-00'}}
+                                </td>
+                            </ng-template>
 
-                            <td class="{{parteContria.ID}}"> {{parteContria.CNPJ}} </td>
+                            <td class="{{parteContria.ID}}"> {{parteContria.RG | mask: '00.000.000-0' }} </td>
 
                             <td class="cursor-pointer" style="width: 40px;" title="Editar"
                                 (click)="openDialogEdit('250ms', '100ms', $event, parteContria.ID)">
@@ -58,6 +62,19 @@
                                     <path
                                         d="M3.9231 7.5H20.0767L19.1344 20.2216C19.0183 21.7882 17.7135 23 16.1426 23H7.85724C6.28636 23 4.98148 21.7882 4.86544 20.2216L3.9231 7.5Z"
                                         fill="#000000" />
+                                </svg>
+                            </td>
+
+                            <td class="cursor-pointer" style="width: 40px;" title="Visualizar Parte contraria"
+                                (click)="openDialogView('250ms', '100ms', $event, parteContria.ID)">
+                                <svg width="20px" height="20px" clip-rule="evenodd" fill-rule="evenodd"
+                                    stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="m11.998 5c-4.078 0-7.742 3.093-9.853 6.483-.096.159-.145.338-.145.517s.048.358.144.517c2.112 3.39 5.776 6.483 9.854 6.483 4.143 0 7.796-3.09 
+                              9.864-6.493.092-.156.138-.332.138-.507s-.046-.351-.138-.507c-2.068-3.403-5.721-6.493-9.864-6.493zm.002 3c2.208 0 4 1.792 4 4s-1.792 4-4 4-4-1.792-4-4 
+                              1.792-4 4-4zm0 1.5c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5-2.5-1.12-2.5-2.5 1.12-2.5 2.5-2.5z"
+                                        fill-rule="nonzero" />
                                 </svg>
                             </td>
                         </tr>

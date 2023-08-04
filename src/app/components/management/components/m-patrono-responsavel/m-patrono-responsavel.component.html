@@ -30,7 +30,8 @@
                         <tr *ngFor="let patronoResponsavel of patronoResponsaveis">
                             <td>{{ patronoResponsavel.PATRONO_RESPONSAVEL }}</td>
 
-                            <td>{{ patronoResponsavel.PATRONO_RESPONSAVEL_CPF_CNPJ }}</td>
+                            <td>{{ patronoResponsavel.PATRONO_RESPONSAVEL_CPF_CNPJ | mask: '000.000.000-00 ||
+                                00.000.000/0000-00' }}</td>
 
                             <td class="cursor-pointer" style="width: 40px;" title="Editar"
                                 (click)="openDialogEdit('250ms', '100ms', $event, patronoResponsavel.ID)">
