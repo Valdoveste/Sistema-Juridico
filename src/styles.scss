@@ -103,6 +103,11 @@ div[class*="--div"] {
   }
 }
 
+.cdk-overlay-pane {
+  overflow: scroll !important;
+  overflow-y: scroll !important;
+}
+
 .mat-mdc-dialog-surface {
   overflow: hidden !important;
 }
