@@ -1,5 +1,5 @@
 export interface ProcessoEmpresas {
-    ID?: String;
-    EMPRESA: String;
-    CPF_CNPJ: String;
+    ID?: string | String;
+    EMPRESA: string | String;
+    CPF_CNPJ: string | number;
 }
