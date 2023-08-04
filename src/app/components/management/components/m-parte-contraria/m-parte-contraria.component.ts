@@ -6,6 +6,7 @@ import { ParteContrariaService } from 'src/app/services/parte-contraria.service'
 import { DialogAddParteContrariaComponent } from './dialog-add-parte-contraria/dialog-add-parte-contraria.component';
 import { DialogDeleteParteContrariaComponent } from './dialog-delete-parte-contraria/dialog-delete-parte-contraria.component';
 import { DialogEditParteContriaComponent } from './dialog-edit-parte-contraria/dialog-edit-parte-contraria.component';
+import { DialogViewParteContrariaComponent } from './dialog-view-parte-contraria/dialog-view-parte-contraria.component';
 
 @Component({
   selector: 'app-m-parte-contraria',
@@ -19,32 +20,6 @@ export class MParteContrariaComponent implements OnInit {
   ) { }
 
   partecontrarias: ProcessoParteContraria[] = [];
-
-  personRG: string = '';
-  personCPF: string = '';
-  personCNPJ: string = '';
-
-  onPersonRGChange() {
-    this.personRG = this.personRG.replace(/\D/g, '');
-    this.personRG = this.personRG.replace(/(\d{2})(\d)/, '$1.$2');
-    this.personRG = this.personRG.replace(/(\d{3})(\d)/, '$1.$2');
-    this.personRG = this.personRG.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-  }
-
-  onPersonCPFChange() {
-    this.personCPF = this.personCPF.replace(/\D/g, '');
-    this.personCPF = this.personCPF.replace(/(\d{3})(\d)/, '$1.$2');
-    this.personCPF = this.personCPF.replace(/(\d{3})(\d)/, '$1.$2');
-    this.personCPF = this.personCPF.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-  }
-
-  onPersonCNPJChange() {
-    this.personCNPJ = this.personCNPJ.replace(/\D/g, '');
-    this.personCNPJ = this.personCNPJ.replace(/(\d{2})(\d)/, '$1.$2');
-    this.personCNPJ = this.personCNPJ.replace(/(\d{3})(\d)/, '$1.$2');
-    this.personCNPJ = this.personCNPJ.replace(/(\d{3})(\d)/, '$1/$2');
-    this.personCNPJ = this.personCNPJ.replace(/(\d{4})(\d)/, '$1-$2');
-  }
 
   ngOnInit(): void {
     this.loadParteContrarias();
@@ -62,8 +37,6 @@ export class MParteContrariaComponent implements OnInit {
       })
   }
 
-
-
   openDialogAdd(enterAnimationDuration: string, exitAnimationDuration: string): void {
     const dialogRefAdd = this.dialog.open(DialogAddParteContrariaComponent, {
       width: '750px',
@@ -71,7 +44,7 @@ export class MParteContrariaComponent implements OnInit {
       exitAnimationDuration,
     });
 
-    dialogRefAdd.afterClosed().subscribe(result => { result ? this.loadParteContrarias() : null; }) 
+    dialogRefAdd.afterClosed().subscribe(result => { result ? this.loadParteContrarias() : null; })
   }
 
   openDialogRemove(enterAnimationDuration: string, exitAnimationDuration: string, event: Event, id: String | undefined): void {
@@ -86,11 +59,27 @@ export class MParteContrariaComponent implements OnInit {
   }
 
   openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string, event: Event, id: String | undefined): void {
-    let teste = document.getElementsByClassName(id as string);
-    console.log(teste)
+    Array.from(document.getElementsByClassName(id as string)).forEach(
+      function (element, index, array) {
+        console.log(element.innerHTML)
+      }
+    )
+
     const dialogRefEdit = this.dialog.open(DialogEditParteContriaComponent, {
       width: '750px',
       data: { value: document.getElementsByClassName(id as string), id: id },
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+
+    dialogRefEdit.afterClosed().subscribe(result => { result ? this.loadParteContrarias() : null; })
+  }
+
+  openDialogView(enterAnimationDuration: string, exitAnimationDuration: string, event: Event, id: String | undefined): void {
+    const dialogRefEdit = this.dialog.open(DialogViewParteContrariaComponent, {
+      height: '600px',
+      width: '750px',
+      data: { value: (event.currentTarget as HTMLElement).previousElementSibling?.innerHTML, id: id },
       enterAnimationDuration,
       exitAnimationDuration,
     });
