@@ -92,20 +92,6 @@ export class DialogAddParteContrariaComponent implements OnInit {
     return;
   }
 
-  onPersonRGChange() {
-    this.createParteContrariaRequest.RG = this.createParteContrariaRequest.RG!.replace(/\D/g, '');
-    this.createParteContrariaRequest.RG = this.createParteContrariaRequest.RG.replace(/(\d{2})(\d)/, '$1.$2');
-    this.createParteContrariaRequest.RG = this.createParteContrariaRequest.RG.replace(/(\d{3})(\d)/, '$1.$2');
-    this.createParteContrariaRequest.RG = this.createParteContrariaRequest.RG.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-  }
-
-  onPersonCPFChange() {
-    this.createParteContrariaRequest.CPF = this.createParteContrariaRequest.CPF!.replace(/\D/g, '');
-    this.createParteContrariaRequest.CPF = this.createParteContrariaRequest.CPF.replace(/(\d{3})(\d)/, '$1.$2');
-    this.createParteContrariaRequest.CPF = this.createParteContrariaRequest.CPF.replace(/(\d{3})(\d)/, '$1.$2');
-    this.createParteContrariaRequest.CPF = this.createParteContrariaRequest.CPF.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-  }
-
 
   createParteContrariaLegalForm!: FormGroup;
 
@@ -123,13 +109,5 @@ export class DialogAddParteContrariaComponent implements OnInit {
         });
     }
     return;
-  }
-
-  onPersonCNPJChange() {
-    this.createParteContrariaRequest.CNPJ = this.createParteContrariaRequest.CNPJ.replace(/\D/g, '');
-    this.createParteContrariaRequest.CNPJ = this.createParteContrariaRequest.CNPJ.replace(/(\d{2})(\d)/, '$1.$2');
-    this.createParteContrariaRequest.CNPJ = this.createParteContrariaRequest.CNPJ.replace(/(\d{3})(\d)/, '$1.$2');
-    this.createParteContrariaRequest.CNPJ = this.createParteContrariaRequest.CNPJ.replace(/(\d{3})(\d)/, '$1/$2');
-    this.createParteContrariaRequest.CNPJ = this.createParteContrariaRequest.CNPJ.replace(/(\d{4})(\d)/, '$1-$2');
   }
 }
