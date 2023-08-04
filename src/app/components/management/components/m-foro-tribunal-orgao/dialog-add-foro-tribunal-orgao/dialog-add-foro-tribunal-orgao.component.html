@@ -1,7 +1,8 @@
-<h1 mat-dialog-title>Criar ForoTribunalOrgao</h1>
+<h1 mat-dialog-title>Criar Foro/Tribunal/Orgão</h1>
 <form (ngSubmit)="createForoTribunalOrgao()" #formDir="ngForm" [formGroup]="createForoTribunalOrgaoForm">
     <div mat-dialog-content>
         <mat-form-field>
+            <p class="sm-text">Foro/Tribunal/Orgão</p>
             <input name="FORO_TRIBUNAL_ORGAO" formControlName="FORO_TRIBUNAL_ORGAO" matInput required [(ngModel)]="createForoTribunalOrgaoRequest.FORO_TRIBUNAL_ORGAO">
         </mat-form-field>   
 

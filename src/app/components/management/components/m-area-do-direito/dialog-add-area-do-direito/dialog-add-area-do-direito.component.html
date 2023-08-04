@@ -2,6 +2,7 @@
 <form (ngSubmit)="createAreaDoDireito()" #formDir="ngForm" [formGroup]="createAreaDoDireitoForm">
     <div mat-dialog-content>
         <mat-form-field>
+            <p class="sm-text">Área do Direito</p>
             <input name="AREA_DO_DIREITO" formControlName="AREA_DO_DIREITO" matInput required [(ngModel)]="createAreaDoDireitoRequest.AREA_DO_DIREITO">
         </mat-form-field>   
 

@@ -2,6 +2,7 @@
 <form (ngSubmit)="updateTiposDeAcao()" #formDir="ngForm" [formGroup]="updateTipoDeAcaoForm">
     <div mat-dialog-content>
         <mat-form-field>
+            <p class="sm-text">Tipo de ação</p>
             <input name="TIPO_DE_ACAO" formControlName="TIPO_DE_ACAO" matInput required [(ngModel)]="updateData.value">
         </mat-form-field>
 
