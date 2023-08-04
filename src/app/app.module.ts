@@ -88,6 +88,9 @@ import { DialogEditParteContriaComponent } from './components/management/compone
 import { DialogAddEmpresasComponent } from './components/management/components/m-empresas/dialog-add-empresas/dialog-add-empresas.component';
 import { DialogDeleteEmpresasComponent } from './components/management/components/m-empresas/dialog-delete-empresas/dialog-delete-empresas.component';
 import { DialogEditEmpresasComponent } from './components/management/components/m-empresas/dialog-edit-empresas/dialog-edit-empresas.component';
+import { DialogViewParteContrariaComponent } from './components/management/components/m-parte-contraria/dialog-view-parte-contraria/dialog-view-parte-contraria.component';
+
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -165,7 +168,8 @@ import { DialogEditEmpresasComponent } from './components/management/components/
 
     DialogAddEmpresasComponent,
     DialogDeleteEmpresasComponent,
-    DialogEditEmpresasComponent
+    DialogEditEmpresasComponent,
+    DialogViewParteContrariaComponent
   ],
 
   imports: [
@@ -183,9 +187,11 @@ import { DialogEditEmpresasComponent } from './components/management/components/
     MatInputModule,
     MatRadioModule,
     MatNativeDateModule,
-    NgSelectModule
+    NgSelectModule,
+    NgxMaskDirective,
+    NgxMaskPipe
   ],
-  providers: [],
+  providers: [provideNgxMask()],
   bootstrap: [AppComponent]
 })
 
