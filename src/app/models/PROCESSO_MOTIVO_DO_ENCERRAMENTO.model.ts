@@ -1,4 +1,4 @@
 export interface ProcessoMotivoDoEncerramento {
-    ID?: String;
-    MOTIVO_DO_ENCERRAMENTO: String;
+    ID?: string | String;
+    MOTIVO_DO_ENCERRAMENTO: string | String;
 }
