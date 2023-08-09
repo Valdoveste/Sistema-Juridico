@@ -1,13 +1,14 @@
 <h1 style="padding: 0 24px;" mat-dialog-title>Detalhes andamento</h1>
-<form #formDir="ngForm" style="height: 549px" [formGroup]="viewAcordoForm">
+<form #formDir="ngForm">
     <div mat-dialog-content>
-        <mat-form-field class="mb-3" style="width: 40%">
-            <input readonly name="TIPO_DE_ANDAMENTO" formControlName="TIPO_DE_ANDAMENTO"
-                [(ngModel)]="andamentoDetalhes.TIPO_DE_ANDAMENTO" matInput>
-        </mat-form-field>
+        <select class="process-searchbar__list__item--input-select mb-2" name="TIPO_DE_ANDAMENTO"
+            [(ngModel)]="andamentoDetalhes.TIPO_DE_ANDAMENTO" disabled matInput>
+            <option value="{{andamentoDetalhes.TIPO_DE_ANDAMENTO}}">
+                {{andamentoDetalhes.TIPO_DE_ANDAMENTO}}</option>
+        </select>
 
-        <textarea readonly style="height: 400px;" class="w-100" rows="10" name="DESC_ANDAMENTO"
-            formControlName="DESC_ANDAMENTO" matInput [(ngModel)]="andamentoDetalhes.DESC_ANDAMENTO"></textarea>
+        <textarea style="height: 400px;" class="w-100" rows="10" name="DESC_ANDAMENTO" disabled matInput
+            [(ngModel)]="andamentoDetalhes.DESC_ANDAMENTO"></textarea>
 
         <div class="float-right">
             <div mat-raised-action>
