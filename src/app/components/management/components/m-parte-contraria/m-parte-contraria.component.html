@@ -11,33 +11,31 @@
                 <table class="table table-borderless">
                     <thead>
                         <tr style="border-top: none;">
-                            <!-- <th scope="col">Parte Contria</th> -->
                             <th scope="col">Nome</th>
                             <th scope="col">Nome fantasia</th>
                             <th scope="col">CPF/CNPJ</th>
                             <th scope="col">RG</th>
-                            <!-- <th scope="col">CNPJ</th> -->
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let parteContria of partecontrarias">
 
-                            <td class="{{parteContria.ID}}"> {{parteContria.NOME}} </td>
+                            <td> {{parteContria.NOME}} </td>
 
-                            <td class="{{parteContria.ID}}"> {{parteContria.NOME_FANTASIA}} </td>
+                            <td> {{parteContria.NOME_FANTASIA}} </td>
 
-                            <td class="{{parteContria.ID}}" *ngIf="parteContria.PF_PJ == 0; else testeTD">
+                            <td *ngIf="parteContria.PF_PJ == 0; else testeTD">
                                 {{parteContria.CPF | mask: '000.000.000-00'}} </td>
 
                             <ng-template #testeTD>
-                                <td class="{{parteContria.ID}}"> {{parteContria.CNPJ | mask: '00.000.000/0000-00'}}
+                                <td> {{parteContria.CNPJ | mask: '00.000.000/0000-00'}}
                                 </td>
                             </ng-template>
 
-                            <td class="{{parteContria.ID}}"> {{parteContria.RG | mask: '00.000.000-0' }} </td>
+                            <td> {{parteContria.RG | mask: '00.000.000-0' }} </td>
 
                             <td class="cursor-pointer" style="width: 40px;" title="Editar"
-                                (click)="openDialogEdit('250ms', '100ms', $event, parteContria.ID)">
+                                (click)="openDialogEdit('250ms', '100ms', parteContria.ID)">
                                 <svg width="20px" height="20px" viewBox="0 0 18 18" version="1.1"
                                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                     xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
@@ -53,7 +51,7 @@
                             </td>
 
                             <td class="cursor-pointer" style="width: 40px;" title="Remover"
-                                (click)="openDialogRemove('250ms', '100ms', $event, parteContria.ID)">
+                                (click)="openDialogRemove('250ms', '100ms', parteContria.ID)">
                                 <svg title="Remover" width="20px" height="20px" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -66,7 +64,7 @@
                             </td>
 
                             <td class="cursor-pointer" style="width: 40px;" title="Visualizar Parte contraria"
-                                (click)="openDialogView('250ms', '100ms', $event, parteContria.ID)">
+                                (click)="openDialogView('250ms', '100ms', parteContria.ID)">
                                 <svg width="20px" height="20px" clip-rule="evenodd" fill-rule="evenodd"
                                     stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg">

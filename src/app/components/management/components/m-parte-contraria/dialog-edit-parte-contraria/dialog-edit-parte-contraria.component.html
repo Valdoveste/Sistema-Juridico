@@ -1,95 +1,219 @@
 <h1 mat-dialog-title>Editar ParteContria</h1>
 <form (ngSubmit)="updateParteContria()" #formDir="ngForm" [formGroup]="updateParteContriaForm">
-    <div mat-dialog-content>
-        <mat-form-field>
-            <span class="sm-text">Nome</span>
-            <input name="NOME" placeholder="" formControlName="NOME" matInput
-                [(ngModel)]="updateData.value">
-        </mat-form-field>
-
-        <div class="--div">
-            <div class="--row">
-                <mat-form-field>
-                    <span class="sm-text">CPF</span>
-                    <input type="text" class="teste" mask="000.000.000-00" placeholder="000.000.000-00" [maxlength]="14" matInput
-                        [(ngModel)]="updateData.value[0].innerHTML" name="CPF"
-                        formControlName="CPF">
-                </mat-form-field>
-
-                <mat-form-field>
-                    <span class="sm-text">RG</span>
-                    <input type="text" mask="00.000.000-0" placeholder="00.000.000-0" [maxlength]="12" matInput
-                        [(ngModel)]="updateData.value" name="RG"
-                        formControlName="RG">
-                </mat-form-field>
-            </div>
-        </div>
-
-        <mat-form-field style="width: 30%">
-            <span class="sm-text">CEP</span>
-            <input name="CEP" placeholder="0000-000" formControlName="CEP" matInput
-                [(ngModel)]="updateData.value">
-        </mat-form-field>
-
-        <div class="--div">
-            <div class="--row">
-                <mat-form-field>
-                    <span class="sm-text">Enderço</span>
-                    <input name="ENDERECO" placeholder="" formControlName="ENDERECO" matInput
-                        [(ngModel)]="updateData.value">
-                </mat-form-field>
-
-                <mat-form-field style="width: 35%;">
-                    <span class="sm-text">Número</span>
-                    <input name="NUMERO" placeholder="" formControlName="NUMERO" matInput
-                        [(ngModel)]="updateData.value">
-                </mat-form-field>
-            </div>
-        </div>
-
-        <mat-form-field>
-            <span class="sm-text">Complemento</span>
-            <input name="COMPLEMENTO" placeholder="" formControlName="COMPLEMENTO" matInput
-                [(ngModel)]="updateData.value">
-        </mat-form-field>
-
-        <div>
-            <div class="--div">
-                <div class="--row">
+    <ul class="process-create-opposingparty__list" class="mt-2">
+        <ng-container [ngSwitch]="componentName">
+            <ng-template ngSwitchDefault="'0'">
+                <div mat-dialog-content>
                     <mat-form-field>
-                        <span class="sm-text">Cargo</span>
-                        <input name="CARGO" placeholder="" formControlName="CARGO" matInput
-                            [(ngModel)]="updateData.value">
+                        <span class="sm-text">Nome</span>
+                        <input name="NOME" formControlName="NOME" matInput [(ngModel)]="updateParteContriaRequest.NOME">
                     </mat-form-field>
+
+                    <div class="--div">
+                        <div class="--row">
+                            <mat-form-field>
+                                <span class="sm-text">CPF</span>
+                                <input type="text" mask="000.000.000-00" placeholder="000.000.000-00" matInput
+                                    [(ngModel)]="updateParteContriaRequest.CPF" name="CPF" formControlName="CPF">
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <span class="sm-text">RG</span>
+                                <input type="text" mask="00.000.000-0" placeholder="00.000.000-0" matInput
+                                    [(ngModel)]="updateParteContriaRequest.RG" name="RG" formControlName="RG">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <mat-form-field style="width: 30%">
+                        <span class="sm-text">CEP</span>
+                        <input name="CEP" mask="0000-000" placeholder="0000-000" formControlName="CEP" matInput
+                            [(ngModel)]="updateParteContriaRequest.CEP">
+                    </mat-form-field>
+
+                    <div class="--div">
+                        <div class="--row">
+                            <mat-form-field>
+                                <span class="sm-text">Enderço</span>
+                                <input name="ENDERECO" formControlName="ENDERECO" matInput
+                                    [(ngModel)]="updateParteContriaRequest.ENDERECO">
+                            </mat-form-field>
+
+                            <mat-form-field style="width: 35%;">
+                                <span class="sm-text">Número</span>
+                                <input name="NUMERO" formControlName="NUMERO" matInput
+                                    [(ngModel)]="updateParteContriaRequest.NUMERO">
+                            </mat-form-field>
+                        </div>
+                    </div>
 
                     <mat-form-field>
-                        <span class="sm-text">Ultimo salário</span>
-                        <input name="ULTIMO_SALARIO" placeholder="" formControlName="ULTIMO_SALARIO" matInput
-                            [(ngModel)]="updateData.value">
+                        <span class="sm-text">Complemento</span>
+                        <input name="COMPLEMENTO" formControlName="COMPLEMENTO" matInput
+                            [(ngModel)]="updateParteContriaRequest.COMPLEMENTO">
                     </mat-form-field>
+
+                    <div>
+                        <div class="--div">
+                            <div class="--row">
+                                <mat-form-field>
+                                    <span class="sm-text">Cargo</span>
+                                    <input name="CARGO" formControlName="CARGO" matInput
+                                        [(ngModel)]="updateParteContriaRequest.CARGO">
+                                </mat-form-field>
+
+                                <mat-form-field>
+                                    <span class="sm-text">Ultimo salário</span>
+                                    <input name="ULTIMO_SALARIO" formControlName="ULTIMO_SALARIO" matInput
+                                        mask="separator.2" thousandSeparator="." suffix=",00"
+                                        [(ngModel)]="updateParteContriaRequest.ULTIMO_SALARIO">
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="--div">
+                            <div class="--row" style="justify-content: flex-start !important">
+                                <mat-form-field style="width: auto;">
+                                    <span class="sm-text">Data admissão</span>
+                                    <input name="DATA_ADMISSAO" type="date" formControlName="DATA_ADMISSAO" matInput
+                                        [(ngModel)]="updateParteContriaRequest.DATA_ADMISSAO">
+                                </mat-form-field>
+
+                                <mat-form-field style="width: auto;">
+                                    <span class="sm-text">Data demissão</span>
+                                    <input name="DATA_DEMISSAO" type="date" formControlName="DATA_DEMISSAO" matInput
+                                        [(ngModel)]="updateParteContriaRequest.DATA_DEMISSAO">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div mat-raised-action class="float-right">
+                        <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+                        <button mat-button type="submit">Adicionar</button>
+                    </div>
                 </div>
-            </div>
+            </ng-template>
 
-            <div class="--div">
-                <div class="--row" style="justify-content: flex-start !important">
-                    <mat-form-field style="width: auto;">
-                        <span class="sm-text">Data admissão</span>
-                        <input name="DATA_ADMISSAO" placeholder="" type="date" formControlName="DATA_ADMISSAO" matInput
-                            [(ngModel)]="updateData.value">
+            <ng-template [ngSwitchCase]="'1'">
+                <div mat-dialog-content>
+                    <mat-form-field>
+                        <span class="sm-text">Nome</span>
+                        <input name="NOME" formControlName="NOME" matInput required
+                            [(ngModel)]="updateParteContriaRequest.NOME">
                     </mat-form-field>
 
-                    <mat-form-field style="width: auto;">
-                        <span class="sm-text">Data demissão</span>
-                        <input name="DATA_DEMISSAO" placeholder="" type="date" formControlName="DATA_DEMISSAO" matInput
-                            [(ngModel)]="updateData.value">
+                    <div class="--div">
+                        <div class="--row">
+                            <mat-form-field>
+                                <span class="sm-text">Nome Fantasia</span>
+                                <input type="text" matInput required
+                                    [(ngModel)]="updateParteContriaRequest.NOME_FANTASIA" name="NOME_FANTASIA"
+                                    formControlName="NOME_FANTASIA">
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <span class="sm-text">CNPJ</span>
+                                <input type="text" mask="00.000.000/0000-00" placeholder="00.000.000/0000-00" matInput
+                                    required [(ngModel)]="updateParteContriaRequest.CNPJ" name="CNPJ"
+                                    formControlName="CNPJ">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <mat-form-field style="width: 30%">
+                        <span class="sm-text">CEP</span>
+                        <input name="CEP" mask="0000-000" placeholder="0000-000" formControlName="CEP" matInput required
+                            [(ngModel)]="updateParteContriaRequest.CEP">
                     </mat-form-field>
+
+                    <div class="--div">
+                        <div class="--row">
+                            <mat-form-field>
+                                <span class="sm-text">Enderço</span>
+                                <input name="ENDERECO" formControlName="ENDERECO" matInput required
+                                    [(ngModel)]="updateParteContriaRequest.ENDERECO">
+                            </mat-form-field>
+
+                            <mat-form-field style="width: 35%;">
+                                <span class="sm-text">Número</span>
+                                <input name="NUMERO" formControlName="NUMERO" matInput required
+                                    [(ngModel)]="updateParteContriaRequest.NUMERO">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <mat-form-field>
+                        <span class="sm-text">Complemento</span>
+                        <input name="COMPLEMENTO" formControlName="COMPLEMENTO" matInput required
+                            [(ngModel)]="updateParteContriaRequest.COMPLEMENTO">
+                    </mat-form-field>
+
+                    <div class="--div">
+                        <div class="--row">
+                            <div style="padding: 0 16px">
+                                <span class="sm-text">Estado</span>
+                                <select name="ESTADO" class="process-create-processdetails--input-select"
+                                    formControlName="ESTADO" required matInput
+                                    [(ngModel)]="updateParteContriaRequest.ESTADO">
+                                    <option value="">Selcionar estado</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
+                            </div>
+
+                            <mat-form-field>
+                                <span class="sm-text">Cidade</span>
+                                <input name="CIDADE" formControlName="CIDADE" matInput required
+                                    [(ngModel)]="updateParteContriaRequest.CIDADE">
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <span class="sm-text">Pais</span>
+                                <input name="PAIS" formControlName="PAIS" matInput required
+                                    [(ngModel)]="updateParteContriaRequest.PAIS">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <mat-form-field>
+                        <span class="sm-text">Observação</span>
+                        <textarea name="OBSERVACAO" matInput formControlName="OBSERVACAO" required
+                            [(ngModel)]="updateParteContriaRequest.OBSERVACAO" rows="10"
+                            class="process-create-processdetails w-100"></textarea>
+                    </mat-form-field>
+
+                    <div mat-raised-action class="float-right">
+                        <button class="btn-default" mat-button mat-dialog-close class="mr-2">Fechar</button>
+                        <button class="btn-default" mat-button type="submit">Adicionar</button>
+                    </div>
                 </div>
-            </div>
-        </div>
-
-        <div mat-raised-action class="float-right">
-            <button mat-button mat-dialog-close class="mr-2">Fechar</button>
-            <button mat-button>Salvar</button>
-        </div>
-    </div>
+            </ng-template>
+        </ng-container>
+    </ul>
 </form>

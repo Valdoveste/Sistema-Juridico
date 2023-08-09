@@ -16,6 +16,13 @@ export class DialogEditParteContriaComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogEditParteContriaComponent>,
   ) { }
 
+
+  componentName: number = 0;
+
+  swapTabs(componentName: number): void {
+    this.componentName = componentName;
+  }
+
   updateParteContriaForm!: FormGroup;
 
   updateParteContriaRequest: ProcessoParteContraria = {
@@ -43,29 +50,38 @@ export class DialogEditParteContriaComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateParteContriaForm = new FormGroup({
-      NOME: new FormControl('', [Validators.required]),
-      // NOME_FANTASIA: new FormControl('', [Validators.required]),
-      CPF: new FormControl('', [Validators.required]),
-      // CNPJ: new FormControl('', [Validators.required]),
-      RG: new FormControl('', [Validators.required]),
-      ENDERECO: new FormControl('', [Validators.required]),
-      CEP: new FormControl('', [Validators.required]),
-      NUMERO: new FormControl(0, [Validators.required]),
-      COMPLEMENTO: new FormControl('', [Validators.required]),
-      // ESTADO: new FormControl('', [Validators.required]),
-      // CIDADE: new FormControl('', [Validators.required]),
-      // PAIS: new FormControl('', [Validators.required]),
-      // OBSERVACAO: new FormControl('', [Validators.required]),
-      CARGO: new FormControl('', [Validators.required]),
-      DATA_ADMISSAO: new FormControl('', [Validators.required]),
-      DATA_DEMISSAO: new FormControl('', [Validators.required]),
-      ULTIMO_SALARIO: new FormControl(0, [Validators.required]),
+      NOME: new FormControl('',),
+      NOME_FANTASIA: new FormControl('',),
+      CPF: new FormControl('',),
+      CNPJ: new FormControl('',),
+      RG: new FormControl('',),
+      ENDERECO: new FormControl('',),
+      CEP: new FormControl('',),
+      NUMERO: new FormControl(0,),
+      COMPLEMENTO: new FormControl('',),
+      ESTADO: new FormControl('',),
+      CIDADE: new FormControl('',),
+      PAIS: new FormControl('',),
+      OBSERVACAO: new FormControl('',),
+      CARGO: new FormControl('',),
+      DATA_ADMISSAO: new FormControl('',),
+      DATA_DEMISSAO: new FormControl('',),
+      ULTIMO_SALARIO: new FormControl(0,),
     });
+
+    this.ParteContrariaService.getParteContraria(this.updateData.id).subscribe({
+      next: (response) => {
+        this.updateParteContriaRequest = response;
+        this.componentName = response.PF_PJ;
+      }
+    }
+    )
+
   }
 
   updateParteContria() {
+    console.log(this.updateParteContriaForm.valid)
     if (this.updateParteContriaForm.valid) {
-      this.updateParteContriaRequest.NOME_FANTASIA = this.updateData.value;
       this.ParteContrariaService.updateParteContraria(this.updateData.id, this.updateParteContriaRequest)
         .subscribe({
           next: (response) => {

@@ -15,6 +15,16 @@ export class DialogAddParteContrariaComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogAddParteContrariaComponent>
   ) { }
 
+  componentName: string = '';
+
+  swapTabs(componentName: string): void {
+    this.componentName = componentName;
+  }
+
+  createParteContrariaFisicalForm!: FormGroup;
+
+  createParteContrariaLegalForm!: FormGroup;
+
   createParteContrariaRequest: ProcessoParteContraria = {
     ID: '',
     ID_PROCESSO: '',
@@ -66,15 +76,9 @@ export class DialogAddParteContrariaComponent implements OnInit {
       PAIS: new FormControl('', [Validators.required]),
       OBSERVACAO: new FormControl('', [Validators.required]),
     });
+
+
   }
-
-  componentName: string = '';
-
-  swapTabs(componentName: string): void {
-    this.componentName = componentName;
-  }
-
-  createParteContrariaFisicalForm!: FormGroup;
 
   createParteContrariaFisical() {
     if (this.createParteContrariaFisicalForm.valid) {
@@ -91,9 +95,6 @@ export class DialogAddParteContrariaComponent implements OnInit {
     }
     return;
   }
-
-
-  createParteContrariaLegalForm!: FormGroup;
 
   createParteContrariaLegal() {
     if (this.createParteContrariaLegalForm.valid) {
