@@ -1,13 +1,214 @@
 <h1 mat-dialog-title>Remover ParteContraria</h1>
-<form (ngSubmit)="deleteParteContraria()" #formDir="ngForm">
-    <div mat-dialog-content>
-        <mat-form-field>
-            <input matInput disabled [value]="removeData.value">
-        </mat-form-field>
-    
-        <div mat-raised-action class="float-right">
-            <button mat-button mat-dialog-close class="mr-2">Fechar</button>
-            <button mat-button>Remover</button>
-        </div>
-    </div>
+<form (ngSubmit)="deleteParteContraria()" #formDir>
+    <ul class="process-create-opposingparty__list" class="mt-2">
+        <ng-container [ngSwitch]="componentName">
+            <ng-template ngSwitchDefault="'0'">
+                <div mat-dialog-content>
+                    <mat-form-field>
+                        <span class="sm-text">Nome</span>
+                        <input name="NOME" matInput disabled [(ngModel)]="deleteParteContriaRequest.NOME">
+                    </mat-form-field>
+
+                    <div class="--div">
+                        <div class="--row">
+                            <mat-form-field>
+                                <span class="sm-text">CPF</span>
+                                <input type="text" mask="000.000.000-00" placeholder="000.000.000-00" matInput disabled
+                                    [(ngModel)]="deleteParteContriaRequest.CPF" name="CPF">
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <span class="sm-text">RG</span>
+                                <input type="text" mask="00.000.000-0" placeholder="00.000.000-0" matInput disabled
+                                    [(ngModel)]="deleteParteContriaRequest.RG" name="RG">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <mat-form-field style="width: 30%">
+                        <span class="sm-text">CEP</span>
+                        <input name="CEP" mask="0000-000" placeholder="0000-000" matInput disabled
+                            [(ngModel)]=" deleteParteContriaRequest.CEP">
+                    </mat-form-field>
+
+                    <div class="--div">
+                        <div class="--row">
+                            <mat-form-field>
+                                <span class="sm-text">Enderço</span>
+                                <input name="ENDERECO" matInput disabled
+                                    [(ngModel)]=" deleteParteContriaRequest.ENDERECO">
+                            </mat-form-field>
+
+                            <mat-form-field style="width: 35%;">
+                                <span class="sm-text">Número</span>
+                                <input name="NUMERO" matInput disabled [(ngModel)]=" deleteParteContriaRequest.NUMERO">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <mat-form-field>
+                        <span class="sm-text">Complemento</span>
+                        <input name="COMPLEMENTO" matInput disabled
+                            [(ngModel)]=" deleteParteContriaRequest.COMPLEMENTO">
+                    </mat-form-field>
+
+                    <div>
+                        <div class="--div">
+                            <div class="--row">
+                                <mat-form-field>
+                                    <span class="sm-text">Cargo</span>
+                                    <input name="CARGO" matInput disabled
+                                        [(ngModel)]=" deleteParteContriaRequest.CARGO">
+                                </mat-form-field>
+
+                                <mat-form-field>
+                                    <span class="sm-text">Ultimo salário</span>
+                                    <input name="ULTIMO_SALARIO" matInput disabled mask=" separator.2"
+                                        thousandSeparator="." suffix=",00"
+                                        [(ngModel)]="deleteParteContriaRequest.ULTIMO_SALARIO">
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="--div">
+                            <div class="--row" style="justify-content: flex-start !important">
+                                <mat-form-field style="width: auto;">
+                                    <span class="sm-text">Data admissão</span>
+                                    <input name="DATA_ADMISSAO" type="date" matInput disabled
+                                        [(ngModel)]=" deleteParteContriaRequest.DATA_ADMISSAO">
+                                </mat-form-field>
+
+                                <mat-form-field style="width: auto;">
+                                    <span class="sm-text">Data demissão</span>
+                                    <input name="DATA_DEMISSAO" type="date" matInput disabled
+                                        [(ngModel)]=" deleteParteContriaRequest.DATA_DEMISSAO">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div mat-raised-action class="float-right">
+                        <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+                        <button mat-button type="submit">Remover</button>
+                    </div>
+                </div>
+            </ng-template>
+
+            <ng-template [ngSwitchCase]="'1'">
+                <div mat-dialog-content>
+                    <mat-form-field>
+                        <span class="sm-text">Nome</span>
+                        <input name="NOME" matInput disabled required [(ngModel)]=" deleteParteContriaRequest.NOME">
+                    </mat-form-field>
+
+                    <div class="--div">
+                        <div class="--row">
+                            <mat-form-field>
+                                <span class="sm-text">Nome Fantasia</span>
+                                <input type="text" matInput disabled required
+                                    [(ngModel)]="deleteParteContriaRequest.NOME_FANTASIA" name="NOME_FANTASIA">
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <span class="sm-text">CNPJ</span>
+                                <input type="text" mask="00.000.000/0000-00" placeholder="00.000.000/0000-00" matInput
+                                    disabled required [(ngModel)]="deleteParteContriaRequest.CNPJ" name="CNPJ">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <mat-form-field style="width: 30%">
+                        <span class="sm-text">CEP</span>
+                        <input name="CEP" mask="0000-000" placeholder="0000-000" matInput disabled required
+                            [(ngModel)]=" deleteParteContriaRequest.CEP">
+                    </mat-form-field>
+
+                    <div class="--div">
+                        <div class="--row">
+                            <mat-form-field>
+                                <span class="sm-text">Enderço</span>
+                                <input name="ENDERECO" matInput disabled required
+                                    [(ngModel)]=" deleteParteContriaRequest.ENDERECO">
+                            </mat-form-field>
+
+                            <mat-form-field style="width: 35%;">
+                                <span class="sm-text">Número</span>
+                                <input name="NUMERO" matInput disabled required
+                                    [(ngModel)]=" deleteParteContriaRequest.NUMERO">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <mat-form-field>
+                        <span class="sm-text">Complemento</span>
+                        <input name="COMPLEMENTO" matInput disabled required
+                            [(ngModel)]=" deleteParteContriaRequest.COMPLEMENTO">
+                    </mat-form-field>
+
+                    <div class="--div">
+                        <div class="--row">
+                            <div style="padding: 0 16px">
+                                <span class="sm-text">Estado</span>
+                                <select name="ESTADO" class="process-create-processdetails--input-select" required
+                                    matInput disabled [(ngModel)]=" deleteParteContriaRequest.ESTADO">
+                                    <option value="">Selcionar estado</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
+                            </div>
+
+                            <mat-form-field>
+                                <span class="sm-text">Cidade</span>
+                                <input name="CIDADE" matInput disabled required
+                                    [(ngModel)]=" deleteParteContriaRequest.CIDADE">
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <span class="sm-text">Pais</span>
+                                <input name="PAIS" matInput disabled required
+                                    [(ngModel)]=" deleteParteContriaRequest.PAIS">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <mat-form-field>
+                        <span class="sm-text">Observação</span>
+                        <textarea name="OBSERVACAO" matInput disabled required
+                            [(ngModel)]=" deleteParteContriaRequest.OBSERVACAO" rows="10"
+                            class="process-create-processdetails w-100"></textarea>
+                    </mat-form-field>
+
+                    <div mat-raised-action class="float-right">
+                        <button class="btn-default" mat-button mat-dialog-close class="mr-2">Fechar</button>
+                        <button class="btn-default" mat-button type="submit">Remover</button>
+                    </div>
+                </div>
+            </ng-template>
+        </ng-container>
+    </ul>
 </form>
