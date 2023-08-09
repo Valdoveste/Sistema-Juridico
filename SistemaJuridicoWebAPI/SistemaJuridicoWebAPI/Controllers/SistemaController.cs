@@ -523,6 +523,29 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok(parteContrariaRequest);
     }
 
+    [HttpGet("parte-contraria/{id}")]
+    public async Task<IActionResult> GetParteContraria([FromRoute] Guid id)
+    {
+      var parteContraria = await _sistemaJuridicoDbContext.PROCESSO_PARTE_CONTRARIA.FirstOrDefaultAsync(x => x.ID.Equals(id));
+      if (parteContraria == null)
+        return NotFound();
+
+      return Ok(parteContraria);
+    }
+
+    [HttpGet("processo/parte-contraria/{id}")]
+    public async Task<IActionResult> GetProcessoParteContraria([FromRoute] string id)
+    {
+      var parteContraria = await _sistemaJuridicoDbContext.PROCESSO_PARTE_CONTRARIA
+          .Where(x => x.ID_PROCESSO.Equals(id))
+          .FirstOrDefaultAsync();
+
+      if (parteContraria == null)
+        return NotFound();
+
+      return Ok(parteContraria);
+    }
+
     [HttpPut("update-parte-contraria/{id}")]
     public async Task<IActionResult> UpdateParteContraria([FromRoute] Guid id, PROCESSO_PARTE_CONTRARIA updateParteContrariaRequest)
     {
@@ -532,6 +555,22 @@ namespace SistemaJuridicoWebAPI.Controllers
         return NotFound();
 
       parteContraria.NOME = updateParteContrariaRequest.NOME;
+      parteContraria.NOME_FANTASIA = updateParteContrariaRequest.NOME_FANTASIA;
+      parteContraria.CPF = updateParteContrariaRequest.CPF;
+      parteContraria.RG = updateParteContrariaRequest.RG;
+      parteContraria.CNPJ = updateParteContrariaRequest.CNPJ;
+      parteContraria.ENDERECO = updateParteContrariaRequest.ENDERECO;
+      parteContraria.NUMERO = updateParteContrariaRequest.NUMERO;
+      parteContraria.CEP = updateParteContrariaRequest.CEP;
+      parteContraria.COMPLEMENTO = updateParteContrariaRequest.COMPLEMENTO;
+      parteContraria.ESTADO = updateParteContrariaRequest.ESTADO;
+      parteContraria.PAIS = updateParteContrariaRequest.PAIS;
+      parteContraria.CIDADE = updateParteContrariaRequest.CIDADE;
+      parteContraria.OBSERVACAO = updateParteContrariaRequest.OBSERVACAO;
+      parteContraria.CARGO = updateParteContrariaRequest.CARGO;
+      parteContraria.DATA_ADMISSAO = updateParteContrariaRequest.DATA_ADMISSAO;
+      parteContraria.DATA_DEMISSAO = updateParteContrariaRequest.DATA_DEMISSAO;
+      parteContraria.ULTIMO_SALARIO = updateParteContrariaRequest.ULTIMO_SALARIO;
 
       await _sistemaJuridicoDbContext.SaveChangesAsync();
 
