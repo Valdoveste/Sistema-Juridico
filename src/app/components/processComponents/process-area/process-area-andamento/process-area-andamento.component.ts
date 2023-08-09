@@ -47,7 +47,6 @@ export class ProcessAreaAndamentoComponent implements OnInit {
 
   openDialogAdd(enterAnimationDuration: string, exitAnimationDuration: string): void {
     const dialogRefAdd = this.dialog.open(DialogAddAndamentoComponent, {
-      height: '600px',
       width: '750px',
       data: { id: this.idProcesso },
       enterAnimationDuration,
@@ -59,7 +58,6 @@ export class ProcessAreaAndamentoComponent implements OnInit {
 
   openDialogView(enterAnimationDuration: string, exitAnimationDuration: string, event: Event, id: String | undefined): void {
     const dialogRefEdit = this.dialog.open(DialogViewAndamentoComponent, {
-      height: '600px',
       width: '750px',
       data: { value: (event.currentTarget as HTMLElement).previousElementSibling?.innerHTML, id: id },
       enterAnimationDuration,
