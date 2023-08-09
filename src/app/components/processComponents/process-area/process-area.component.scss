@@ -10,7 +10,7 @@
   .process-area__header {
     @include flexCenter(normal, space-between, row);
 
-    button{
+    button {
       width: auto;
     }
 
