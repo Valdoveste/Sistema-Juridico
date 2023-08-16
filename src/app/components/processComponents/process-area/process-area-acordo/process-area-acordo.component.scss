@@ -1,3 +1,13 @@
+@import '../../../management/management.componnent.scss';
+
+.row-item{
+    padding: 0 16px;
+    display: grid;
+    &:nth-child(odd){
+        padding: 0px 16px 0px 0px;
+    }
+}
+
 .mat-mdc-dialog-content {
     max-height: none !important;
 }
