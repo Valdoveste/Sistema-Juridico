@@ -35,7 +35,7 @@ export class ProcessAreaAndamentoComponent implements OnInit {
         this.andamentoService.getAllProcessoAndamento(this.idProcesso)
           .subscribe({
             next: (response) => {
-              this.andamentos = response;
+              this.andamentos = response.sort((a, b) => b.DATA_CADASTRO.localeCompare(a.DATA_CADASTRO));
             },
             error: (response) => {
               console.log(response)
