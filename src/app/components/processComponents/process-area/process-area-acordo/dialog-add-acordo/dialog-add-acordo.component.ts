@@ -22,7 +22,7 @@ export class DialogAddAcordoComponent implements OnInit {
     ID: '',
     DATA_ACORDO: '',
     ID_PROCESSO: '',
-    VALOR_ACORDO: 0,
+    VALOR_ACORDO: '',
     CRIADOR_ACORDO: '',
     CONDICOES_TENTATIVA_DE_ACORDO: ''
   }
@@ -35,12 +35,12 @@ export class DialogAddAcordoComponent implements OnInit {
   }
 
   createAcordo() {
-    if (this.createAcordoForm.valid) {
+    console.log(this.createAcordoRequest.VALOR_ACORDO)
+    if (this.createAcordoForm.valid) {    
       this.acordoService.createAcordo(this.createAcordoRequest, this.addData.id)
         .subscribe({
           next: (response) => {
             this.dialogRef.close(true);
-            this.createAcordoForm.reset();
           },
           error: (response) => {
             console.log(response)
