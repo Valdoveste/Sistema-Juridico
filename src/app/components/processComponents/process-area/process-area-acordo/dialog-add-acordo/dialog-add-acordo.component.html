@@ -3,8 +3,9 @@
     <div mat-dialog-content>
         <mat-form-field>
             <span class="sm-text">Valor acordo</span>
-            <input style="width: 40% !important" class="mb-2" name="VALOR_ACORDO" formControlName="VALOR_ACORDO"
-                matInput required [(ngModel)]="createAcordoRequest.VALOR_ACORDO">
+            <input style="width: 40% !important" class="mb-2 row-item" name="VALOR_ACORDO"
+                formControlName="VALOR_ACORDO" mask="separator.2" thousandSeparator="." matInput required
+                [(ngModel)]="createAcordoRequest.VALOR_ACORDO">
         </mat-form-field>
 
         <mat-form-field>
@@ -14,7 +15,7 @@
                 [(ngModel)]="createAcordoRequest.CONDICOES_TENTATIVA_DE_ACORDO"></textarea>
         </mat-form-field>
 
-        <div mat-raised-action class="float-right">
+        <div mat-raised-action class="float-right" style="padding: 0 16px;">
             <button mat-button mat-dialog-close class="mr-2">Fechar</button>
             <button mat-button type="submit">Adicionar</button>
         </div>

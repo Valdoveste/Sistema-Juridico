@@ -2,8 +2,8 @@
 <form #formDir="ngForm" style="height: 549px" [formGroup]="viewAcordoForm">
     <div mat-dialog-content>
         <mat-form-field class="mb-3" style="width: 40%">
-            <input readonly name="VALOR_ACORDO" formControlName="VALOR_ACORDO" matInput
-                [(ngModel)]="acordoDetalhes.VALOR_ACORDO">
+            <input readonly name="VALOR_ACORDO" formControlName="VALOR_ACORDO" matInput mask="separator.2"
+                thousandSeparator="." suffix=",00" [(ngModel)]="acordoDetalhes.VALOR_ACORDO">
         </mat-form-field>
 
         <mat-form-field>
@@ -12,10 +12,8 @@
                 [(ngModel)]="acordoDetalhes.CONDICOES_TENTATIVA_DE_ACORDO"></textarea>
         </mat-form-field>
 
-        <mat-form-field class="float-right">
-            <div mat-raised-action>
-                <button mat-button mat-dialog-close class="mr-2">Fechar</button>
-            </div>
-        </mat-form-field>
+        <div mat-raised-action class="float-right" style="padding: 0 16px;">
+            <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+        </div>
     </div>
 </form>
