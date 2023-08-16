@@ -47,6 +47,8 @@ export class ProcessAreaOpposingpartyComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.swapTabs(this.viewParteContriaRequest.PF_PJ)
+
     this.route.paramMap.subscribe({
       next: (params) => {
         this.idProcesso = params.get('id');
