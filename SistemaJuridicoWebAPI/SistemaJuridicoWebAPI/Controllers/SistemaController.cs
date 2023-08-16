@@ -447,6 +447,15 @@ namespace SistemaJuridicoWebAPI.Controllers
     {
       var processoAcordo = await _sistemaJuridicoDbContext.PROCESSO_ACORDO
           .Where(x => x.ID_PROCESSO.Equals(id))
+          .Select(x => new PROCESSO_ACORDO
+          {
+            ID = x.ID,
+            DATA_ACORDO = x.DATA_ACORDO,
+            VALOR_ACORDO = (float)Math.Round(x.VALOR_ACORDO, 2), // Arredondar para 2 casas decimais
+            ID_PROCESSO = x.ID_PROCESSO,
+            CRIADOR_ACORDO = x.CRIADOR_ACORDO,
+            CONDICOES_TENTATIVA_DE_ACORDO = x.CONDICOES_TENTATIVA_DE_ACORDO
+          })
           .ToListAsync();
 
       return Ok(processoAcordo);

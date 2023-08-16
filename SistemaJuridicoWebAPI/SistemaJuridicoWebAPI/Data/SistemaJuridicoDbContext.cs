@@ -26,22 +26,5 @@ namespace SistemaJuridicoWebAPI.Data
     public DbSet<PROCESSO_STATUS> PROCESSO_STATUS { get; set; }
     public DbSet<PROCESSO_TIPO_DE_ACAO> PROCESSO_TIPO_DE_ACAO { get; set; }
     public DbSet<PROCESSO_VARA> PROCESSO_VARA { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-      modelBuilder.Entity<PROCESSO_STATUS>()
-        .Property(c => c.ID)
-        .ValueGeneratedOnAdd();
-
-      modelBuilder.Entity<PROCESSO_STATUS>()
-        .HasData(
-            new PROCESSO_STATUS { ID = Guid.NewGuid(), STATUS = "Ativo" },
-            new PROCESSO_STATUS { ID = Guid.NewGuid(), STATUS = "Baixa Provisória" },
-            new PROCESSO_STATUS { ID = Guid.NewGuid(), STATUS = "Encerrado" }
-         );
-
-
-    }
-
   }
 }
