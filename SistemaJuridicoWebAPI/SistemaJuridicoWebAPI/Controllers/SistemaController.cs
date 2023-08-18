@@ -50,6 +50,49 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok(processoRequest);
     }
 
+    [HttpPut("update-processo/{id}")]
+    public async Task<IActionResult> UpdateProcess([FromRoute] Guid id, PROCESSO updateProcessRequest)
+    {
+      var processo = await _sistemaJuridicoDbContext.PROCESSO.FirstOrDefaultAsync(x => x.ID_PROCESSO.Equals(id));
+
+      if (processo == null)
+        return NotFound();
+
+      processo.STATUS = updateProcessRequest.STATUS;
+      processo.TIPO_DE_ACAO = updateProcessRequest.TIPO_DE_ACAO;
+      processo.AREA_DO_DIREITO = updateProcessRequest.AREA_DO_DIREITO;
+      processo.AMBITO = updateProcessRequest.AMBITO;
+      processo.EMPRESA = updateProcessRequest.EMPRESA; // Corrigir nome está EMPPRESA com dois P's
+      processo.ESTADO = updateProcessRequest.ESTADO;
+      processo.PAIS = updateProcessRequest.PAIS;
+      processo.CIDADE = updateProcessRequest.CIDADE;
+      processo.DATA_CITACAO = updateProcessRequest.DATA_CITACAO;
+      processo.DATA_DISTRIBUICAO = updateProcessRequest.DATA_DISTRIBUICAO;
+      processo.VARA = updateProcessRequest.VARA;
+      processo.FORO_TRIBUNAL_ORGAO = updateProcessRequest.FORO_TRIBUNAL_ORGAO;
+      processo.FASE = updateProcessRequest.FASE;
+      processo.TEXTO_DO_OBJETO = updateProcessRequest.TEXTO_DO_OBJETO;
+      processo.VALOR_DO_PEDIDO = updateProcessRequest.VALOR_DO_PEDIDO;
+      processo.VALOR_INSTANCIA_EXTRAORDINARIA = updateProcessRequest.VALOR_INSTANCIA1;
+      processo.VALOR_INSTANCIA1 = updateProcessRequest.VALOR_INSTANCIA1;
+      processo.VALOR_INSTANCIA2 = updateProcessRequest.VALOR_INSTANCIA2;
+      processo.VALOR_INSTANCIA3 = updateProcessRequest.VALOR_INSTANCIA3;
+      processo.PATRONO_RESPONSAVEL = updateProcessRequest.PATRONO_RESPONSAVEL;
+
+      //var entry = _sistemaJuridicoDbContext.Entry(processo);
+
+      //bool teste = entry.Property(e => e.PATRONO_RESPONSAVEL).IsModified;
+
+     // if(processo.PATRONO_RESPONSAVEL == updateProcessRequest.PATRONO_RESPONSAVEL)
+         
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(processo);
+    }
+
+
+
     [HttpGet("ambito")]
     public async Task<IActionResult> GetAllAmbito()
     {
