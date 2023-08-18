@@ -1,7 +1,7 @@
 <div id="process-create">
   <form (ngSubmit)="createProcess()" #formDir="ngForm" [formGroup]="createProcessForm">
     <div class="process-create-header">
-      <h3>Crição de Processo</h3>
+      <h3>Criação de Processo</h3>
     </div>
     <div class="process-create-body">
       <div class="process-create-processdetails">
@@ -14,13 +14,13 @@
                 <span class="w-50">
                   <p class="sm-text">Número Processo</p>
                   <input type="text" name="NUMERO_PROCESSO" formControlName="NUMERO_PROCESSO"
-                    [(ngModel)]="createProcessResquest.NUMERO_PROCESSO" class="process-create-processdetails">
+                    [(ngModel)]="createProcessRequest.NUMERO_PROCESSO" class="process-create-processdetails">
                 </span>
 
                 <span>
                   <p class="sm-text">Status</p>
                   <select name="STATUS" formControlName="STATUS" id="selectProcessStatus"
-                    [(ngModel)]="createProcessResquest.STATUS" class="process-searchbar__list__item--input-select">
+                    [(ngModel)]="createProcessRequest.STATUS" class="process-searchbar__list__item--input-select">
                     <option value="" selected></option>
                     <option *ngFor="let status of status" value="{{status.STATUS}}" selected>{{status.STATUS}}</option>
                     <!-- <option value="ProcessStatus" selected></option>
@@ -38,7 +38,7 @@
             <div class="process-create-processdetails__list__item--div">
 
               <p class="sm-text">Empresa</p>
-              <select name="EMPRESA" formControlName="EMPRESA" [(ngModel)]="createProcessResquest.EMPRESA"
+              <select name="EMPRESA" formControlName="EMPRESA" [(ngModel)]="createProcessRequest.EMPRESA"
                 class="process-searchbar__list__item--input-select">
                 <option value="" selected></option>
                 <option *ngFor="let empresa of empresas" value="{{empresa.EMPRESA}}" selected>
@@ -55,7 +55,7 @@
               <p class="sm-text">Patrono responsável</p>
 
               <select name="PATRONO_RESPONSAVEL" formControlName="PATRONO_RESPONSAVEL"
-                [(ngModel)]="createProcessResquest.PATRONO_RESPONSAVEL"
+                [(ngModel)]="createProcessRequest.PATRONO_RESPONSAVEL"
                 class="process-create-processdetails--input-select">
                 <option value="" selected></option>
                 <option *ngFor="let patronoResponsavel of patronoResponsavel"
@@ -81,8 +81,7 @@
                 <span>
                   <p class="sm-text">Tipo de Ação</p>
                   <select name="TIPO_DE_ACAO" formControlName="TIPO_DE_ACAO"
-                    [(ngModel)]="createProcessResquest.TIPO_DE_ACAO"
-                    class="process-searchbar__list__item--input-select">
+                    [(ngModel)]="createProcessRequest.TIPO_DE_ACAO" class="process-searchbar__list__item--input-select">
                     <option value="" selected></option>
                     <option *ngFor="let tipodeAcao of tiposDeAcoes" value="{{tipodeAcao.TIPO_DE_ACAO}}" selected>
                       {{tipodeAcao.TIPO_DE_ACAO}}</option>
@@ -115,7 +114,7 @@
                 <span>
                   <p class="sm-text">Área do Direito</p>
                   <select name="AREA_DO_DIREITO" formControlName="AREA_DO_DIREITO"
-                    [(ngModel)]="createProcessResquest.AREA_DO_DIREITO"
+                    [(ngModel)]="createProcessRequest.AREA_DO_DIREITO"
                     class="process-searchbar__list__item--input-select">
                     <option value="" selected></option>
                     <option *ngFor="let areaDoDireito of areasDoDireito" value="{{areaDoDireito.AREA_DO_DIREITO}}"
@@ -132,7 +131,7 @@
 
                 <span>
                   <p class="sm-text">Âmbito</p>
-                  <select name="AMBITO" formControlName="AMBITO" [(ngModel)]="createProcessResquest.AMBITO"
+                  <select name="AMBITO" formControlName="AMBITO" [(ngModel)]="createProcessRequest.AMBITO"
                     class="process-searchbar__list__item--input-select">
                     <option value="" selected></option>
                     <option *ngFor="let ambito of ambitos" value="{{ambito.AMBITO}}" selected>{{ambito.AMBITO}}</option>
@@ -147,7 +146,7 @@
               <div class="process-create-processdetails__list__item--row">
                 <span>
                   <p class="sm-text">Vara</p>
-                  <select name="VARA" formControlName="VARA" [(ngModel)]="createProcessResquest.VARA"
+                  <select name="VARA" formControlName="VARA" [(ngModel)]="createProcessRequest.VARA"
                     class="process-create-processdetails--input-select">
                     <option value="" selected></option>
                     <option *ngFor="let vara of varas" value="{{vara.VARA}}" selected>{{vara.VARA}}</option>
@@ -161,7 +160,7 @@
                 <span>
                   <p class="sm-text">Foro/Tribunal/Orgão</p>
                   <select name="FORO_TRIBUNAL_ORGAO" formControlName="FORO_TRIBUNAL_ORGAO"
-                    [(ngModel)]="createProcessResquest.FORO_TRIBUNAL_ORGAO"
+                    [(ngModel)]="createProcessRequest.FORO_TRIBUNAL_ORGAO"
                     class="process-create-processdetails--input-select">
                     <option value="" selected></option>
                     <option *ngFor="let foroTribunalOrgao of foroTribunalOrgaos"
@@ -176,7 +175,7 @@
 
                 <span>
                   <p class="sm-text">Fase do processo</p>
-                  <select name="FASE" formControlName="FASE" [(ngModel)]="createProcessResquest.FASE"
+                  <select name="FASE" formControlName="FASE" [(ngModel)]="createProcessRequest.FASE"
                     class="process-create-processdetails--input-select">
                     <option value="" selected></option>
                     <option *ngFor="let fase of fases" value="{{fase.FASE}}" selected>
@@ -196,20 +195,49 @@
               <div class="process-create-processdetails__list__item--row">
                 <span>
                   <p class="sm-text">Estado</p>
-                  <input type="text" name="PROCESSO_ESTADO" formControlName="PROCESSO_ESTADO"
-                    [(ngModel)]="createProcessResquest.PROCESSO_ESTADO" class="process-create-processdetails">
+                  <select name="ESTADO" class="process-create-processdetails--input-select" formControlName="ESTADO"
+                    required [(ngModel)]="createProcessRequest.ESTADO">
+                    <option value="">Selcionar estado</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                  </select>
                 </span>
 
                 <span class="mx-1">
                   <p class="sm-text">Cidade</p>
-                  <input type="text" name="PROCESSO_CIDADE" formControlName="PROCESSO_CIDADE"
-                    [(ngModel)]="createProcessResquest.PROCESSO_CIDADE" class="process-create-processdetails">
+                  <input type="text" name="CIDADE" formControlName="CIDADE" [(ngModel)]="createProcessRequest.CIDADE"
+                    class="process-create-processdetails">
                 </span>
 
                 <span>
                   <p class="sm-text">Pais</p>
-                  <input type="text" name="PROCESSO_PAIS" formControlName="PROCESSO_PAIS"
-                    [(ngModel)]="createProcessResquest.PROCESSO_PAIS" class="process-create-processdetails">
+                  <input type="text" name="PAIS" formControlName="PAIS" [(ngModel)]="createProcessRequest.PAIS"
+                    class="process-create-processdetails">
                 </span>
               </div>
             </div>
@@ -221,13 +249,13 @@
                 <span class="mr-1">
                   <p class="sm-text">Data de Distribuição</p>
                   <input type="date" name="DATA_DISTRIBUICAO" formControlName="DATA_DISTRIBUICAO"
-                    [(ngModel)]="createProcessResquest.DATA_DISTRIBUICAO" class="process-create-processdetails">
+                    [(ngModel)]="createProcessRequest.DATA_DISTRIBUICAO" class="process-create-processdetails">
                 </span>
 
                 <span>
                   <p class="sm-text">Data da Citação</p>
                   <input type="date" name="DATA_CITACAO" formControlName="DATA_CITACAO"
-                    [(ngModel)]="createProcessResquest.DATA_CITACAO" class="process-create-processdetails">
+                    [(ngModel)]="createProcessRequest.DATA_CITACAO" class="process-create-processdetails">
                 </span>
               </div>
             </div>
@@ -239,32 +267,32 @@
               <div class="process-create-processdetails__list__item mt-2">
                 <p class="sm-text">Valor do Pedido</p>
                 <input type="number" name="VALOR_DO_PEDIDO" formControlName="VALOR_DO_PEDIDO"
-                  [(ngModel)]="createProcessResquest.VALOR_DO_PEDIDO" class="process-create-processdetails w-auto">
+                  [(ngModel)]="createProcessRequest.VALOR_DO_PEDIDO" class="process-create-processdetails w-auto">
               </div>
 
               <div class="process-create-processdetails__list__item--row">
                 <span>
                   <p class="sm-text">Valor 1ª Instância</p>
                   <input type="number" name="VALOR_INSTANCIA1" formControlName="VALOR_INSTANCIA1"
-                    [(ngModel)]="createProcessResquest.VALOR_INSTANCIA1" class="process-create-processdetails">
+                    [(ngModel)]="createProcessRequest.VALOR_INSTANCIA1" class="process-create-processdetails">
                 </span>
 
                 <span class="mx-1">
                   <p class="sm-text">Valor 2ª Instância</p>
                   <input type="number" name="VALOR_INSTANCIA2" formControlName="VALOR_INSTANCIA2"
-                    [(ngModel)]="createProcessResquest.VALOR_INSTANCIA2" class="process-create-processdetails">
+                    [(ngModel)]="createProcessRequest.VALOR_INSTANCIA2" class="process-create-processdetails">
                 </span>
 
                 <span style="margin-right: .25rem;">
                   <p class="sm-text">Valor 3ª Instância</p>
                   <input type="number" name="VALOR_INSTANCIA3" formControlName="VALOR_INSTANCIA3"
-                    [(ngModel)]="createProcessResquest.VALOR_INSTANCIA3" class="process-create-processdetails">
+                    [(ngModel)]="createProcessRequest.VALOR_INSTANCIA3" class="process-create-processdetails">
                 </span>
                 <span>
                   <p class="sm-text">Valor Instância Extraordinária</p>
                   <input type="number" name="VALOR_INSTANCIA_EXTRAORDINARIA"
                     formControlName="VALOR_INSTANCIA_EXTRAORDINARIA"
-                    [(ngModel)]="createProcessResquest.VALOR_INSTANCIA_EXTRAORDINARIA"
+                    [(ngModel)]="createProcessRequest.VALOR_INSTANCIA_EXTRAORDINARIA"
                     class="process-create-processdetails">
                 </span>
               </div>
@@ -274,7 +302,7 @@
           <li class="process-create-processdetails__list__item">
             <p class="sm-text">Texto do objeto</p>
             <textarea name="TEXTO_DO_OBJETO" formControlName="TEXTO_DO_OBJETO"
-              [(ngModel)]="createProcessResquest.TEXTO_DO_OBJETO" rows="10"
+              [(ngModel)]="createProcessRequest.TEXTO_DO_OBJETO" rows="10"
               class="process-create-processdetails w-100"></textarea>
           </li>
         </ul>
@@ -297,10 +325,11 @@
 
           <ng-container [ngSwitch]="componentName">
             <ng-template ngSwitchDefault="'fisical-person'">
-              <app-process-create-fisical-person></app-process-create-fisical-person>
+
             </ng-template>
+
             <ng-template [ngSwitchCase]="'legal-person'">
-              <app-process-create-legal-person></app-process-create-legal-person>
+
             </ng-template>
           </ng-container>
         </ul>
