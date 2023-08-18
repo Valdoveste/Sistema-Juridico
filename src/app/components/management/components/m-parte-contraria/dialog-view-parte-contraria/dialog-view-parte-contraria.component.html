@@ -99,8 +99,8 @@
                     <div class="--row">
                         <mat-form-field>
                             <span class="sm-text">Nome Fantasia</span>
-                            <input type="text" matInput disabled
-                                [(ngModel)]="viewParteContriaRequest.NOME_FANTASIA" name="NOME_FANTASIA">
+                            <input type="text" matInput disabled [(ngModel)]="viewParteContriaRequest.NOME_FANTASIA"
+                                name="NOME_FANTASIA">
                         </mat-form-field>
 
                         <mat-form-field>
@@ -121,65 +121,35 @@
                     <div class="--row">
                         <mat-form-field>
                             <span class="sm-text">Enderço</span>
-                            <input name="ENDERECO" matInput disabled
-                                [(ngModel)]=" viewParteContriaRequest.ENDERECO">
+                            <input name="ENDERECO" matInput disabled [(ngModel)]=" viewParteContriaRequest.ENDERECO">
                         </mat-form-field>
 
                         <mat-form-field style="width: 35%;">
                             <span class="sm-text">Número</span>
-                            <input name="NUMERO" matInput disabled
-                                [(ngModel)]=" viewParteContriaRequest.NUMERO">
+                            <input name="NUMERO" matInput disabled [(ngModel)]=" viewParteContriaRequest.NUMERO">
                         </mat-form-field>
                     </div>
                 </div>
 
                 <mat-form-field>
                     <span class="sm-text">Complemento</span>
-                    <input name="COMPLEMENTO" matInput disabled
-                        [(ngModel)]=" viewParteContriaRequest.COMPLEMENTO">
+                    <input name="COMPLEMENTO" matInput disabled [(ngModel)]=" viewParteContriaRequest.COMPLEMENTO">
                 </mat-form-field>
 
                 <div class="--div">
                     <div class="--row">
                         <div style="padding: 0 16px">
                             <span class="sm-text">Estado</span>
-                            <select name="ESTADO" class="process-create-processdetails--input-select"  matInput
-                                disabled [(ngModel)]=" viewParteContriaRequest.ESTADO">
-                                <option value="">Selcionar estado</option>
-                                <option value="AC">Acre</option>
-                                <option value="AL">Alagoas</option>
-                                <option value="AP">Amapá</option>
-                                <option value="AM">Amazonas</option>
-                                <option value="BA">Bahia</option>
-                                <option value="CE">Ceará</option>
-                                <option value="DF">Distrito Federal</option>
-                                <option value="ES">Espírito Santo</option>
-                                <option value="GO">Goiás</option>
-                                <option value="MA">Maranhão</option>
-                                <option value="MT">Mato Grosso</option>
-                                <option value="MS">Mato Grosso do Sul</option>
-                                <option value="MG">Minas Gerais</option>
-                                <option value="PA">Pará</option>
-                                <option value="PB">Paraíba</option>
-                                <option value="PR">Paraná</option>
-                                <option value="PE">Pernambuco</option>
-                                <option value="PI">Piauí</option>
-                                <option value="RJ">Rio de Janeiro</option>
-                                <option value="RN">Rio Grande do Norte</option>
-                                <option value="RS">Rio Grande do Sul</option>
-                                <option value="RO">Rondônia</option>
-                                <option value="RR">Roraima</option>
-                                <option value="SC">Santa Catarina</option>
-                                <option value="SP">São Paulo</option>
-                                <option value="SE">Sergipe</option>
-                                <option value="TO">Tocantins</option>
+                            <select name="ESTADO" class="process-create-processdetails--input-select" matInput disabled
+                                [(ngModel)]="viewParteContriaRequest.ESTADO">
+                                <option value={{viewParteContriaRequest.ESTADO}}>{{viewParteContriaRequest.ESTADO}}
+                                </option>
                             </select>
                         </div>
 
                         <mat-form-field>
                             <span class="sm-text">Cidade</span>
-                            <input name="CIDADE" matInput disabled
-                                [(ngModel)]=" viewParteContriaRequest.CIDADE">
+                            <input name="CIDADE" matInput disabled [(ngModel)]=" viewParteContriaRequest.CIDADE">
                         </mat-form-field>
 
                         <mat-form-field>
@@ -191,13 +161,12 @@
 
                 <mat-form-field>
                     <span class="sm-text">Observação</span>
-                    <textarea name="OBSERVACAO" matInput disabled
-                        [(ngModel)]=" viewParteContriaRequest.OBSERVACAO" rows="10"
-                        class="process-create-processdetails w-100"></textarea>
+                    <textarea name="OBSERVACAO" matInput disabled [(ngModel)]=" viewParteContriaRequest.OBSERVACAO"
+                        rows="10" class="process-create-processdetails w-100"></textarea>
                 </mat-form-field>
 
                 <div mat-raised-action class="float-right" style="padding: 0 16px;">
-                    <button class="btn-default" mat-button mat-dialog-close class="mr-2">Fechar</button>
+                    <button class="btn-default" mat-button mat-dialog-close>Fechar</button>
                 </div>
             </div>
         </ng-template>
