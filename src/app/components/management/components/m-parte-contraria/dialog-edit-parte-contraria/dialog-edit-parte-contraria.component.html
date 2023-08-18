@@ -156,7 +156,7 @@
                                 <select name="ESTADO" class="process-create-processdetails--input-select"
                                     formControlName="ESTADO" required matInput
                                     [(ngModel)]="updateParteContriaRequest.ESTADO">
-                                    <option value="">Selcionar estado</option>
+                                    <option value={{updateParteContriaRequest.ESTADO}}>{{updateParteContriaRequest.ESTADO}}
                                     <option value="AC">Acre</option>
                                     <option value="AL">Alagoas</option>
                                     <option value="AP">Amapá</option>
