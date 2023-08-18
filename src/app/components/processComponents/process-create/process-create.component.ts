@@ -69,7 +69,7 @@ export class ProcessCreateComponent implements OnInit {
     this.componentName = componentName;
   }
 
-  createProcessResquest: Processo = {
+  createProcessRequest: Processo = {
     ID_PROCESSO: '',
     NUMERO_PROCESSO: '',
     STATUS: '',
@@ -78,9 +78,9 @@ export class ProcessCreateComponent implements OnInit {
     EMPRESA: '',
     EMPRESA_CNPJ: '',
     AMBITO: '',
-    PROCESSO_ESTADO: '',
-    PROCESSO_CIDADE: '',
-    PROCESSO_PAIS: '',
+    ESTADO: '',
+    CIDADE: '',
+    PAIS: '',
     VARA: '',
     FORO_TRIBUNAL_ORGAO: '',
     FASE: '',
@@ -98,30 +98,10 @@ export class ProcessCreateComponent implements OnInit {
     DATA_ULTIMO_ANDAMENTO: new Date,
     DATA_ENCERRAMENTO: new Date,
     MOTIVO_ENCERRAMENTO: '',
-    MOTIVO_BAIXA_PROVISORIA: '',
-    PARTE_CONTRARIA_NOME: '',
-    PARTE_CONTRARIA_NOME_FANTASIA: '',
-    PARTE_CONTRARIA_CPF: '',
-    PARTE_CONTRARIA_CNPJ: '',
-    PARTE_CONTRARIA_RG: '',
-    PARTE_CONTRARIA_ENDERECO: '',
-    PARTE_CONTRARIA_CEP: '',
-    PARTE_CONTRARIA_NUMERO: 0,
-    PARTE_CONTRARIA_COMPLEMENTO: '',
-    PARTE_CONTRARIA_ESTADO: '',
-    PARTE_CONTRARIA_CIDADE: '',
-    PARTE_CONTRARIA_PAIS: '',
-    PARTE_CONTRARIA_OBSERVACAO: '',
-    PARTE_CONTRARIA_CARGO: '',
-    PARTE_CONTRARIA_DATA_ADMISSAO: new Date,
-    PARTE_CONTRARIA_DATA_DEMISSAO: new Date,
-    PARTE_CONTRARIA_ULTIMO_SALARIO: 0
+    MOTIVO_BAIXA_PROVISORIA: ''
   }
 
   ngOnInit(): void {
-
-    // constructor(private ambitoService: AmbitoService) { }
-
     this.AmbitoService.getAllAmbito()
       .subscribe({
         next: (ambitos: any) => {
@@ -243,9 +223,9 @@ export class ProcessCreateComponent implements OnInit {
       TIPO_DE_ACAO: new FormControl('', [Validators.required]),
       AREA_DO_DIREITO: new FormControl('', [Validators.required]),
       AMBITO: new FormControl('', [Validators.required]),
-      PROCESSO_ESTADO: new FormControl('', [Validators.required]),
-      PROCESSO_CIDADE: new FormControl('', [Validators.required]),
-      PROCESSO_PAIS: new FormControl('', [Validators.required]),
+      ESTADO: new FormControl('', [Validators.required]),
+      CIDADE: new FormControl('', [Validators.required]),
+      PAIS: new FormControl('', [Validators.required]),
       VARA: new FormControl('', [Validators.required]),
       FORO_TRIBUNAL_ORGAO: new FormControl('', [Validators.required]),
       FASE: new FormControl('', [Validators.required]),
@@ -263,31 +243,14 @@ export class ProcessCreateComponent implements OnInit {
       DATA_ULTIMO_ANDAMENTO: new FormControl(''),
       DATA_ENCERRAMENTO: new FormControl(''),
       MOTIVO_ENCERRAMENTO: new FormControl(''),
-      MOTIVO_BAIXA_PROVISORIA: new FormControl(''),
-      // PARTE_CONTRARIA_NOME: new FormControl('', [Validators.required]),
-      // PARTE_CONTRARIA_NOME_FANTASIA: new FormControl(''),
-      // PARTE_CONTRARIA_CPF: new FormControl(''),
-      // PARTE_CONTRARIA_CNPJ: new FormControl(''),
-      // PARTE_CONTRARIA_RG: new FormControl(''),
-      // PARTE_CONTRARIA_ENDERECO: new FormControl('', [Validators.required]),
-      // PARTE_CONTRARIA_CEP: new FormControl('', [Validators.required]),
-      // PARTE_CONTRARIA_NUMERO: new FormControl('', [Validators.required]),
-      // PARTE_CONTRARIA_COMPLEMENTO: new FormControl('', [Validators.required]),
-      // PARTE_CONTRARIA_ESTADO: new FormControl('', [Validators.required]),
-      // PARTE_CONTRARIA_PAIS: new FormControl('', [Validators.required]),
-      // PARTE_CONTRARIA_OBSERVACAO: new FormControl(''),
-      // PARTE_CONTRARIA_CIDADE: new FormControl('', [Validators.required]),
-      // PARTE_CONTRARIA_CARGO: new FormControl(''),
-      // PARTE_CONTRARIA_DATA_ADMISSAO: new FormControl(''),
-      // PARTE_CONTRARIA_DATA_DEMISSAO: new FormControl(''),
-      // PARTE_CONTRARIA_ULTIMO_SALARIO: new FormControl('')
+      MOTIVO_BAIXA_PROVISORIA: new FormControl('')
     });
   }
 
   createProcess() {
     console.log(this.createProcessForm.errors)
     if (this.createProcessForm.valid) {
-      this.ProcessoService.createProcess(this.createProcessResquest)
+      this.ProcessoService.createProcess(this.createProcessRequest)
         .subscribe({
           next: (response) => {
             this.router.navigate(['painel-processos'])
@@ -298,31 +261,5 @@ export class ProcessCreateComponent implements OnInit {
         });
     }
     return;
-  }
-
-  personRG: string = '';
-  personCPF: string = '';
-  personCNPJ: string = '';
-
-  onPersonRGChange() {
-    this.personRG = this.personRG.replace(/\D/g, '');
-    this.personRG = this.personRG.replace(/(\d{2})(\d)/, '$1.$2');
-    this.personRG = this.personRG.replace(/(\d{3})(\d)/, '$1.$2');
-    this.personRG = this.personRG.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-  }
-
-  onPersonCPFChange() {
-    this.personCPF = this.personCPF.replace(/\D/g, '');
-    this.personCPF = this.personCPF.replace(/(\d{3})(\d)/, '$1.$2');
-    this.personCPF = this.personCPF.replace(/(\d{3})(\d)/, '$1.$2');
-    this.personCPF = this.personCPF.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-  }
-
-  onPersonCNPJChange() {
-    this.personCNPJ = this.personCNPJ.replace(/\D/g, '');
-    this.personCNPJ = this.personCNPJ.replace(/(\d{2})(\d)/, '$1.$2');
-    this.personCNPJ = this.personCNPJ.replace(/(\d{3})(\d)/, '$1.$2');
-    this.personCNPJ = this.personCNPJ.replace(/(\d{3})(\d)/, '$1/$2');
-    this.personCNPJ = this.personCNPJ.replace(/(\d{4})(\d)/, '$1-$2');
   }
 }

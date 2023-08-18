@@ -105,19 +105,21 @@
         <div class="process-create-processdetails__list__item--row">
           <span>
             <p class="sm-text">Estado</p>
-            <input type="text" disabled name="PROCESSO_ESTADO" [(ngModel)]="processoDetalhes.PROCESSO_ESTADO"
-              class="process-create-processdetails">
+            <select name="ESTADO" class="process-create-processdetails--input-select" formControlName="ESTADO" required
+              [(ngModel)]="processoDetalhes.ESTADO">
+              <option value="{{processoDetalhes.ESTADO}}" selected>{{processoDetalhes.ESTADO}}</option>
+            </select>
           </span>
 
           <span class="mx-1">
             <p class="sm-text">Cidade</p>
-            <input type="text" disabled name="PROCESSO_CIDADE" [(ngModel)]="processoDetalhes.PROCESSO_CIDADE"
+            <input type="text" disabled name="CIDADE" [(ngModel)]="processoDetalhes.CIDADE"
               class="process-create-processdetails">
           </span>
 
           <span>
             <p class="sm-text">Pais</p>
-            <input type="text" disabled name="PROCESSO_PAIS" [(ngModel)]="processoDetalhes.PROCESSO_PAIS"
+            <input type="text" disabled name="PAIS" [(ngModel)]="processoDetalhes.PAIS"
               class="process-create-processdetails">
           </span>
         </div>
