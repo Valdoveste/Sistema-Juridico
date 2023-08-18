@@ -1,7 +1,9 @@
-.mat-mdc-dialog-content {
-    max-height: none !important;
-}
+@import '../../../management/management.componnent.scss';
 
-textarea {
-    resize: none;
+.row-item{
+    padding: 0 16px;
+    display: grid;
+    &:nth-child(odd){
+        padding: 0px 16px 0px 0px;
+    }
 }

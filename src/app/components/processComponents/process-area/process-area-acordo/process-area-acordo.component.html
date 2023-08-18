@@ -3,8 +3,6 @@
     <div id="process-create">
       <div class="management">
         <div class="mb-3">
-          <h3>Acordo</h3>
-
           <button type="submit" class="btn-default float-right" (click)="openDialogAdd('250ms', '100ms')">
             Criar Acordo
           </button>
@@ -22,7 +20,13 @@
           <tbody>
             <tr *ngFor="let acordo of acordos">
               <td>
-                {{ acordo.VALOR_ACORDO }}
+                {{
+                acordo.VALOR_ACORDO
+                .toString()
+                .replace('.',',')
+                |
+                mask: 'separator.2': {thousandSeparator: '.',prefix: 'R$ '}
+                }}<span *ngIf="!acordo.VALOR_ACORDO.toString().includes('.')">,00</span>
               </td>
 
               <td>
@@ -30,7 +34,7 @@
                 acordo.DATA_ACORDO
                 .replaceAll("PM","")
                 .replaceAll("AM","")
-                .slice(0, (acordo.DATA_ACORDO.length - 1) - 5)
+                .slice(0, (acordo.DATA_ACORDO.length - 1) - 2)
                 }}
               </td>
 
@@ -48,7 +52,8 @@
                   </g>
                 </svg>
               </td> -->
-              <td style="width: 40px;" title="Visualizar Condições"
+
+              <td class="cursor-pointer" style="width: 40px;" title="Visualizar Condições"
                 (click)="openDialogView('250ms', '100ms', $event, acordo.ID)">
                 <svg width="20px" height="20px" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round"
                   stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

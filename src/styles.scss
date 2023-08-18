@@ -9,6 +9,7 @@
 @include mat.core();
 
 /* You can add global styles to this file, and also import other style files */
+@import "~@ng-select/ng-select/themes/default.theme.css";
 
 @mixin flexCenter($align_items, $justify_content, $flex_direction) {
   display: flex;
@@ -45,12 +46,6 @@ button {
   }
 }
 
-.sm-text {
-  font-size: 0.80rem !important;
-  margin-bottom: 2.5px !important;
-  color: rgb(101, 109, 118) !important;
-}
-
 body {
   height: 100vh;
   background-color: #f6f7fb;
@@ -71,9 +66,40 @@ tbody tr {
   transition: background-color ease-out 500ms;
 
   &:hover {
-    cursor: pointer;
+    // cursor: pointer;
     background-color: #efefef;
   }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+div[class*="--div"] {
+  div[class*="--row"] {
+    margin: 10px 0px;
+    @include flexCenter(center, space-between, row);
+
+    span {
+      input {
+        width: 100%;
+      }
+    }
+
+  }
+}
+
+.cdk-overlay-pane {
+  overflow: hidden !important;
+  overflow-y: hidden !important;
 }
 
 .mat-mdc-dialog-surface {
@@ -84,6 +110,12 @@ tbody tr {
   overflow: hidden !important;
 }
 
+.sm-text {
+  font-size: 0.80rem !important;
+  margin-bottom: 2.5px !important;
+  color: rgb(101, 109, 118) !important;
+}
+
 .input {
   height: 35px;
   padding: 0 15px;
@@ -91,7 +123,7 @@ tbody tr {
   border-radius: 2px;
   width: calc(50% - 5px);
   background-color: #ffffff;
-  border: 1px solid rgba(60, 64, 67, 0.5);
+  border: 1px solid rgba(60, 64, 67, 0.5) !important;
 }
 
 .btn-default {
@@ -102,15 +134,6 @@ tbody tr {
   border-radius: 4.5px;
   background-color: #f6f7fb;
   border: 1px solid #ededed;
-  // box-shadow:
-  //   0 1px 1px 0 #ededed31,
-  //   0 1px 6px 1px #ededed1a;
-  // transition: background-color ease-out 500ms;
-
-  // &:hover {
-  //   cursor: pointer;
-  //   background-color: #ffffff;
-  // }
 }
 
 .process-searchbar__list__item {
@@ -131,16 +154,8 @@ tbody tr {
   }
 }
 
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
+.mat-mdc-dialog-content {
+  max-height: none !important;
 }
 
 .mdc-line-ripple {
@@ -156,8 +171,13 @@ input[type=number] {
   border: none;
 }
 
+.mat-mdc-form-field {
+  border: none !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
 // MainComponent
 @import './app/components/main/main.component.scss';
-
-// FooterComponent
-@import './app/components/footer/footer.component.scss';

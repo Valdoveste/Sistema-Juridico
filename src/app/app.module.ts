@@ -65,8 +65,6 @@ import { DialogEditAreaDoDireitoComponent } from './components/management/compon
 import { DialogAddTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/dialog-add-tipo-de-acao/dialog-add-tipo-de-acao.component';
 import { DialogDeleteTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/dialog-delete-tipo-de-acao/dialog-delete-tipo-de-acao.component';
 import { DialogEditTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/dialog-edit-tipo-de-acao/dialog-edit-tipo-de-acao.component';
-import { ProcessCreateLegalPersonComponent } from './components/processComponents/process-create/process-create-legal-person/process-create-legal-person.component';
-import { ProcessCreateFisicalPersonComponent } from './components/processComponents/process-create/process-create-fisical-person/process-create-fisical-person.component';
 
 import { DialogAddAndamentoComponent } from './components/processComponents/process-area/process-area-andamento/dialog-add-andamento/dialog-add-andamento.component';
 
@@ -78,6 +76,20 @@ import { DialogDeleteTipoDeAndamentoComponent } from './components/management/co
 import { DialogEditTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/dialog-edit-tipo-de-andamento/dialog-edit-tipo-de-andamento.component';
 import { DialogAddTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/dialog-add-tipo-de-andamento/dialog-add-tipo-de-andamento.component';
 import { DialogViewAndamentoComponent } from './components/processComponents/process-area/process-area-andamento/dialog-view-andamento/dialog-view-andamento.component';
+
+import { NgSelectModule } from '@ng-select/ng-select';
+import { MParteContrariaComponent } from './components/management/components/m-parte-contraria/m-parte-contraria.component';
+import { MEmpresasComponent } from './components/management/components/m-empresas/m-empresas.component';
+import { DialogAddParteContrariaComponent } from './components/management/components/m-parte-contraria/dialog-add-parte-contraria/dialog-add-parte-contraria.component';
+import { DialogDeleteParteContrariaComponent } from './components/management/components/m-parte-contraria/dialog-delete-parte-contraria/dialog-delete-parte-contraria.component';
+import { DialogEditParteContriaComponent } from './components/management/components/m-parte-contraria/dialog-edit-parte-contraria/dialog-edit-parte-contraria.component';
+import { DialogAddEmpresasComponent } from './components/management/components/m-empresas/dialog-add-empresas/dialog-add-empresas.component';
+import { DialogDeleteEmpresasComponent } from './components/management/components/m-empresas/dialog-delete-empresas/dialog-delete-empresas.component';
+import { DialogEditEmpresasComponent } from './components/management/components/m-empresas/dialog-edit-empresas/dialog-edit-empresas.component';
+import { DialogViewParteContrariaComponent } from './components/management/components/m-parte-contraria/dialog-view-parte-contraria/dialog-view-parte-contraria.component';
+
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { ProcessEditComponent } from './components/processComponents/process-edit/process-edit.component';
 
 @NgModule({
   declarations: [
@@ -107,6 +119,9 @@ import { DialogViewAndamentoComponent } from './components/processComponents/pro
     MAreaDoDireitoComponent,
     MTipoDeAcaoComponent,
     MPatronoResponsavelComponent,
+    MEmpresasComponent,
+    MTipoDeAndamentoComponent,
+    MParteContrariaComponent,
 
     DialogEditAmbitoComponent,
     DialogDeleteAmbitoComponent,
@@ -132,19 +147,26 @@ import { DialogViewAndamentoComponent } from './components/processComponents/pro
     DialogDeleteTipoDeAcaoComponent,
     DialogEditTipoDeAcaoComponent,
 
-    ProcessCreateLegalPersonComponent,
-    ProcessCreateFisicalPersonComponent,
-
     DialogAddAndamentoComponent,
 
     DialogAddAcordoComponent,
     DialogEditAcordoComponent,
     DialogViewAcordoComponent,
-    MTipoDeAndamentoComponent,
+
     DialogDeleteTipoDeAndamentoComponent,
     DialogEditTipoDeAndamentoComponent,
     DialogAddTipoDeAndamentoComponent,
-    DialogViewAndamentoComponent
+    DialogViewAndamentoComponent,
+
+    DialogAddParteContrariaComponent,
+    DialogDeleteParteContrariaComponent,
+    DialogEditParteContriaComponent,
+
+    DialogAddEmpresasComponent,
+    DialogDeleteEmpresasComponent,
+    DialogEditEmpresasComponent,
+    DialogViewParteContrariaComponent,
+    ProcessEditComponent
   ],
 
   imports: [
@@ -161,9 +183,12 @@ import { DialogViewAndamentoComponent } from './components/processComponents/pro
     MatButtonModule,
     MatInputModule,
     MatRadioModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgSelectModule,
+    NgxMaskDirective,
+    NgxMaskPipe
   ],
-  providers: [],
+  providers: [provideNgxMask()],
   bootstrap: [AppComponent]
 })
 

@@ -35,7 +35,7 @@ export class ProcessAreaAndamentoComponent implements OnInit {
         this.andamentoService.getAllProcessoAndamento(this.idProcesso)
           .subscribe({
             next: (response) => {
-              this.andamentos = response;
+              this.andamentos = response.sort((a, b) => b.DATA_CADASTRO.localeCompare(a.DATA_CADASTRO));
             },
             error: (response) => {
               console.log(response)
@@ -47,7 +47,6 @@ export class ProcessAreaAndamentoComponent implements OnInit {
 
   openDialogAdd(enterAnimationDuration: string, exitAnimationDuration: string): void {
     const dialogRefAdd = this.dialog.open(DialogAddAndamentoComponent, {
-      height: '600px',
       width: '750px',
       data: { id: this.idProcesso },
       enterAnimationDuration,
@@ -59,7 +58,6 @@ export class ProcessAreaAndamentoComponent implements OnInit {
 
   openDialogView(enterAnimationDuration: string, exitAnimationDuration: string, event: Event, id: String | undefined): void {
     const dialogRefEdit = this.dialog.open(DialogViewAndamentoComponent, {
-      height: '600px',
       width: '750px',
       data: { value: (event.currentTarget as HTMLElement).previousElementSibling?.innerHTML, id: id },
       enterAnimationDuration,

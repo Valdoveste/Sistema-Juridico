@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Editar Empresas</h1>
+<form (ngSubmit)="updateEmpresas()" #formDir="ngForm" [formGroup]="updateEmpresasForm">
+    <div mat-dialog-content>
+        <mat-form-field class="mb-2">
+            <p class="sm-text">Empresa</p>
+            <input name="EMPRESA"  formControlName="EMPRESA" matInput required
+                [(ngModel)]="updateData.empresas_data[0]">
+        </mat-form-field>
+
+        <mat-form-field>
+            <p class="sm-text">CPF/CNPJ</p>
+            <input name="CPF_CNPJ" formControlName="CPF_CNPJ" matInput
+                mask="000.000.000-00 || 00.000.000/0000-00" [(ngModel)]="updateData.empresas_data[1]">
+        </mat-form-field>
+
+        <div mat-raised-action class="float-right" style="padding: 0 16px;">
+            <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+            <button mat-button>Salvar</button>
+        </div>
+    </div>
+</form>

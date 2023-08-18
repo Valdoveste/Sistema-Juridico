@@ -1,4 +1,4 @@
 export interface ProcessoFase {
-    ID?: String; 
-    FASE: String;
+    ID?: string | String; 
+    FASE: string | String;
 }

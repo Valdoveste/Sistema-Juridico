@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Remover Empresas</h1>
+<form (ngSubmit)="deleteEmpresas()" #formDir="ngForm">
+    <div mat-dialog-content>
+        <mat-form-field class="mb-2">
+            <p class="sm-text">Empresa</p>
+            <input matInput disabled value={{removeData.empresas_data[0]}}>
+        </mat-form-field>
+
+        <mat-form-field>
+            <p class="sm-text">CPF/CNPJ</p>
+            <input matInput disabled value={{removeData.empresas_data[1]}}>
+        </mat-form-field>
+
+        <div mat-raised-action class="float-right" style="padding: 0 16px;">
+            <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+            <button mat-button>Remover</button>
+        </div>
+    </div>
+</form>

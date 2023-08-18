@@ -16,31 +16,16 @@ namespace SistemaJuridicoWebAPI.Data
     public DbSet<PROCESSO_AREA_DO_DIREITO> PROCESSO_AREA_DO_DIREITO { get; set; }
     public DbSet<PROCESSO_ACORDO> PROCESSO_ACORDO { get; set; }
     public DbSet<PROCESSO_FASE> PROCESSO_FASE { get; set; }
-
+    public DbSet<PROCESSO_EMPRESAS> PROCESSO_EMPRESAS { get; set; }
+    public DbSet<PROCESSO_PARTE_CONTRARIA> PROCESSO_PARTE_CONTRARIA { get; set; }
     public DbSet<PROCESSO_TIPO_DE_ANDAMENTO> PROCESSO_TIPO_DE_ANDAMENTO { get; set; }
     public DbSet<PROCESSO_ANDAMENTO> PROCESSO_ANDAMENTO { get; set; }
+    public DbSet<PROCESSO_PATRONOS_ANTERIORES> PROCESSO_PATRONOS_ANTERIORES { get; set; }
     public DbSet<PROCESSO_FORO_TRIBUNAL_ORGAO> PROCESSO_FORO_TRIBUNAL_ORGAO { get; set; }
     public DbSet<PROCESSO_MOTIVO_DO_ENCERRAMENTO> PROCESSO_MOTIVO_DO_ENCERRAMENTO { get; set; }
     public DbSet<PROCESSO_PATRONO_RESPONSAVEL> PROCESSO_PATRONO_RESPONSAVEL { get; set; }
     public DbSet<PROCESSO_STATUS> PROCESSO_STATUS { get; set; }
     public DbSet<PROCESSO_TIPO_DE_ACAO> PROCESSO_TIPO_DE_ACAO { get; set; }
     public DbSet<PROCESSO_VARA> PROCESSO_VARA { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-      modelBuilder.Entity<PROCESSO_STATUS>()
-        .Property(c => c.ID)
-        .ValueGeneratedOnAdd();
-
-      modelBuilder.Entity<PROCESSO_STATUS>()
-        .HasData(
-            new PROCESSO_STATUS { ID = Guid.NewGuid(), STATUS = "Ativo" },
-            new PROCESSO_STATUS { ID = Guid.NewGuid(), STATUS = "Baixa Provisória" },
-            new PROCESSO_STATUS { ID = Guid.NewGuid(), STATUS = "Encerrado" }
-         );
-
-
-    }
-
   }
 }

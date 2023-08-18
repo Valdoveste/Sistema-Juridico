@@ -1,9 +1,9 @@
 export interface ProcessoAndamento {
-    ID?: String;
-    TIPO_DE_ANDAMENTO: String;
-    DATA_ANDAMENTO: String;
-    ID_PROCESSO: String;
-    CRIADOR_ANDAMENTO: String;
-    DESC_ANDAMENTO: String;
-    DATA_CADASTRO: String;
+    ID?: string | String;
+    TIPO_DE_ANDAMENTO: string | String;
+    DATA_ANDAMENTO: string | String;
+    ID_PROCESSO: string | String;
+    CRIADOR_ANDAMENTO: string | String;
+    DESC_ANDAMENTO: string | String;
+    DATA_CADASTRO: string;
 }

@@ -3,8 +3,6 @@
     <div id="process-create">
       <div class="management">
         <div class="mb-3">
-          <h3>Andamento</h3>
-
           <button type="submit" class="btn-default float-right" (click)="openDialogAdd('250ms', '100ms')">
             Criar Andamento
           </button>
@@ -30,7 +28,7 @@
                 andamento.DATA_ANDAMENTO
                 .replaceAll("PM","")
                 .replaceAll("AM","")
-                .slice(0, (andamento.DATA_ANDAMENTO.length - 1) - 5)
+                .slice(0, (andamento.DATA_ANDAMENTO.length - 1) - 2)
                 }}
               </td>
 
@@ -48,7 +46,7 @@
                   </g>
                 </svg>
               </td> -->
-              <td style="width: 40px;" title="Visualizar Andamento"
+              <td class="cursor-pointer" style="width: 40px;" title="Visualizar Andamento"
                 (click)="openDialogView('250ms', '100ms', $event, andamento.ID)">
                 <svg width="20px" height="20px" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round"
                   stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

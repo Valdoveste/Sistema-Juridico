@@ -1,5 +1,5 @@
 export interface ProcessoPatronoResponsavel {
-    ID?: String;
-    PATRONO_RESPONSAVEL: String;
-    PATRONO_RESPONSAVEL_CPF_CNPJ: String;
+    ID?: string | String;
+    PATRONO_RESPONSAVEL: string | String;
+    PATRONO_RESPONSAVEL_CPF_CNPJ: string;
 }

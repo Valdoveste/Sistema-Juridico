@@ -294,14 +294,17 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.Property<string>("CONDICOES_TENTATIVA_DE_ACORDO")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CRIADOR_ACORDO")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DATA_ACORDO")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ID_PROCESSO")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("VALOR_ACORDO")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("VALOR_ACORDO")
+                        .HasColumnType("int");
 
                     b.HasKey("ID");
 
@@ -322,6 +325,35 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.ToTable("PROCESSO_AMBITO");
                 });
 
+            modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_ANDAMENTO", b =>
+                {
+                    b.Property<Guid?>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CRIADOR_ANDAMENTO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DATA_ANDAMENTO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DATA_CADASTRO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DESC_ANDAMENTO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ID_PROCESSO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TIPO_DE_ANDAMENTO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("PROCESSO_ANDAMENTO");
+                });
+
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_AREA_DO_DIREITO", b =>
                 {
                     b.Property<Guid>("ID")
@@ -334,6 +366,23 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("PROCESSO_AREA_DO_DIREITO");
+                });
+
+            modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_EMPRESAS", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CPF_CNPJ")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EMPRESA")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("PROCESSO_EMPRESAS");
                 });
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_FASE", b =>
@@ -378,6 +427,74 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.ToTable("PROCESSO_MOTIVO_DO_ENCERRAMENTO");
                 });
 
+            modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_PARTE_CONTRARIA", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CARGO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CEP")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CIDADE")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CNPJ")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("COMPLEMENTO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CPF")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DATA_ADMISSAO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DATA_DEMISSAO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ENDERECO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ESTADO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ID_PROCESSO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NOME")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NOME_FANTASIA")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NUMERO")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OBSERVACAO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PAIS")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PF_PJ")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RG")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ULTIMO_SALARIO")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("PROCESSO_PARTE_CONTRARIA");
+                });
+
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_PATRONO_RESPONSAVEL", b =>
                 {
                     b.Property<Guid>("ID")
@@ -411,17 +528,17 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            ID = new Guid("232727c4-3af7-411c-8d72-643305fb2d57"),
+                            ID = new Guid("02b3accd-52f7-4200-a2a7-9d6794c37fbe"),
                             STATUS = "Ativo"
                         },
                         new
                         {
-                            ID = new Guid("818c9240-d6f9-416f-946f-106ee0384fc0"),
+                            ID = new Guid("3c205d5d-8994-4459-b916-84816d63ef7e"),
                             STATUS = "Baixa Provisória"
                         },
                         new
                         {
-                            ID = new Guid("28345ac7-9514-4416-b195-78e5645bb95e"),
+                            ID = new Guid("04b02f56-36c8-4180-a3a3-48d8c9c8dd86"),
                             STATUS = "Encerrado"
                         });
                 });
@@ -438,6 +555,20 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("PROCESSO_TIPO_DE_ACAO");
+                });
+
+            modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_TIPO_DE_ANDAMENTO", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("TIPO_DE_ANDAMENTO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("PROCESSO_TIPO_DE_ANDAMENTO");
                 });
 
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_VARA", b =>

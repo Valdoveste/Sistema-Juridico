@@ -36,19 +36,21 @@ export class ProcessAreaAcordoComponent implements OnInit {
         this.acordoService.getAllProcessoAcordo(this.idProcesso)
           .subscribe({
             next: (response) => {
-              this.acordos = response;
+              this.acordos = response.sort((a, b) => b.DATA_ACORDO.localeCompare(a.DATA_ACORDO));
             },
             error: (response) => {
               console.log(response)
             }
           })
+      },
+      error: (response) => {
+        console.log(response)
       }
     })
   }
 
   openDialogAdd(enterAnimationDuration: string, exitAnimationDuration: string): void {
     const dialogRefAdd = this.dialog.open(DialogAddAcordoComponent, {
-      height: '600px',
       width: '750px',
       data: { id: this.idProcesso },
       enterAnimationDuration,
@@ -60,7 +62,6 @@ export class ProcessAreaAcordoComponent implements OnInit {
 
   openDialogView(enterAnimationDuration: string, exitAnimationDuration: string, event: Event, id: String | undefined): void {
     const dialogRefEdit = this.dialog.open(DialogViewAcordoComponent, {
-      height: '600px',
       width: '750px',
       data: { value: (event.currentTarget as HTMLElement).previousElementSibling?.innerHTML, id: id },
       enterAnimationDuration,
@@ -72,7 +73,6 @@ export class ProcessAreaAcordoComponent implements OnInit {
 
   openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string, event: Event, id: String | undefined): void {
     const dialogRefEdit = this.dialog.open(DialogEditAcordoComponent, {
-      height: '600px',
       width: '750px',
       data: { value: (event.currentTarget as HTMLElement).previousElementSibling?.innerHTML, id: id },
       enterAnimationDuration,
