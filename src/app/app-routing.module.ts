@@ -13,6 +13,7 @@ import { MForoTribunalOrgaoComponent } from './components/management/components/
 import { MTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/m-tipo-de-andamento.component';
 import { MEmpresasComponent } from './components/management/components/m-empresas/m-empresas.component';
 import { MParteContrariaComponent } from './components/management/components/m-parte-contraria/m-parte-contraria.component';
+import { ProcessEditComponent } from './components/processComponents/process-edit/process-edit.component';
 
 const routes: Routes = [
   {
@@ -24,52 +25,62 @@ const routes: Routes = [
     path: 'painel-processos',
     component: ProcessPanelComponent
   },
+
   {
     path: 'criar-processo',
     component: ProcessCreateComponent
   },
+
+  {
+    path: 'editar-processo/:id',
+    component: ProcessEditComponent
+  },
+
   {
     path: 'painel-processos/processo-detalhes/:id',
     component: ProcessAreaComponent
-  }
-  ,
+  },
+
   {
     path: 'gestao/ambito',
     component: MAmbitoComponent
-  }
-  ,
+  },
+
   {
     path: 'gestao/vara',
     component: MVaraComponent
-  }
-  ,
+  },
+
   {
     path: 'gestao/patrono-responsavel',
     component: MPatronoResponsavelComponent
-  }
-  ,
+  },
+  
   {
     path: 'gestao/area-do-direito',
     component: MAreaDoDireitoComponent
-  }
-  ,
+  },
+
   {
     path: 'gestao/tipo-de-acao',
     component: MTipoDeAcaoComponent
-  }
-  ,
+  },
+
   {
     path: 'gestao/foro-tribunal-orgao',
     component: MForoTribunalOrgaoComponent
   },
+
   {
     path: 'gestao/tipo-de-andamento',
     component: MTipoDeAndamentoComponent
   },
+
   {
     path: 'gestao/empresas',
     component: MEmpresasComponent
   },
+
   {
     path: 'gestao/parte-contraria',
     component: MParteContrariaComponent
