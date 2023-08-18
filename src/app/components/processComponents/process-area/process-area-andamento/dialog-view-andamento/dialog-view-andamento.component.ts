@@ -15,8 +15,6 @@ export class DialogViewAndamentoComponent implements OnInit {
     private andamentoService: AndamentoService
   ) { }
 
-  viewAcordoForm!: FormGroup;
-
   andamentoDetalhes: ProcessoAndamento = {
     ID: '',
     TIPO_DE_ANDAMENTO: '',
@@ -28,14 +26,6 @@ export class DialogViewAndamentoComponent implements OnInit {
   };
 
   ngOnInit(): void {
-
-    let myVariable: boolean = true;
-
-    this.viewAcordoForm = new FormGroup({
-      TIPO_DE_ANDAMENTO: new FormControl('',),
-      DESC_ANDAMENTO: new FormControl('',)
-    });
-
     this.andamentoService.getProcessoAndamento(this.viewData.id)
       .subscribe({
         next: (response) => {

@@ -10,7 +10,7 @@
   .process-area__header {
     @include flexCenter(normal, space-between, row);
 
-    button{
+    button {
       width: auto;
     }
 
@@ -27,4 +27,10 @@
   .main-info {
     border: 1px solid rgba(60, 64, 67, 0.170)
   }
+}
+
+
+.edit-process {
+  border-radius: 5px;
+  @include flexCenter(center, center, row);
 }

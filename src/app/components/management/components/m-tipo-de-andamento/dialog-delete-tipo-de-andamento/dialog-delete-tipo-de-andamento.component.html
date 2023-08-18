@@ -2,10 +2,11 @@
 <form (ngSubmit)="deleteTipoDeAndamento()" #formDir="ngForm">
     <div mat-dialog-content>
         <mat-form-field>
+            <p class="sm-text">Tipo de andamento</p>
             <input matInput disabled value={{removeData.value}}>
         </mat-form-field>
     
-        <div mat-raised-action class="float-right">
+        <div mat-raised-action class="float-right" style="padding: 0 16px;">
             <button mat-button mat-dialog-close class="mr-2">Fechar</button>
             <button mat-button>Remover</button>
         </div>

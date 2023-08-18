@@ -72,23 +72,3 @@ select {
   width: auto;
   min-width: 200px;
 }
-
-div[class*="--div"] {
-  div[class*="--row"] {
-    margin: 10px 0px;
-    @include flexCenter(center, space-between, row);
-
-    span {
-      // width: 100% !important;
-
-      // &:nth-child(odd) {
-      //   margin-right: 10px;
-      // }
-
-      input {
-        width: 100%;
-      }
-    }
-
-  }
-}

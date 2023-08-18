@@ -3771,19 +3771,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\caiov\\.nuget\\packages\\": {}
+    "C:\\Users\\suporte\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\caiov\\OneDrive\\Área de Trabalho\\Sistema-Juridico\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI.csproj",
+      "projectUniqueName": "C:\\Users\\suporte\\Desktop\\Sistema-Juridico\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI.csproj",
       "projectName": "SistemaJuridicoWebAPI",
-      "projectPath": "C:\\Users\\caiov\\OneDrive\\Área de Trabalho\\Sistema-Juridico\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI.csproj",
-      "packagesPath": "C:\\Users\\caiov\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\caiov\\OneDrive\\Área de Trabalho\\Sistema-Juridico\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI\\obj\\",
+      "projectPath": "C:\\Users\\suporte\\Desktop\\Sistema-Juridico\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI.csproj",
+      "packagesPath": "C:\\Users\\suporte\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\suporte\\Desktop\\Sistema-Juridico\\SistemaJuridicoWebAPI\\SistemaJuridicoWebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\caiov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\suporte\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3791,7 +3791,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3856,7 +3856,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }

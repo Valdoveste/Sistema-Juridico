@@ -30,9 +30,9 @@ export class ProcessAreaComponent implements OnInit {
     EMPRESA: '',
     EMPRESA_CNPJ: '',
     AMBITO: '',
-    PROCESSO_ESTADO: '',
-    PROCESSO_CIDADE: '',
-    PROCESSO_PAIS: '',
+    ESTADO: '',
+    CIDADE: '',
+    PAIS: '',
     VARA: '',
     FORO_TRIBUNAL_ORGAO: '',
     FASE: '',
@@ -50,24 +50,7 @@ export class ProcessAreaComponent implements OnInit {
     DATA_ULTIMO_ANDAMENTO: new Date,
     DATA_ENCERRAMENTO: new Date,
     MOTIVO_ENCERRAMENTO: '',
-    MOTIVO_BAIXA_PROVISORIA: '',
-    PARTE_CONTRARIA_NOME: '',
-    PARTE_CONTRARIA_NOME_FANTASIA: '',
-    PARTE_CONTRARIA_CPF: '',
-    PARTE_CONTRARIA_CNPJ: '',
-    PARTE_CONTRARIA_RG: '',
-    PARTE_CONTRARIA_ENDERECO: '',
-    PARTE_CONTRARIA_CEP: '',
-    PARTE_CONTRARIA_NUMERO: 0,
-    PARTE_CONTRARIA_COMPLEMENTO: '',
-    PARTE_CONTRARIA_ESTADO: '',
-    PARTE_CONTRARIA_CIDADE: '',
-    PARTE_CONTRARIA_PAIS: '',
-    PARTE_CONTRARIA_OBSERVACAO: '',
-    PARTE_CONTRARIA_CARGO: '',
-    PARTE_CONTRARIA_DATA_ADMISSAO: new Date,
-    PARTE_CONTRARIA_DATA_DEMISSAO: new Date,
-    PARTE_CONTRARIA_ULTIMO_SALARIO: 0
+    MOTIVO_BAIXA_PROVISORIA: ''
   };
 
   ngOnInit(): void {

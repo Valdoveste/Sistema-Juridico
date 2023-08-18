@@ -1,0 +1,244 @@
+<div id="process-create">
+  <form (ngSubmit)="updateProcess()" #formDir="ngForm" [formGroup]="updateProcessForm">
+    <div class="process-create-header">
+      <h3>Edição de Processo</h3>
+    </div>
+    <div class="process-create-body">
+      <div class="process-create-processdetails">
+        <ul class="process-create-processdetails__list">
+
+          <li class="process-create-processdetails__list__item">
+            <div class="process-create-processdetails__list__item--div">
+              <div class="process-create-processdetails__list__item--row">
+
+                <span class="w-50">
+                  <p class="sm-text">Número Processo</p>
+                  <input type="text" readonly formControlName="NUMERO_PROCESSO"
+                    [(ngModel)]="updateProcessRequest.NUMERO_PROCESSO" class="process-create-processdetails">
+                </span>
+
+                <span>
+                  <p class="sm-text">Status</p>
+                  <select name="STATUS" formControlName="STATUS" id="selectProcessStatus"
+                    [(ngModel)]="updateProcessRequest.STATUS" class="process-searchbar__list__item--input-select">
+                    <option value={{updateProcessRequest.STATUS}} selected>{{updateProcessRequest.STATUS}}</option>
+                  </select>
+                </span>
+
+              </div>
+            </div>
+          </li>
+
+          <li class="process-create-processdetails__list__item">
+            <div class="process-create-processdetails__list__item--div">
+
+              <p class="sm-text">Empresa</p>
+              <select name="EMPRESA" formControlName="EMPRESA" [(ngModel)]="updateProcessRequest.EMPRESA"
+                class="process-searchbar__list__item--input-select">
+                <option value={{updateProcessRequest.EMPRESA}} selected>{{updateProcessRequest.EMPRESA}}</option>
+              </select>
+
+            </div>
+          </li>
+
+          <li class="process-create-processdetails__list__item">
+            <div class="process-create-processdetails__list__item--div">
+
+              <p class="sm-text">Patrono responsável</p>
+
+              <select name="PATRONO_RESPONSAVEL" formControlName="PATRONO_RESPONSAVEL"
+                [(ngModel)]="updateProcessRequest.PATRONO_RESPONSAVEL"
+                class="process-create-processdetails--input-select">
+                <option value={{updateProcessRequest.PATRONO_RESPONSAVEL}} selected>
+                  {{updateProcessRequest.PATRONO_RESPONSAVEL}}</option>
+              </select>
+
+            </div>
+          </li>
+
+          <li class="process-create-processdetails__list__item">
+            <div class="process-create-processdetails__list__item--div">
+              <div class="process-create-processdetails__list__item--row">
+                <span>
+                  <p class="sm-text">Tipo de Ação</p>
+                  <select name="TIPO_DE_ACAO" formControlName="TIPO_DE_ACAO"
+                    [(ngModel)]="updateProcessRequest.TIPO_DE_ACAO" class="process-searchbar__list__item--input-select">
+                    <option value={{updateProcessRequest.TIPO_DE_ACAO}} selected>{{updateProcessRequest.TIPO_DE_ACAO}}
+                    </option>
+                  </select>
+                </span>
+
+                <span>
+                  <p class="sm-text">Área do Direito</p>
+                  <select name="AREA_DO_DIREITO" formControlName="AREA_DO_DIREITO"
+                    [(ngModel)]="updateProcessRequest.AREA_DO_DIREITO"
+                    class="process-searchbar__list__item--input-select">
+                    <option value={{updateProcessRequest.AREA_DO_DIREITO}} selected>
+                      {{updateProcessRequest.AREA_DO_DIREITO}}</option>
+                  </select>
+                </span>
+
+                <span>
+                  <p class="sm-text">Âmbito</p>
+                  <select name="AMBITO" formControlName="AMBITO" [(ngModel)]="updateProcessRequest.AMBITO"
+                    class="process-searchbar__list__item--input-select">
+                    <option value={{updateProcessRequest.AMBITO}} selected>{{updateProcessRequest.AMBITO}}</option>
+                  </select>
+                </span>
+              </div>
+            </div>
+          </li>
+
+          <li class="process-create-processdetails__list__item">
+            <div class="process-create-processdetails__list__item--div">
+              <div class="process-create-processdetails__list__item--row">
+                <span>
+                  <p class="sm-text">Vara</p>
+                  <select name="VARA" formControlName="VARA" [(ngModel)]="updateProcessRequest.VARA"
+                    class="process-create-processdetails--input-select">
+                    <option value={{updateProcessRequest.VARA}} selected>{{updateProcessRequest.VARA}}</option>
+                  </select>
+                </span>
+
+                <span>
+                  <p class="sm-text">Foro/Tribunal/Orgão</p>
+                  <select name="FORO_TRIBUNAL_ORGAO" formControlName="FORO_TRIBUNAL_ORGAO"
+                    [(ngModel)]="updateProcessRequest.FORO_TRIBUNAL_ORGAO"
+                    class="process-create-processdetails--input-select">
+                    <option value={{updateProcessRequest.FORO_TRIBUNAL_ORGAO}} selected>
+                      {{updateProcessRequest.FORO_TRIBUNAL_ORGAO}}</option>
+                  </select>
+                </span>
+
+                <span>
+                  <p class="sm-text">Fase do processo</p>
+                  <select name="FASE" formControlName="FASE" [(ngModel)]="updateProcessRequest.FASE"
+                    class="process-create-processdetails--input-select">
+                    <option value={{updateProcessRequest.FASE}} selected>{{updateProcessRequest.FASE}}</option>
+                  </select>
+                </span>
+              </div>
+            </div>
+          </li>
+
+          <li class="process-create-processdetails__list__item">
+            <div class="process-create-processdetails__list__item--div">
+              <div class="process-create-processdetails__list__item--row">
+                <span>
+                  <p class="sm-text">Estado</p>
+                  <select name="ESTADO" class="process-create-processdetails--input-select" formControlName="ESTADO"
+                    required [(ngModel)]="updateProcessRequest.ESTADO">
+                    <option value={{updateProcessRequest.ESTADO}}>{{updateProcessRequest.ESTADO}}</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                  </select>
+                </span>
+
+                <span class="mx-1">
+                  <p class="sm-text">Cidade</p>
+                  <input type="text" name="CIDADE" formControlName="CIDADE" [(ngModel)]="updateProcessRequest.CIDADE"
+                    class="process-create-processdetails">
+                </span>
+
+                <span>
+                  <p class="sm-text">Pais</p>
+                  <input type="text" name="PAIS" formControlName="PAIS" [(ngModel)]="updateProcessRequest.PAIS"
+                    class="process-create-processdetails">
+                </span>
+              </div>
+            </div>
+          </li>
+
+          <li class="process-create-processdetails__list__item">
+            <div class="process-create-processdetails__list__item--div">
+              <div class="process-create-processdetails__list__item--row" style="justify-content: flex-start;">
+                <span class="mr-1">
+                  <p class="sm-text">Data de Distribuição</p>
+                  <input type="date" name="DATA_DISTRIBUICAO" formControlName="DATA_DISTRIBUICAO"
+                    [(ngModel)]="updateProcessRequest.DATA_DISTRIBUICAO" class="process-create-processdetails">
+                </span>
+
+                <span>
+                  <p class="sm-text">Data da Citação</p>
+                  <input type="date" name="DATA_CITACAO" formControlName="DATA_CITACAO"
+                    [(ngModel)]="updateProcessRequest.DATA_CITACAO" class="process-create-processdetails">
+                </span>
+              </div>
+            </div>
+          </li>
+
+          <li class="process-create-processdetails__list__item">
+            <div class="process-create-processdetails__list__item--div">
+
+              <div class="process-create-processdetails__list__item mt-2">
+                <p class="sm-text">Valor do Pedido</p>
+                <input type="number" name="VALOR_DO_PEDIDO" formControlName="VALOR_DO_PEDIDO"
+                  [(ngModel)]="updateProcessRequest.VALOR_DO_PEDIDO" class="process-create-processdetails w-auto">
+              </div>
+
+              <div class="process-create-processdetails__list__item--row">
+                <span>
+                  <p class="sm-text">Valor 1ª Instância</p>
+                  <input type="number" name="VALOR_INSTANCIA1" formControlName="VALOR_INSTANCIA1"
+                    [(ngModel)]="updateProcessRequest.VALOR_INSTANCIA1" class="process-create-processdetails">
+                </span>
+
+                <span class="mx-1">
+                  <p class="sm-text">Valor 2ª Instância</p>
+                  <input type="number" name="VALOR_INSTANCIA2" formControlName="VALOR_INSTANCIA2"
+                    [(ngModel)]="updateProcessRequest.VALOR_INSTANCIA2" class="process-create-processdetails">
+                </span>
+
+                <span style="margin-right: .25rem;">
+                  <p class="sm-text">Valor 3ª Instância</p>
+                  <input type="number" name="VALOR_INSTANCIA3" formControlName="VALOR_INSTANCIA3"
+                    [(ngModel)]="updateProcessRequest.VALOR_INSTANCIA3" class="process-create-processdetails">
+                </span>
+                <span>
+                  <p class="sm-text">Valor Instância Extraordinária</p>
+                  <input type="number" name="VALOR_INSTANCIA_EXTRAORDINARIA"
+                    formControlName="VALOR_INSTANCIA_EXTRAORDINARIA"
+                    [(ngModel)]="updateProcessRequest.VALOR_INSTANCIA_EXTRAORDINARIA"
+                    class="process-create-processdetails">
+                </span>
+              </div>
+            </div>
+          </li>
+
+          <li class="process-create-processdetails__list__item">
+            <p class="sm-text">Texto do objeto</p>
+            <textarea name="TEXTO_DO_OBJETO" formControlName="TEXTO_DO_OBJETO"
+              [(ngModel)]="updateProcessRequest.TEXTO_DO_OBJETO" rows="10"
+              class="process-create-processdetails w-100"></textarea>
+          </li>
+        </ul>
+      </div>
+      <button type="submit" class="btn-default mt-2 float-right">Salvar</button>
+    </div>
+  </form>
+</div>

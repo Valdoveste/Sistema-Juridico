@@ -21,7 +21,7 @@ export class DialogViewAcordoComponent implements OnInit {
   acordoDetalhes: ProcessoAcordo = {
     ID: '',
     DATA_ACORDO: '',
-    VALOR_ACORDO: '',
+    VALOR_ACORDO: 0,
     ID_PROCESSO: '',
     CRIADOR_ACORDO: '',
     CONDICOES_TENTATIVA_DE_ACORDO: ''
