@@ -65,8 +65,6 @@ import { DialogEditAreaDoDireitoComponent } from './components/management/compon
 import { DialogAddTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/dialog-add-tipo-de-acao/dialog-add-tipo-de-acao.component';
 import { DialogDeleteTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/dialog-delete-tipo-de-acao/dialog-delete-tipo-de-acao.component';
 import { DialogEditTipoDeAcaoComponent } from './components/management/components/m-tipo-de-acao/dialog-edit-tipo-de-acao/dialog-edit-tipo-de-acao.component';
-import { ProcessCreateLegalPersonComponent } from './components/processComponents/process-create/process-create-legal-person/process-create-legal-person.component';
-import { ProcessCreateFisicalPersonComponent } from './components/processComponents/process-create/process-create-fisical-person/process-create-fisical-person.component';
 
 import { DialogAddAndamentoComponent } from './components/processComponents/process-area/process-area-andamento/dialog-add-andamento/dialog-add-andamento.component';
 
@@ -91,6 +89,7 @@ import { DialogEditEmpresasComponent } from './components/management/components/
 import { DialogViewParteContrariaComponent } from './components/management/components/m-parte-contraria/dialog-view-parte-contraria/dialog-view-parte-contraria.component';
 
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { ProcessEditComponent } from './components/processComponents/process-edit/process-edit.component';
 
 @NgModule({
   declarations: [
@@ -148,9 +147,6 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     DialogDeleteTipoDeAcaoComponent,
     DialogEditTipoDeAcaoComponent,
 
-    ProcessCreateLegalPersonComponent,
-    ProcessCreateFisicalPersonComponent,
-
     DialogAddAndamentoComponent,
 
     DialogAddAcordoComponent,
@@ -169,7 +165,8 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     DialogAddEmpresasComponent,
     DialogDeleteEmpresasComponent,
     DialogEditEmpresasComponent,
-    DialogViewParteContrariaComponent
+    DialogViewParteContrariaComponent,
+    ProcessEditComponent
   ],
 
   imports: [
