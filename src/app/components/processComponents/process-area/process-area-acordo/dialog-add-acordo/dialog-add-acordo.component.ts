@@ -35,7 +35,6 @@ export class DialogAddAcordoComponent implements OnInit {
   }
 
   createAcordo() {
-    console.log(this.createAcordoRequest.VALOR_ACORDO)
     if (this.createAcordoForm.valid) {    
       this.acordoService.createAcordo(this.createAcordoRequest, this.addData.id)
         .subscribe({

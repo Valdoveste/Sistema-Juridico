@@ -80,7 +80,6 @@ export class DialogEditParteContriaComponent implements OnInit {
   }
 
   updateParteContria() {
-    console.log(this.updateParteContriaForm.valid)
     if (this.updateParteContriaForm.valid) {
       this.ParteContrariaService.updateParteContraria(this.updateData.id, this.updateParteContriaRequest)
         .subscribe({
