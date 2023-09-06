@@ -37,7 +37,8 @@ export class AndamentoService {
     return this.http.put<ProcessoAndamento>(this.baseApiUrl + '/api/Sistema/update-andamento/' + id_andamento, updateAndamentoRequest);
   }
 
-  // deleteAndamento(id: string): Observable<ProcessoAndamento> {
-  //   return this.http.delete<ProcessoAndamento>(this.baseApiUrl + '/api/Sistema/delete-andamento/' + id);
-  // }
+  uploadFileProcessoAndamento(formData: FormData, idProcesso: string) {
+    return this.http.post(this.baseApiUrl + '/api/Upload/upload-files/processo/andamento/' + idProcesso, formData)
+  }
+
 }
