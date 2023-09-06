@@ -24,4 +24,8 @@ export class ProcessoService {
   createProcess(createProcessResquest: Processo): Observable<Processo> {
     return this.http.post<Processo>(this.baseApiUrl + '/api/Sistema/add-processo', createProcessResquest)
   }
+
+  updateProcess(id_process: String, updateProcessRequest: Processo): Observable<Processo> {
+    return this.http.put<Processo>(this.baseApiUrl + '/api/Sistema/update-processo/' + id_process, updateProcessRequest)
+  }
 }
