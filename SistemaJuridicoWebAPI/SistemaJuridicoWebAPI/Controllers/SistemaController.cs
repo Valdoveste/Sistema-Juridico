@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SistemaJuridicoWebAPI.Data;
 using SistemaJuridicoWebAPI.Models;
-using System;
 
 namespace SistemaJuridicoWebAPI.Controllers
 {
@@ -41,7 +40,11 @@ namespace SistemaJuridicoWebAPI.Controllers
     [HttpPost("add-processo")]
     public async Task<IActionResult> AddProcess([FromBody] PROCESSO processoRequest)
     {
+      TimeZoneInfo brazilTimeZone = TimeZoneInfo.FindSystemTimeZoneById("America/Sao_Paulo");
+
       processoRequest.ID_PROCESSO = Guid.NewGuid();
+
+      processoRequest.DATA_CADASTRO_PROCESSO = TimeZoneInfo.ConvertTime(DateTime.Now, brazilTimeZone).ToString();
 
       await _sistemaJuridicoDbContext.PROCESSO.AddAsync(processoRequest);
 
@@ -62,7 +65,7 @@ namespace SistemaJuridicoWebAPI.Controllers
       processo.TIPO_DE_ACAO = updateProcessRequest.TIPO_DE_ACAO;
       processo.AREA_DO_DIREITO = updateProcessRequest.AREA_DO_DIREITO;
       processo.AMBITO = updateProcessRequest.AMBITO;
-      processo.EMPRESA = updateProcessRequest.EMPRESA; // Corrigir nome está EMPPRESA com dois P's
+      processo.EMPRESA = updateProcessRequest.EMPRESA;
       processo.ESTADO = updateProcessRequest.ESTADO;
       processo.PAIS = updateProcessRequest.PAIS;
       processo.CIDADE = updateProcessRequest.CIDADE;
@@ -73,20 +76,20 @@ namespace SistemaJuridicoWebAPI.Controllers
       processo.FASE = updateProcessRequest.FASE;
       processo.TEXTO_DO_OBJETO = updateProcessRequest.TEXTO_DO_OBJETO;
       processo.VALOR_DO_PEDIDO = updateProcessRequest.VALOR_DO_PEDIDO;
-      processo.VALOR_INSTANCIA_EXTRAORDINARIA = updateProcessRequest.VALOR_INSTANCIA1;
+      processo.VALOR_INSTANCIA_EXTRAORDINARIA = updateProcessRequest.VALOR_INSTANCIA_EXTRAORDINARIA;
       processo.VALOR_INSTANCIA1 = updateProcessRequest.VALOR_INSTANCIA1;
       processo.VALOR_INSTANCIA2 = updateProcessRequest.VALOR_INSTANCIA2;
       processo.VALOR_INSTANCIA3 = updateProcessRequest.VALOR_INSTANCIA3;
       processo.PATRONO_RESPONSAVEL = updateProcessRequest.PATRONO_RESPONSAVEL;
 
-      //var entry = _sistemaJuridicoDbContext.Entry(processo);
+      var entry = _sistemaJuridicoDbContext.Entry(processo);
 
-      //bool teste = entry.Property(e => e.PATRONO_RESPONSAVEL).IsModified;
+      bool teste = entry.Property(e => e.PATRONO_RESPONSAVEL).IsModified;
 
-     // if(processo.PATRONO_RESPONSAVEL == updateProcessRequest.PATRONO_RESPONSAVEL)
-         
+      if (teste)
 
-      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+        await _sistemaJuridicoDbContext.SaveChangesAsync();
 
       return Ok(processo);
     }
@@ -374,8 +377,7 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok(tipoDeAcao);
     }
 
-
-
+    // Tipo de Andamento
 
     [HttpGet("tipo-de-andamento")]
     public async Task<IActionResult> GetAllTipoDeAndamento()
@@ -425,8 +427,7 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok(tipoDeAndamento);
     }
 
-
-
+    // Vara
 
     [HttpGet("vara")]
     public async Task<IActionResult> GetAllVara()
@@ -477,7 +478,7 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok(vara);
     }
 
-
+    // Acordo
 
     [HttpGet("acordo")]
     public async Task<IActionResult> GetAllAcordo()
@@ -490,15 +491,6 @@ namespace SistemaJuridicoWebAPI.Controllers
     {
       var processoAcordo = await _sistemaJuridicoDbContext.PROCESSO_ACORDO
           .Where(x => x.ID_PROCESSO.Equals(id))
-          .Select(x => new PROCESSO_ACORDO
-          {
-            ID = x.ID,
-            DATA_ACORDO = x.DATA_ACORDO,
-            VALOR_ACORDO = (float)Math.Round(x.VALOR_ACORDO, 2), // Arredondar para 2 casas decimais
-            ID_PROCESSO = x.ID_PROCESSO,
-            CRIADOR_ACORDO = x.CRIADOR_ACORDO,
-            CONDICOES_TENTATIVA_DE_ACORDO = x.CONDICOES_TENTATIVA_DE_ACORDO
-          })
           .ToListAsync();
 
       return Ok(processoAcordo);
@@ -693,6 +685,32 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok(empresas);
     }
 
+    [HttpPost("add-patrono-anterior")]
+    public async Task<IActionResult> AddPatronoAnterior([FromRoute] PROCESSO_PATRONOS_ANTERIORES patronoAnteriorRequest)
+    {
+      TimeZoneInfo brazilTimeZone = TimeZoneInfo.FindSystemTimeZoneById("America/Sao_Paulo");
+
+      patronoAnteriorRequest.DATA_ALTERACAO = TimeZoneInfo.ConvertTime(DateTime.Now, brazilTimeZone).ToString();
+
+      patronoAnteriorRequest.ID = Guid.NewGuid();
+
+      await _sistemaJuridicoDbContext.AddAsync(patronoAnteriorRequest);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(patronoAnteriorRequest);
+    }
+
+
+    [HttpGet("processo/all/patrono-anterior/{id}")]
+    public async Task<IActionResult> GetProcessoPatronoAnterior([FromRoute] string idProcesso)
+    {
+      var processoPatronoAnterior = await _sistemaJuridicoDbContext.PROCESSO_PATRONOS_ANTERIORES
+      .Where(x => x.ID_PROCESSO.Equals(idProcesso))
+      .ToListAsync();
+
+      return Ok(processoPatronoAnterior);
+    }
 
   }
 }
