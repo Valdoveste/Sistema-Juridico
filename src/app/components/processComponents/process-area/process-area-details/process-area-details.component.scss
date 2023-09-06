@@ -7,3 +7,14 @@ textarea{
 .process-create-processdetails__list__item{
   margin: 15px 0;
 }
+
+.input{
+  max-width: 350px;
+  min-width: 180px;
+  border: unset !important;
+  color: black;
+  font-size: 1.15rem;
+  // font-weight: bold;
+  padding: 0 5px;
+  @include flexCenter(center, flex-start, row)
+}

@@ -1,5 +1,9 @@
 @import '../../../management/management.componnent.scss';
 
+.management{
+    box-shadow: unset !important;
+}
+
 .row-item{
     padding: 0 16px;
     display: grid;
