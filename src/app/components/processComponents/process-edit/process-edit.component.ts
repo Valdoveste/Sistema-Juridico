@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Processo } from 'src/app/models/PROCESSO.model';
 import { ProcessoService } from 'src/app/services/processo.service';
 
@@ -12,6 +12,7 @@ import { ProcessoService } from 'src/app/services/processo.service';
 export class ProcessEditComponent {
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private ProcessoService: ProcessoService
   ) { }
 
@@ -55,6 +56,7 @@ export class ProcessEditComponent {
     MOTIVO_BAIXA_PROVISORIA: ''
   }
 
+
   ngOnInit(): void {
     this.route.paramMap.subscribe({
       next: (params) => {
@@ -65,7 +67,7 @@ export class ProcessEditComponent {
               this.updateProcessRequest = response;
             },
             error: (erroResponse) => {
-              console.log(erroResponse)
+              console.log(erroResponse.error)
             }
           })
         }
@@ -105,8 +107,25 @@ export class ProcessEditComponent {
     });
   }
 
-  updateProcess(){
-    
+  updateProcess() {
+    this.route.paramMap.subscribe({
+      next: (params) => {
+        const id_processo = params.get('id')
+        if (id_processo) {
+          this.ProcessoService.updateProcess(id_processo, this.updateProcessRequest).subscribe({
+            next: () => {
+              this.router.navigate(['/painel-processos', 'processo-detalhes', id_processo])
+            },
+            error: (errorResponse) => {
+              console.log(errorResponse)
+            }
+          })
+        }
+      },
+      error: (errorResponse) => {
+        console.log(errorResponse)
+      }
+    })
   }
 
 }

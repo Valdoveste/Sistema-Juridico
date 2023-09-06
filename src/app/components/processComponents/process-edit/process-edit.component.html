@@ -197,32 +197,32 @@
 
               <div class="process-create-processdetails__list__item mt-2">
                 <p class="sm-text">Valor do Pedido</p>
-                <input type="number" name="VALOR_DO_PEDIDO" formControlName="VALOR_DO_PEDIDO"
-                  [(ngModel)]="updateProcessRequest.VALOR_DO_PEDIDO" class="process-create-processdetails w-auto">
+                <input formControlName="VALOR_DO_PEDIDO" class="process-create-processdetails w-auto"
+                [(ngModel)]="updateProcessRequest.VALOR_DO_PEDIDO">
+                {{ updateProcessRequest.VALOR_DO_PEDIDO}}
               </div>
 
               <div class="process-create-processdetails__list__item--row">
                 <span>
                   <p class="sm-text">Valor 1ª Instância</p>
-                  <input type="number" name="VALOR_INSTANCIA1" formControlName="VALOR_INSTANCIA1"
+                  <input name="VALOR_INSTANCIA1" formControlName="VALOR_INSTANCIA1"
                     [(ngModel)]="updateProcessRequest.VALOR_INSTANCIA1" class="process-create-processdetails">
                 </span>
 
                 <span class="mx-1">
                   <p class="sm-text">Valor 2ª Instância</p>
-                  <input type="number" name="VALOR_INSTANCIA2" formControlName="VALOR_INSTANCIA2"
+                  <input name="VALOR_INSTANCIA2" formControlName="VALOR_INSTANCIA2"
                     [(ngModel)]="updateProcessRequest.VALOR_INSTANCIA2" class="process-create-processdetails">
                 </span>
 
                 <span style="margin-right: .25rem;">
                   <p class="sm-text">Valor 3ª Instância</p>
-                  <input type="number" name="VALOR_INSTANCIA3" formControlName="VALOR_INSTANCIA3"
+                  <input name="VALOR_INSTANCIA3" formControlName="VALOR_INSTANCIA3"
                     [(ngModel)]="updateProcessRequest.VALOR_INSTANCIA3" class="process-create-processdetails">
                 </span>
                 <span>
                   <p class="sm-text">Valor Instância Extraordinária</p>
-                  <input type="number" name="VALOR_INSTANCIA_EXTRAORDINARIA"
-                    formControlName="VALOR_INSTANCIA_EXTRAORDINARIA"
+                  <input name="VALOR_INSTANCIA_EXTRAORDINARIA" formControlName="VALOR_INSTANCIA_EXTRAORDINARIA"
                     [(ngModel)]="updateProcessRequest.VALOR_INSTANCIA_EXTRAORDINARIA"
                     class="process-create-processdetails">
                 </span>

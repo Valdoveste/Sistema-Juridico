@@ -18,11 +18,11 @@ export interface Processo {
   PATRONO_RESPONSAVEL: string | String;
   PATRONOS_ANTERIORES: string | String;
   TEXTO_DO_OBJETO: string | String;
-  VALOR_DO_PEDIDO: Number;
-  VALOR_INSTANCIA1: Number;
-  VALOR_INSTANCIA2: Number;
-  VALOR_INSTANCIA3: Number;
-  VALOR_INSTANCIA_EXTRAORDINARIA: Number;
+  VALOR_DO_PEDIDO: string | number;
+  VALOR_INSTANCIA1: string | number;
+  VALOR_INSTANCIA2: string | number;
+  VALOR_INSTANCIA3: string | number;
+  VALOR_INSTANCIA_EXTRAORDINARIA: string | number;
   DATA_CADASTRO_PROCESSO: Date;
   DATA_ULTIMO_ANDAMENTO: Date;
   DATA_ENCERRAMENTO: Date;
