@@ -18,10 +18,15 @@ export class ProcessContainerComponent implements OnInit {
   ngOnInit(): void {
     this.processoService.getAllProcess()
       .subscribe({
-        next: (processos: any) => {
-          this.processos = processos;
+        next: (response) => {
+          this.processos = response.sort((a, b) => {
+            const dateA = new Date(a.DATA_CADASTRO_PROCESSO);
+            const dateB = new Date(b.DATA_CADASTRO_PROCESSO);
+
+            return dateB.getTime() - dateA.getTime();
+          });
         },
-        error: (response: any) => {
+        error: (response) => {
           console.log(response)
         }
       })
