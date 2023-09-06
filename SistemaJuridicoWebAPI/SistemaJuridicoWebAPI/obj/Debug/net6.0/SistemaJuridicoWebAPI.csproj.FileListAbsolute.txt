@@ -350,3 +350,4 @@ C:\Users\suporte\Desktop\Sistema-Juridico\SistemaJuridicoWebAPI\SistemaJuridicoW
 C:\Users\suporte\Desktop\Sistema-Juridico\SistemaJuridicoWebAPI\SistemaJuridicoWebAPI\obj\Debug\net6.0\SistemaJuridicoWebAPI.pdb
 C:\Users\suporte\Desktop\Sistema-Juridico\SistemaJuridicoWebAPI\SistemaJuridicoWebAPI\obj\Debug\net6.0\SistemaJuridicoWebAPI.genruntimeconfig.cache
 C:\Users\suporte\Desktop\Sistema-Juridico\SistemaJuridicoWebAPI\SistemaJuridicoWebAPI\obj\Debug\net6.0\ref\SistemaJuridicoWebAPI.dll
+C:\Users\caiov\OneDrive\Área de Trabalho\Sistema-Juridico\SistemaJuridicoWebAPI\SistemaJuridicoWebAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
