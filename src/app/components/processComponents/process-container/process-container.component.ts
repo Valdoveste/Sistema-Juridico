@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Processo } from 'src/app/models/PROCESSO.model';
 import { ProcessoService } from 'src/app/services/processo.service';
+import { SearchProcessoService } from 'src/app/services/search-processo.service';
 
 @Component({
   selector: 'app-process-container',
@@ -13,23 +14,37 @@ export class ProcessContainerComponent implements OnInit {
 
   constructor(
     private processoService: ProcessoService,
+    private searchProcesso: SearchProcessoService
   ) { }
 
   ngOnInit(): void {
-    this.processoService.getAllProcess()
-      .subscribe({
-        next: (response) => {
+    this.processoService.processoResponse$
+      .subscribe(
+        response => {
+          this.processos = [];
+
           this.processos = response.sort((a, b) => {
             const dateA = new Date(a.DATA_CADASTRO_PROCESSO);
             const dateB = new Date(b.DATA_CADASTRO_PROCESSO);
 
             return dateB.getTime() - dateA.getTime();
           });
-        },
-        error: (response) => {
-          console.log(response)
         }
-      })
+      )
+
+    this.searchProcesso.resultSearchResponse$
+      .subscribe(
+        response => {
+          this.processos = [];
+
+          this.processos = response.sort((a, b) => {
+            const dateA = new Date(a.DATA_CADASTRO_PROCESSO);
+            const dateB = new Date(b.DATA_CADASTRO_PROCESSO);
+
+            return dateB.getTime() - dateA.getTime();
+          });
+        }
+      )
   }
 
 }
