@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SistemaJuridicoWebAPI.Data;
-using SistemaJuridicoWebAPI.Models;
 using System.Net.Http.Headers;
 
 namespace SistemaJuridicoWebAPI.Controllers
