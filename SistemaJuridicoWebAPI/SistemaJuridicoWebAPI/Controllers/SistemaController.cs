@@ -17,7 +17,6 @@ namespace SistemaJuridicoWebAPI.Controllers
       _sistemaJuridicoDbContext = sistemaJuridicoDbContext;
     }
 
-
     [HttpGet("painel-processos/busca-avancada")]
     public IActionResult SearchProcesso([FromQuery] SEARCH_PARAMETERS_PROCESSO searchParameters)
     {
@@ -103,11 +102,11 @@ namespace SistemaJuridicoWebAPI.Controllers
       processo.VALOR_INSTANCIA3 = updateProcessRequest.VALOR_INSTANCIA3;
       processo.PATRONO_RESPONSAVEL = updateProcessRequest.PATRONO_RESPONSAVEL;
 
-      var entry = _sistemaJuridicoDbContext.Entry(processo);
+      //var entry = _sistemaJuridicoDbContext.Entry(processo);
 
-      bool teste = entry.Property(e => e.PATRONO_RESPONSAVEL).IsModified;
+      //bool teste = entry.Property(e => e.PATRONO_RESPONSAVEL).IsModified;
 
-      if (teste)
+     // if (teste)
 
 
         await _sistemaJuridicoDbContext.SaveChangesAsync();
@@ -398,7 +397,8 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok(tipoDeAcao);
     }
 
-    // Tipo de Andamento
+
+
 
     [HttpGet("tipo-de-andamento")]
     public async Task<IActionResult> GetAllTipoDeAndamento()
@@ -448,7 +448,8 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok(tipoDeAndamento);
     }
 
-    // Vara
+
+
 
     [HttpGet("vara")]
     public async Task<IActionResult> GetAllVara()
@@ -499,7 +500,7 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok(vara);
     }
 
-    // Acordo
+
 
     [HttpGet("acordo")]
     public async Task<IActionResult> GetAllAcordo()
