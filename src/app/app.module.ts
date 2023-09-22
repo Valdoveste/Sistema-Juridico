@@ -1,3 +1,4 @@
+import { ProcessSearchbarComponent } from './components/processComponents/process-searchbar/process-searchbar.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,7 +12,6 @@ import { MainComponent } from './components/main/main.component';
 import { ProcessContainerComponent } from './components/processComponents/process-container/process-container.component';
 import { ProcessAreaComponent } from './components/processComponents/process-area/process-area.component';
 import { ProcessPanelComponent } from './components/processComponents/process-panel/process-panel.component';
-import { ProcessSearchbarComponent } from './components/processComponents/process-searchbar/process-searchbar.component';
 import { ProcessCreateComponent } from './components/processComponents/process-create/process-create.component';
 import { ProcessCreateProgressComponent } from './components/processComponents/process-create/process-create-progress/process-create-progress.component';
 import { ProcessCreateAgreementComponent } from './components/processComponents/process-create/process-create-agreement/process-create-agreement.component';
@@ -94,6 +94,7 @@ import { ProcessEditComponent } from './components/processComponents/process-edi
 @NgModule({
   declarations: [
     AppComponent,
+    ProcessSearchbarComponent,
     FooterComponent,
     HeaderComponent,
     MainComponent,
@@ -103,7 +104,6 @@ import { ProcessEditComponent } from './components/processComponents/process-edi
     ProcessContainerComponent,
     ProcessAreaComponent,
     ProcessPanelComponent,
-    ProcessSearchbarComponent,
     ProcessCreateComponent,
     ProcessCreateProgressComponent,
     ProcessCreateAgreementComponent,
@@ -170,10 +170,10 @@ import { ProcessEditComponent } from './components/processComponents/process-edi
   ],
 
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
     BrowserAnimationsModule,

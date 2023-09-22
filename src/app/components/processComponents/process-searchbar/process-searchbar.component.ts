@@ -9,6 +9,10 @@ import { FaseService } from 'src/app/services/fase.service';
 import { PatronoResponsavelService } from 'src/app/services/patrono-responsavel.service';
 import { StatusService } from 'src/app/services/status.service';
 import { TipoDeAcaoService } from 'src/app/services/tipo-de-acao.service';
+import { Processo } from 'src/app/models/PROCESSO.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SearchProcessoService } from 'src/app/services/search-processo.service';
+import { ProcessoService } from 'src/app/services/processo.service';
 
 @Component({
   selector: 'app-process-searchbar',
@@ -22,6 +26,8 @@ export class ProcessSearchbarComponent implements OnInit {
   areasDoDireito: ProcessoAreaDoDireito[] = [];
   tiposDeAcoes: ProcessoTipoDeAcao[] = [];
   patronoResponsavel: ProcessoPatronoResponsavel[] = [];
+  processo: Processo[] = [];
+
   searchQueryParameters = {
     numero_processo: '',
     fase: '',
@@ -37,6 +43,13 @@ export class ProcessSearchbarComponent implements OnInit {
     private Status: StatusService,
     private AreaDoDireito: AreaDoDireitoService,
     private TipoDeAcao: TipoDeAcaoService,
+    private PatronoResponsavel: PatronoResponsavelService,
+    private activedRoute: ActivatedRoute,
+    private router: Router,
+    private searchProcessoService: SearchProcessoService,
+    private processoService: ProcessoService
+  ) { }
+
   areAllAttributesEmpty(obj: any): boolean {
     return Object.values(this.searchQueryParameters).every(value => value === '')
   }
@@ -54,7 +67,6 @@ export class ProcessSearchbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.Status.getAllStatus()
       .subscribe({
         next: (status: any) => {
