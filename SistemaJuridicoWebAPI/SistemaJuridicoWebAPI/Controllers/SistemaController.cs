@@ -50,6 +50,11 @@ namespace SistemaJuridicoWebAPI.Controllers
 
       await _sistemaJuridicoDbContext.SaveChangesAsync();
 
+      var folderName = Path.Combine("Resources", processoRequest.ID_PROCESSO.ToString());
+
+      if (!Directory.Exists(folderName))
+        Directory.CreateDirectory(folderName);
+
       return Ok(processoRequest);
     }
 
