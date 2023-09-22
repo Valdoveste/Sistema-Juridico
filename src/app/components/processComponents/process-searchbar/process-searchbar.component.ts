@@ -37,9 +37,21 @@ export class ProcessSearchbarComponent implements OnInit {
     private Status: StatusService,
     private AreaDoDireito: AreaDoDireitoService,
     private TipoDeAcao: TipoDeAcaoService,
-    private PatronoResponsavel: PatronoResponsavelService
-  ) { }
+  areAllAttributesEmpty(obj: any): boolean {
+    return Object.values(this.searchQueryParameters).every(value => value === '')
+  }
 
+  search() {
+    this.router.navigate(['/painel-processos/busca-avancada'], { queryParams: this.searchQueryParameters })
+
+    if (this.areAllAttributesEmpty(this.searchQueryParameters))
+      this.processoService.getAllProcess()
+    else
+      this.activedRoute.queryParamMap
+        .subscribe({
+          next: (params) => this.searchProcessoService.searchProcesso(params)
+        })
+  }
 
   ngOnInit(): void {
 
