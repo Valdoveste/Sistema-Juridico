@@ -213,7 +213,6 @@ export class ProcessCreateComponent implements OnInit {
         }
       })
 
-
     this.createProcessForm = new FormGroup({
       // ID_PROCESSO: new FormControl(''),
       NUMERO_PROCESSO: new FormControl('', [Validators.required]),
