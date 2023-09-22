@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SistemaJuridicoWebAPI.Data;
+using SistemaJuridicoWebAPI.Models;
 using System.Net.Http.Headers;
 
 namespace SistemaJuridicoWebAPI.Controllers
@@ -7,13 +10,27 @@ namespace SistemaJuridicoWebAPI.Controllers
   [Route("api/[controller]")]
   public class UploadController : Controller
   {
-    [HttpPost("upload-files/processo/andamento/{id}"), DisableRequestSizeLimit]
-    public Task<IActionResult> UploadFileProcessoAndamento([FromRoute] Guid id)
+
+    private readonly SistemaJuridicoDbContext _sistemaJuridicoDbContext;
+
+    public UploadController(SistemaJuridicoDbContext sistemaJuridicoDbContext)
     {
+      _sistemaJuridicoDbContext = sistemaJuridicoDbContext;
+    }
+
+    [HttpPost("upload-files/processo/andamento/{id}"), DisableRequestSizeLimit]
+    public async Task<IActionResult> UploadFileProcessoAndamento([FromRoute] string id)
+    {
+
+      var andamentoID = await _sistemaJuridicoDbContext.PROCESSO_ANDAMENTO
+          .Where(x => x.ID_PROCESSO.Equals(id))
+          .Select(x => x.ID)
+          .FirstOrDefaultAsync();
+
       try
       {
         var files = Request.Form.Files;
-        var folderName = Path.Combine("Resources", id.ToString());
+        var folderName = Path.Combine("Resources/" + id.ToString(), andamentoID.ToString());
         var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
 
         if (!Directory.Exists(folderName))
@@ -21,7 +38,7 @@ namespace SistemaJuridicoWebAPI.Controllers
 
         if (files.Any(file => file.Length == 0))
         {
-          return Task.FromResult<IActionResult>(BadRequest());
+          return BadRequest();
         }
 
         foreach (var file in files)
@@ -37,11 +54,11 @@ namespace SistemaJuridicoWebAPI.Controllers
 
         }
 
-        return Task.FromResult<IActionResult>(Ok());
+        return Ok();
       }
       catch (Exception ex)
       {
-        return Task.FromResult<IActionResult>(StatusCode(500, $"Internal server error: {ex}"));
+        return StatusCode(500, $"Internal server error: {ex}");
       }
     }
   }
