@@ -17,6 +17,22 @@ namespace SistemaJuridicoWebAPI.Controllers
       _sistemaJuridicoDbContext = sistemaJuridicoDbContext;
     }
 
+
+    [HttpGet("painel-processos/busca-avancada")]
+    public IActionResult SearchProcesso([FromQuery] SEARCH_PARAMETERS_PROCESSO searchParameters)
+    {
+      var queryResult = _sistemaJuridicoDbContext.PROCESSO
+       .Where(x => (searchParameters.NUMERO_PROCESSO == null || x.NUMERO_PROCESSO == searchParameters.NUMERO_PROCESSO)
+                && (searchParameters.FASE == null || x.FASE == searchParameters.FASE)
+                && (searchParameters.AREA_DO_DIREITO == null || x.AREA_DO_DIREITO == searchParameters.AREA_DO_DIREITO)
+                && (searchParameters.PATRONO_RESPONSAVEL == null || x.PATRONO_RESPONSAVEL == searchParameters.PATRONO_RESPONSAVEL)
+                && (searchParameters.STATUS == null || x.STATUS == searchParameters.STATUS)
+                && (searchParameters.TIPO_DE_ACAO == null || x.TIPO_DE_ACAO == searchParameters.TIPO_DE_ACAO))
+       .ToList();
+
+      return Ok(queryResult);
+    }
+
     [HttpGet("processo")]
     public async Task<IActionResult> GetAllProcess()
     {
