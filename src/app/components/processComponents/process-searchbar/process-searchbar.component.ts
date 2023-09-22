@@ -22,6 +22,15 @@ export class ProcessSearchbarComponent implements OnInit {
   areasDoDireito: ProcessoAreaDoDireito[] = [];
   tiposDeAcoes: ProcessoTipoDeAcao[] = [];
   patronoResponsavel: ProcessoPatronoResponsavel[] = [];
+  searchQueryParameters = {
+    numero_processo: '',
+    fase: '',
+    area_do_direito: '',
+    patrono_responsavel: '',
+    status: '',
+    tipo_de_acao: '',
+    parte_contraria: ''
+  }
 
   constructor(
     private Fase: FaseService,
