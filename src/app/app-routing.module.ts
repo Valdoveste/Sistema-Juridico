@@ -25,6 +25,10 @@ const routes: Routes = [
     path: 'painel-processos',
     component: ProcessPanelComponent
   },
+  {
+    path: 'painel-processos/busca-avancada',
+    component: ProcessPanelComponent
+  },
 
   {
     path: 'criar-processo',
