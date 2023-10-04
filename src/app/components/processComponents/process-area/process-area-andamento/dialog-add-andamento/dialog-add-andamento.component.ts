@@ -76,8 +76,11 @@ export class DialogAddAndamentoComponent implements OnInit {
           next: () => {
             this.andamentoService.uploadFileProcessoAndamento(this.formData, this.addData.id)
               .subscribe({
+                next: (response) => {
+                  console.log(response)
+                },
                 error: (err: HttpErrorResponse) => console.log(err)
-              })
+              });
             this.dialogRef.close(true);
           },
           error: (err: HttpErrorResponse) => console.log(err)
