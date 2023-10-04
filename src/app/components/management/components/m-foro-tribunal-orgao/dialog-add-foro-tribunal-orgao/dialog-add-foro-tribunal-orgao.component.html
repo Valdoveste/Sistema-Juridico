@@ -3,12 +3,14 @@
     <div mat-dialog-content>
         <mat-form-field>
             <p class="sm-text">Foro/Tribunal/Orgão</p>
-            <input name="FORO_TRIBUNAL_ORGAO" formControlName="FORO_TRIBUNAL_ORGAO" matInput required [(ngModel)]="createForoTribunalOrgaoRequest.FORO_TRIBUNAL_ORGAO">
-        </mat-form-field>   
+            <input name="FORO_TRIBUNAL_ORGAO" formControlName="FORO_TRIBUNAL_ORGAO" matInput required
+                [(ngModel)]="createForoTribunalOrgaoRequest.FORO_TRIBUNAL_ORGAO">
+        </mat-form-field>
 
         <div mat-raised-action class="float-right" style="padding: 0 16px;">
             <button mat-button mat-dialog-close class="mr-2">Fechar</button>
-            <button mat-button type="submit">Adicionar</button>
+            <button mat-button type="submit" class="btn-default" [disabled]="!createForoTribunalOrgaoForm.valid"
+                [ngClass]="{'btn-disabled': !createForoTribunalOrgaoForm.valid}">Adicionar</button>
         </div>
     </div>
 </form>
