@@ -569,6 +569,11 @@ namespace SistemaJuridicoWebAPI.Controllers
 
       await _sistemaJuridicoDbContext.PROCESSO_ANDAMENTO.AddAsync(andamentoRequest);
 
+            var processoResquest = await _sistemaJuridicoDbContext.PROCESSO
+                .FirstOrDefaultAsync(x => (x.ID_PROCESSO.ToString().Equals(andamentoRequest.ID_PROCESSO)));
+
+            processoResquest.DATA_ULTIMO_ANDAMENTO = andamentoRequest.DATA_ANDAMENTO;
+
       await _sistemaJuridicoDbContext.SaveChangesAsync();
 
       return Ok();
