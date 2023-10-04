@@ -1,6 +1,15 @@
 @import '../../../../styles.scss';
 @import '../process-create/process-create.component.scss';
 
+.dropdown {
+  .dropdown-menu {
+    .dropdown-item {
+      padding: 5px 15px;
+
+    }
+  }
+}
+
 #process-area {
   width: 100%;
   padding: 1rem;
@@ -28,7 +37,6 @@
     border: 1px solid rgba(60, 64, 67, 0.170)
   }
 }
-
 
 .edit-process {
   border-radius: 5px;

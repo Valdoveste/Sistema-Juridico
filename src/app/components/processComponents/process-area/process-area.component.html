@@ -13,23 +13,44 @@
           <button class="process-create-header--rbutton" type="button" (click)="swapTabs('previous-patrons')">Patronos
             Anteriores</button>
 
-          <button class="process-create-header--rbutton float-right edit-process" style="min-width: 40px !important" [routerLink]="['/editar-processo', processoDetalhes.ID_PROCESSO]">
-            <svg fill="#000000" version="1.1" width="20px" height="20px" viewBox="0 0 342.382 342.382">
-              <g>
-                <path d="M45.225,125.972C20.284,125.972,0,146.256,0,171.191c0,24.94,20.284,45.219,45.225,45.219
-                    c24.926,0,45.219-20.278,45.219-45.219C90.444,146.256,70.151,125.972,45.225,125.972z" />
-              </g>
-              <g>
-                <path d="M173.409,125.972c-24.938,0-45.225,20.284-45.225,45.219c0,24.94,20.287,45.219,45.225,45.219
-                    c24.936,0,45.226-20.278,45.226-45.219C218.635,146.256,198.345,125.972,173.409,125.972z" />
-              </g>
-              <g>
-                <path d="M297.165,125.972c-24.932,0-45.222,20.284-45.222,45.219c0,24.94,20.29,45.219,45.222,45.219
-                    c24.926,0,45.217-20.278,45.217-45.219C342.382,146.256,322.091,125.972,297.165,125.972z" />
-              </g>
-            </svg>
+          <button class="process-create-header--rbutton float-right dropdown"
+            style="height: 30px; padding: unset !important;" type="button">
+            <button class="process-create-header--rbutton edit-process" style=" border-radius: unset !important;"
+              id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <svg fill="#000000" version="1.1" width="20px" height="20px" viewBox="0 0 342.382 342.382">
+                <g>
+                  <path d="M45.225,125.972C20.284,125.972,0,146.256,0,171.191c0,24.94,20.284,45.219,45.225,45.219
+                      c24.926,0,45.219-20.278,45.219-45.219C90.444,146.256,70.151,125.972,45.225,125.972z" />
+                </g>
+                <g>
+                  <path d="M173.409,125.972c-24.938,0-45.225,20.284-45.225,45.219c0,24.94,20.287,45.219,45.225,45.219
+                      c24.936,0,45.226-20.278,45.226-45.219C218.635,146.256,198.345,125.972,173.409,125.972z" />
+                </g>
+                <g>
+                  <path d="M297.165,125.972c-24.932,0-45.222,20.284-45.222,45.219c0,24.94,20.29,45.219,45.222,45.219
+                      c24.926,0,45.217-20.278,45.217-45.219C342.382,146.256,322.091,125.972,297.165,125.972z" />
+                </g>
+              </svg>
+              <span class="caret"></span>
+              <ul class="dropdown-menu">
+                <li class="dropdown-submenu">
+                  <a class="test dropdown-item" tabindex="-1"
+                    [routerLink]="['/editar-processo', processoDetalhes.ID_PROCESSO]">
+                    Editar Processo
+                    <span class="caret"></span>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="test dropdown-item" tabindex="-1"
+                    [routerLink]="['/editar-processo', processoDetalhes.ID_PROCESSO]">
+                    Encerrar Processo
+                    <span class="caret"></span>
+                  </a>
+                </li>
+              </ul>
+            </button>
           </button>
         </div>
+
         <div class="process-create-body">
           <ng-container [ngSwitch]="componentName">
             <ng-template ngSwitchDefault="'processdetails'">

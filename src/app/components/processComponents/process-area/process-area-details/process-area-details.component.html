@@ -19,8 +19,14 @@
     </li>
 
     <li class="process-create-processdetails__list__item">
-      <p class="sm-text">Empresa</p>
-      <p class="input">{{processoDetalhes.EMPRESA}}</p>
+      <div class="process-create-processdetails__list__item--div">
+        <div class="process-create-processdetails__list__item--row">
+          <span>
+            <p class="sm-text">Empresa</p>
+            <p class="input">{{processoDetalhes.EMPRESA}}</p>
+          </span>
+        </div>
+      </div>
     </li>
 
     <li class="process-create-processdetails__list__item">
@@ -109,21 +115,53 @@
         <div class="process-create-processdetails__list__item--row">
           <span>
             <p class="sm-text">Valor 1ª Instância</p>
-            <p class="input">{{processoDetalhes.VALOR_INSTANCIA1}}</p>
+            <p class="input">
+              {{
+              processoDetalhes.VALOR_INSTANCIA1
+              .toString()
+              .replace('.',',')
+              |
+              mask: 'separator.2': {thousandSeparator: '.',prefix: 'R$ '}
+              }}<span *ngIf="!processoDetalhes.VALOR_INSTANCIA1.toString().includes('.')">,00</span>
+            </p>
           </span>
 
           <span>
             <p class="sm-text">Valor 2ª Instância</p>
-            <p class="input">{{processoDetalhes.VALOR_INSTANCIA2}}</p>
+            <p class="input">
+              {{
+              processoDetalhes.VALOR_INSTANCIA2
+              .toString()
+              .replace('.',',')
+              |
+              mask: 'separator.2': {thousandSeparator: '.',prefix: 'R$ '}
+              }}<span *ngIf="!processoDetalhes.VALOR_INSTANCIA2.toString().includes('.')">,00</span>
+            </p>
           </span>
 
           <span>
             <p class="sm-text">Valor 3ª Instância</p>
-            <p class="input">{{processoDetalhes.VALOR_INSTANCIA3}}</p>
+            <p class="input">
+              {{
+              processoDetalhes.VALOR_INSTANCIA3
+              .toString()
+              .replace('.',',')
+              |
+              mask: 'separator.2': {thousandSeparator: '.',prefix: 'R$ '}
+              }}<span *ngIf="!processoDetalhes.VALOR_INSTANCIA3.toString().includes('.')">,00</span>
+            </p>
           </span>
           <span>
             <p class="sm-text">Valor Instância Extraordinária</p>
-            <p class="input">{{processoDetalhes.VALOR_INSTANCIA_EXTRAORDINARIA}}</p>
+            <p class="input">
+              {{
+              processoDetalhes.VALOR_INSTANCIA_EXTRAORDINARIA
+              .toString()
+              .replace('.',',')
+              |
+              mask: 'separator.2': {thousandSeparator: '.',prefix: 'R$ '}
+              }}<span *ngIf="!processoDetalhes.VALOR_INSTANCIA_EXTRAORDINARIA.toString().includes('.')">,00</span>
+            </p>
           </span>
         </div>
       </div>
@@ -159,16 +197,14 @@
 
           <span>
             <p class="sm-text">Data da Ultimo Andamento</p>
-            <input type="date" disabled name="DATA_CITACAO"
-              value="{{processoDetalhes.DATA_ULTIMO_ANDAMENTO.toString().slice(0,10)}}"
-              class="process-create-processdetails">
+            <input type="datetime" disabled name="DATA_ULTIMO_ANDAMENTO"
+              value={{processoDetalhes.DATA_ULTIMO_ANDAMENTO}} class="process-create-processdetails">
           </span>
 
           <span>
             <p class="sm-text">Data da Cadastro</p>
-            <input type="date" disabled name="DATA_CITACAO"
-              value="{{processoDetalhes.DATA_CADASTRO_PROCESSO.toString().slice(0,10)}}"
-              class="process-create-processdetails">
+            <input type="datetime" disabled name="DATA_CADASTRO_PROCESSO"
+              value={{processoDetalhes.DATA_CADASTRO_PROCESSO}} class="process-create-processdetails">
           </span>
         </div>
       </div>
