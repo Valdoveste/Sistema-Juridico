@@ -7,6 +7,7 @@ import { DialogAddAndamentoComponent } from './dialog-add-andamento/dialog-add-a
 import { ActivatedRoute } from '@angular/router';
 import { AndamentoService } from 'src/app/services/andamento.service';
 import { DialogViewAndamentoComponent } from './dialog-view-andamento/dialog-view-andamento.component';
+import { DialogEditAndamentoComponent } from './dialog-edit-andamento/dialog-edit-andamento.component';
 
 @Component({
   selector: 'app-process-area-andamento',
@@ -67,15 +68,14 @@ export class ProcessAreaAndamentoComponent implements OnInit {
     dialogRefEdit.afterClosed().subscribe(result => { result ? this.loadAndamentos() : null; })
   }
 
-  // openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string, event: Event, id: String | undefined): void {
-  //   const dialogRefEdit = this.dialog.open(DialogEditAndamentoComponent, {
-  //     height: '600px',
-  //     width: '750px',
-  //     data: { value: (event.currentTarget as HTMLElement).previousElementSibling?.innerHTML, id: id },
-  //     enterAnimationDuration,
-  //     exitAnimationDuration,
-  //   });
+  openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string, event: Event, id: String | undefined): void {
+    const dialogRefEdit = this.dialog.open(DialogEditAndamentoComponent, {
+      width: '750px',
+      data: { value: (event.currentTarget as HTMLElement).previousElementSibling?.innerHTML, id: id },
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
 
-  //   dialogRefEdit.afterClosed().subscribe(result => { result ? this.loadAndamentos() : null; })
-  // }
+    dialogRefEdit.afterClosed().subscribe(result => { result ? this.loadAndamentos() : null; })
+  }
 }
