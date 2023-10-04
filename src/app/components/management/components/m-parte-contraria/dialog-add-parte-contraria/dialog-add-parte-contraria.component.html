@@ -107,7 +107,9 @@
 
                         <div mat-raised-action class="float-right" style="padding: 0 16px;">
                             <button mat-button mat-dialog-close class="mr-2">Fechar</button>
-                            <button mat-button type="submit">Adicionar</button>
+                            <button mat-button type="submit" class="btn-default"
+                                [disabled]="!createParteContrariaFisicalForm.valid"
+                                [ngClass]="{'btn-disabled': !createParteContrariaFisicalForm.valid}">Adicionar</button>
                         </div>
                     </div>
                 </form>
@@ -229,8 +231,10 @@
                         </mat-form-field>
 
                         <div mat-raised-action class="float-right" style="padding: 0 16px;">
-                            <button class="btn-default" mat-button mat-dialog-close class="mr-2">Fechar</button>
-                            <button class="btn-default" mat-button type="submit">Adicionar</button>
+                            <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+                            <button mat-button type="submit" class="btn-default"
+                                [disabled]="!createParteContrariaLegalForm.valid"
+                                [ngClass]="{'btn-disabled': !createParteContrariaLegalForm.valid}">Adicionar</button>
                         </div>
                     </div>
                 </form>

@@ -15,7 +15,8 @@
 
         <div mat-raised-action class="float-right" style="padding: 0 16px;">
             <button mat-button mat-dialog-close class="mr-2">Fechar</button>
-            <button mat-button type="submit">Adicionar</button>
+            <button mat-button type="submit" class="btn-default" [disabled]="!createEmpresasForm.valid"
+                [ngClass]="{'btn-disabled': !createEmpresasForm.valid}">Adicionar</button>
         </div>
     </div>
 </form>

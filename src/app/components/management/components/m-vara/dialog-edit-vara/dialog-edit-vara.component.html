@@ -8,7 +8,8 @@
 
         <div mat-raised-action class="float-right" style="padding: 0 16px;">
             <button mat-button mat-dialog-close class="mr-2">Fechar</button>
-            <button mat-button>Salvar</button>
+            <button mat-button class="btn-default" [disabled]="!updateVaraForm.valid"
+                [ngClass]="{'btn-disabled': !updateVaraForm.valid}">Salvar</button>
         </div>
     </div>
 </form>
