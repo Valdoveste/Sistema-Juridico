@@ -20,9 +20,9 @@
           <p class="process-body__company-name">
             {{processo.EMPRESA}}
           </p>
-          <p class="process-body__company-cnpj sm-text">
+          <!-- <p class="process-body__company-cnpj sm-text">
             {{processo.EMPRESA_CNPJ | mask: '000.000.000-00 || 00.000.000/0000-00' }}
-          </p>
+          </p> -->
         </li>
 
         <li class="process-body__list__item">
@@ -57,8 +57,7 @@
           </p>
           <span class="sm-text">Ult. Andamento</span>
           <p class="process-footer__list__item-date-last-moviment">
-            {{processo.DATA_ULTIMO_ANDAMENTO.toString().replaceAll("-", "/").slice(0, 19).replace("T", " ").slice(0,
-            10).replaceAll("-","/").split('/').reverse().join('/')}}
+            {{processo.DATA_ULTIMO_ANDAMENTO}}
           </p>
         </li>
       </ul>
