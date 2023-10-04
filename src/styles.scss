@@ -40,10 +40,6 @@ button {
   border: unset;
   border-radius: unset;
   background-color: unset;
-
-  &:hover {
-    cursor: pointer;
-  }
 }
 
 body {
@@ -113,6 +109,7 @@ div[class*="--div"] {
 .sm-text {
   font-size: 0.80rem !important;
   margin-bottom: 2.5px !important;
+  font-weight: bold;
   color: rgb(101, 109, 118) !important;
 }
 
@@ -126,14 +123,28 @@ div[class*="--div"] {
   border: 1px solid rgba(60, 64, 67, 0.5) !important;
 }
 
+
 .btn-default {
-  padding: 10px;
-  color: black;
-  cursor: pointer;
-  text-align: center;
-  border-radius: 4.5px;
-  background-color: #f6f7fb;
-  border: 1px solid #ededed;
+  padding: 10px !important;
+  color: white !important;
+  text-align: center !important;
+  border-radius: 4.5px !important;
+  background-color: #e7117e !important;
+  border: 1px solid #e7117e !important;
+
+  &:hover {
+    cursor: pointer !important;
+  }
+}
+
+.btn-disabled {
+  color: black !important;
+  background-color: #f6f7fb !important;
+  border: 1px solid #ededed !important;
+
+  &:hover {
+    cursor: default !important;
+  }
 }
 
 .process-searchbar__list__item {
