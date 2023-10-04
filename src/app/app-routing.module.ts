@@ -59,7 +59,7 @@ const routes: Routes = [
     path: 'gestao/patrono-responsavel',
     component: MPatronoResponsavelComponent
   },
-  
+
   {
     path: 'gestao/area-do-direito',
     component: MAreaDoDireitoComponent
