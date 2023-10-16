@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Processo } from 'src/app/models/PROCESSO.model';
 import { ProcessoService } from 'src/app/services/processo.service';
+import { DialogFinishProcessComponent } from './dialog-finish-process/dialog-finish-process.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-process-area',
@@ -12,7 +15,8 @@ export class ProcessAreaComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private processoService: ProcessoService
+    public dialog: MatDialog,
+    private processoService: ProcessoService,
   ) { }
 
   componentName: string = '';
@@ -36,8 +40,8 @@ export class ProcessAreaComponent implements OnInit {
     VARA: '',
     FORO_TRIBUNAL_ORGAO: '',
     FASE: '',
-    DATA_DISTRIBUICAO: new Date,
-    DATA_CITACAO: new Date,
+    DATA_DISTRIBUICAO: '',
+    DATA_CITACAO: '',
     PATRONO_RESPONSAVEL: '',
     PATRONOS_ANTERIORES: '',
     TEXTO_DO_OBJETO: '',
@@ -46,14 +50,18 @@ export class ProcessAreaComponent implements OnInit {
     VALOR_INSTANCIA2: 0,
     VALOR_INSTANCIA3: 0,
     VALOR_INSTANCIA_EXTRAORDINARIA: 0,
-    DATA_CADASTRO_PROCESSO: new Date,
-    DATA_ULTIMO_ANDAMENTO: new Date,
-    DATA_ENCERRAMENTO: new Date,
+    DATA_CADASTRO_PROCESSO: '',
+    DATA_ULTIMO_ANDAMENTO: '',
+    DATA_ENCERRAMENTO: '',
     MOTIVO_ENCERRAMENTO: '',
     MOTIVO_BAIXA_PROVISORIA: ''
   };
 
   ngOnInit(): void {
+    this.loadProcess();
+  }
+
+  loadProcess() {
     this.route.paramMap.subscribe({
       next: (params) => {
         const id = params.get('id');
@@ -63,12 +71,23 @@ export class ProcessAreaComponent implements OnInit {
             .subscribe({
               next: (response) => {
                 this.processoDetalhes = response;
-              }
-            }
-            )
+              },
+              error: (err: HttpErrorResponse) => console.log(err)
+            });
         }
-      }
-    })
+      },
+      error: (err: HttpErrorResponse) => console.log(err)
+    });
+  }
+
+  openDialogCloseProcess(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    const dialogRefAdd = this.dialog.open(DialogFinishProcessComponent, {
+      width: '750px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+
+    dialogRefAdd.afterClosed().subscribe(result => { result ? this.loadProcess() : null; });
   }
 
 }
