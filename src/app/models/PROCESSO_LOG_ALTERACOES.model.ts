@@ -1,9 +1,9 @@
-export interface ProcessoPatronosAnteriors {
+export interface ProcessoLogAlteracoes {
     ID?: string | String;
     ID_PROCESSO: string | String;
     ID_USUARIO: string | String;
     NOME_USUARIO: string | String;
-    PATRONO_RESPONSAVEL_ATUAL: string | String;
-    PATRONO_RESPONSAVEL_CPF_CNPJ_ATUAL: string;
+    VALOR_ORIGINAL: string | String;
+    VALOR_ATUAL: string | String;
     DATA_ALTERACAO: string | String;
 }
