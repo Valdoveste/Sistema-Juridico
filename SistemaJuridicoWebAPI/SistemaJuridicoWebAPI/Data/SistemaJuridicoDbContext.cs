@@ -8,6 +8,7 @@ namespace SistemaJuridicoWebAPI.Data
     public SistemaJuridicoDbContext(DbContextOptions options) : base(options) { }
 
     public DbSet<PROCESSO> PROCESSO { get; set; }
+    public DbSet<PROCESSO_LOG_ALTERACOES> PROCESSO_LOG_ALTERACOES { get; set; }
     public DbSet<USUARIO> USUARIO { get; set; }
     public DbSet<PROCESSO_AMBITO> PROCESSO_AMBITO { get; set; }
     public DbSet<PROCESSO_AREA_DO_DIREITO> PROCESSO_AREA_DO_DIREITO { get; set; }
