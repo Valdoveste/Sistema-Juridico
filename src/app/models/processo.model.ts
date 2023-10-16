@@ -1,5 +1,5 @@
 export interface Processo {
-  ID_PROCESSO: string | String;
+  ID_PROCESSO?: string | String;
   NUMERO_PROCESSO: string | String;
   STATUS: string | String;
   TIPO_DE_ACAO: string | String;
@@ -13,8 +13,8 @@ export interface Processo {
   VARA: string | String;
   FORO_TRIBUNAL_ORGAO: string | String;
   FASE: string | String;
-  DATA_DISTRIBUICAO: Date;
-  DATA_CITACAO: Date;
+  DATA_DISTRIBUICAO: string;
+  DATA_CITACAO: string;
   PATRONO_RESPONSAVEL: string | String;
   PATRONOS_ANTERIORES: string | String;
   TEXTO_DO_OBJETO: string | String;
@@ -23,9 +23,9 @@ export interface Processo {
   VALOR_INSTANCIA2: string | number;
   VALOR_INSTANCIA3: string | number;
   VALOR_INSTANCIA_EXTRAORDINARIA: string | number;
-  DATA_CADASTRO_PROCESSO: Date;
-  DATA_ULTIMO_ANDAMENTO: Date;
-  DATA_ENCERRAMENTO: Date;
+  DATA_CADASTRO_PROCESSO: string;
+  DATA_ULTIMO_ANDAMENTO: string;
+  DATA_ENCERRAMENTO: string;
   MOTIVO_ENCERRAMENTO: string | String;
   MOTIVO_BAIXA_PROVISORIA: string | String;
 }
