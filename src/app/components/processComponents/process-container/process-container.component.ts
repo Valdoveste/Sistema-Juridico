@@ -23,11 +23,13 @@ export class ProcessContainerComponent implements OnInit {
         response => {
           this.processos = [];
 
+          // this.andamentos = response.sort((a, b) => b.DATA_CADASTRO.localeCompare(a.DATA_CADASTRO));
+
           this.processos = response.sort((a, b) => {
             const dateA = new Date(a.DATA_CADASTRO_PROCESSO);
             const dateB = new Date(b.DATA_CADASTRO_PROCESSO);
 
-            return dateB.getTime() - dateA.getTime();
+            return dateB.getDate() - dateA.getDate();
           });
         }
       )
@@ -41,7 +43,7 @@ export class ProcessContainerComponent implements OnInit {
             const dateA = new Date(a.DATA_CADASTRO_PROCESSO);
             const dateB = new Date(b.DATA_CADASTRO_PROCESSO);
 
-            return dateB.getTime() - dateA.getTime();
+            return dateB.getDate() - dateA.getDate();
           });
         }
       )
