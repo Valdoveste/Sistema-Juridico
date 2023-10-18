@@ -92,6 +92,7 @@ import { DialogViewParteContrariaComponent } from './components/management/compo
 
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { ProcessEditComponent } from './components/processComponents/process-edit/process-edit.component';
+import { DialogFinishProcessComponent } from './components/processComponents/process-area/dialog-finish-process/dialog-finish-process.component';
 
 @NgModule({
   declarations: [
@@ -170,7 +171,8 @@ import { ProcessEditComponent } from './components/processComponents/process-edi
     DialogDeleteEmpresasComponent,
     DialogEditEmpresasComponent,
     DialogViewParteContrariaComponent,
-    ProcessEditComponent
+    ProcessEditComponent,
+    DialogFinishProcessComponent
   ],
 
   imports: [
