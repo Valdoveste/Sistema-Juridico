@@ -25,6 +25,9 @@ import { PatronoResponsavelService } from 'src/app/services/patrono-responsavel.
 import { Processo } from 'src/app/models/PROCESSO.model';
 import { ProcessoEmpresas } from 'src/app/models/PROCESSO_EMPRESAS.model';
 import { EmpresasService } from 'src/app/services/empresas.service';
+import { ProcessoParteContraria } from 'src/app/models/PROCESSO_PARTE_CONTRARIA.model';
+import { ParteContrariaService } from 'src/app/services/parte-contraria.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-process-create',
@@ -46,10 +49,13 @@ export class ProcessCreateComponent implements OnInit {
     private TipoDeAcao: TipoDeAcaoService,
     private Vara: VaraService,
     private PatronoResponsavel: PatronoResponsavelService,
-    private EmpresasService: EmpresasService
+    private EmpresasService: EmpresasService,
+    private ParteContrariaService: ParteContrariaService
   ) { }
 
   createProcessForm!: FormGroup;
+  createParteContrariaFisicalForm!: FormGroup;
+  createParteContrariaLegalForm!: FormGroup;
 
   ambitos: ProcessoAmbito[] = [];
   areasDoDireito: ProcessoAreaDoDireito[] = [];
@@ -70,7 +76,7 @@ export class ProcessCreateComponent implements OnInit {
   }
 
   createProcessRequest: Processo = {
-    ID_PROCESSO: '',
+    // ID_PROCESSO: '',
     NUMERO_PROCESSO: '',
     STATUS: '',
     TIPO_DE_ACAO: '',
@@ -84,8 +90,8 @@ export class ProcessCreateComponent implements OnInit {
     VARA: '',
     FORO_TRIBUNAL_ORGAO: '',
     FASE: '',
-    DATA_DISTRIBUICAO: new Date,
-    DATA_CITACAO: new Date,
+    DATA_DISTRIBUICAO: '',
+    DATA_CITACAO: '',
     PATRONO_RESPONSAVEL: '',
     PATRONOS_ANTERIORES: '',
     TEXTO_DO_OBJETO: '',
@@ -94,11 +100,53 @@ export class ProcessCreateComponent implements OnInit {
     VALOR_INSTANCIA2: 0,
     VALOR_INSTANCIA3: 0,
     VALOR_INSTANCIA_EXTRAORDINARIA: 0,
-    DATA_CADASTRO_PROCESSO: new Date,
-    DATA_ULTIMO_ANDAMENTO: new Date,
-    DATA_ENCERRAMENTO: new Date,
+    DATA_CADASTRO_PROCESSO: '',
+    DATA_ULTIMO_ANDAMENTO: '',
+    DATA_ENCERRAMENTO: '',
     MOTIVO_ENCERRAMENTO: '',
     MOTIVO_BAIXA_PROVISORIA: ''
+  }
+
+  createParteContrariaRequest: ProcessoParteContraria = {
+    ID: '',
+    ID_PROCESSO: '',
+    PF_PJ: 0,
+    NOME: '',
+    NOME_FANTASIA: '',
+    CPF: '',
+    CNPJ: '',
+    RG: '',
+    ENDERECO: '',
+    CEP: '',
+    NUMERO: 0,
+    COMPLEMENTO: '',
+    ESTADO: '',
+    PAIS: '',
+    CIDADE: '',
+    OBSERVACAO: '',
+    CARGO: '',
+    DATA_ADMISSAO: '',
+    DATA_DEMISSAO: '',
+    ULTIMO_SALARIO: 0,
+  }
+
+  createProcess() {
+    if (this.createProcessForm.valid
+      && (this.createParteContrariaFisicalForm.valid || this.createParteContrariaLegalForm.valid)) {
+      this.ProcessoService.createProcess(this.createProcessRequest)
+        .subscribe({
+          next: (response) => {
+            this.createParteContrariaRequest.ID_PROCESSO = response.ID_PROCESSO!;
+            this.ParteContrariaService.createParteContraria(this.createParteContrariaRequest).subscribe({
+              next: (response) => {
+                this.router.navigate(['/painel-processos', 'processo-detalhes', response.ID_PROCESSO])
+              },
+              error: (err: HttpErrorResponse) => console.log("An error occurred when trying to create an oposing party. Error: " + err)
+            })
+          },
+          error: (err: HttpErrorResponse) => console.log("An error occurred when trying to create an process. Error: " + err)
+        });
+    }
   }
 
   ngOnInit(): void {
@@ -213,52 +261,64 @@ export class ProcessCreateComponent implements OnInit {
         }
       })
 
-    this.createProcessForm = new FormGroup({
-      // ID_PROCESSO: new FormControl(''),
-      NUMERO_PROCESSO: new FormControl('', [Validators.required]),
-      EMPRESA: new FormControl('', [Validators.required]),
-      // EMPRESA_CNPJ: new FormControl('', [Validators.required]),
-      STATUS: new FormControl('', [Validators.required]),
-      TIPO_DE_ACAO: new FormControl('', [Validators.required]),
-      AREA_DO_DIREITO: new FormControl('', [Validators.required]),
-      AMBITO: new FormControl('', [Validators.required]),
+    this.createParteContrariaFisicalForm = new FormGroup({
+      NOME: new FormControl('', [Validators.required]),
+      CPF: new FormControl('', [Validators.required]),
+      RG: new FormControl('', [Validators.required]),
+      ENDERECO: new FormControl('', [Validators.required]),
+      CEP: new FormControl('', [Validators.required]),
+      NUMERO: new FormControl('', [Validators.required]),
+      COMPLEMENTO: new FormControl('', [Validators.required]),
+      CARGO: new FormControl('', [Validators.required]),
+      ULTIMO_SALARIO: new FormControl('', [Validators.required]),
+      DATA_ADMISSAO: new FormControl(Date, [Validators.required]),
+      DATA_DEMISSAO: new FormControl(Date, [Validators.required]),
+    });
+
+    this.createParteContrariaLegalForm = new FormGroup({
+      NOME: new FormControl('', [Validators.required]),
+      NOME_FANTASIA: new FormControl('', [Validators.required]),
+      CNPJ: new FormControl('', [Validators.required]),
+      ENDERECO: new FormControl('', [Validators.required]),
+      CEP: new FormControl('', [Validators.required]),
+      NUMERO: new FormControl(0, [Validators.required]),
+      COMPLEMENTO: new FormControl('', [Validators.required]),
       ESTADO: new FormControl('', [Validators.required]),
       CIDADE: new FormControl('', [Validators.required]),
       PAIS: new FormControl('', [Validators.required]),
+      OBSERVACAO: new FormControl('', [Validators.required]),
+    });
+
+    this.createProcessForm = new FormGroup({
+      // ID_PROCESSO: new FormControl(''),
+      // EMPRESA_CNPJ: new FormControl('', [Validators.required]),
+      // PATRONOS_ANTERIORES: new FormControl(''),
+      NUMERO_PROCESSO: new FormControl('', [Validators.required]),
+      STATUS: new FormControl('', [Validators.required]),
+      EMPRESA: new FormControl('', [Validators.required]),
+      PATRONO_RESPONSAVEL: new FormControl('', [Validators.required]),
+      TIPO_DE_ACAO: new FormControl('', [Validators.required]),
+      AREA_DO_DIREITO: new FormControl('', [Validators.required]),
+      AMBITO: new FormControl('', [Validators.required]),
       VARA: new FormControl('', [Validators.required]),
       FORO_TRIBUNAL_ORGAO: new FormControl('', [Validators.required]),
       FASE: new FormControl('', [Validators.required]),
-      DATA_DISTRIBUICAO: new FormControl('', [Validators.required]),
-      DATA_CITACAO: new FormControl('', [Validators.required]),
-      PATRONO_RESPONSAVEL: new FormControl('', [Validators.required]),
-      PATRONOS_ANTERIORES: new FormControl('', [Validators.required]),
+      ESTADO: new FormControl('', [Validators.required]),
+      CIDADE: new FormControl('', [Validators.required]),
+      PAIS: new FormControl('', [Validators.required]),
+      DATA_DISTRIBUICAO: new FormControl(Date, [Validators.required]),
+      DATA_CITACAO: new FormControl(Date, [Validators.required]),
       TEXTO_DO_OBJETO: new FormControl('', [Validators.required]),
-      VALOR_DO_PEDIDO: new FormControl('', [Validators.required]),
-      VALOR_INSTANCIA1: new FormControl('', [Validators.required]),
-      VALOR_INSTANCIA2: new FormControl('', [Validators.required]),
-      VALOR_INSTANCIA3: new FormControl('', [Validators.required]),
-      VALOR_INSTANCIA_EXTRAORDINARIA: new FormControl('', [Validators.required]),
+      VALOR_DO_PEDIDO: new FormControl(0, [Validators.required]),
+      VALOR_INSTANCIA1: new FormControl(0, [Validators.required]),
+      VALOR_INSTANCIA2: new FormControl(0, [Validators.required]),
+      VALOR_INSTANCIA3: new FormControl(0, [Validators.required]),
+      VALOR_INSTANCIA_EXTRAORDINARIA: new FormControl(0, [Validators.required]),
       DATA_CADASTRO_PROCESSO: new FormControl(''),
       DATA_ULTIMO_ANDAMENTO: new FormControl(''),
       DATA_ENCERRAMENTO: new FormControl(''),
       MOTIVO_ENCERRAMENTO: new FormControl(''),
       MOTIVO_BAIXA_PROVISORIA: new FormControl('')
     });
-  }
-
-  createProcess() {
-    console.log(this.createProcessForm.errors)
-    if (this.createProcessForm.valid) {
-      this.ProcessoService.createProcess(this.createProcessRequest)
-        .subscribe({
-          next: (response) => {
-            this.router.navigate(['painel-processos'])
-          },
-          error: (response) => {
-            console.log(response)
-          }
-        });
-    }
-    return;
   }
 }
