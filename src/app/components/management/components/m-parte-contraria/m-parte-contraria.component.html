@@ -24,11 +24,12 @@
 
                             <td> {{parteContria.NOME_FANTASIA}} </td>
 
-                            <td *ngIf="parteContria.PF_PJ == 0; else testeTD">
+                            <td *ngIf="parteContria.PF_PJ == 0; else PJ">
                                 {{parteContria.CPF | mask: '000.000.000-00'}} </td>
 
-                            <ng-template #testeTD>
-                                <td> {{parteContria.CNPJ | mask: '00.000.000/0000-00'}}
+                            <ng-template #PJ>
+                                <td>
+                                    {{parteContria.CNPJ | mask: '00.000.000/0000-00'}}
                                 </td>
                             </ng-template>
 
