@@ -11,6 +11,7 @@ namespace SistemaJuridicoWebAPI.Models
     public string NOME_USUARIO { get; set; }
     public string VALOR_ORIGINAL { get; set; }
     public string VALOR_ATUAL { get; set; }
+    public string INPUT_ALTERADO { get; set; }
     public string DATA_ALTERACAO { get; set; }
   }
 }
