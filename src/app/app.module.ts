@@ -1,3 +1,4 @@
+import { ProcessSearchbarComponent } from './components/processComponents/process-searchbar/process-searchbar.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,10 +12,7 @@ import { MainComponent } from './components/main/main.component';
 import { ProcessContainerComponent } from './components/processComponents/process-container/process-container.component';
 import { ProcessAreaComponent } from './components/processComponents/process-area/process-area.component';
 import { ProcessPanelComponent } from './components/processComponents/process-panel/process-panel.component';
-import { ProcessSearchbarComponent } from './components/processComponents/process-searchbar/process-searchbar.component';
 import { ProcessCreateComponent } from './components/processComponents/process-create/process-create.component';
-import { ProcessCreateProgressComponent } from './components/processComponents/process-create/process-create-progress/process-create-progress.component';
-import { ProcessCreateAgreementComponent } from './components/processComponents/process-create/process-create-agreement/process-create-agreement.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProcessAreaDetailsComponent } from './components/processComponents/process-area/process-area-details/process-area-details.component';
@@ -71,11 +69,15 @@ import { DialogAddAndamentoComponent } from './components/processComponents/proc
 import { DialogAddAcordoComponent } from './components/processComponents/process-area/process-area-acordo/dialog-add-acordo/dialog-add-acordo.component';
 import { DialogEditAcordoComponent } from './components/processComponents/process-area/process-area-acordo/dialog-edit-acordo/dialog-edit-acordo.component';
 import { DialogViewAcordoComponent } from './components/processComponents/process-area/process-area-acordo/dialog-view-acordo/dialog-view-acordo.component';
+
 import { MTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/m-tipo-de-andamento.component';
+
 import { DialogDeleteTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/dialog-delete-tipo-de-andamento/dialog-delete-tipo-de-andamento.component';
 import { DialogEditTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/dialog-edit-tipo-de-andamento/dialog-edit-tipo-de-andamento.component';
 import { DialogAddTipoDeAndamentoComponent } from './components/management/components/m-tipo-de-andamento/dialog-add-tipo-de-andamento/dialog-add-tipo-de-andamento.component';
+
 import { DialogViewAndamentoComponent } from './components/processComponents/process-area/process-area-andamento/dialog-view-andamento/dialog-view-andamento.component';
+import { DialogEditAndamentoComponent } from './components/processComponents/process-area/process-area-andamento/dialog-edit-andamento/dialog-edit-andamento.component';
 
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MParteContrariaComponent } from './components/management/components/m-parte-contraria/m-parte-contraria.component';
@@ -90,10 +92,13 @@ import { DialogViewParteContrariaComponent } from './components/management/compo
 
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { ProcessEditComponent } from './components/processComponents/process-edit/process-edit.component';
+import { DialogFinishProcessComponent } from './components/processComponents/process-area/dialog-finish-process/dialog-finish-process.component';
+import { ProcessAlterationsLogComponent } from './components/processComponents/process-alterations-log/process-alterations-log.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ProcessSearchbarComponent,
     FooterComponent,
     HeaderComponent,
     MainComponent,
@@ -103,10 +108,9 @@ import { ProcessEditComponent } from './components/processComponents/process-edi
     ProcessContainerComponent,
     ProcessAreaComponent,
     ProcessPanelComponent,
-    ProcessSearchbarComponent,
     ProcessCreateComponent,
-    ProcessCreateProgressComponent,
-    ProcessCreateAgreementComponent,
+    // ProcessCreateProgressComponent,
+    // ProcessCreateAgreementComponent,
     ProcessAreaDetailsComponent,
     ProcessAreaOpposingpartyComponent,
     ProcessAreaAcordoComponent,
@@ -156,7 +160,9 @@ import { ProcessEditComponent } from './components/processComponents/process-edi
     DialogDeleteTipoDeAndamentoComponent,
     DialogEditTipoDeAndamentoComponent,
     DialogAddTipoDeAndamentoComponent,
+
     DialogViewAndamentoComponent,
+    DialogEditAndamentoComponent,
 
     DialogAddParteContrariaComponent,
     DialogDeleteParteContrariaComponent,
@@ -166,14 +172,16 @@ import { ProcessEditComponent } from './components/processComponents/process-edi
     DialogDeleteEmpresasComponent,
     DialogEditEmpresasComponent,
     DialogViewParteContrariaComponent,
-    ProcessEditComponent
+    ProcessEditComponent,
+    DialogFinishProcessComponent,
+    ProcessAlterationsLogComponent
   ],
 
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
     BrowserAnimationsModule,

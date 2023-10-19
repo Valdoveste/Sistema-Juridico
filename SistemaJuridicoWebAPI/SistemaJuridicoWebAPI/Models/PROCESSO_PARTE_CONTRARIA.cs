@@ -1,4 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SistemaJuridicoWebAPI.Models
 {
@@ -24,6 +26,8 @@ namespace SistemaJuridicoWebAPI.Models
     public string CARGO { get; set; }
     public string DATA_ADMISSAO { get; set; }
     public string DATA_DEMISSAO { get; set; }
-    public int ULTIMO_SALARIO { get; set; }
+    [Column(TypeName = "numeric")]
+    [Precision(18,2)]
+    public decimal ULTIMO_SALARIO { get; set; }
   }
 }

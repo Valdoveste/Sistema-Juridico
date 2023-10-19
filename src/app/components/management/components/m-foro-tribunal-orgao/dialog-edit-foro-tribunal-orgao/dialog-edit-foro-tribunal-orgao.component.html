@@ -3,12 +3,14 @@
     <div mat-dialog-content>
         <mat-form-field>
             <p class="sm-text">Foro/Tribunal/Orgão</p>
-            <input name="ForoTribunalOrgao" formControlName="ForoTribunalOrgao" matInput required [(ngModel)]="updateData.value">
+            <input name="ForoTribunalOrgao" formControlName="ForoTribunalOrgao" matInput required
+                [(ngModel)]="updateData.value">
         </mat-form-field>
 
         <div mat-raised-action class="float-right" style="padding: 0 16px;">
             <button mat-button mat-dialog-close class="mr-2">Fechar</button>
-            <button mat-button>Salvar</button>
+            <button mat-button type="submit" class="btn-default" [disabled]="!updateForoTribunalOrgaoForm.valid"
+                [ngClass]="{'btn-disabled': !updateForoTribunalOrgaoForm.valid}">Salvar</button>
         </div>
     </div>
 </form>

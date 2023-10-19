@@ -10,8 +10,22 @@
         <textarea style="height: 400px;" class="w-100" rows="10" name="DESC_ANDAMENTO" disabled matInput
             [(ngModel)]="andamentoDetalhes.DESC_ANDAMENTO"></textarea>
 
-        <div mat-raised-action class="float-right" style="padding: 0 16px;">
-            <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+        <div mat-raised-action class="w-100 d-flex justify-content-end justify-content-between align-items-start">
+            <div class="w-50 overflow-hidden d-flex align-items-center" style="margin-top: 12px;"
+                *ngIf="fileNames.length > 0">
+                <div
+                    class="w-100 overflow-hidden border rounded h-100 d-flex justify-content-center flex-column px-2 pb-2">
+                    <div class="d-flex mt-2" *ngFor="let fileName of fileNames">
+                        <p>
+                            {{fileName}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center align-items-center float-right">
+                <button mat-button mat-dialog-close>Fechar</button>
+            </div>
         </div>
     </div>
 </form>

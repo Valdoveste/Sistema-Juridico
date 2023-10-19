@@ -96,15 +96,16 @@
         width: 100%;
         height: 100%;
         font-size: 1rem;
+        cursor: pointer;
         color: #5e636a;
         background-color: #f6f7fb;
+        transition: background-color ease-in 250ms;
         border-top: 1px solid rgba(60, 64, 67, 0.163);
 
-        // transition: background-color ease-in 250ms;
 
-        // &:hover {
-        //   background-color: rgba(60, 64, 67, 0.090);
-        // }
+        &:hover {
+          background-color: #ecedf2;
+        }
       }
     }
 

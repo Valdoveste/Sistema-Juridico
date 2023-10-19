@@ -1,13 +1,14 @@
 <form class="process-searchbar">
   <h1>Painel de Processos</h1>
-
   <ul class="process-searchbar__list">
     <li class="process-searchbar__list__item">
-      <input type="text" placeholder="Número do Processo" class="process-searchbar__list__item--input-text">
+      <input type="text" name="NUMERO_PROCESSO" placeholder="Número do Processo"
+        [(ngModel)]="this.searchQueryParameters.numero_processo" class="process-searchbar__list__item--input-text">
     </li>
 
     <li class="process-searchbar__list__item">
-      <select name="" class="process-searchbar__list__item--input-select">
+      <select name="FASE" class="process-searchbar__list__item--input-select"
+        [(ngModel)]="this.searchQueryParameters.fase">
         <option value="">Selecionar Fase</option>
         <option *ngFor="let fase of fases" value="{{fase.FASE}}">{{fase.FASE}}</option>
         <!-- 
@@ -19,8 +20,9 @@
         -->
       </select>
 
-      <select name="" class="process-searchbar__list__item--input-select">
-        <option value="" selected>Selecionar Status</option>
+      <select name="STATUS" class="process-searchbar__list__item--input-select"
+        [(ngModel)]="this.searchQueryParameters.status">
+        <option value="">Selecionar Status</option>
         <option *ngFor="let status of status" value="{{status.STATUS}}">{{status.STATUS}}</option>
         <!-- 
           Ativo
@@ -31,7 +33,8 @@
     </li>
 
     <li class="process-searchbar__list__item">
-      <select name="" class="process-searchbar__list__item--input-select">
+      <select name="AREA_DO_DIREITO" class="process-searchbar__list__item--input-select"
+        [(ngModel)]="this.searchQueryParameters.area_do_direito">
         <option value="" selected>Selecionar Aréa do direito</option>
         <option *ngFor="let areaDoDireito of areasDoDireito" value="{{areaDoDireito.AREA_DO_DIREITO}}">
           {{areaDoDireito.AREA_DO_DIREITO}}</option>
@@ -44,7 +47,8 @@
          -->
       </select>
 
-      <select name="" class="process-searchbar__list__item--input-select">
+      <select name="TIPO_DE_ACAO" class="process-searchbar__list__item--input-select"
+        [(ngModel)]="this.searchQueryParameters.tipo_de_acao">
         <option value="" selected>Selecionar Tipo de ação</option>
         <option *ngFor="let tipoDeAcao of tiposDeAcoes" value="{{tipoDeAcao.TIPO_DE_ACAO}}">{{tipoDeAcao.TIPO_DE_ACAO}}
         </option>
@@ -75,7 +79,8 @@
     </li>
 
     <li class="process-searchbar__list__item">
-      <select name="" id="" class="process-searchbar__list__item--input-select">
+      <select name="PATRONO_RESPONSAVEL" class="process-searchbar__list__item--input-select"
+        [(ngModel)]="this.searchQueryParameters.tipo_de_acao">
         <option value="" selected>Selecionar Patrono responsavel</option>
         <option *ngFor="let patronoResponsavel of patronoResponsavel"
           value="{{patronoResponsavel.PATRONO_RESPONSAVEL}}">{{patronoResponsavel.PATRONO_RESPONSAVEL}}</option>
@@ -96,7 +101,7 @@
     </li>
 
     <li class="process-searchbar__list__item">
-      <button type="submit" class="process-searchbar__list__item--search-button btn-default">
+      <button (click)="search()" class="process-searchbar__list__item--search-button btn-default">
         Buscar
       </button>
     </li>

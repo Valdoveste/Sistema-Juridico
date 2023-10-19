@@ -1,0 +1,69 @@
+<div id="process-area">
+    <div class="process-area__body">
+        <div id="process-create">
+            <div class="management" style="width: 950px !important;">
+                <div class="mb-3">
+                    <h3>Log de Alerações</h3>
+                </div>
+                <table class="table table-borderless">
+                    <thead>
+                        <tr style="border-top: none;">
+                            <th scope="col">
+                                Número Processo: {{processo.NUMERO_PROCESSO}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <div *ngFor="let logProcesso of logProcessos">
+                            <p class="p-1 pt-4">
+                                {{logProcesso.INPUT_ALTERADO.replaceAll("_", " ")}}
+                                - Alterado por: {{logProcesso.NOME_USUARIO}} -
+                                {{logProcesso.DATA_ALTERACAO.replaceAll("T"," ás ")}}
+                            </p>
+                            <tr *ngIf="logProcesso.INPUT_ALTERADO !== 
+                            ('VALOR_DO_PEDIDO'  
+                            || 'VALOR_INSTANCIA1' 
+                            || 'VALOR_INSTANCIA2' 
+                            || 'VALOR_INSTANCIA3' 
+                            || 'VALOR_INSTANCIA_EXTRAORDINARIA'); 
+                            else STR" class="d-flex w-100">
+                                <td class="w-50">
+                                    <p>De: </p>
+                                    <p class="pl-2">{{ logProcesso.VALOR_ORIGINAL }}</p>
+                                </td>
+                                <td class="w-50">
+                                    <p>Para: </p>
+                                    <p class="pl-2">{{ logProcesso.VALOR_ATUAL }}</p>
+                                </td>
+                            </tr>
+
+                            <ng-template #STR>
+                                <tr class="d-flex w-100">
+                                    <td class="w-50">
+                                        <p>De: </p>
+                                        <p class="pl-2">
+                                            {{
+                                            logProcesso.VALOR_ORIGINAL.toString().replace('.', ',') |
+                                            mask: 'separator.2': {thousandSeparator: '.',prefix: 'R$ '}
+                                            }}<span
+                                                *ngIf="!logProcesso.VALOR_ORIGINAL.toString().includes('.')">,00</span>
+                                        </p>
+                                    </td>
+                                    <td class="w-50">
+                                        <p>Para: </p>
+                                        <p class="pl-2">
+                                            {{
+                                            logProcesso.VALOR_ATUAL.toString().replace('.', ',') |
+                                            mask: 'separator.2': {thousandSeparator: '.',prefix: 'R$ '}
+                                            }}<span *ngIf="!logProcesso.VALOR_ATUAL.toString().includes('.')">,00</span>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </div>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
