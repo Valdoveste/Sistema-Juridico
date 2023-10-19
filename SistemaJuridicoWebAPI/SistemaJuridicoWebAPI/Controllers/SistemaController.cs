@@ -163,6 +163,15 @@ namespace SistemaJuridicoWebAPI.Controllers
       return Ok(logProcesso);
     }
 
+    [HttpGet("get-log-processo/{id}")]
+    public async Task<IActionResult> GetProcessoLog([FromRoute] string id)
+    {
+      var logProcesso = await _sistemaJuridicoDbContext.PROCESSO_LOG_ALTERACOES
+     .Where(x => x.ID_PROCESSO.Equals(id))
+     .ToListAsync();
+
+      return Ok(logProcesso); 
+    }
 
     [HttpGet("ambito")]
     public async Task<IActionResult> GetAllAmbito()

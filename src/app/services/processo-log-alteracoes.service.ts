@@ -17,4 +17,8 @@ export class ProcessoLogAlteracoesService {
     logProcessoRequest.ID_PROCESSO = idProcesso;
     return this.http.post<ProcessoLogAlteracoes>(this.baseApiUrl + '/api/Sistema/add-log-processo/' + idProcesso, logProcessoRequest);
   }
+
+  getLogProcesso(idProcesso: string): Observable<ProcessoLogAlteracoes[]> {
+    return this.http.get<ProcessoLogAlteracoes[]>(this.baseApiUrl + '/api/Sistema/get-log-processo/' + idProcesso);
+  }
 }
