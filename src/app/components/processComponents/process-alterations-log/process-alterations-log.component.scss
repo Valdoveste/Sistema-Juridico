@@ -1,0 +1,12 @@
+@import '../../management/management.componnent.scss';
+@import '../../processComponents/process-area/process-area.component.scss';
+
+td {
+    &:nth-child(odd) {
+        background-color: #ffebe9;
+    }
+
+    &:nth-child(even) {
+        background-color: #e6ffec;
+    }
+}

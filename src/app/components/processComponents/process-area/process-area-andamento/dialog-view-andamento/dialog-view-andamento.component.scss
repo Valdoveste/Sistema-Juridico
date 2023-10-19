@@ -8,3 +8,17 @@ select {
 textarea {
     resize: none;
 }
+
+div {
+    p {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: block ruby;
+    }
+}
+
+svg {
+    &:hover>path {
+        fill: red;
+    }
+}

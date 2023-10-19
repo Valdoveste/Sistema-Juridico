@@ -1,4 +1,8 @@
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SistemaJuridicoWebAPI.Models
 {
@@ -25,11 +29,27 @@ namespace SistemaJuridicoWebAPI.Models
     public string PATRONO_RESPONSAVEL { get; set; }
     public string PATRONOS_ANTERIORES { get; set; }
     public string TEXTO_DO_OBJETO { get; set; }
-    public int VALOR_DO_PEDIDO { get; set; }
-    public int VALOR_INSTANCIA1 { get; set; }
-    public int VALOR_INSTANCIA2 { get; set; }
-    public int VALOR_INSTANCIA3 { get; set; }
-    public int VALOR_INSTANCIA_EXTRAORDINARIA { get; set; }
+
+    [Column(TypeName = "numeric")]
+    [Precision(18, 2)]
+    public decimal VALOR_DO_PEDIDO { get; set; }
+
+    [Column(TypeName = "numeric")]
+    [Precision(18, 2)]
+    public decimal VALOR_INSTANCIA1 { get; set; }
+
+    [Column(TypeName = "numeric")]
+    [Precision(18, 2)]
+    public decimal VALOR_INSTANCIA2 { get; set; }
+
+    [Column(TypeName = "numeric")]
+    [Precision(18, 2)]
+    public decimal VALOR_INSTANCIA3 { get; set; }
+
+    [Column(TypeName = "numeric")]
+    [Precision(18, 2)]
+    public decimal VALOR_INSTANCIA_EXTRAORDINARIA { get; set; }
+
     public string DATA_CADASTRO_PROCESSO { get; set; }
     public string DATA_ULTIMO_ANDAMENTO { get; set; }
     public string MOTIVO_ENCERRAMENTO { get; set; }

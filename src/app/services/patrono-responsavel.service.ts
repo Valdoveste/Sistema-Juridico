@@ -19,8 +19,6 @@ export class PatronoResponsavelService {
 
   createPatronoResponsavel(createPatronoResponsavelRequest: ProcessoPatronoResponsavel): Observable<ProcessoPatronoResponsavel> {
     delete createPatronoResponsavelRequest.ID;
-    // console.log(createPatronoResponsavelRequest.PATRONO_RESPONSAVEL_CPF_CNPJ.replaceAll("-",""))
-    // createPatronoResponsavelRequest.PATRONO_RESPONSAVEL_CPF_CNPJ = createPatronoResponsavelRequest.PATRONO_RESPONSAVEL_CPF_CNPJ.replaceAll("","");
     return this.http.post<ProcessoPatronoResponsavel>(this.baseApiUrl + '/api/Sistema/add-patrono-responsavel', createPatronoResponsavelRequest);
   }
 

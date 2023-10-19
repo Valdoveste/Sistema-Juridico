@@ -13,7 +13,7 @@
 
                 <span class="w-50">
                   <p class="sm-text">Número Processo</p>
-                  <input type="text" name="NUMERO_PROCESSO" formControlName="NUMERO_PROCESSO"
+                  <input required type="text" name="NUMERO_PROCESSO" formControlName="NUMERO_PROCESSO"
                     [(ngModel)]="createProcessRequest.NUMERO_PROCESSO" class="process-create-processdetails">
                 </span>
 
@@ -23,10 +23,6 @@
                     [(ngModel)]="createProcessRequest.STATUS" class="process-searchbar__list__item--input-select">
                     <option value="" selected></option>
                     <option *ngFor="let status of status" value="{{status.STATUS}}" selected>{{status.STATUS}}</option>
-                    <!-- <option value="ProcessStatus" selected></option>
-                    <option value="Ativo">Ativo</option>
-                    <option value="Baixa Provisória">Baixa Provisória</option>
-                    <option value="Encerrado">Encerrado</option> -->
                   </select>
                 </span>
 
@@ -34,9 +30,8 @@
             </div>
           </li>
 
-          <li class="process-create-processdetails__list__item">
+          <li class="process-create-processdetails__list__item mb-2">
             <div class="process-create-processdetails__list__item--div">
-
               <p class="sm-text">Empresa</p>
               <select name="EMPRESA" formControlName="EMPRESA" [(ngModel)]="createProcessRequest.EMPRESA"
                 class="process-searchbar__list__item--input-select">
@@ -45,7 +40,6 @@
                   {{empresa.EMPRESA}}
                 </option>
               </select>
-
             </div>
           </li>
 
@@ -61,15 +55,6 @@
                 <option *ngFor="let patronoResponsavel of patronoResponsavel"
                   value="{{patronoResponsavel.PATRONO_RESPONSAVEL}}" selected>{{patronoResponsavel.PATRONO_RESPONSAVEL}}
                 </option>
-                <!-- <option value="PatroResp" selected></option>
-                <option value="USE29.65">Use Comunicações e Telecomunicações LTDA. (29.568.281/0001-65)</option>
-                <option value="USE09.00">Use Telecomunicações LTDA. (09.540.627/0001-00)</option>
-                <option value="USE39.05">Use Service LTDA. (39.512.524/0001-05)</option>
-                <option value="TASCOM14.98">Tascom Telecomunicações LTDA. (14.691.508/0001-98)</option>
-                <option value="TNG29.51">TGN - BR Internet LTDA. (29.339.296/0001-51)</option>
-                <option value="L&A8.08">L & A Patrimonial LTDA. (28.122.328/0001-08)</option>
-                <option value="André Jorge">André Jorge Lima Dantas Costa</option>
-                <option value="Leila Cláudia">Leila Cláudia Farias de Jesus Costa</option> -->
               </select>
 
             </div>
@@ -85,29 +70,6 @@
                     <option value="" selected></option>
                     <option *ngFor="let tipodeAcao of tiposDeAcoes" value="{{tipodeAcao.TIPO_DE_ACAO}}" selected>
                       {{tipodeAcao.TIPO_DE_ACAO}}</option>
-                    <!-- <option value="TOA" selected></option>
-                    <option value="Ação de Cobrança">Ação de Cobrança</option>
-                    <option value="Reclamação Trabalhista">Reclamação Trabalhista</option>
-                    <option value="Ação coletiva">Ação coletiva</option>
-                    <option value="Ação Indenizatória">Ação Indenizatória</option>
-                    <option value="Ação de obrigação de fazer">Ação de obrigação de fazer</option>
-                    <option value="Ação de repetição de indébito">Ação de repetição de indébito</option>
-                    <option value="Ação de consignação em pagamento">Ação de consignação em pagamento</option>
-                    <option value="Cumprimento de sentença">Cumprimento de sentença</option>
-                    <option value="Cumprimento provisório de sentença">Cumprimento provisório de sentença</option>
-                    <option value="Execução de título extrajudicial">Execução de título extrajudicial</option>
-                    <option value=" Execução de título judicial"> Execução de título judicial</option>
-                    <option value="Ação de Regresso">Ação de Regresso</option>
-                    <option value="Tutela provisória">Tutela provisória</option>
-                    <option value="Ação de exigir contas">Ação de exigir contas</option>
-                    <option value="Ação de dissolução parcial de sociedade">Ação de dissolução parcial de sociedade
-                    </option>
-                    <option value="Embargos de terceiro">Embargos de terceiro</option>
-                    <option value="Ação monitória">Ação monitória</option>
-                    <option value="Ação Rescisória">Ação Rescisória</option>
-                    <option value="Procedimento Administrativo">Procedimento Administrativo</option>
-                    <option value="Processo Administrativo">Processo Administrativo</option>
-                    <option value="Notificação extrajudicial;">Notificação extrajudicial</option> -->
                   </select>
                 </span>
 
@@ -120,12 +82,6 @@
                     <option *ngFor="let areaDoDireito of areasDoDireito" value="{{areaDoDireito.AREA_DO_DIREITO}}"
                       selected>
                       {{areaDoDireito.AREA_DO_DIREITO}}</option>
-                    <!-- <option value="Área do Processo" selected></option>
-                    <option value="Trabalhista">Trabalhista</option>
-                    <option value="Consumidor">Consumidor</option>
-                    <option value="Cível">Cível</option>
-                    <option value="Tributário">Tributário</option>
-                    <option value="Societário">Societário</option> -->
                   </select>
                 </span>
 
@@ -150,10 +106,6 @@
                     class="process-create-processdetails--input-select">
                     <option value="" selected></option>
                     <option *ngFor="let vara of varas" value="{{vara.VARA}}" selected>{{vara.VARA}}</option>
-                    <!-- <option value="ProcessPhase" selected></option>
-                    <option value="Administradivo">Administradivo</option>
-                    <option value="Judicial">Judicial</option>
-                    <option value="Pré Judicial">Pré Judicial</option> -->
                   </select>
                 </span>
 
@@ -166,10 +118,6 @@
                     <option *ngFor="let foroTribunalOrgao of foroTribunalOrgaos"
                       value="{{foroTribunalOrgao.FORO_TRIBUNAL_ORGAO}}" selected>
                       {{foroTribunalOrgao.FORO_TRIBUNAL_ORGAO}}</option>
-                    <!-- <option value="ProcessPhase" selected></option>
-                    <option value="Administradivo">Administradivo</option>
-                    <option value="Judicial">Judicial</option>
-                    <option value="Pré Judicial">Pré Judicial</option> -->
                   </select>
                 </span>
 
@@ -180,10 +128,6 @@
                     <option value="" selected></option>
                     <option *ngFor="let fase of fases" value="{{fase.FASE}}" selected>
                       {{fase.FASE}}</option>
-                    <!-- <option value="ProcessPhase" selected></option>
-                    <option value="Administradivo">Administradivo</option>
-                    <option value="Judicial">Judicial</option>
-                    <option value="Pré Judicial">Pré Judicial</option> -->
                   </select>
                 </span>
               </div>
@@ -196,7 +140,7 @@
                 <span>
                   <p class="sm-text">Estado</p>
                   <select name="ESTADO" class="process-create-processdetails--input-select" formControlName="ESTADO"
-                    required [(ngModel)]="createProcessRequest.ESTADO">
+                    [(ngModel)]="createProcessRequest.ESTADO" style="width: 200px !important;">
                     <option value="">Selcionar estado</option>
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>
@@ -230,14 +174,15 @@
 
                 <span class="mx-1">
                   <p class="sm-text">Cidade</p>
-                  <input type="text" name="CIDADE" formControlName="CIDADE" [(ngModel)]="createProcessRequest.CIDADE"
-                    class="process-create-processdetails">
+                  <input required type="text" name="CIDADE" formControlName="CIDADE"
+                    [(ngModel)]="createProcessRequest.CIDADE" class="process-create-processdetails"
+                    style="width: 200px !important;">
                 </span>
 
                 <span>
                   <p class="sm-text">Pais</p>
-                  <input type="text" name="PAIS" formControlName="PAIS" [(ngModel)]="createProcessRequest.PAIS"
-                    class="process-create-processdetails">
+                  <input required type="text" name="PAIS" formControlName="PAIS" [(ngModel)]="createProcessRequest.PAIS"
+                    class="process-create-processdetails" style="width: 200px !important;">
                 </span>
               </div>
             </div>
@@ -248,13 +193,13 @@
               <div class="process-create-processdetails__list__item--row" style="justify-content: flex-start;">
                 <span class="mr-1">
                   <p class="sm-text">Data de Distribuição</p>
-                  <input type="date" name="DATA_DISTRIBUICAO" formControlName="DATA_DISTRIBUICAO"
+                  <input required type="date" name="DATA_DISTRIBUICAO" formControlName="DATA_DISTRIBUICAO"
                     [(ngModel)]="createProcessRequest.DATA_DISTRIBUICAO" class="process-create-processdetails">
                 </span>
 
                 <span>
                   <p class="sm-text">Data da Citação</p>
-                  <input type="date" name="DATA_CITACAO" formControlName="DATA_CITACAO"
+                  <input required type="date" name="DATA_CITACAO" formControlName="DATA_CITACAO"
                     [(ngModel)]="createProcessRequest.DATA_CITACAO" class="process-create-processdetails">
                 </span>
               </div>
@@ -266,31 +211,31 @@
 
               <div class="process-create-processdetails__list__item mt-2">
                 <p class="sm-text">Valor do Pedido</p>
-                <input type="number" name="VALOR_DO_PEDIDO" formControlName="VALOR_DO_PEDIDO"
+                <input required type="number" name="VALOR_DO_PEDIDO" formControlName="VALOR_DO_PEDIDO"
                   [(ngModel)]="createProcessRequest.VALOR_DO_PEDIDO" class="process-create-processdetails w-auto">
               </div>
 
               <div class="process-create-processdetails__list__item--row">
                 <span>
                   <p class="sm-text">Valor 1ª Instância</p>
-                  <input type="number" name="VALOR_INSTANCIA1" formControlName="VALOR_INSTANCIA1"
+                  <input required type="number" name="VALOR_INSTANCIA1" formControlName="VALOR_INSTANCIA1"
                     [(ngModel)]="createProcessRequest.VALOR_INSTANCIA1" class="process-create-processdetails">
                 </span>
 
                 <span class="mx-1">
                   <p class="sm-text">Valor 2ª Instância</p>
-                  <input type="number" name="VALOR_INSTANCIA2" formControlName="VALOR_INSTANCIA2"
+                  <input required type="number" name="VALOR_INSTANCIA2" formControlName="VALOR_INSTANCIA2"
                     [(ngModel)]="createProcessRequest.VALOR_INSTANCIA2" class="process-create-processdetails">
                 </span>
 
                 <span style="margin-right: .25rem;">
                   <p class="sm-text">Valor 3ª Instância</p>
-                  <input type="number" name="VALOR_INSTANCIA3" formControlName="VALOR_INSTANCIA3"
+                  <input required type="number" name="VALOR_INSTANCIA3" formControlName="VALOR_INSTANCIA3"
                     [(ngModel)]="createProcessRequest.VALOR_INSTANCIA3" class="process-create-processdetails">
                 </span>
                 <span>
                   <p class="sm-text">Valor Instância Extraordinária</p>
-                  <input type="number" name="VALOR_INSTANCIA_EXTRAORDINARIA"
+                  <input required type="number" name="VALOR_INSTANCIA_EXTRAORDINARIA"
                     formControlName="VALOR_INSTANCIA_EXTRAORDINARIA"
                     [(ngModel)]="createProcessRequest.VALOR_INSTANCIA_EXTRAORDINARIA"
                     class="process-create-processdetails">
@@ -325,16 +270,253 @@
 
           <ng-container [ngSwitch]="componentName">
             <ng-template ngSwitchDefault="'fisical-person'">
+              <form #formDir="ngForm" [formGroup]="createParteContrariaFisicalForm"
+                style="width: auto !important; box-shadow: none; padding: unset;">
 
+                <li class="process-create-processdetails__list__item">
+                  <div class="process-create-processdetails__list__item--div">
+                    <span class="w-50 d-block">
+                      <p class="sm-text">CPF</p>
+                      <input type="text" mask="000.000.000-00" placeholder="000.000.000-00" matInput
+                        [(ngModel)]="createParteContrariaRequest.CPF" name="CPF" formControlName="CPF">
+                    </span>
+                  </div>
+                </li>
+
+                <li class="process-create-processdetails__list__item">
+                  <div class="process-create-processdetails__list__item--div">
+                    <div class="process-create-processdetails__list__item--row">
+                      <span class="w-100 mr-2">
+                        <p class="sm-text">Nome</p>
+                        <input name="NOME" formControlName="NOME" matInput
+                          [(ngModel)]="createParteContrariaRequest.NOME">
+                      </span>
+
+                      <span>
+                        <p class="sm-text">RG</p>
+                        <input type="text" mask="00.000.000-0" placeholder="00.000.000-0" matInput
+                          [(ngModel)]="createParteContrariaRequest.RG" name="RG" formControlName="RG">
+                      </span>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="process-create-processdetails__list__item">
+                  <div class="process-create-processdetails__list__item--div">
+                    <span class="w-50 d-block">
+                      <p class="sm-text">CEP</p>
+                      <input name="CEP" mask="0000-000" placeholder="0000-000" formControlName="CEP" matInput
+                        [(ngModel)]="createParteContrariaRequest.CEP">
+                    </span>
+                  </div>
+                </li>
+
+                <li class="process-create-processdetails__list__item">
+                  <div class="process-create-processdetails__list__item--div">
+                    <div class="process-create-processdetails__list__item--row">
+                      <span class="w-100 mr-2">
+                        <p class="sm-text">Enderço</p>
+                        <input name="ENDERECO" formControlName="ENDERECO" matInput
+                          [(ngModel)]="createParteContrariaRequest.ENDERECO">
+                      </span>
+                      <span>
+                        <p class="sm-text">Número</p>
+                        <input name="NUMERO" formControlName="NUMERO" matInput
+                          [(ngModel)]="createParteContrariaRequest.NUMERO">
+                      </span>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="process-create-processdetails__list__item">
+                  <div class="process-create-processdetails__list__item--div">
+                    <span>
+                      <p class="sm-text">Complemento</p>
+                      <input name="COMPLEMENTO" formControlName="COMPLEMENTO" matInput
+                        [(ngModel)]="createParteContrariaRequest.COMPLEMENTO">
+                    </span>
+                  </div>
+                </li>
+
+                <li class="process-create-processdetails__list__item">
+                  <div class="process-create-processdetails__list__item--div">
+                    <div class="process-create-processdetails__list__item--row justify-content-start">
+                      <span class="w-50 mr-2">
+                        <p class="sm-text">Cargo</p>
+                        <input name="CARGO" formControlName="CARGO" matInput
+                          [(ngModel)]="createParteContrariaRequest.CARGO">
+                      </span>
+
+                      <span>
+                        <p class="sm-text">Ultimo salário</p>
+                        <input name="ULTIMO_SALARIO" formControlName="ULTIMO_SALARIO" matInput mask="separator.2"
+                          thousandSeparator="." [(ngModel)]="createParteContrariaRequest.ULTIMO_SALARIO">
+                      </span>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="process-create-processdetails__list__item">
+                  <div class="process-create-processdetails__list__item--div">
+                    <div class="process-create-processdetails__list__item--row justify-content-start">
+                      <span class="mr-2">
+                        <p class="sm-text">Data admissão</p>
+                        <input name="DATA_ADMISSAO" type="date" formControlName="DATA_ADMISSAO" matInput
+                          [(ngModel)]="createParteContrariaRequest.DATA_ADMISSAO">
+                      </span>
+
+                      <span>
+                        <p class="sm-text">Data admissão</p>
+                        <input name="DATA_ADMISSAO" type="date" formControlName="DATA_DEMISSAO" matInput
+                          [(ngModel)]="createParteContrariaRequest.DATA_DEMISSAO">
+                      </span>
+                    </div>
+                  </div>
+                </li>
+              </form>
             </ng-template>
 
             <ng-template [ngSwitchCase]="'legal-person'">
+              <form #formDir="ngForm" [formGroup]="createParteContrariaLegalForm"
+                style="width: auto !important; box-shadow: none; padding: unset;">
 
+                <li class="process-create-processdetails__list__item">
+                  <div class="process-create-processdetails__list__item--div">
+                    <span class="w-50 d-block">
+                      <p class="sm-text">CNPJ</p>
+                      <input type="text" mask="00.000.000/0000-00" placeholder="00.000.000/0000-00" matInput
+                        [(ngModel)]="createParteContrariaRequest.CNPJ" name="CNPJ" formControlName="CNPJ">
+                    </span>
+                  </div>
+                </li>
+
+                <li class="process-create-processdetails__list__item">
+                  <div class="process-create-processdetails__list__item--div">
+                    <div class="process-create-processdetails__list__item--row">
+                      <span class="w-100 mr-1">
+                        <p class="sm-text">Nome</p>
+                        <input name="NOME" formControlName="NOME" matInput
+                          [(ngModel)]="createParteContrariaRequest.NOME">
+                      </span>
+
+                      <span class="w-100 ml-1">
+                        <p class="sm-text">Nome Fantasia</p>
+                        <input type="text" matInput [(ngModel)]="createParteContrariaRequest.NOME_FANTASIA"
+                          name="NOME_FANTASIA" formControlName="NOME_FANTASIA">
+                      </span>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="process-create-processdetails__list__item">
+                  <div class="process-create-processdetails__list__item--div">
+                    <span class="w-50 d-block">
+                      <p class="sm-text">CEP</p>
+                      <input name="CEP" mask="0000-000" placeholder="0000-000" formControlName="CEP" matInput
+                        [(ngModel)]="createParteContrariaRequest.CEP">
+                    </span>
+                  </div>
+                </li>
+
+                <li class="process-create-processdetails__list__item">
+                  <div class="process-create-processdetails__list__item--div">
+                    <div class="process-create-processdetails__list__item--row">
+                      <span class="w-100 mr-2">
+                        <p class="sm-text">Enderço</p>
+                        <input name="ENDERECO" formControlName="ENDERECO" matInput
+                          [(ngModel)]="createParteContrariaRequest.ENDERECO">
+                      </span>
+                      <span>
+                        <p class="sm-text">Número</p>
+                        <input name="NUMERO" formControlName="NUMERO" matInput
+                          [(ngModel)]="createParteContrariaRequest.NUMERO">
+                      </span>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="process-create-processdetails__list__item">
+                  <div class="process-create-processdetails__list__item--div">
+                    <span>
+                      <p class="sm-text">Complemento</p>
+                      <input name="COMPLEMENTO" formControlName="COMPLEMENTO" matInput
+                        [(ngModel)]="createParteContrariaRequest.COMPLEMENTO">
+                    </span>
+                  </div>
+                </li>
+
+                <li class="process-create-processdetails__list__item">
+                  <div class="process-create-processdetails__list__item--div">
+                    <div class="process-create-processdetails__list__item--row">
+                      <span>
+                        <p class="sm-text">Estado</p>
+                        <select name="ESTADO" class="process-create-processdetails--input-select"
+                          formControlName="ESTADO" matInput [(ngModel)]="createParteContrariaRequest.ESTADO"
+                          style="width: 200px !important;">
+                          <option value="">Selcionar estado</option>
+                          <option value="AC">Acre</option>
+                          <option value="AL">Alagoas</option>
+                          <option value="AP">Amapá</option>
+                          <option value="AM">Amazonas</option>
+                          <option value="BA">Bahia</option>
+                          <option value="CE">Ceará</option>
+                          <option value="DF">Distrito Federal</option>
+                          <option value="ES">Espírito Santo</option>
+                          <option value="GO">Goiás</option>
+                          <option value="MA">Maranhão</option>
+                          <option value="MT">Mato Grosso</option>
+                          <option value="MS">Mato Grosso do Sul</option>
+                          <option value="MG">Minas Gerais</option>
+                          <option value="PA">Pará</option>
+                          <option value="PB">Paraíba</option>
+                          <option value="PR">Paraná</option>
+                          <option value="PE">Pernambuco</option>
+                          <option value="PI">Piauí</option>
+                          <option value="RJ">Rio de Janeiro</option>
+                          <option value="RN">Rio Grande do Norte</option>
+                          <option value="RS">Rio Grande do Sul</option>
+                          <option value="RO">Rondônia</option>
+                          <option value="RR">Roraima</option>
+                          <option value="SC">Santa Catarina</option>
+                          <option value="SP">São Paulo</option>
+                          <option value="SE">Sergipe</option>
+                          <option value="TO">Tocantins</option>
+                        </select>
+                      </span>
+
+                      <span>
+                        <p class="sm-text">Cidade</p>
+                        <input name="CIDADE" formControlName="CIDADE" matInput
+                          [(ngModel)]="createParteContrariaRequest.CIDADE" style="width: 200px !important;">
+                      </span>
+
+                      <span>
+                        <p class="sm-text">Pais</p>
+                        <input name="PAIS" formControlName="PAIS" matInput
+                          [(ngModel)]="createParteContrariaRequest.PAIS" style="width: 200px !important;">
+                      </span>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="process-create-processdetails__list__item">
+                  <div class="process-create-processdetails__list__item--div">
+                    <p class="sm-text">Observação</p>
+                    <textarea name="OBSERVACAO" matInput formControlName="OBSERVACAO"
+                      [(ngModel)]="createParteContrariaRequest.OBSERVACAO" rows="10"
+                      class="process-create-processdetails w-100"></textarea>
+                  </div>
+                </li>
+              </form>
             </ng-template>
           </ng-container>
         </ul>
       </div>
-      <button type="submit" class="btn-default mt-2 float-right">Criar processo</button>
+      <button type="submit"
+        [disabled]="!(createProcessForm.valid && createParteContrariaFisicalForm.valid) || (createProcessForm.valid && createParteContrariaLegalForm.valid)"
+        [ngClass]="{'btn-disabled': (!(createProcessForm.valid && createParteContrariaFisicalForm.valid) || (createProcessForm.valid && createParteContrariaLegalForm.valid))}"
+        class="btn-default mt-2 float-right">Criar
+        processo</button>
     </div>
   </form>
 </div>

@@ -14,7 +14,6 @@
               <th scope="col">Data/Hora</th>
               <th scope="col">Aberto por</th>
               <th scope="col"></th>
-              <!-- <th scope="col"></th> -->
             </tr>
           </thead>
           <tbody>
@@ -26,15 +25,13 @@
               <td>
                 {{
                 andamento.DATA_ANDAMENTO
-                .replaceAll("PM","")
-                .replaceAll("AM","")
-                .slice(0, (andamento.DATA_ANDAMENTO.length - 1) - 2)
+                .replaceAll("T"," ")
                 }}
               </td>
 
               <td> {{andamento.CRIADOR_ANDAMENTO }} </td>
 
-              <!-- <td style="width: 40px;" title="Editar" (click)="openDialogEdit('250ms', '100ms', $event, andamento.ID)">
+              <td style="width: 40px;" title="Editar" (click)="openDialogEdit('250ms', '100ms', $event, andamento.ID)">
                 <svg width="20px" height="20px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg"
                   xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
                   <g id="out" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
@@ -45,7 +42,8 @@
                     </path>
                   </g>
                 </svg>
-              </td> -->
+              </td>
+
               <td class="cursor-pointer" style="width: 40px;" title="Visualizar Andamento"
                 (click)="openDialogView('250ms', '100ms', $event, andamento.ID)">
                 <svg width="20px" height="20px" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round"

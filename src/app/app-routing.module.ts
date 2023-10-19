@@ -14,15 +14,23 @@ import { MTipoDeAndamentoComponent } from './components/management/components/m-
 import { MEmpresasComponent } from './components/management/components/m-empresas/m-empresas.component';
 import { MParteContrariaComponent } from './components/management/components/m-parte-contraria/m-parte-contraria.component';
 import { ProcessEditComponent } from './components/processComponents/process-edit/process-edit.component';
+import { ProcessAlterationsLogComponent } from './components/processComponents/process-alterations-log/process-alterations-log.component';
 
 const routes: Routes = [
   {
     path: '',
     component: LoginComponent
   },
-
   {
     path: 'painel-processos',
+    component: ProcessPanelComponent
+  },
+  {
+    path: 'log-alteracoes/:id',
+    component: ProcessAlterationsLogComponent
+  },
+  {
+    path: 'painel-processos/busca-avancada',
     component: ProcessPanelComponent
   },
 
@@ -55,7 +63,7 @@ const routes: Routes = [
     path: 'gestao/patrono-responsavel',
     component: MPatronoResponsavelComponent
   },
-  
+
   {
     path: 'gestao/area-do-direito',
     component: MAreaDoDireitoComponent

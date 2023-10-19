@@ -1,5 +1,5 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProcessoAndamento } from 'src/app/models/PROCESSO_ANDAMENTO.model';
 import { AndamentoService } from 'src/app/services/andamento.service';
@@ -14,6 +14,8 @@ export class DialogViewAndamentoComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public viewData: any,
     private andamentoService: AndamentoService
   ) { }
+
+  fileNames: string[] = []
 
   andamentoDetalhes: ProcessoAndamento = {
     ID: '',
@@ -30,9 +32,19 @@ export class DialogViewAndamentoComponent implements OnInit {
       .subscribe({
         next: (response) => {
           this.andamentoDetalhes = response;
+
+          this.andamentoService.getFileProcessoAndamento(response.ID!)
+            .subscribe({
+              next: (response: any) => {
+                this.fileNames = response;
+              },
+              error: (err: HttpErrorResponse) => {
+                // console.log(err);
+              }
+            });
         },
-        error: (response) => {
-          console.log(response)
+        error: (err: HttpErrorResponse) => {
+          // console.log(err)
         }
       })
   }
