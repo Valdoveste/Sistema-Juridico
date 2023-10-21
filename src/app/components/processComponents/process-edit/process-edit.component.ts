@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Processo } from 'src/app/models/PROCESSO.model';
 import { ProcessoService } from 'src/app/services/processo.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ProcessoPatronosAnteriors } from 'src/app/models/PROCESSO_PATRONOS_ANTERIORES.model';
+import { ProcessoPatronosAnteriors } from 'src/app/models/PROCESSO_PATRONOS_ANTERIORES';
 import { PatronoAnteriorService } from 'src/app/services/patrono-anterior.service';
 import { ProcessoLogAlteracoes } from 'src/app/models/PROCESSO_LOG_ALTERACOES.model';
 import { ProcessoLogAlteracoesService } from 'src/app/services/processo-log-alteracoes.service';
@@ -112,8 +112,7 @@ export class ProcessEditComponent implements OnInit {
     ID_PROCESSO: '',
     ID_USUARIO: '',
     NOME_USUARIO: '',
-    PATRONO_RESPONSAVEL_ATUAL: '',
-    PATRONO_RESPONSAVEL_CPF_CNPJ_ATUAL: '',
+    PATRONO_RESPONSAVEL_ANTERIOR: '',
     DATA_ALTERACAO: ''
   }
 
@@ -293,9 +292,11 @@ export class ProcessEditComponent implements OnInit {
         if (id_processo) {
           this.ProcessoService.updateProcess(id_processo, this.updateProcessRequest)
             .subscribe({
-              next: (response: any) => this.addLogAfterUpdateProcess(id_processo, response),
-
-              error: (err: HttpErrorResponse) => console.log(err)
+              next: (response: any) => {
+                this.addLogAfterUpdateProcess(id_processo, response.modifiedInformation);
+                this.addPatronoResponsavelOld(id_processo, response.modifiedInformation);
+              },
+              error: (err: HttpErrorResponse) => { console.log(err) }
             });
         }
       },
@@ -303,19 +304,34 @@ export class ProcessEditComponent implements OnInit {
     });
   }
 
-  addLogAfterUpdateProcess(id_processo: string, response: any) {
-    for (let i = 0; i < response.length; i++) {
-      for (const propertyName in response[i]) {
-        if (response[i].hasOwnProperty(propertyName)) {
-          this.createLogProcessoRequest.VALOR_ORIGINAL = response[i][propertyName]['VALOR_ORIGINAL'].toString();
-          this.createLogProcessoRequest.VALOR_ATUAL = response[i][propertyName]['VALOR_ATUAL'].toString();
+  addLogAfterUpdateProcess(id_processo: string, responses: any) {
+    for (const responseItem of responses) {
+      for (const propertyName in responseItem) {
+        if (responseItem.hasOwnProperty(propertyName)) {
+          this.createLogProcessoRequest.VALOR_ORIGINAL = responseItem[propertyName]['VALOR_ORIGINAL'].toString();
+          this.createLogProcessoRequest.VALOR_ATUAL = responseItem[propertyName]['VALOR_ATUAL'].toString();
           this.createLogProcessoRequest.INPUT_ALTERADO = propertyName;
 
           this.ProcessoLogAlteracoesService.addLogProcesso(id_processo, this.createLogProcessoRequest)
             .subscribe({ error: (err: HttpErrorResponse) => console.log(err) });
-
-          this.router.navigate(['/painel-processos', 'processo-detalhes', id_processo]);
         }
+      }
+    }
+    this.router.navigate(['/painel-processos', 'processo-detalhes', id_processo]);
+  }
+
+  addPatronoResponsavelOld(id_processo: string, responses: any) {
+    this.createPatronoAnteriorRequest.ID_PROCESSO = id_processo;
+
+    for (const resonseItem of responses) {
+      if (resonseItem['PATRONO_RESPONSAVEL']) {
+        this.createPatronoAnteriorRequest.PATRONO_RESPONSAVEL_ANTERIOR = resonseItem['PATRONO_RESPONSAVEL']['VALOR_ORIGINAL'].toString();
+
+        this.PatronoAnteriorService.addPatronoAnterior(this.createPatronoAnteriorRequest)
+          .subscribe({
+            error: (err: HttpErrorResponse) => console.log(err)
+          })
+        break;
       }
     }
   }
