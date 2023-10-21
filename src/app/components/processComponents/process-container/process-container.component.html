@@ -57,7 +57,7 @@
           </p>
           <span class="sm-text">Ult. Andamento</span>
           <p class="process-footer__list__item-date-last-moviment">
-            {{processo.DATA_ULTIMO_ANDAMENTO}}
+            {{processo.DATA_ULTIMO_ANDAMENTO.replaceAll("T", " ás ")}}
           </p>
         </li>
       </ul>

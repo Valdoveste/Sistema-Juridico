@@ -180,31 +180,29 @@
         <div class="process-create-processdetails__list__item--row">
           <span>
             <p class="sm-text">Data de Distribuição</p>
-            <!-- processoDetalhes.DATA_DISTRIBUICAO.toString().split('/').reverse().join('/') -->
-            <!-- .slice(0, 10).replaceAll("-","/").split('/').reverse().join('/') -->
             <input type="date" disabled name="DATA_DISTRIBUICAO"
-              value="{{processoDetalhes.DATA_DISTRIBUICAO.toString().slice(0,10)}}"
+              value="{{processoDetalhes.DATA_DISTRIBUICAO.replace('T', ' ás ')}}"
               class="process-create-processdetails">
-
-            <!-- replaceAll("-", "/").slice(0, 19).replace("T", " ").slice(0, 10).replaceAll("-","/").split('/').reverse().join('/')  -->
           </span>
 
           <span>
             <p class="sm-text">Data da Citação</p>
             <input type="date" disabled name="DATA_CITACAO"
-              value="{{processoDetalhes.DATA_CITACAO.toString().slice(0,10)}}" class="process-create-processdetails">
+              value="{{processoDetalhes.DATA_CITACAO.replace('T', ' ás ')}}" class="process-create-processdetails">
           </span>
 
           <span>
             <p class="sm-text">Data da Ultimo Andamento</p>
             <input type="datetime" disabled name="DATA_ULTIMO_ANDAMENTO"
-              value={{processoDetalhes.DATA_ULTIMO_ANDAMENTO}} class="process-create-processdetails">
+              value="{{processoDetalhes.DATA_ULTIMO_ANDAMENTO.replace('T', ' ás ')}}"
+              class="process-create-processdetails">
           </span>
 
           <span>
             <p class="sm-text">Data da Cadastro</p>
             <input type="datetime" disabled name="DATA_CADASTRO_PROCESSO"
-              value={{processoDetalhes.DATA_CADASTRO_PROCESSO}} class="process-create-processdetails">
+              value="{{processoDetalhes.DATA_CADASTRO_PROCESSO.replace('T', ' ás ')}}"
+              class="process-create-processdetails">
           </span>
         </div>
       </div>
