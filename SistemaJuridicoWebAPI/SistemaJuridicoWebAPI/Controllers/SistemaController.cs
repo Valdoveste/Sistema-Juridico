@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SistemaJuridicoWebAPI.Data;
 using SistemaJuridicoWebAPI.Models;
+using System.Diagnostics;
 
 namespace SistemaJuridicoWebAPI.Controllers
 {
   [ApiController]
   [Route("api/[controller]")]
+
   public class SistemaController : Controller
   {
 
@@ -95,13 +97,13 @@ namespace SistemaJuridicoWebAPI.Controllers
       processo.VARA = updateProcessRequest.VARA;
       processo.FORO_TRIBUNAL_ORGAO = updateProcessRequest.FORO_TRIBUNAL_ORGAO;
       processo.FASE = updateProcessRequest.FASE;
+      processo.PATRONO_RESPONSAVEL = updateProcessRequest.PATRONO_RESPONSAVEL;
       processo.TEXTO_DO_OBJETO = updateProcessRequest.TEXTO_DO_OBJETO;
       processo.VALOR_DO_PEDIDO = updateProcessRequest.VALOR_DO_PEDIDO;
       processo.VALOR_INSTANCIA_EXTRAORDINARIA = updateProcessRequest.VALOR_INSTANCIA_EXTRAORDINARIA;
       processo.VALOR_INSTANCIA1 = updateProcessRequest.VALOR_INSTANCIA1;
       processo.VALOR_INSTANCIA2 = updateProcessRequest.VALOR_INSTANCIA2;
       processo.VALOR_INSTANCIA3 = updateProcessRequest.VALOR_INSTANCIA3;
-      processo.PATRONO_RESPONSAVEL = updateProcessRequest.PATRONO_RESPONSAVEL;
 
       var changes = _sistemaJuridicoDbContext.ChangeTracker.Entries<PROCESSO>()
           .Where(x => x.State == EntityState.Modified)
@@ -110,7 +112,7 @@ namespace SistemaJuridicoWebAPI.Controllers
             Original = x.OriginalValues.ToObject(),
             Current = x.CurrentValues.ToObject()
           })
-          .ToList();
+          .ToList();  
 
       List<object> modifiedInformation = new List<object>();
 
@@ -144,7 +146,7 @@ namespace SistemaJuridicoWebAPI.Controllers
 
       await _sistemaJuridicoDbContext.SaveChangesAsync();
 
-      return Ok(modifiedInformation);
+      return Ok(new { modifiedInformation, updateProcessRequest });
     }
 
     [HttpPost("add-log-processo/{id}")]
@@ -170,7 +172,7 @@ namespace SistemaJuridicoWebAPI.Controllers
      .Where(x => x.ID_PROCESSO.Equals(id))
      .ToListAsync();
 
-      return Ok(logProcesso); 
+      return Ok(logProcesso);
     }
 
     [HttpGet("ambito")]
@@ -771,8 +773,9 @@ namespace SistemaJuridicoWebAPI.Controllers
     }
 
     [HttpPost("add-patrono-anterior")]
-    public async Task<IActionResult> AddPatronoAnterior([FromRoute] PROCESSO_PATRONOS_ANTERIORES patronoAnteriorRequest)
+    public async Task<IActionResult> AddPatronoAnterior([FromBody] PROCESSO_PATRONOS_ANTERIORES patronoAnteriorRequest)
     {
+
       TimeZoneInfo brazilTimeZone = TimeZoneInfo.FindSystemTimeZoneById("America/Sao_Paulo");
 
       patronoAnteriorRequest.DATA_ALTERACAO = TimeZoneInfo.ConvertTime(DateTime.Now, brazilTimeZone).ToString("dd/MM/yyyyTHH:mm:ss");
@@ -787,11 +790,11 @@ namespace SistemaJuridicoWebAPI.Controllers
     }
 
 
-    [HttpGet("processo/all/patrono-anterior/{id}")]
-    public async Task<IActionResult> GetProcessoPatronoAnterior([FromRoute] string idProcesso)
+    [HttpGet("processo/all/patrono-anterior/{ID_PROCESSO}")]
+    public async Task<IActionResult> GetProcessoPatronoAnterior([FromRoute] string ID_PROCESSO)
     {
       var processoPatronoAnterior = await _sistemaJuridicoDbContext.PROCESSO_PATRONOS_ANTERIORES
-      .Where(x => x.ID_PROCESSO.Equals(idProcesso))
+      .Where(x => x.ID_PROCESSO.Equals(ID_PROCESSO))
       .ToListAsync();
 
       return Ok(processoPatronoAnterior);
