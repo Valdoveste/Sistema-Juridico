@@ -94,6 +94,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { ProcessEditComponent } from './components/processComponents/process-edit/process-edit.component';
 import { DialogFinishProcessComponent } from './components/processComponents/process-area/dialog-finish-process/dialog-finish-process.component';
 import { ProcessAlterationsLogComponent } from './components/processComponents/process-alterations-log/process-alterations-log.component';
+import { DialogDeleteAcordoComponent } from './components/processComponents/process-area/process-area-acordo/dialog-delete-acordo/dialog-delete-acordo.component';
 
 @NgModule({
   declarations: [
@@ -174,7 +175,8 @@ import { ProcessAlterationsLogComponent } from './components/processComponents/p
     DialogViewParteContrariaComponent,
     ProcessEditComponent,
     DialogFinishProcessComponent,
-    ProcessAlterationsLogComponent
+    ProcessAlterationsLogComponent,
+    DialogDeleteAcordoComponent
   ],
 
   imports: [
