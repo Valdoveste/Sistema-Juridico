@@ -31,7 +31,9 @@
 
             <div class="d-flex justify-content-center align-items-center">
                 <button mat-button mat-dialog-close class="mr-2">Fechar</button>
-                <button mat-button type="submit" (click)="createAndamento()">Adicionar</button>
+                <button mat-button type="submit" (click)="createAndamento()" class="btn-default"
+                    [disabled]="!createAndamentoForm.valid"
+                    [ngClass]="{'btn-disabled': !createAndamentoForm.valid}">Adicionar</button>
             </div>
         </div>
     </div>
