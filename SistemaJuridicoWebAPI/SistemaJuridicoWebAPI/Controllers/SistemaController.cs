@@ -1,6 +1,8 @@
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using SistemaJuridicoWebAPI.Data;
 using SistemaJuridicoWebAPI.Models;
 using System.Diagnostics;
@@ -112,7 +114,7 @@ namespace SistemaJuridicoWebAPI.Controllers
             Original = x.OriginalValues.ToObject(),
             Current = x.CurrentValues.ToObject()
           })
-          .ToList();  
+          .ToList();
 
       List<object> modifiedInformation = new List<object>();
 
@@ -573,6 +575,48 @@ namespace SistemaJuridicoWebAPI.Controllers
       var processoAcordo = await _sistemaJuridicoDbContext.PROCESSO_ACORDO
           .Where(x => x.ID_PROCESSO.Equals(id))
           .ToListAsync();
+
+      return Ok(processoAcordo);
+    }
+
+    [HttpGet("processo/acordo/{id}")]
+    public async Task<IActionResult> GetProcessAcordo([FromRoute] Guid id)
+    {
+      var processoAcordo = await _sistemaJuridicoDbContext.PROCESSO_ACORDO
+        .FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      return Ok(processoAcordo);
+    }
+
+    [HttpDelete("delete-acordo/{id}")]
+    public async Task<IActionResult> DeleteProcessAcordo([FromRoute] Guid id)
+    {
+      var processoAcordo = await _sistemaJuridicoDbContext.PROCESSO_ACORDO
+        .FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      if (processoAcordo == null)
+        return NotFound();
+
+      _sistemaJuridicoDbContext.PROCESSO_ACORDO.Remove(processoAcordo);
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
+
+      return Ok(processoAcordo);
+    }
+
+    [HttpPut("update-acordo/{id}")]
+    public async Task<ActionResult> UpdateProcessAcordo([FromBody] PROCESSO_ACORDO acordoUpdateRequest, [FromRoute] Guid id)
+    {
+      var processoAcordo = await _sistemaJuridicoDbContext.PROCESSO_ACORDO
+        .FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      if (processoAcordo == null)
+        return NotFound();
+
+      processoAcordo.VALOR_ACORDO = acordoUpdateRequest.VALOR_ACORDO;
+      processoAcordo.CONDICOES_TENTATIVA_DE_ACORDO = acordoUpdateRequest.CONDICOES_TENTATIVA_DE_ACORDO;
+
+      await _sistemaJuridicoDbContext.SaveChangesAsync();
 
       return Ok(processoAcordo);
     }

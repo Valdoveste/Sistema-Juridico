@@ -37,7 +37,7 @@ export class AcordoService {
     return this.http.put<ProcessoAcordo>(this.baseApiUrl + '/api/Sistema/update-acordo/' + id_acordo, updateAcordoRequest);
   }
 
-  // deleteAcordo(id: string): Observable<ProcessoAcordo> {
-  //   return this.http.delete<ProcessoAcordo>(this.baseApiUrl + '/api/Sistema/delete-acordo/' + id);
-  // }
+  deleteAcordo(id_acordo: string): Observable<ProcessoAcordo> {
+    return this.http.delete<ProcessoAcordo>(this.baseApiUrl + '/api/Sistema/delete-acordo/' + id_acordo);
+  }
 }
