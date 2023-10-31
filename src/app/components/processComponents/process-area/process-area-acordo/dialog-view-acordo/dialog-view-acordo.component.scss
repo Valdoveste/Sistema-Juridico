@@ -1,2 +1,5 @@
-@import '../../../../management/management.componnent.scss';
-// @import '../process-area-acordo.component.scss';
+@import '../process-area-acordo.component.scss';
+
+textarea {
+    resize: none;
+}
