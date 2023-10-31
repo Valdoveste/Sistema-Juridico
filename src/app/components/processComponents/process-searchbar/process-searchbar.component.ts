@@ -13,6 +13,7 @@ import { Processo } from 'src/app/models/PROCESSO.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchProcessoService } from 'src/app/services/search-processo.service';
 import { ProcessoService } from 'src/app/services/processo.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-process-searchbar',
@@ -39,13 +40,13 @@ export class ProcessSearchbarComponent implements OnInit {
   }
 
   constructor(
+    private router: Router,
     private Fase: FaseService,
     private Status: StatusService,
     private AreaDoDireito: AreaDoDireitoService,
     private TipoDeAcao: TipoDeAcaoService,
     private PatronoResponsavel: PatronoResponsavelService,
     private activedRoute: ActivatedRoute,
-    private router: Router,
     private searchProcessoService: SearchProcessoService,
     private processoService: ProcessoService
   ) { }
@@ -72,9 +73,7 @@ export class ProcessSearchbarComponent implements OnInit {
         next: (status: any) => {
           this.status = status;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.Fase.getAllFase()
@@ -82,9 +81,7 @@ export class ProcessSearchbarComponent implements OnInit {
         next: (fases: any) => {
           this.fases = fases;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.AreaDoDireito.getAllAreaDoDireito()
@@ -92,9 +89,7 @@ export class ProcessSearchbarComponent implements OnInit {
         next: (areasDoDireito: any) => {
           this.areasDoDireito = areasDoDireito;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.TipoDeAcao.getAllTipoDeAcao()
@@ -102,9 +97,7 @@ export class ProcessSearchbarComponent implements OnInit {
         next: (tiposDeAcoes: any) => {
           this.tiposDeAcoes = tiposDeAcoes;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.PatronoResponsavel.getAllPatronoResponsavel()
@@ -112,9 +105,7 @@ export class ProcessSearchbarComponent implements OnInit {
         next: (patronoResponsavel: any) => {
           this.patronoResponsavel = patronoResponsavel;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
   }
 }
