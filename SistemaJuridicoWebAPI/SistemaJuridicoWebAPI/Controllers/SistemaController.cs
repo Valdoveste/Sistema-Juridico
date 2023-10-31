@@ -292,9 +292,18 @@ namespace SistemaJuridicoWebAPI.Controllers
     [HttpGet("patrono-responsavel")]
     public async Task<IActionResult> GetAllPatronoResponsavel()
     {
-
       return Ok(await _sistemaJuridicoDbContext.PROCESSO_PATRONO_RESPONSAVEL.ToListAsync());
     }
+
+    [HttpGet("patrono-responsavel/{id}")]
+    public async Task<IActionResult> GetProcessPatronoResponsavel([FromRoute] Guid id)
+    {
+      var patronoResponsavel = await _sistemaJuridicoDbContext.PROCESSO_PATRONO_RESPONSAVEL
+        .FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      return Ok(patronoResponsavel);
+    }
+
 
     [HttpPost("add-patrono-responsavel")]
     public async Task<IActionResult> AddPatronoResponsavel([FromBody] PROCESSO_PATRONO_RESPONSAVEL patronoresponsavelRequest)
