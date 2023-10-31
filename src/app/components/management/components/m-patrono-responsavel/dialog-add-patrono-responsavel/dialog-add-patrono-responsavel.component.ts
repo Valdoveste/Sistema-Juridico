@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ProcessoPatronoResponsavel } from 'src/app/models/PROCESSO_PATRONO_RESPONSAVEL.model';
-import { PatronoResponsavelService } from 'src/app/services/patrono-responsavel.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { HttpErrorResponse } from '@angular/common/http';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { PatronoResponsavelService } from 'src/app/services/patrono-responsavel.service';
+import { ProcessoPatronoResponsavel } from 'src/app/models/PROCESSO_PATRONO_RESPONSAVEL.model';
 
 @Component({
   selector: 'app-dialog-add-patrono-responsavel',
@@ -26,7 +27,7 @@ export class DialogAddPatronoResponsavelComponent implements OnInit {
   ngOnInit(): void {
     this.createPatronoResponsavelForm = new FormGroup({
       PATRONO_RESPONSAVEL: new FormControl('', [Validators.required]),
-      PATRONO_RESPONSAVEL_CPF_CNPJ: new FormControl('',)
+      PATRONO_RESPONSAVEL_CPF_CNPJ: new FormControl('', [Validators.required])
     });
   }
 
@@ -36,12 +37,8 @@ export class DialogAddPatronoResponsavelComponent implements OnInit {
         .subscribe({
           next: (response) => {
             this.dialogRef.close(true);
-            console.log(response)
-            this.createPatronoResponsavelForm.reset();
           },
-          error: (response) => {
-            console.log(response)
-          }
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
     return;
