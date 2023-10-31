@@ -251,6 +251,38 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.ToTable("PROCESSO_FORO_TRIBUNAL_ORGAO");
                 });
 
+            modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_LOG_ALTERACOES", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DATA_ALTERACAO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ID_PROCESSO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ID_USUARIO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("INPUT_ALTERADO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NOME_USUARIO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VALOR_ATUAL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VALOR_ORIGINAL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("PROCESSO_LOG_ALTERACOES");
+                });
+
             modelBuilder.Entity("SistemaJuridicoWebAPI.Models.PROCESSO_MOTIVO_DO_ENCERRAMENTO", b =>
                 {
                     b.Property<Guid>("ID")
@@ -352,10 +384,7 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.Property<string>("NOME_USUARIO")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PATRONO_RESPONSAVEL_ATUAL")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PATRONO_RESPONSAVEL_CPF_CNPJ_ATUAL")
+                    b.Property<string>("PATRONO_RESPONSAVEL_ANTERIOR")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
