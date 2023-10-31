@@ -1,15 +1,18 @@
 <h1 mat-dialog-title>Editar Tipo de andamento</h1>
 <form (ngSubmit)="updateTipoDeAndamentos()" #formDir="ngForm" [formGroup]="updateTipoDeAndamentoForm">
     <div mat-dialog-content>
-        <mat-form-field>
-            <p class="sm-text">Tipo de andamento</p>
-            <input name="TIPO_DE_ANDAMENTO" formControlName="TIPO_DE_ANDAMENTO" matInput required [(ngModel)]="updateData.value">
-        </mat-form-field>
+        <div>
+            <mat-form-field>
+                <p class="sm-text">Tipo de andamento</p>
+                <input name="TIPO_DE_ANDAMENTO" formControlName="TIPO_DE_ANDAMENTO" matInput required
+                    [(ngModel)]="updateData.value">
+            </mat-form-field>
+        </div>
 
         <div mat-raised-action class="float-right" style="padding: 0 16px;">
             <button mat-button mat-dialog-close class="mr-2">Fechar</button>
             <button mat-button class="btn-default" [disabled]="!updateTipoDeAndamentoForm.valid"
-            [ngClass]="{'btn-disabled': !updateTipoDeAndamentoForm.valid}">Salvar</button>
+                [ngClass]="{'btn-disabled': !updateTipoDeAndamentoForm.valid}">Salvar</button>
         </div>
     </div>
 </form>

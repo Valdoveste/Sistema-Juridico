@@ -1,15 +1,18 @@
 <h1 mat-dialog-title>Editar Área do Direito</h1>
 <form (ngSubmit)="updateAreasDoDireito()" #formDir="ngForm" [formGroup]="updateAreaDoDireitoForm">
     <div mat-dialog-content>
-        <mat-form-field>
-            <p class="sm-text">Área do Direito</p>
-            <input name="AREA_DO_DIREITO" formControlName="AREA_DO_DIREITO" matInput required [(ngModel)]="updateData.value">
-        </mat-form-field>
+        <div>
+            <mat-form-field>
+                <p class="sm-text">Área do Direito</p>
+                <input name="AREA_DO_DIREITO" formControlName="AREA_DO_DIREITO" matInput required
+                    [(ngModel)]="updateData.value">
+            </mat-form-field>
+        </div>
 
         <div mat-raised-action class="float-right" style="padding: 0 16px;">
             <button mat-button mat-dialog-close class="mr-2">Fechar</button>
-            <button mat-button class="btn-default" [disabled]="!updateAreaDoDireitoForm.valid"
-            [ngClass]="{'btn-disabled': !updateAreaDoDireitoForm.valid}">Salvar</button>
+            <button mat-button type="submit" class="btn-default" [disabled]="!updateAreaDoDireitoForm.valid"
+                [ngClass]="{'btn-disabled': !updateAreaDoDireitoForm.valid}">Salvar</button>
         </div>
     </div>
 </form>
