@@ -1,11 +1,8 @@
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
 using SistemaJuridicoWebAPI.Data;
 using SistemaJuridicoWebAPI.Models;
-using System.Diagnostics;
 
 namespace SistemaJuridicoWebAPI.Controllers
 {
@@ -31,7 +28,8 @@ namespace SistemaJuridicoWebAPI.Controllers
                 && (searchParameters.AREA_DO_DIREITO == null || x.AREA_DO_DIREITO == searchParameters.AREA_DO_DIREITO)
                 && (searchParameters.PATRONO_RESPONSAVEL == null || x.PATRONO_RESPONSAVEL == searchParameters.PATRONO_RESPONSAVEL)
                 && (searchParameters.STATUS == null || x.STATUS == searchParameters.STATUS)
-                && (searchParameters.TIPO_DE_ACAO == null || x.TIPO_DE_ACAO == searchParameters.TIPO_DE_ACAO))
+                && (searchParameters.TIPO_DE_ACAO == null || x.TIPO_DE_ACAO == searchParameters.TIPO_DE_ACAO)
+                && (searchParameters.PARTE_CONTRARIA == null || EF.Functions.Like(x.PARTE_CONTRARIA, "%" + searchParameters.PARTE_CONTRARIA + "%")))
        .ToList();
 
       return Ok(queryResult);
@@ -701,6 +699,11 @@ namespace SistemaJuridicoWebAPI.Controllers
       parteContrariaRequest.ID = Guid.NewGuid();
 
       await _sistemaJuridicoDbContext.PROCESSO_PARTE_CONTRARIA.AddAsync(parteContrariaRequest);
+
+      var processoParteContraria = await _sistemaJuridicoDbContext.PROCESSO
+          .FirstOrDefaultAsync(x => x.ID_PROCESSO.ToString().Equals(parteContrariaRequest.ID_PROCESSO));
+
+      processoParteContraria.PARTE_CONTRARIA = parteContrariaRequest.NOME;
 
       await _sistemaJuridicoDbContext.SaveChangesAsync();
 
