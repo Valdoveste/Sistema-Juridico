@@ -92,6 +92,7 @@ export class ProcessCreateComponent implements OnInit {
     FASE: '',
     DATA_DISTRIBUICAO: '',
     DATA_CITACAO: '',
+    PARTE_CONTRARIA: '',
     PATRONO_RESPONSAVEL: '',
     PATRONOS_ANTERIORES: '',
     TEXTO_DO_OBJETO: '',
@@ -141,10 +142,10 @@ export class ProcessCreateComponent implements OnInit {
               next: (response) => {
                 this.router.navigate(['/painel-processos', 'processo-detalhes', response.ID_PROCESSO])
               },
-              error: (err: HttpErrorResponse) => console.log("An error occurred when trying to create an oposing party. Error: " + err)
+              error: (err: HttpErrorResponse) => console.log("An error occurred when trying to create the oposing party. Error: " + err)
             })
           },
-          error: (err: HttpErrorResponse) => console.log("An error occurred when trying to create an process. Error: " + err)
+          error: (err: HttpErrorResponse) => console.log("An error occurred when trying to create the process. Error: " + err)
         });
     }
   }

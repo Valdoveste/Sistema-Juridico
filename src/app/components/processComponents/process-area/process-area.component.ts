@@ -42,6 +42,7 @@ export class ProcessAreaComponent implements OnInit {
     FASE: '',
     DATA_DISTRIBUICAO: '',
     DATA_CITACAO: '',
+    PARTE_CONTRARIA: '',
     PATRONO_RESPONSAVEL: '',
     PATRONOS_ANTERIORES: '',
     TEXTO_DO_OBJETO: '',

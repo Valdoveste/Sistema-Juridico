@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -26,6 +25,7 @@ namespace SistemaJuridicoWebAPI.Models
     public string FASE { get; set; }
     public string DATA_DISTRIBUICAO { get; set; }
     public string DATA_CITACAO { get; set; }
+    public string PARTE_CONTRARIA { get; set; }
     public string PATRONO_RESPONSAVEL { get; set; }
     public string PATRONOS_ANTERIORES { get; set; }
     public string TEXTO_DO_OBJETO { get; set; }
