@@ -15,6 +15,7 @@ export interface Processo {
   FASE: string | String;
   DATA_DISTRIBUICAO: string;
   DATA_CITACAO: string;
+  PARTE_CONTRARIA: string | String;
   PATRONO_RESPONSAVEL: string | String;
   PATRONOS_ANTERIORES: string | String;
   TEXTO_DO_OBJETO: string | String;
