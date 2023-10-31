@@ -4,12 +4,12 @@
         <mat-form-field>
             <span class="sm-text">Valor acordo</span>
             <input style="width: 40% !important" class="mb-2 row-item" name="VALOR_ACORDO"
-                formControlName="VALOR_ACORDO" mask="separator.2" thousandSeparator="." matInput required
+                formControlName="VALOR_ACORDO" mask="separator.2" thousandSeparator="." prefix="R$ " matInput required
                 [(ngModel)]="createAcordoRequest.VALOR_ACORDO">
         </mat-form-field>
 
         <mat-form-field>
-            <span class="sm-text">Tentativas de acordo</span>
+            <span class="sm-text">Condições do acordo</span>
             <textarea style="height: 400px;" class="w-100" rows="10" name="CONDICOES_TENTATIVA_DE_ACORDO"
                 formControlName="CONDICOES_TENTATIVA_DE_ACORDO" matInput required
                 [(ngModel)]="createAcordoRequest.CONDICOES_TENTATIVA_DE_ACORDO"></textarea>
