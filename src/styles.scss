@@ -113,6 +113,10 @@ div[class*="--div"] {
   color: rgb(101, 109, 118) !important;
 }
 
+.mat-mdc-form-field-infix {
+  display: grid !important;
+}
+
 .input {
   height: 35px;
   padding: 0 15px;
