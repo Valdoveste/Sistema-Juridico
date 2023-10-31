@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TipoDeAndamentoService } from 'src/app/services/tipo-de-andamento.service';
 
@@ -20,9 +21,7 @@ export class DialogDeleteTipoDeAndamentoComponent {
         next: (response) => {
           this.dialogRef.close(true);
         },
-        error: (response) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       });
   }
 }
