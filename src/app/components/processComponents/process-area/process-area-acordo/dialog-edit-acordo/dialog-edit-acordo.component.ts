@@ -1,8 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { AcordoService } from 'src/app/services/acordo.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProcessoAcordo } from 'src/app/models/PROCESSO_ACORDO.model';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-edit-acordo',
@@ -29,21 +30,32 @@ export class DialogEditAcordoComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateAcordoForm = new FormGroup({
-      ACORDO: new FormControl("", [Validators.required])
+      VALOR_ACORDO: new FormControl('', [Validators.required]),
+      CONDICOES_TENTATIVA_DE_ACORDO: new FormControl('', [Validators.required])
     });
+
+    this.loadProcessoAcorod();
+  }
+
+  loadProcessoAcorod() {
+    this.acordoService.getProcessoAcordo(this.updateData.id)
+      .subscribe({
+        next: (response) => {
+          this.updateAcordoRequest = response;
+        },
+        error: (err: HttpErrorResponse) => console.log(err)
+      })
   }
 
   updateAcordo() {
     if (this.updateAcordoForm.valid) {
-      this.updateAcordoRequest.CONDICOES_TENTATIVA_DE_ACORDO = this.updateData.value;
       this.acordoService.updateAcordo(this.updateData.id, this.updateAcordoRequest)
         .subscribe({
           next: (response) => {
             this.dialogRef.close(true);
           },
-          error: (response) => {
-            console.log(response)
-          }
+
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
     return;
