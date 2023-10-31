@@ -79,6 +79,9 @@ namespace SistemaJuridicoWebAPI.Migrations
                     b.Property<string>("PAIS")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PARTE_CONTRARIA")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PATRONOS_ANTERIORES")
                         .HasColumnType("nvarchar(max)");
 
