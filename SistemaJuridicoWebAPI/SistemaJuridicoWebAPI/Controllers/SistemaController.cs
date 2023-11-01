@@ -58,6 +58,12 @@ namespace SistemaJuridicoWebAPI.Controllers
     [HttpPost("add-processo")]
     public async Task<IActionResult> AddProcess([FromBody] PROCESSO processoRequest)
     {
+      var processoNumero = await _sistemaJuridicoDbContext.PROCESSO
+        .FirstOrDefaultAsync(x => x.NUMERO_PROCESSO.Equals(processoRequest.NUMERO_PROCESSO));
+
+      if (processoNumero != null)
+        return BadRequest("Já existe um processo com este número.");
+
       TimeZoneInfo brazilTimeZone = TimeZoneInfo.FindSystemTimeZoneById("America/Sao_Paulo");
 
       processoRequest.DATA_CADASTRO_PROCESSO = TimeZoneInfo.ConvertTime(DateTime.Now, brazilTimeZone).ToString("dd/MM/yyyyTHH:mm:ss");
@@ -696,6 +702,14 @@ namespace SistemaJuridicoWebAPI.Controllers
     [HttpPost("add-parte-contraria")]
     public async Task<IActionResult> AddParteContraria([FromBody] PROCESSO_PARTE_CONTRARIA parteContrariaRequest)
     {
+
+      var parteContrariaIdPessoa = await _sistemaJuridicoDbContext.PROCESSO_PARTE_CONTRARIA
+         .Where(x => x.CPF.Equals(parteContrariaRequest.CPF) || x.CNPJ.Equals(parteContrariaRequest.CNPJ))
+         .FirstOrDefaultAsync();
+
+      if (parteContrariaIdPessoa != null)
+        return BadRequest("Já existe uma parte contraria com este CPF/CNPJ.");
+
       parteContrariaRequest.ID = Guid.NewGuid();
 
       await _sistemaJuridicoDbContext.PROCESSO_PARTE_CONTRARIA.AddAsync(parteContrariaRequest);
