@@ -73,6 +73,28 @@ export class ProcessCreateComponent implements OnInit {
 
   swapTabs(componentName: string): void {
     this.componentName = componentName;
+    this.createParteContrariaRequest = {
+      ID: '',
+      ID_PROCESSO: '',
+      PF_PJ: 0,
+      NOME: '',
+      NOME_FANTASIA: '',
+      CPF: '',
+      CNPJ: '',
+      RG: '',
+      ENDERECO: '',
+      CEP: '',
+      NUMERO: 0,
+      COMPLEMENTO: '',
+      ESTADO: '',
+      PAIS: '',
+      CIDADE: '',
+      OBSERVACAO: '',
+      CARGO: '',
+      DATA_ADMISSAO: '',
+      DATA_DEMISSAO: '',
+      ULTIMO_SALARIO: 0,
+    };
   }
 
   createProcessRequest: Processo = {
