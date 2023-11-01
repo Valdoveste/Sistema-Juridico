@@ -69,7 +69,7 @@ export class DialogEditParteContriaComponent implements OnInit {
       ULTIMO_SALARIO: new FormControl(0,),
     });
 
-    this.ParteContrariaService.getParteContraria(this.updateData.id).subscribe({
+    this.ParteContrariaService.getProcessoParteContraria(this.updateData.id).subscribe({
       next: (response) => {
         this.updateParteContriaRequest = response;
         this.componentName = response.PF_PJ;

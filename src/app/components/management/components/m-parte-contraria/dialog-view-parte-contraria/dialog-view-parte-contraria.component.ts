@@ -47,7 +47,7 @@ export class DialogViewParteContrariaComponent {
   }
 
   ngOnInit(): void {
-    this.ParteContrariaService.getParteContraria(this.updateData.id).subscribe({
+    this.ParteContrariaService.getProcessoParteContraria(this.updateData.id).subscribe({
       next: (response) => {
         this.viewParteContriaRequest = response;
         this.componentName = response.PF_PJ;
