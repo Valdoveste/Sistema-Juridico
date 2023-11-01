@@ -99,7 +99,6 @@ export class ProcessCreateComponent implements OnInit {
   }
 
   createProcessRequest: Processo = {
-    // ID_PROCESSO: '',
     NUMERO_PROCESSO: '',
     STATUS: '',
     TIPO_DE_ACAO: '',
@@ -291,9 +290,6 @@ export class ProcessCreateComponent implements OnInit {
     });
 
     this.createProcessForm = new FormGroup({
-      // ID_PROCESSO: new FormControl(''),
-      // EMPRESA_CNPJ: new FormControl('', [Validators.required]),
-      // PATRONOS_ANTERIORES: new FormControl(''),
       NUMERO_PROCESSO: new FormControl('', [Validators.required]),
       STATUS: new FormControl('', [Validators.required]),
       EMPRESA: new FormControl('', [Validators.required]),
