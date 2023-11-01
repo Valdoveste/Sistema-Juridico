@@ -73,6 +73,7 @@ export class ProcessCreateComponent implements OnInit {
 
   swapTabs(componentName: string): void {
     this.componentName = componentName;
+
     this.createParteContrariaRequest = {
       ID: '',
       ID_PROCESSO: '',
@@ -178,9 +179,7 @@ export class ProcessCreateComponent implements OnInit {
         next: (ambitos: any) => {
           this.ambitos = ambitos;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.EmpresasService.getAllEmpresas()
@@ -188,20 +187,15 @@ export class ProcessCreateComponent implements OnInit {
         next: (response: any) => {
           this.empresas = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
-
 
     this.AreaDoDireito.getAllAreaDoDireito()
       .subscribe({
         next: (response: any) => {
           this.areasDoDireito = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.CondicoesTentaivaAcordo.getAllCondicoesTentativaAcordo()
@@ -209,9 +203,7 @@ export class ProcessCreateComponent implements OnInit {
         next: (response: any) => {
           this.condicoesTentativaAcordo = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.Fase.getAllFase()
@@ -219,9 +211,7 @@ export class ProcessCreateComponent implements OnInit {
         next: (response: any) => {
           this.fases = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.ForoTribunalOrgao.getAllForoTribunalOrgao()
@@ -229,9 +219,7 @@ export class ProcessCreateComponent implements OnInit {
         next: (response: any) => {
           this.foroTribunalOrgaos = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.MotivoDoEncerramento.getAllMotivoDoEncerramento()
@@ -239,9 +227,7 @@ export class ProcessCreateComponent implements OnInit {
         next: (response: any) => {
           this.motivosDoEncerramento = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.Status.getAllStatus()
@@ -249,9 +235,7 @@ export class ProcessCreateComponent implements OnInit {
         next: (response: any) => {
           this.status = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.TipoDeAcao.getAllTipoDeAcao()
@@ -259,9 +243,7 @@ export class ProcessCreateComponent implements OnInit {
         next: (response: any) => {
           this.tiposDeAcoes = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.Vara.getAllVara()
@@ -269,9 +251,7 @@ export class ProcessCreateComponent implements OnInit {
         next: (response: any) => {
           this.varas = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.PatronoResponsavel.getAllPatronoResponsavel()
@@ -279,9 +259,7 @@ export class ProcessCreateComponent implements OnInit {
         next: (response: any) => {
           this.patronoResponsavel = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.createParteContrariaFisicalForm = new FormGroup({
