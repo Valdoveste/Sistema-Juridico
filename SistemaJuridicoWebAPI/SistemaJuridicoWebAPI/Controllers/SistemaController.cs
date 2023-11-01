@@ -703,17 +703,22 @@ namespace SistemaJuridicoWebAPI.Controllers
       var processoParteContraria = await _sistemaJuridicoDbContext.PROCESSO
           .FirstOrDefaultAsync(x => x.ID_PROCESSO.ToString().Equals(parteContrariaRequest.ID_PROCESSO));
 
-      processoParteContraria.PARTE_CONTRARIA = parteContrariaRequest.NOME;
+      if (processoParteContraria != null)
+        processoParteContraria.PARTE_CONTRARIA = parteContrariaRequest.NOME;
 
       await _sistemaJuridicoDbContext.SaveChangesAsync();
 
       return Ok(parteContrariaRequest);
     }
 
-    [HttpGet("parte-contraria/{id}")]
-    public async Task<IActionResult> GetParteContraria([FromRoute] Guid id)
+    [HttpGet("parte-contraria/{personID}")]
+    public async Task<IActionResult> GetParteContrariaPerson([FromRoute] string personID)
     {
-      var parteContraria = await _sistemaJuridicoDbContext.PROCESSO_PARTE_CONTRARIA.FirstOrDefaultAsync(x => x.ID.Equals(id));
+
+      var parteContraria = await _sistemaJuridicoDbContext.PROCESSO_PARTE_CONTRARIA
+        .Where(x => x.CPF.Equals(personID) || x.CNPJ.Equals(personID))
+        .FirstOrDefaultAsync();
+
       if (parteContraria == null)
         return NotFound();
 
