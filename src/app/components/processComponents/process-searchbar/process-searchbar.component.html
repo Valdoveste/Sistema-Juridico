@@ -11,24 +11,12 @@
         [(ngModel)]="this.searchQueryParameters.fase">
         <option value="">Selecionar Fase</option>
         <option *ngFor="let fase of fases" value="{{fase.FASE}}">{{fase.FASE}}</option>
-        <!-- 
-          1ª instância
-          2ª Instância
-          3ª Instância
-          Instância Extraordinária
-          Não se aplica 
-        -->
       </select>
 
       <select name="STATUS" class="process-searchbar__list__item--input-select"
         [(ngModel)]="this.searchQueryParameters.status">
         <option value="">Selecionar Status</option>
         <option *ngFor="let status of status" value="{{status.STATUS}}">{{status.STATUS}}</option>
-        <!-- 
-          Ativo
-          Baixa Provisória
-          Encerrado 
-        -->
       </select>
     </li>
 
@@ -38,13 +26,6 @@
         <option value="" selected>Selecionar Aréa do direito</option>
         <option *ngFor="let areaDoDireito of areasDoDireito" value="{{areaDoDireito.AREA_DO_DIREITO}}">
           {{areaDoDireito.AREA_DO_DIREITO}}</option>
-        <!-- 
-          Cível 	
-          Consumidor 	
-          Societário 	
-          Trabalhista 	
-          Tributário 
-         -->
       </select>
 
       <select name="TIPO_DE_ACAO" class="process-searchbar__list__item--input-select"
@@ -52,29 +33,6 @@
         <option value="" selected>Selecionar Tipo de ação</option>
         <option *ngFor="let tipoDeAcao of tiposDeAcoes" value="{{tipoDeAcao.TIPO_DE_ACAO}}">{{tipoDeAcao.TIPO_DE_ACAO}}
         </option>
-        <!--
-          Ação de consignação em pagamento 	
-          Processo Administrativo 	
-          Execução de título extrajudicial 	
-          Ação de dissolução parcial de sociedade 	
-          Ação Rescisória 	
-          Cumprimento de sentença 	
-          Embargos de terceiro 	
-          Ação de obrigação de fazer 	
-          Procedimento Administrativo 	
-          Tutela provisória 	
-          Ação de Cobrança 	
-          Ação de repetição de indébito 	
-          Ação de exigir contas 	
-          Ação coletiva 	
-          Execução de título judicial 	
-          Ação monitória 	
-          Ação Indenizatória 	
-          Notificação extrajudicial 	
-          Reclamação Trabalhista 	
-          Cumprimento provisório de sentença 	
-          Ação de Regresso 
-        -->
       </select>
     </li>
 
@@ -84,16 +42,6 @@
         <option value="" selected>Selecionar Patrono responsavel</option>
         <option *ngFor="let patronoResponsavel of patronoResponsavel"
           value="{{patronoResponsavel.PATRONO_RESPONSAVEL}}">{{patronoResponsavel.PATRONO_RESPONSAVEL}}</option>
-        <!-- 
-        Use Comunicações e Telecomunicações LTDA. (29.568.281/0001-65)
-        Use Telecomunicações LTDA. (09.540.627/0001-00)
-        Use Service LTDA. (39.512.524/0001-05)
-        Tascom Telecomunicações LTDA. (14.691.508/0001-98)
-        TGN - BR Internet LTDA. (29.339.296/0001-51)
-        L & A Patrimonial LTDA. (28.122.328/0001-08)
-        André Jorge Lima Dantas Costa
-        Leila Cláudia Farias de Jesus Costa 
-        -->
       </select>
 
       <input type="text" placeholder="Parte Contrária" name="PARTE_CONTRARIA"

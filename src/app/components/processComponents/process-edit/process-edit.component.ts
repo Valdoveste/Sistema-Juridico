@@ -133,9 +133,7 @@ export class ProcessEditComponent implements OnInit {
         next: (ambitos: any) => {
           this.ambitos = ambitos;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.EmpresasService.getAllEmpresas()
@@ -143,9 +141,7 @@ export class ProcessEditComponent implements OnInit {
         next: (response: any) => {
           this.empresas = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
 
@@ -154,9 +150,7 @@ export class ProcessEditComponent implements OnInit {
         next: (response: any) => {
           this.areasDoDireito = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.CondicoesTentaivaAcordo.getAllCondicoesTentativaAcordo()
@@ -164,9 +158,7 @@ export class ProcessEditComponent implements OnInit {
         next: (response: any) => {
           this.condicoesTentativaAcordo = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.Fase.getAllFase()
@@ -174,9 +166,7 @@ export class ProcessEditComponent implements OnInit {
         next: (response: any) => {
           this.fases = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.ForoTribunalOrgao.getAllForoTribunalOrgao()
@@ -184,9 +174,7 @@ export class ProcessEditComponent implements OnInit {
         next: (response: any) => {
           this.foroTribunalOrgaos = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.MotivoDoEncerramento.getAllMotivoDoEncerramento()
@@ -194,9 +182,7 @@ export class ProcessEditComponent implements OnInit {
         next: (response: any) => {
           this.motivosDoEncerramento = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.Status.getAllStatus()
@@ -204,9 +190,7 @@ export class ProcessEditComponent implements OnInit {
         next: (response: any) => {
           this.status = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.TipoDeAcao.getAllTipoDeAcao()
@@ -214,9 +198,7 @@ export class ProcessEditComponent implements OnInit {
         next: (response: any) => {
           this.tiposDeAcoes = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.Vara.getAllVara()
@@ -224,9 +206,7 @@ export class ProcessEditComponent implements OnInit {
         next: (response: any) => {
           this.varas = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.PatronoResponsavel.getAllPatronoResponsavel()
@@ -234,9 +214,7 @@ export class ProcessEditComponent implements OnInit {
         next: (response: any) => {
           this.patronoResponsaveis = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.route.paramMap.subscribe({
@@ -254,8 +232,6 @@ export class ProcessEditComponent implements OnInit {
     });
 
     this.updateProcessForm = new FormGroup({
-      // ID_PROCESSO: new FormControl(''),
-      // EMPRESA_CNPJ: new FormControl('', [Validators.required]),
       NUMERO_PROCESSO: new FormControl('', [Validators.required]),
       EMPRESA: new FormControl('', [Validators.required]),
       STATUS: new FormControl('', [Validators.required]),
