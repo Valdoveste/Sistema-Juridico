@@ -1,0 +1,52 @@
+        <!-- 
+          1ª instância
+          2ª Instância
+          3ª Instância
+          Instância Extraordinária
+          Não se aplica 
+        -->
+                <!-- 
+          Ativo
+          Baixa Provisória
+          Encerrado 
+        -->
+                <!-- 
+          Cível 	
+          Consumidor 	
+          Societário 	
+          Trabalhista 	
+          Tributário 
+         -->
+                   <!--
+            Ação de consignação em pagamento 	
+            Processo Administrativo 	
+            Execução de título extrajudicial 	
+            Ação de dissolução parcial de sociedade 	
+            Ação Rescisória 	
+            Cumprimento de sentença 	
+            Embargos de terceiro 	
+            Ação de obrigação de fazer 	
+            Procedimento Administrativo 	
+            Tutela provisória 	
+            Ação de Cobrança 	
+            Ação de repetição de indébito 	
+            Ação de exigir contas 	
+            Ação coletiva 	
+            Execução de título judicial 	
+            Ação monitória 	
+            Ação Indenizatória 	
+            Notificação extrajudicial 	
+            Reclamação Trabalhista 	
+            Cumprimento provisório de sentença 	
+            Ação de Regresso 
+          -->
+                  <!-- 
+        Use Comunicações e Telecomunicações LTDA. (29.568.281/0001-65)
+        Use Telecomunicações LTDA. (09.540.627/0001-00)
+        Use Service LTDA. (39.512.524/0001-05)
+        Tascom Telecomunicações LTDA. (14.691.508/0001-98)
+        TGN - BR Internet LTDA. (29.339.296/0001-51)
+        L & A Patrimonial LTDA. (28.122.328/0001-08)
+        André Jorge Lima Dantas Costa
+        Leila Cláudia Farias de Jesus Costa 
+        -->
