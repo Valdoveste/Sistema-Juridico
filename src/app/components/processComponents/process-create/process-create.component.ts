@@ -322,4 +322,28 @@ export class ProcessCreateComponent implements OnInit {
       MOTIVO_BAIXA_PROVISORIA: new FormControl('')
     });
   }
+
+  searchFisicalPerson() {
+    if (this.createParteContrariaFisicalForm.get('CPF')?.valid) {
+      this.ParteContrariaService.getParteContrariaPerson(this.createParteContrariaRequest.CPF)
+        .subscribe({
+          next: (response) => {
+            this.createParteContrariaRequest = response;
+          },
+          error: (err: HttpErrorResponse) => console.log(err)
+        })
+    }
+  }
+
+  searchLegalPerson() {
+    if (this.createParteContrariaLegalForm.get('CNPJ')?.valid) {
+      this.ParteContrariaService.getParteContrariaPerson(this.createParteContrariaRequest.CNPJ)
+        .subscribe({
+          next: (response) => {
+            this.createParteContrariaRequest = response;
+          },
+          error: (err: HttpErrorResponse) => console.log(err)
+        })
+    }
+  }
 }
