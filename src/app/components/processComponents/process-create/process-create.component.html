@@ -211,32 +211,36 @@
 
               <div class="process-create-processdetails__list__item mt-2">
                 <p class="sm-text">Valor do Pedido</p>
-                <input required type="number" name="VALOR_DO_PEDIDO" formControlName="VALOR_DO_PEDIDO"
-                  [(ngModel)]="createProcessRequest.VALOR_DO_PEDIDO" class="process-create-processdetails w-auto">
+                <input required name="VALOR_DO_PEDIDO" formControlName="VALOR_DO_PEDIDO" mask="separator.2"
+                  thousandSeparator="." prefix="R$ " [(ngModel)]="createProcessRequest.VALOR_DO_PEDIDO"
+                  class="process-create-processdetails w-auto">
               </div>
 
               <div class="process-create-processdetails__list__item--row">
                 <span>
                   <p class="sm-text">Valor 1ª Instância</p>
-                  <input required type="number" name="VALOR_INSTANCIA1" formControlName="VALOR_INSTANCIA1"
-                    [(ngModel)]="createProcessRequest.VALOR_INSTANCIA1" class="process-create-processdetails">
+                  <input required name="VALOR_INSTANCIA1" formControlName="VALOR_INSTANCIA1" mask="separator.2"
+                    thousandSeparator="." prefix="R$ " [(ngModel)]="createProcessRequest.VALOR_INSTANCIA1"
+                    class="process-create-processdetails">
                 </span>
 
                 <span class="mx-1">
                   <p class="sm-text">Valor 2ª Instância</p>
-                  <input required type="number" name="VALOR_INSTANCIA2" formControlName="VALOR_INSTANCIA2"
-                    [(ngModel)]="createProcessRequest.VALOR_INSTANCIA2" class="process-create-processdetails">
+                  <input required name="VALOR_INSTANCIA2" formControlName="VALOR_INSTANCIA2" mask="separator.2"
+                    thousandSeparator="." prefix="R$ " [(ngModel)]="createProcessRequest.VALOR_INSTANCIA2"
+                    class="process-create-processdetails">
                 </span>
 
                 <span style="margin-right: .25rem;">
                   <p class="sm-text">Valor 3ª Instância</p>
-                  <input required type="number" name="VALOR_INSTANCIA3" formControlName="VALOR_INSTANCIA3"
-                    [(ngModel)]="createProcessRequest.VALOR_INSTANCIA3" class="process-create-processdetails">
+                  <input required name="VALOR_INSTANCIA3" formControlName="VALOR_INSTANCIA3" mask="separator.2"
+                    thousandSeparator="." prefix="R$ " [(ngModel)]="createProcessRequest.VALOR_INSTANCIA3"
+                    class="process-create-processdetails">
                 </span>
                 <span>
                   <p class="sm-text">Valor Instância Extraordinária</p>
-                  <input required type="number" name="VALOR_INSTANCIA_EXTRAORDINARIA"
-                    formControlName="VALOR_INSTANCIA_EXTRAORDINARIA"
+                  <input required name="VALOR_INSTANCIA_EXTRAORDINARIA" mask="separator.2" thousandSeparator="."
+                    prefix="R$ " formControlName="VALOR_INSTANCIA_EXTRAORDINARIA"
                     [(ngModel)]="createProcessRequest.VALOR_INSTANCIA_EXTRAORDINARIA"
                     class="process-create-processdetails">
                 </span>
