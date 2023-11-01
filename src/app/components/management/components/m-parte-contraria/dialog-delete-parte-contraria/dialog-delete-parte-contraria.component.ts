@@ -46,7 +46,7 @@ export class DialogDeleteParteContrariaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.ParteContrariaService.getParteContraria(this.removeData.id).subscribe({
+    this.ParteContrariaService.getProcessoParteContraria(this.removeData.id).subscribe({
       next: (response) => {
         this.deleteParteContriaRequest = response;
         this.componentName = response.PF_PJ;
