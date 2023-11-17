@@ -18,7 +18,7 @@ Solução ainda desenvolvimento, busca otimizar o setor jurídico empresarial, a
 <hr>
 <br>
 
-## Painel de Processos
+## Telas do projeto
 ![image](https://github.com/Valdoveste/Sistema-Juridico/assets/62577482/9420c796-af5f-4dc1-aa9f-fcd976f7bedb)
 
 
