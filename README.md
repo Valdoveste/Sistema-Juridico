@@ -5,7 +5,7 @@ Solução ainda desenvolvimento, busca otimizar o setor jurídico empresarial, a
 
 <br><br>
 
-<h3 align="center">
+<h3 align="center">Sistema Jurídico
   
  <br><br>
  
@@ -14,7 +14,7 @@ Solução ainda desenvolvimento, busca otimizar o setor jurídico empresarial, a
 ![Bootstrap](https://img.shields.io/badge/-Bootstrap-05122A?style=flat&logo=bootstrap)&nbsp;
 ![MySQL](https://img.shields.io/badge/-MySQL-05122A?style=flat&logo=mysql)&nbsp;
 ![Material UI](https://img.shields.io/badge/-MaterialUI-05122A?style=flat&logo=materialui)&nbsp;
-
+</h3>
 <hr>
 <br>
 
