@@ -9,7 +9,7 @@ Solução ainda desenvolvimento, busca otimizar o setor jurídico empresarial, a
   
  <br><br>
  
-![Angular](https://img.shields.io/badge/-Angular-05122A?style=flat&logo=angular)&nbsp;
+![Angular](https://img.shields.io/badge/-Angular15-05122A?style=flat&logo=angular)&nbsp;
 ![ASP .Net Core](https://img.shields.io/badge/-Asp.NetCore-05122A?style=flat&logo=dotnet)&nbsp;
 ![Bootstrap](https://img.shields.io/badge/-Bootstrap-05122A?style=flat&logo=bootstrap)&nbsp;
 ![MySQL](https://img.shields.io/badge/-MySQL-05122A?style=flat&logo=mysql)&nbsp;
