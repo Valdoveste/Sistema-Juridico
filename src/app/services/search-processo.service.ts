@@ -1,8 +1,8 @@
-import { HttpClient, HttpErrorResponse, HttpParams, HttpParamsOptions } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment.development';
-import { Processo } from '../models/PROCESSO.model';
 import { Subject } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Processo } from '../models/PROCESSO.model';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
