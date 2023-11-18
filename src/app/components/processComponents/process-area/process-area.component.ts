@@ -19,6 +19,10 @@ export class ProcessAreaComponent implements OnInit {
     private processoService: ProcessoService,
   ) { }
 
+  ID_PROCESSO!: string | String;
+  STATUS!: string | String;
+  MOTIVO_ENCERRAMENTO!: string | String;
+  MOTIVO_BAIXA_PROVISORIA!: string | String;
   componentName: string = '';
 
   swapTabs(componentName: string): void {
