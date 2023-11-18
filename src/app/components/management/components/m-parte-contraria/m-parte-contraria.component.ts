@@ -15,9 +15,12 @@ import { DialogViewParteContrariaComponent } from './dialog-view-parte-contraria
 })
 export class MParteContrariaComponent implements OnInit {
   constructor(
+    @Inject(MAT_DIALOG_DATA) public linkableData: { numero_processo?: string | String },
     public dialog: MatDialog,
-    protected ParteContrariaService: ParteContrariaService
-  ) { }
+    protected ParteContrariaService: ParteContrariaService,
+  ) {
+    if (!linkableData.numero_processo) { linkableData.numero_processo = '' }
+  }
 
   partecontrarias: ProcessoParteContraria[] = [];
 
