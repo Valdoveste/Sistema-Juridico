@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProcessAreaComponent } from '../process-area.component';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Processo } from 'src/app/models/PROCESSO.model';
+import { Processo } from '../../../../models/PROCESSO.model';
 
 @Component({
   selector: 'app-process-area-details',

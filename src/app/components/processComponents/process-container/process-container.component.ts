@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Processo } from 'src/app/models/PROCESSO.model';
-import { ProcessoService } from 'src/app/services/processo.service';
-import { SearchProcessoService } from 'src/app/services/search-processo.service';
+import { ProcessoService } from '../../../services/processo.service';
+import { SearchProcessoService } from '../../../services/search-processo.service';
 
 @Component({
   selector: 'app-process-container',
