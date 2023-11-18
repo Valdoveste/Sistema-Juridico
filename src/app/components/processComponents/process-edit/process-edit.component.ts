@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Event, ParamMap, Router } from '@angular/router';
 import { Processo } from 'src/app/models/PROCESSO.model';
 import { ProcessoService } from 'src/app/services/processo.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -30,6 +30,9 @@ import { TipoDeAcaoService } from 'src/app/services/tipo-de-acao.service';
 import { VaraService } from 'src/app/services/vara.service';
 import { AmbitoService } from 'src/app/services/ambito.service';
 import { EmpresasService } from 'src/app/services/empresas.service';
+import { DialogViewStatusProcessComponent } from '../process-area/dialog-view-status-process/dialog-view-status-process.component';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogChangeStatusProcessComponent } from '../process-area/dialog-change-status-process/dialog-change-status-process.component';
 
 @Component({
   selector: 'app-process-edit',
@@ -45,6 +48,7 @@ export class ProcessEditComponent implements OnInit {
 
   constructor(
     private router: Router,
+    public dialog: MatDialog,
     private route: ActivatedRoute,
     private ProcessoService: ProcessoService,
     private PatronoAnteriorService: PatronoAnteriorService,
@@ -76,8 +80,7 @@ export class ProcessEditComponent implements OnInit {
 
   updateProcessForm!: FormGroup;
 
-  @Input() updateProcessRequest: Processo = {
-    ID_PROCESSO: '',
+  updateProcessRequest: Processo = {
     NUMERO_PROCESSO: '',
     STATUS: '',
     TIPO_DE_ACAO: '',
@@ -131,7 +134,7 @@ export class ProcessEditComponent implements OnInit {
   ngOnInit(): void {
     this.AmbitoService.getAllAmbito()
       .subscribe({
-        next: (ambitos: any) => {
+        next: (ambitos: ProcessoAmbito[]) => {
           this.ambitos = ambitos;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -139,7 +142,7 @@ export class ProcessEditComponent implements OnInit {
 
     this.EmpresasService.getAllEmpresas()
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoEmpresas[]) => {
           this.empresas = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -148,7 +151,7 @@ export class ProcessEditComponent implements OnInit {
 
     this.AreaDoDireito.getAllAreaDoDireito()
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoAreaDoDireito[]) => {
           this.areasDoDireito = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -156,7 +159,7 @@ export class ProcessEditComponent implements OnInit {
 
     this.CondicoesTentaivaAcordo.getAllCondicoesTentativaAcordo()
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoCondicoesTentativaAcordo[]) => {
           this.condicoesTentativaAcordo = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -164,7 +167,7 @@ export class ProcessEditComponent implements OnInit {
 
     this.Fase.getAllFase()
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoFase[]) => {
           this.fases = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -172,7 +175,7 @@ export class ProcessEditComponent implements OnInit {
 
     this.ForoTribunalOrgao.getAllForoTribunalOrgao()
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoForoTribunalOrgao[]) => {
           this.foroTribunalOrgaos = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -180,7 +183,7 @@ export class ProcessEditComponent implements OnInit {
 
     this.MotivoDoEncerramento.getAllMotivoDoEncerramento()
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoMotivoDoEncerramento[]) => {
           this.motivosDoEncerramento = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -188,7 +191,7 @@ export class ProcessEditComponent implements OnInit {
 
     this.Status.getAllStatus()
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoStatus[]) => {
           this.status = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -196,7 +199,7 @@ export class ProcessEditComponent implements OnInit {
 
     this.TipoDeAcao.getAllTipoDeAcao()
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoTipoDeAcao[]) => {
           this.tiposDeAcoes = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -204,7 +207,7 @@ export class ProcessEditComponent implements OnInit {
 
     this.Vara.getAllVara()
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoVara[]) => {
           this.varas = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -212,7 +215,7 @@ export class ProcessEditComponent implements OnInit {
 
     this.PatronoResponsavel.getAllPatronoResponsavel()
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoPatronoResponsavel[]) => {
           this.patronoResponsaveis = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -263,16 +266,22 @@ export class ProcessEditComponent implements OnInit {
     });
   }
 
+  statusCheck(status: Event | String) {
+    if (status == 'Encerrado' || status == 'Baixa Provisória') {
+      this.openDialogChangeStatus('250ms', '100ms', status, this.updateProcessRequest.ID_PROCESSO!)
+    }
+  }
+
   updateProcess() {
     this.route.paramMap.subscribe({
-      next: (params) => {
-        const id_processo = params.get('id')
+      next: (params: ParamMap) => {
+        const id_processo: string | null = params.get('id')
         if (id_processo) {
           this.ProcessoService.updateProcess(id_processo, this.updateProcessRequest)
             .subscribe({
               next: (response: any) => {
-                this.addLogAfterUpdateProcess(id_processo, response.modifiedInformation);
-                this.addPatronoResponsavelOld(id_processo, response.modifiedInformation);
+                this.addLogAfterUpdateProcess(id_processo, response.processModifiedInformation);
+                this.addPatronoResponsavelOld(id_processo, response.processModifiedInformation);
               },
               error: (err: HttpErrorResponse) => { console.log(err) }
             });
@@ -295,6 +304,7 @@ export class ProcessEditComponent implements OnInit {
         }
       }
     }
+
     this.router.navigate(['/painel-processos', 'processo-detalhes', id_processo]);
   }
 
@@ -312,5 +322,14 @@ export class ProcessEditComponent implements OnInit {
         break;
       }
     }
+  }
+
+  openDialogChangeStatus(enterAnimationDuration: string, exitAnimationDuration: string, status: string | String, id_processo: string | String): void {
+    const dialogRefAdd = this.dialog.open(DialogChangeStatusProcessComponent, {
+      width: '750px',
+      data: { status: status, id_processo: id_processo },
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
   }
 }
