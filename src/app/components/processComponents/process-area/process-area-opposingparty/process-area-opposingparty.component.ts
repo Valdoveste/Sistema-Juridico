@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ParteContrariaService } from 'src/app/services/parte-contraria.service';
 import { ProcessoParteContraria } from 'src/app/models/PROCESSO_PARTE_CONTRARIA.model';
 import { ActivatedRoute } from '@angular/router';
+import { ProcessoService } from 'src/app/services/processo.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-process-area-opposingparty',
@@ -13,10 +15,8 @@ export class ProcessAreaOpposingpartyComponent implements OnInit {
   constructor(
     private ParteContrariaService: ParteContrariaService,
     private route: ActivatedRoute,
+    private ProcessoService: ProcessoService
   ) { }
-
-  idProcesso: any;
-
   componentName: number = 0;
 
   swapTabs(componentName: number): void {
@@ -47,24 +47,31 @@ export class ProcessAreaOpposingpartyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.swapTabs(this.viewParteContriaRequest.PF_PJ)
+    this.swapTabs(this.viewParteContriaRequest.PF_PJ);
 
     this.route.paramMap.subscribe({
       next: (params) => {
-        this.idProcesso = params.get('id');
-        this.ParteContrariaService.getProcessoParteContraria(this.idProcesso)
-          .subscribe({
+        const ID_PROCESSO = params.get('id');
+        if (ID_PROCESSO)
+          this.ProcessoService.getProcess(ID_PROCESSO!).subscribe({
             next: (response) => {
-              this.viewParteContriaRequest = response;
-              console.log(response)
-              this.componentName = response.PF_PJ;
+              this.loadParteContraria(response.ID_PARTE_CONTRARIA);
             },
-            error: (response) => {
-              console.log(response)
-            }
+            error: (err: HttpErrorResponse) => console.log(err)
           })
       }
     })
 
+  }
+
+  loadParteContraria(ID_PARTE_CONTRARIA: any) {
+    this.ParteContrariaService.getProcessoParteContraria(ID_PARTE_CONTRARIA)
+      .subscribe({
+        next: (response) => {
+          this.viewParteContriaRequest = response;
+          this.componentName = response.PF_PJ;
+        },
+        error: (err: HttpErrorResponse) => console.log(err)
+      })
   }
 }
