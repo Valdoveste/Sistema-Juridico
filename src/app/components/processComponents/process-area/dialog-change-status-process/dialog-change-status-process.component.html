@@ -1,0 +1,48 @@
+<ng-container [ngSwitch]="componentName">
+    <ng-template ngSwitchDefault="'Encerrado'">
+        <h1 mat-dialog-title>Encerrar Processo</h1>
+        <form (ngSubmit)="updateStatusEncerramento()" #formDir="ngForm" [formGroup]="updateProcessoEncerramentoForm">
+            <div mat-dialog-content>
+                <div>
+                    <mat-form-field class="w-100">
+                        <span class="sm-text">Motivo de encerramento</span>
+                        <textarea style="height: 400px;" class="w-100 border" rows="10" name="MOTIVO_ENCERRAMENTO"
+                            formControlName="MOTIVO_ENCERRAMENTO" matInput required
+                            [(ngModel)]="updateProcessRequest.MOTIVO_ENCERRAMENTO"></textarea>
+                    </mat-form-field>
+                </div>
+
+                <div mat-raised-action class="float-right" style="padding: 0 16px;">
+                    <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+                    <button mat-button type="submit" class="btn-default"
+                        [disabled]="!updateProcessoEncerramentoForm.valid"
+                        [ngClass]="{'btn-disabled': !updateProcessoEncerramentoForm.valid}">Salvar</button>
+                </div>
+            </div>
+        </form>
+    </ng-template>
+
+    <ng-template [ngSwitchCase]="'Baixa Provisória'">
+        <h1 mat-dialog-title>Baixa Provisória Processo</h1>
+        <form (ngSubmit)="updateStatusBaixaProvisoria()" #formDir="ngForm"
+            [formGroup]="updateProcessoBaixaProvisoriaForm">
+            <div mat-dialog-content>
+                <div>
+                    <mat-form-field class="w-100">
+                        <span class="sm-text">Motivo de baixa provisória</span>
+                        <textarea style="height: 400px;" class="w-100 border" rows="10" name="MOTIVO_BAIXA_PROVISORIA"
+                            formControlName="MOTIVO_BAIXA_PROVISORIA" matInput required
+                            [(ngModel)]="updateProcessRequest.MOTIVO_BAIXA_PROVISORIA"></textarea>
+                    </mat-form-field>
+                </div>
+
+                <div mat-raised-action class="float-right" style="padding: 0 16px;">
+                    <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+                    <button mat-button type="submit" class="btn-default"
+                        [disabled]="!updateProcessoBaixaProvisoriaForm.valid"
+                        [ngClass]="{'btn-disabled': !updateProcessoBaixaProvisoriaForm.valid}">Salvar</button>
+                </div>
+            </div>
+        </form>
+    </ng-template>
+</ng-container>
