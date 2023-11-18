@@ -22,13 +22,7 @@ export class ProcessContainerComponent implements OnInit {
       .subscribe(
         response => {
           this.processos = [];
-
-          this.processos = response.sort((a, b) => {
-            const dateA: any = new Date(a.DATA_CADASTRO_PROCESSO);
-            const dateB: any = new Date(b.DATA_CADASTRO_PROCESSO);
-
-            return dateB - dateA;
-          });
+          this.processos = response
         }
       )
 
@@ -36,13 +30,7 @@ export class ProcessContainerComponent implements OnInit {
       .subscribe(
         response => {
           this.processos = [];
-
-          this.processos = response.sort((a, b) => {
-            const dateA: any = new Date(a.DATA_CADASTRO_PROCESSO);
-            const dateB: any = new Date(b.DATA_CADASTRO_PROCESSO);
-
-            return dateB - dateA;
-          });
+          this.processos = response;
         }
       )
   }
