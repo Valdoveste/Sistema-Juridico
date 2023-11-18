@@ -15,6 +15,16 @@ import { SearchProcessoService } from 'src/app/services/search-processo.service'
 import { ProcessoService } from 'src/app/services/processo.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
+export interface SearchQueryParameters {
+  numero_processo: string;
+  fase: string;
+  area_do_direito: string;
+  patrono_responsavel: string;
+  status: string;
+  tipo_de_acao: string;
+  parte_contraria: string;
+}
+
 @Component({
   selector: 'app-process-searchbar',
   templateUrl: './process-searchbar.component.html',
@@ -29,7 +39,7 @@ export class ProcessSearchbarComponent implements OnInit {
   patronoResponsavel: ProcessoPatronoResponsavel[] = [];
   processo: Processo[] = [];
 
-  searchQueryParameters = {
+  searchQueryParameters: SearchQueryParameters = {
     numero_processo: '',
     fase: '',
     area_do_direito: '',
@@ -51,8 +61,8 @@ export class ProcessSearchbarComponent implements OnInit {
     private processoService: ProcessoService
   ) { }
 
-  areAllAttributesEmpty(obj: any): boolean {
-    return Object.values(this.searchQueryParameters).every(value => value === '')
+  areAllAttributesEmpty(searchInterface: SearchQueryParameters): boolean {
+    return Object.values(searchInterface).every(value => value === '')
   }
 
   search() {
@@ -70,7 +80,7 @@ export class ProcessSearchbarComponent implements OnInit {
   ngOnInit(): void {
     this.Status.getAllStatus()
       .subscribe({
-        next: (status: any) => {
+        next: (status: ProcessoStatus[]) => {
           this.status = status;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -78,7 +88,7 @@ export class ProcessSearchbarComponent implements OnInit {
 
     this.Fase.getAllFase()
       .subscribe({
-        next: (fases: any) => {
+        next: (fases: ProcessoFase[]) => {
           this.fases = fases;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -86,7 +96,7 @@ export class ProcessSearchbarComponent implements OnInit {
 
     this.AreaDoDireito.getAllAreaDoDireito()
       .subscribe({
-        next: (areasDoDireito: any) => {
+        next: (areasDoDireito: ProcessoAreaDoDireito[]) => {
           this.areasDoDireito = areasDoDireito;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -94,7 +104,7 @@ export class ProcessSearchbarComponent implements OnInit {
 
     this.TipoDeAcao.getAllTipoDeAcao()
       .subscribe({
-        next: (tiposDeAcoes: any) => {
+        next: (tiposDeAcoes: ProcessoTipoDeAcao[]) => {
           this.tiposDeAcoes = tiposDeAcoes;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -102,7 +112,7 @@ export class ProcessSearchbarComponent implements OnInit {
 
     this.PatronoResponsavel.getAllPatronoResponsavel()
       .subscribe({
-        next: (patronoResponsavel: any) => {
+        next: (patronoResponsavel: ProcessoPatronoResponsavel[]) => {
           this.patronoResponsavel = patronoResponsavel;
         },
         error: (err: HttpErrorResponse) => console.log(err)
