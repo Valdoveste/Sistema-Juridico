@@ -34,22 +34,39 @@
               <span class="caret"></span>
               <ul class="dropdown-menu">
                 <li class="dropdown-submenu">
-                  <a class="test dropdown-item" tabindex="-1"
-                    [routerLink]="['/editar-processo', processoDetalhes.ID_PROCESSO]">
+                  <a class="dropdown-item" tabindex="-1" [routerLink]="['/editar-processo', ID_PROCESSO]">
                     Editar Processo
                     <span class="caret"></span>
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a class="test dropdown-item" tabindex="-1"
-                    [routerLink]="['/log-alteracoes', processoDetalhes.ID_PROCESSO]">
+                  <a class="dropdown-item" tabindex="-1" [routerLink]="['/log-alteracoes', ID_PROCESSO]">
                     Log de Alterações
                     <span class="caret"></span>
                   </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="test dropdown-item" tabindex="-1" (click)="openDialogCloseProcess('250ms', '100ms')">
-                    Encerrar Processo
-                    <span class="caret"></span>
-                  </a>
+                  <ng-container *ngIf="STATUS != 'Encerrado'">
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" tabindex="-1"
+                      (click)="openDialogChangeStatus('250ms', '100ms', ID_PROCESSO, 'Encerrado')">
+                      Encerrar Processo
+                      <span class="caret"></span>
+                    </a>
+                  </ng-container>
+                  <ng-container *ngIf="STATUS == 'Encerrado'">
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" tabindex="-1"
+                      (click)="openDialogViewStatus('250ms', '100ms', ID_PROCESSO, STATUS)">
+                      Motivo Encerramento
+                      <span class="caret"></span>
+                    </a>
+                  </ng-container>
+                  <ng-container *ngIf="STATUS == 'Baixa Provisória'">
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" tabindex="-1"
+                      (click)="openDialogViewStatus('250ms', '100ms', ID_PROCESSO, STATUS)">
+                      Motivo Baixa Provisória
+                      <span class="caret"></span>
+                    </a>
+                  </ng-container>
                 </li>
               </ul>
             </button>
