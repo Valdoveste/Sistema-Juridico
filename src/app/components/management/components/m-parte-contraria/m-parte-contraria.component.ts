@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ProcessoParteContraria } from 'src/app/models/PROCESSO_PARTE_CONTRARIA.model';
 import { ParteContrariaService } from 'src/app/services/parte-contraria.service';
-
 import { DialogAddParteContrariaComponent } from './dialog-add-parte-contraria/dialog-add-parte-contraria.component';
 import { DialogDeleteParteContrariaComponent } from './dialog-delete-parte-contraria/dialog-delete-parte-contraria.component';
 import { DialogEditParteContriaComponent } from './dialog-edit-parte-contraria/dialog-edit-parte-contraria.component';
 import { DialogViewParteContrariaComponent } from './dialog-view-parte-contraria/dialog-view-parte-contraria.component';
+import { DialogLinkParteContrariaComponent } from './dialog-link-parte-contraria/dialog-link-parte-contraria.component';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-m-parte-contraria',
@@ -82,4 +82,15 @@ export class MParteContrariaComponent implements OnInit {
 
     dialogRefEdit.afterClosed().subscribe(result => { result ? this.loadParteContrarias() : null; })
   }
+
+  openDialogLink(enterAnimationDuration: string, exitAnimationDuration: string, id_parte_contraria: String | undefined): void {
+    const dialogRefEdit = this.dialog.open(DialogLinkParteContrariaComponent, {
+      width: '350px',
+      data: { id: id_parte_contraria, numero_processo: this.linkableData.numero_processo },
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+
+  }
 }
+
