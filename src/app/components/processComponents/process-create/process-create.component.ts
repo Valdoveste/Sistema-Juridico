@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ProcessoService } from '../../../services/processo.service';
-import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AmbitoService } from 'src/app/services/ambito.service';
 import { ProcessoAmbito } from 'src/app/models/PROCESSO_AMBITO.model';
@@ -25,9 +25,9 @@ import { PatronoResponsavelService } from 'src/app/services/patrono-responsavel.
 import { Processo } from 'src/app/models/PROCESSO.model';
 import { ProcessoEmpresas } from 'src/app/models/PROCESSO_EMPRESAS.model';
 import { EmpresasService } from 'src/app/services/empresas.service';
-import { ProcessoParteContraria } from 'src/app/models/PROCESSO_PARTE_CONTRARIA.model';
-import { ParteContrariaService } from 'src/app/services/parte-contraria.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MParteContrariaComponent } from '../../management/components/m-parte-contraria/m-parte-contraria.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-process-create',
@@ -37,6 +37,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 export class ProcessCreateComponent implements OnInit {
   constructor(
+    public dialog: MatDialog,
     private router: Router,
     private ProcessoService: ProcessoService,
     private AmbitoService: AmbitoService,
@@ -50,12 +51,9 @@ export class ProcessCreateComponent implements OnInit {
     private Vara: VaraService,
     private PatronoResponsavel: PatronoResponsavelService,
     private EmpresasService: EmpresasService,
-    private ParteContrariaService: ParteContrariaService
   ) { }
 
   createProcessForm!: FormGroup;
-  createParteContrariaFisicalForm!: FormGroup;
-  createParteContrariaLegalForm!: FormGroup;
 
   ambitos: ProcessoAmbito[] = [];
   areasDoDireito: ProcessoAreaDoDireito[] = [];
@@ -73,29 +71,6 @@ export class ProcessCreateComponent implements OnInit {
 
   swapTabs(componentName: string): void {
     this.componentName = componentName;
-
-    this.createParteContrariaRequest = {
-      ID: '',
-      ID_PROCESSO: '',
-      PF_PJ: 0,
-      NOME: '',
-      NOME_FANTASIA: '',
-      CPF: '',
-      CNPJ: '',
-      RG: '',
-      ENDERECO: '',
-      CEP: '',
-      NUMERO: 0,
-      COMPLEMENTO: '',
-      ESTADO: '',
-      PAIS: '',
-      CIDADE: '',
-      OBSERVACAO: '',
-      CARGO: '',
-      DATA_ADMISSAO: '',
-      DATA_DEMISSAO: '',
-      ULTIMO_SALARIO: 0,
-    };
   }
 
   createProcessRequest: Processo = {
@@ -130,47 +105,28 @@ export class ProcessCreateComponent implements OnInit {
     MOTIVO_ENCERRAMENTO: '',
     MOTIVO_BAIXA_PROVISORIA: ''
   }
-
-  createParteContrariaRequest: ProcessoParteContraria = {
-    ID: '',
-    ID_PROCESSO: '',
-    PF_PJ: 0,
-    NOME: '',
-    NOME_FANTASIA: '',
-    CPF: '',
-    CNPJ: '',
-    RG: '',
-    ENDERECO: '',
-    CEP: '',
-    NUMERO: 0,
-    COMPLEMENTO: '',
-    ESTADO: '',
-    PAIS: '',
-    CIDADE: '',
-    OBSERVACAO: '',
-    CARGO: '',
-    DATA_ADMISSAO: '',
-    DATA_DEMISSAO: '',
-    ULTIMO_SALARIO: 0,
-  }
-
   createProcess() {
-    if (this.createProcessForm.valid
-      && (this.createParteContrariaFisicalForm.valid || this.createParteContrariaLegalForm.valid)) {
+    if (this.createProcessForm.valid) {
       this.ProcessoService.createProcess(this.createProcessRequest)
         .subscribe({
           next: (response) => {
-            this.createParteContrariaRequest.ID_PROCESSO = response.ID_PROCESSO!;
-            this.ParteContrariaService.createParteContraria(this.createParteContrariaRequest).subscribe({
-              next: (response) => {
-                this.router.navigate(['/painel-processos', 'processo-detalhes', response.ID_PROCESSO])
-              },
-              error: (err: HttpErrorResponse) => console.log("An error occurred when trying to create the oposing party. Error: " + err)
-            })
+            let id = response.ID_PROCESSO
+            this.openDialogManagement('250ms', '100ms')
+            this.router.navigate(['/painel-processos', 'processo-detalhes', response.ID_PROCESSO])
           },
-          error: (err: HttpErrorResponse) => console.log("An error occurred when trying to create the process. Error: " + err)
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
+  }
+
+  openDialogManagement(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    const dialogRefManagement = this.dialog.open(MParteContrariaComponent, {
+      data: { numero_processo: this.createProcessRequest.NUMERO_PROCESSO },
+      enterAnimationDuration,
+      exitAnimationDuration
+    });
+
+    dialogRefManagement.afterClosed().subscribe({});
   }
 
   ngOnInit(): void {
@@ -262,34 +218,6 @@ export class ProcessCreateComponent implements OnInit {
         error: (err: HttpErrorResponse) => console.log(err)
       })
 
-    this.createParteContrariaFisicalForm = new FormGroup({
-      NOME: new FormControl('', [Validators.required]),
-      CPF: new FormControl('', [Validators.required]),
-      RG: new FormControl('', [Validators.required]),
-      ENDERECO: new FormControl('', [Validators.required]),
-      CEP: new FormControl('', [Validators.required]),
-      NUMERO: new FormControl('', [Validators.required]),
-      COMPLEMENTO: new FormControl('', [Validators.required]),
-      CARGO: new FormControl('', [Validators.required]),
-      ULTIMO_SALARIO: new FormControl('', [Validators.required]),
-      DATA_ADMISSAO: new FormControl(Date, [Validators.required]),
-      DATA_DEMISSAO: new FormControl(Date, [Validators.required]),
-    });
-
-    this.createParteContrariaLegalForm = new FormGroup({
-      NOME: new FormControl('', [Validators.required]),
-      NOME_FANTASIA: new FormControl('', [Validators.required]),
-      CNPJ: new FormControl('', [Validators.required]),
-      ENDERECO: new FormControl('', [Validators.required]),
-      CEP: new FormControl('', [Validators.required]),
-      NUMERO: new FormControl(0, [Validators.required]),
-      COMPLEMENTO: new FormControl('', [Validators.required]),
-      ESTADO: new FormControl('', [Validators.required]),
-      CIDADE: new FormControl('', [Validators.required]),
-      PAIS: new FormControl('', [Validators.required]),
-      OBSERVACAO: new FormControl('', [Validators.required]),
-    });
-
     this.createProcessForm = new FormGroup({
       NUMERO_PROCESSO: new FormControl('', [Validators.required]),
       STATUS: new FormControl('', [Validators.required]),
@@ -318,29 +246,5 @@ export class ProcessCreateComponent implements OnInit {
       MOTIVO_ENCERRAMENTO: new FormControl(''),
       MOTIVO_BAIXA_PROVISORIA: new FormControl('')
     });
-  }
-
-  searchFisicalPerson() {
-    if (this.createParteContrariaFisicalForm.get('CPF')?.valid) {
-      this.ParteContrariaService.getParteContrariaPerson(this.createParteContrariaRequest.CPF)
-        .subscribe({
-          next: (response) => {
-            this.createParteContrariaRequest = response;
-          },
-          error: (err: HttpErrorResponse) => console.log(err)
-        })
-    }
-  }
-
-  searchLegalPerson() {
-    if (this.createParteContrariaLegalForm.get('CNPJ')?.valid) {
-      this.ParteContrariaService.getParteContrariaPerson(this.createParteContrariaRequest.CNPJ)
-        .subscribe({
-          next: (response) => {
-            this.createParteContrariaRequest = response;
-          },
-          error: (err: HttpErrorResponse) => console.log(err)
-        })
-    }
   }
 }
