@@ -23,6 +23,11 @@ export class ProcessAreaComponent implements OnInit {
   STATUS!: string | String;
   MOTIVO_ENCERRAMENTO!: string | String;
   MOTIVO_BAIXA_PROVISORIA!: string | String;
+              this.STATUS = response.STATUS;
+              if (response.STATUS == 'Encerrado' || response.STATUS == 'Baixa Provisória') {
+                this.MOTIVO_BAIXA_PROVISORIA = response.MOTIVO_BAIXA_PROVISORIA;
+                this.MOTIVO_ENCERRAMENTO = response.MOTIVO_ENCERRAMENTO;
+              }
   componentName: string = '';
 
   swapTabs(componentName: string): void {
