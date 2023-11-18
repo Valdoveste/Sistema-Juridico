@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProcessoParteContraria } from 'src/app/models/PROCESSO_PARTE_CONTRARIA.model';
@@ -50,7 +51,8 @@ export class DialogDeleteParteContrariaComponent implements OnInit {
       next: (response) => {
         this.deleteParteContriaRequest = response;
         this.componentName = response.PF_PJ;
-      }
+      },
+      error: (err: HttpErrorResponse) => console.log(err)
     })
   }
 

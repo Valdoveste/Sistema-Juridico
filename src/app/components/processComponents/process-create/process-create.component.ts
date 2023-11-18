@@ -115,6 +115,7 @@ export class ProcessCreateComponent implements OnInit {
     DATA_DISTRIBUICAO: '',
     DATA_CITACAO: '',
     PARTE_CONTRARIA: '',
+    ID_PARTE_CONTRARIA: '',
     PATRONO_RESPONSAVEL: '',
     PATRONOS_ANTERIORES: '',
     TEXTO_DO_OBJETO: '',
