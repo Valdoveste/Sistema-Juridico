@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Processo } from '../models/PROCESSO.model';
@@ -39,4 +39,36 @@ export class ProcessoService {
   updateProcess(id_process: String, updateProcessRequest: Processo): Observable<Processo> {
     return this.http.put<Processo>(this.baseApiUrl + '/api/Sistema/update-processo/' + id_process, updateProcessRequest)
   }
+
+  updateProcessEncerramento(id_process: String, motivoEncerramento: string | String): Observable<Processo> {
+
+    const requestEncerramentoBody = {
+      MOTIVO_ENCERRAMENTO: motivoEncerramento
+    };
+
+    return this.http.put<Processo>(this.baseApiUrl + '/api/Sistema/update-encerramento/processo/' + id_process,
+      requestEncerramentoBody,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      })
+  }
+
+
+  updateProcessBaixaProvisoria(id_process: String, motivoBaixaProvisoria: string | String): Observable<Processo> {
+
+    const requestBaixaProvisoriaBody = {
+      MOTIVO_BAIXA_PROVISORIA: motivoBaixaProvisoria
+    };
+
+    return this.http.put<Processo>(this.baseApiUrl + '/api/Sistema/update-baixa-provisoria/processo/' + id_process,
+      requestBaixaProvisoriaBody,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      })
+  }
+
 }
