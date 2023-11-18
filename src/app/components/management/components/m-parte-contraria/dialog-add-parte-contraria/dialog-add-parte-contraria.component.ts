@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ProcessoParteContraria } from 'src/app/models/PROCESSO_PARTE_CONTRARIA.model';
 import { ParteContrariaService } from 'src/app/services/parte-contraria.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-dialog-add-parte-contraria',
@@ -11,6 +12,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class DialogAddParteContrariaComponent implements OnInit {
   constructor(
+    @Inject(MAT_DIALOG_DATA) public addData: any,
     private ParteContrariaService: ParteContrariaService,
     public dialogRef: MatDialogRef<DialogAddParteContrariaComponent>
   ) { }
@@ -19,6 +21,28 @@ export class DialogAddParteContrariaComponent implements OnInit {
 
   swapTabs(componentName: string): void {
     this.componentName = componentName;
+
+    this.createParteContrariaRequest = {
+      ID_PROCESSO: '',
+      PF_PJ: 0,
+      NOME: '',
+      NOME_FANTASIA: '',
+      CPF: '',
+      CNPJ: '',
+      RG: '',
+      ENDERECO: '',
+      CEP: '',
+      NUMERO: 0,
+      COMPLEMENTO: '',
+      ESTADO: '',
+      PAIS: '',
+      CIDADE: '',
+      OBSERVACAO: '',
+      CARGO: '',
+      DATA_ADMISSAO: '',
+      DATA_DEMISSAO: '',
+      ULTIMO_SALARIO: 0,
+    };
   }
 
   createParteContrariaFisicalForm!: FormGroup;
@@ -26,7 +50,6 @@ export class DialogAddParteContrariaComponent implements OnInit {
   createParteContrariaLegalForm!: FormGroup;
 
   createParteContrariaRequest: ProcessoParteContraria = {
-    ID: '',
     ID_PROCESSO: '',
     PF_PJ: 0,
     NOME: '',
@@ -88,9 +111,7 @@ export class DialogAddParteContrariaComponent implements OnInit {
           next: (response) => {
             this.dialogRef.close(true);
           },
-          error: (response) => {
-            console.log(response)
-          }
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
     return;
@@ -104,9 +125,7 @@ export class DialogAddParteContrariaComponent implements OnInit {
           next: (response) => {
             this.dialogRef.close(true);
           },
-          error: (response) => {
-            console.log(response)
-          }
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
     return;
