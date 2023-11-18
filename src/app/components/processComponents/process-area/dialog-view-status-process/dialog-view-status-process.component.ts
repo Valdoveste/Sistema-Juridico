@@ -1,8 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Processo } from 'src/app/models/PROCESSO.model';
-import { ProcessoService } from 'src/app/services/processo.service';
+import { Processo } from '../../../../models/PROCESSO.model';
+import { ProcessoService } from '../../../../services/processo.service';
 
 @Component({
   selector: 'app-dialog-view-status-process',
