@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ProcessoLogAlteracoesService } from 'src/app/services/processo-log-alteracoes.service';
 import { ProcessoLogAlteracoes } from 'src/app/models/PROCESSO_LOG_ALTERACOES.model';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Processo } from '../../../models/PROCESSO.model';
-import { ProcessoService } from '../../../services/processo.service';
+import { Processo } from 'src/app/models/PROCESSO.model';
+import { ProcessoService } from 'src/app/services/processo.service';
 
 @Component({
   selector: 'app-process-alterations-log',
