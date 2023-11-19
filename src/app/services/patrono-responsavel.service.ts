@@ -17,17 +17,21 @@ export class PatronoResponsavelService {
     return this.http.get<ProcessoPatronoResponsavel[]>(this.baseApiUrl + '/api/Sistema/patrono-responsavel');
   }
 
+  getPatronoResponsavel(id_patrono_responsavel: string): Observable<ProcessoPatronoResponsavel> {
+    return this.http.get<ProcessoPatronoResponsavel>(this.baseApiUrl + '/api/Sistema/patrono-responsavel/' + id_patrono_responsavel);
+  }
+
   createPatronoResponsavel(createPatronoResponsavelRequest: ProcessoPatronoResponsavel): Observable<ProcessoPatronoResponsavel> {
     delete createPatronoResponsavelRequest.ID;
     return this.http.post<ProcessoPatronoResponsavel>(this.baseApiUrl + '/api/Sistema/add-patrono-responsavel', createPatronoResponsavelRequest);
   }
 
-  updatePatronoResponsavel(id: string, updatePatronoResponsavelRequest: ProcessoPatronoResponsavel): Observable<ProcessoPatronoResponsavel> {
-    updatePatronoResponsavelRequest.ID = id;
-    return this.http.put<ProcessoPatronoResponsavel>(this.baseApiUrl + '/api/Sistema/update-patrono-responsavel/' + id, updatePatronoResponsavelRequest);
+  updatePatronoResponsavel(id_patrono_responsavel: string, updatePatronoResponsavelRequest: ProcessoPatronoResponsavel): Observable<ProcessoPatronoResponsavel> {
+    updatePatronoResponsavelRequest.ID = id_patrono_responsavel;
+    return this.http.put<ProcessoPatronoResponsavel>(this.baseApiUrl + '/api/Sistema/update-patrono-responsavel/' + id_patrono_responsavel, updatePatronoResponsavelRequest);
   }
 
-  deletePatronoResponsavel(id: string): Observable<ProcessoPatronoResponsavel> {
-    return this.http.delete<ProcessoPatronoResponsavel>(this.baseApiUrl + '/api/Sistema/delete-patrono-responsavel/' + id);
+  deletePatronoResponsavel(id_patrono_responsavel: string): Observable<ProcessoPatronoResponsavel> {
+    return this.http.delete<ProcessoPatronoResponsavel>(this.baseApiUrl + '/api/Sistema/delete-patrono-responsavel/' + id_patrono_responsavel);
   }
 }

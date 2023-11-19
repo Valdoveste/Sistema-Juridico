@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TipoDeAndamentoService } from 'src/app/services/tipo-de-andamento.service';
@@ -37,11 +38,8 @@ export class DialogEditTipoDeAndamentoComponent implements OnInit {
           next: (response) => {
             this.dialogRef.close(true);
           },
-          error: (response) => {
-            console.log(response)
-          }
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
-    return;
   }
 }

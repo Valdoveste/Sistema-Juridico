@@ -8,6 +8,8 @@ import { DialogEditAcordoComponent } from './dialog-edit-acordo/dialog-edit-acor
 
 import { ActivatedRoute } from '@angular/router';
 import { DialogViewAcordoComponent } from './dialog-view-acordo/dialog-view-acordo.component';
+import { DialogDeleteAcordoComponent } from './dialog-delete-acordo/dialog-delete-acordo.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-process-area-acordo',
@@ -16,8 +18,8 @@ import { DialogViewAcordoComponent } from './dialog-view-acordo/dialog-view-acor
 })
 export class ProcessAreaAcordoComponent implements OnInit {
   constructor(
-    private route: ActivatedRoute,
     public dialog: MatDialog,
+    private route: ActivatedRoute,
     private acordoService: AcordoService
   ) { }
 
@@ -38,14 +40,10 @@ export class ProcessAreaAcordoComponent implements OnInit {
             next: (response) => {
               this.acordos = response.sort((a, b) => b.DATA_ACORDO.localeCompare(a.DATA_ACORDO));
             },
-            error: (response) => {
-              console.log(response)
-            }
+            error: (err: HttpErrorResponse) => console.log(err)
           })
       },
-      error: (response) => {
-        console.log(response)
-      }
+      error: (err: HttpErrorResponse) => console.log(err)
     })
   }
 
@@ -60,10 +58,21 @@ export class ProcessAreaAcordoComponent implements OnInit {
     dialogRefAdd.afterClosed().subscribe(result => { result ? this.loadAcordos() : null; })
   }
 
-  openDialogView(enterAnimationDuration: string, exitAnimationDuration: string, event: Event, id: String | undefined): void {
-    const dialogRefEdit = this.dialog.open(DialogViewAcordoComponent, {
+  openDialogView(enterAnimationDuration: string, exitAnimationDuration: string, id: String | undefined): void {
+    const dialogRefView = this.dialog.open(DialogViewAcordoComponent, {
       width: '750px',
-      data: { value: (event.currentTarget as HTMLElement).previousElementSibling?.innerHTML, id: id },
+      data: { id: id },
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+
+    dialogRefView.afterClosed().subscribe(result => { result ? this.loadAcordos() : null; })
+  }
+
+  openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string, id: String | undefined): void {
+    const dialogRefEdit = this.dialog.open(DialogEditAcordoComponent, {
+      width: '750px',
+      data: { id: id },
       enterAnimationDuration,
       exitAnimationDuration,
     });
@@ -71,14 +80,14 @@ export class ProcessAreaAcordoComponent implements OnInit {
     dialogRefEdit.afterClosed().subscribe(result => { result ? this.loadAcordos() : null; })
   }
 
-  openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string, event: Event, id: String | undefined): void {
-    const dialogRefEdit = this.dialog.open(DialogEditAcordoComponent, {
+  openDialogDelete(enterAnimationDuration: string, exitAnimationDuration: string, id: String | undefined): void {
+    const dialogRefDelete = this.dialog.open(DialogDeleteAcordoComponent, {
       width: '750px',
-      data: { value: (event.currentTarget as HTMLElement).previousElementSibling?.innerHTML, id: id },
+      data: { id: id },
       enterAnimationDuration,
       exitAnimationDuration,
     });
 
-    dialogRefEdit.afterClosed().subscribe(result => { result ? this.loadAcordos() : null; })
+    dialogRefDelete.afterClosed().subscribe(result => { result ? this.loadAcordos() : null; })
   }
 }

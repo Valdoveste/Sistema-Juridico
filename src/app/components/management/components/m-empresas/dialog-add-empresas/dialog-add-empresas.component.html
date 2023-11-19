@@ -1,17 +1,21 @@
 <h1 mat-dialog-title>Criar Empresas</h1>
 <form (ngSubmit)="createEmpresas()" #formDir="ngForm" [formGroup]="createEmpresasForm">
     <div mat-dialog-content>
-        <mat-form-field class="mb-2">
-            <p class="sm-text">Empresa</p>
-            <input name="EMPRESA" formControlName="EMPRESA" matInput required
-                [(ngModel)]="createEmpresasRequest.EMPRESA">
-        </mat-form-field>
+        <div>
+            <mat-form-field class="mb-2">
+                <p class="sm-text">Empresa</p>
+                <input name="EMPRESA" formControlName="EMPRESA" matInput required
+                    [(ngModel)]="createEmpresasRequest.EMPRESA">
+            </mat-form-field>
+        </div>
 
-        <mat-form-field>
-            <p class="sm-text">CPF/CNPJ</p>
-            <input name="CPF_CNPJ" formControlName="CPF_CNPJ" matInput mask="000.000.000-00 || 00.000.000/0000-00"
-                [(ngModel)]="createEmpresasRequest.CPF_CNPJ">
-        </mat-form-field>
+        <div>
+            <mat-form-field>
+                <p class="sm-text">CPF/CNPJ</p>
+                <input name="CPF_CNPJ" formControlName="CPF_CNPJ" matInput mask="000.000.000-00 || 00.000.000/0000-00"
+                    [(ngModel)]="createEmpresasRequest.CPF_CNPJ">
+            </mat-form-field>
+        </div>
 
         <div mat-raised-action class="float-right" style="padding: 0 16px;">
             <button mat-button mat-dialog-close class="mr-2">Fechar</button>

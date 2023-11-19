@@ -1,14 +1,27 @@
-<h1 mat-dialog-title>Editar Acordo</h1>
+<h1 mat-dialog-title>Adicionar Acordo</h1>
 <form (ngSubmit)="updateAcordo()" #formDir="ngForm" [formGroup]="updateAcordoForm">
     <div mat-dialog-content>
-        <mat-form-field>
-            <input name="ACORDO" formControlName="ACORDO" matInput mask="separator.2" thousandSeparator="." required
-                [(ngModel)]="updateData.value">
-        </mat-form-field>
+        <div>
+            <mat-form-field>
+                <span class="sm-text">Valor acordo</span>
+                <input style="width: 40% !important" class="mb-2" name="VALOR_ACORDO" formControlName="VALOR_ACORDO"
+                    matInput required [(ngModel)]="updateAcordoRequest.VALOR_ACORDO">
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <span class=" sm-text">Condições do acordo</span>
+                <textarea style="height: 400px;" class="w-100" rows="10" formControlName="CONDICOES_TENTATIVA_DE_ACORDO"
+                    name="CONDICOES_TENTATIVA_DE_ACORDO" matInput required
+                    [(ngModel)]="updateAcordoRequest.CONDICOES_TENTATIVA_DE_ACORDO"></textarea>
+            </mat-form-field>
+        </div>
 
         <div mat-raised-action class="float-right" style="padding: 0 16px;">
             <button mat-button mat-dialog-close class="mr-2">Fechar</button>
-            <button mat-button>Salvar</button>
+            <button mat-button type="submit" class="btn-default" [disabled]="!updateAcordoForm.valid"
+                [ngClass]="{'btn-disabled': !updateAcordoForm.valid}">Salvar</button>
         </div>
     </div>
 </form>

@@ -1,14 +1,16 @@
 <h1 mat-dialog-title>Editar Âmbito</h1>
 <form (ngSubmit)="updateAmbitos()" #formDir="ngForm" [formGroup]="updateAmbitoForm">
     <div mat-dialog-content>
-        <mat-form-field>
-            <p class="sm-text">Âmbito</p>
-            <input name="AMBITO" formControlName="AMBITO" matInput required [(ngModel)]="updateData.value">
-        </mat-form-field>
+        <div>
+            <mat-form-field>
+                <p class="sm-text">Âmbito</p>
+                <input name="AMBITO" formControlName="AMBITO" matInput required [(ngModel)]="updateData.value">
+            </mat-form-field>
+        </div>
 
         <div mat-raised-action class="float-right" style="padding: 0 16px;">
             <button mat-button mat-dialog-close class="mr-2">Fechar</button>
-            <button mat-button class="btn-default" [disabled]="!updateAmbitoForm.valid"
+            <button mat-button class="btn-default" type="submit" [disabled]="!updateAmbitoForm.valid"
                 [ngClass]="{'btn-disabled': !updateAmbitoForm.valid}">Salvar</button>
         </div>
     </div>

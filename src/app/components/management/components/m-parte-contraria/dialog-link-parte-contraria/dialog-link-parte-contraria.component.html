@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Vincular Parte Contraria</h1>
+<form (ngSubmit)="linkParteContraria()" #formDir="ngForm" [formGroup]="linkParteContrariaForm">
+    <div mat-dialog-content>
+        <div>
+            <mat-form-field>
+                <p class="sm-text">Número Processo</p>
+                <input name="NUMERO_PROCESSO" formControlName="NUMERO_PROCESSO" matInput required
+                    [(ngModel)]="NUMERO_PROCESSO">
+            </mat-form-field>
+        </div>
+
+        <div mat-raised-action class="float-right" style="padding: 0 16px;">
+            <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+            <button mat-button type="submit" class="btn-default" [disabled]="!linkParteContrariaForm.valid"
+                [ngClass]="{'btn-disabled': !linkParteContrariaForm.valid}">Vincular</button>
+        </div>
+    </div>
+</form>

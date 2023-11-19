@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { ProcessoPatronosAnteriors } from '../models/PROCESSO_PATRONOS_ANTERIORES.model';
+import { ProcessoPatronosAnteriors } from '../models/PROCESSO_PATRONOS_ANTERIORES';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,6 @@ export class PatronoAnteriorService {
   constructor(private http: HttpClient) { }
 
   addPatronoAnterior(createPatronoAnteriorRequest: ProcessoPatronosAnteriors): Observable<ProcessoPatronosAnteriors> {
-    // delete createPatronoAnteriorRequest.ID;
     return this.http.post<ProcessoPatronosAnteriors>(this.baseApiUrl + '/api/Sistema/add-patrono-anterior', createPatronoAnteriorRequest);
   }
 

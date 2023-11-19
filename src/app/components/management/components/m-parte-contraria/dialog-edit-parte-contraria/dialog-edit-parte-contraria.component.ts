@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProcessoParteContraria } from 'src/app/models/PROCESSO_PARTE_CONTRARIA.model';
 import { ParteContrariaService } from 'src/app/services/parte-contraria.service';
@@ -69,7 +69,7 @@ export class DialogEditParteContriaComponent implements OnInit {
       ULTIMO_SALARIO: new FormControl(0,),
     });
 
-    this.ParteContrariaService.getParteContraria(this.updateData.id).subscribe({
+    this.ParteContrariaService.getProcessoParteContraria(this.updateData.id).subscribe({
       next: (response) => {
         this.updateParteContriaRequest = response;
         this.componentName = response.PF_PJ;

@@ -9,7 +9,6 @@
     border: 1px solid rgba(60, 64, 67, 0.5);
 }
 
-
 .mat-mdc-dialog-title,
 .mdc-dialog__title {
     background-color: #f6f7fb;
@@ -42,14 +41,14 @@ input {
 }
 
 button {
-    margin-top: 0.75rem !important;
-    padding: 10px !important;
-    color: black !important;
-    cursor: pointer !important;
-    text-align: center !important;
-    border-radius: 4.5px !important;
-    background-color: #f6f7fb !important;
-    border: 1px solid #ededed !important;
+    margin-top: 0.75rem;
+    padding: 10px;
+    color: black;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 4.5px;
+    background-color: #f6f7fb;
+    border: 1px solid #ededed;
 }
 
 svg {

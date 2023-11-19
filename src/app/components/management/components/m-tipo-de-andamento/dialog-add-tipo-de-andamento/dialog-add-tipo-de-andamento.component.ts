@@ -3,6 +3,7 @@ import { ProcessoTipoDeAndamento } from 'src/app/models/PROCESSO_TIPO_DE_ANDAMEN
 import { TipoDeAndamentoService } from 'src/app/services/tipo-de-andamento.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-dialog-add-tipo-de-andamento',
@@ -34,13 +35,9 @@ export class DialogAddTipoDeAndamentoComponent implements OnInit {
         .subscribe({
           next: (response) => {
             this.dialogRef.close(true);
-            this.createTipoDeAndamentoForm.reset();
           },
-          error: (response) => {
-            console.log(response)
-          }
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
-    return;
   }
 }

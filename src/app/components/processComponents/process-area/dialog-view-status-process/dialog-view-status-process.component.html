@@ -1,0 +1,39 @@
+<ng-container [ngSwitch]="componentName">
+    <ng-template ngSwitchDefault="'Encerrado'">
+        <h1 mat-dialog-title>Status: Encerrado</h1>
+        <form #formDir="ngForm">
+            <div mat-dialog-content>
+                <div>
+                    <mat-form-field class="w-100">
+                        <span class="sm-text">Motivo de encerramento</span>
+                        <textarea style="height: 400px;" class="w-100 border" rows="10" name="MOTIVO_ENCERRAMENTO"
+                            matInput disabled [(ngModel)]="updateProcessRequest.MOTIVO_ENCERRAMENTO"></textarea>
+                    </mat-form-field>
+                </div>
+
+                <div mat-raised-action class="float-right" style="padding: 0 16px;">
+                    <button mat-button mat-dialog-close>Fechar</button>
+                </div>
+            </div>
+        </form>
+    </ng-template>
+
+    <ng-template [ngSwitchCase]="'Baixa Provisória'">
+        <h1 mat-dialog-title>Status: Baixa Provisória</h1>
+        <form #formDir="ngForm">
+            <div mat-dialog-content>
+                <div>
+                    <mat-form-field class="w-100">
+                        <span class="sm-text">Motivo de baixa provisória</span>
+                        <textarea style="height: 400px;" class="w-100 border" rows="10" name="MOTIVO_BAIXA_PROVISORIA"
+                            matInput disabled [(ngModel)]="updateProcessRequest.MOTIVO_BAIXA_PROVISORIA"></textarea>
+                    </mat-form-field>
+                </div>
+
+                <div mat-raised-action class="float-right" style="padding: 0 16px;">
+                    <button mat-button mat-dialog-close>Fechar</button>
+                </div>
+            </div>
+        </form>
+    </ng-template>
+</ng-container>

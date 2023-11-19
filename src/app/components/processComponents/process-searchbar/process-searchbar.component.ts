@@ -1,18 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { ProcessoAreaDoDireito } from 'src/app/models/PROCESSO_AREA_DO_DIREITO.model';
-import { ProcessoFase } from 'src/app/models/PROCESSO_FASE.model';
-import { ProcessoPatronoResponsavel } from 'src/app/models/PROCESSO_PATRONO_RESPONSAVEL.model';
-import { ProcessoStatus } from 'src/app/models/PROCESSO_STATUS.model';
-import { ProcessoTipoDeAcao } from 'src/app/models/PROCESSO_TIPO_DE_ACAO.model';
-import { AreaDoDireitoService } from 'src/app/services/area-do-direito.service';
-import { FaseService } from 'src/app/services/fase.service';
-import { PatronoResponsavelService } from 'src/app/services/patrono-responsavel.service';
-import { StatusService } from 'src/app/services/status.service';
-import { TipoDeAcaoService } from 'src/app/services/tipo-de-acao.service';
-import { Processo } from 'src/app/models/PROCESSO.model';
+import { ProcessoAreaDoDireito } from '../../../models/PROCESSO_AREA_DO_DIREITO.model';
+import { ProcessoFase } from '../../../models/PROCESSO_FASE.model';
+import { ProcessoPatronoResponsavel } from '../../../models/PROCESSO_PATRONO_RESPONSAVEL.model';
+import { ProcessoStatus } from '../../../models/PROCESSO_STATUS.model';
+import { ProcessoTipoDeAcao } from '../../../models/PROCESSO_TIPO_DE_ACAO.model';
+import { AreaDoDireitoService } from '../../../services/area-do-direito.service';
+import { FaseService } from '../../../services/fase.service';
+import { PatronoResponsavelService } from '../../../services/patrono-responsavel.service';
+import { StatusService } from '../../../services/status.service';
+import { TipoDeAcaoService } from '../../../services/tipo-de-acao.service';
+import { Processo } from '../../../models/PROCESSO.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SearchProcessoService } from 'src/app/services/search-processo.service';
-import { ProcessoService } from 'src/app/services/processo.service';
+import { SearchProcessoService } from '../../../services/search-processo.service';
+import { ProcessoService } from '../../../services/processo.service';
+import { HttpErrorResponse } from '@angular/common/http';
+
+export interface SearchQueryParameters {
+  numero_processo: string;
+  fase: string;
+  area_do_direito: string;
+  patrono_responsavel: string;
+  status: string;
+  tipo_de_acao: string;
+  parte_contraria: string;
+}
 
 @Component({
   selector: 'app-process-searchbar',
@@ -28,7 +39,7 @@ export class ProcessSearchbarComponent implements OnInit {
   patronoResponsavel: ProcessoPatronoResponsavel[] = [];
   processo: Processo[] = [];
 
-  searchQueryParameters = {
+  searchQueryParameters: SearchQueryParameters = {
     numero_processo: '',
     fase: '',
     area_do_direito: '',
@@ -39,19 +50,19 @@ export class ProcessSearchbarComponent implements OnInit {
   }
 
   constructor(
+    private router: Router,
     private Fase: FaseService,
     private Status: StatusService,
     private AreaDoDireito: AreaDoDireitoService,
     private TipoDeAcao: TipoDeAcaoService,
     private PatronoResponsavel: PatronoResponsavelService,
     private activedRoute: ActivatedRoute,
-    private router: Router,
     private searchProcessoService: SearchProcessoService,
     private processoService: ProcessoService
   ) { }
 
-  areAllAttributesEmpty(obj: any): boolean {
-    return Object.values(this.searchQueryParameters).every(value => value === '')
+  areAllAttributesEmpty(searchInterface: SearchQueryParameters): boolean {
+    return Object.values(searchInterface).every(value => value === '')
   }
 
   search() {
@@ -69,52 +80,42 @@ export class ProcessSearchbarComponent implements OnInit {
   ngOnInit(): void {
     this.Status.getAllStatus()
       .subscribe({
-        next: (status: any) => {
+        next: (status: ProcessoStatus[]) => {
           this.status = status;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.Fase.getAllFase()
       .subscribe({
-        next: (fases: any) => {
+        next: (fases: ProcessoFase[]) => {
           this.fases = fases;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.AreaDoDireito.getAllAreaDoDireito()
       .subscribe({
-        next: (areasDoDireito: any) => {
+        next: (areasDoDireito: ProcessoAreaDoDireito[]) => {
           this.areasDoDireito = areasDoDireito;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.TipoDeAcao.getAllTipoDeAcao()
       .subscribe({
-        next: (tiposDeAcoes: any) => {
+        next: (tiposDeAcoes: ProcessoTipoDeAcao[]) => {
           this.tiposDeAcoes = tiposDeAcoes;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.PatronoResponsavel.getAllPatronoResponsavel()
       .subscribe({
-        next: (patronoResponsavel: any) => {
+        next: (patronoResponsavel: ProcessoPatronoResponsavel[]) => {
           this.patronoResponsavel = patronoResponsavel;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
   }
 }

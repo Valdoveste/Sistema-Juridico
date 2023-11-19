@@ -1,0 +1,33 @@
+export interface Processo {
+  ID_PROCESSO?: string | String;
+  NUMERO_PROCESSO: string | String;
+  STATUS: string | String;
+  TIPO_DE_ACAO: string | String;
+  AREA_DO_DIREITO: string | String;
+  EMPRESA: string | String;
+  EMPRESA_CNPJ: string;
+  AMBITO: string | String;
+  ESTADO: string | String;
+  CIDADE: string | String;
+  PAIS: string | String;
+  VARA: string | String;
+  FORO_TRIBUNAL_ORGAO: string | String;
+  FASE: string | String;
+  DATA_DISTRIBUICAO: string;
+  DATA_CITACAO: string;
+  PARTE_CONTRARIA: string | String;
+  ID_PARTE_CONTRARIA: string | String;
+  PATRONO_RESPONSAVEL: string | String;
+  PATRONOS_ANTERIORES: string | String;
+  TEXTO_DO_OBJETO: string | String;
+  VALOR_DO_PEDIDO: string | number;
+  VALOR_INSTANCIA1: string | number;
+  VALOR_INSTANCIA2: string | number;
+  VALOR_INSTANCIA3: string | number;
+  VALOR_INSTANCIA_EXTRAORDINARIA: string | number;
+  DATA_CADASTRO_PROCESSO: string;
+  DATA_ULTIMO_ANDAMENTO: string;
+  DATA_ENCERRAMENTO: string;
+  MOTIVO_ENCERRAMENTO: string | String;
+  MOTIVO_BAIXA_PROVISORIA: string | String;
+}

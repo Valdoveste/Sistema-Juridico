@@ -33,7 +33,7 @@ import { MTipoDeAcaoComponent } from './components/management/components/m-tipo-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -92,8 +92,11 @@ import { DialogViewParteContrariaComponent } from './components/management/compo
 
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { ProcessEditComponent } from './components/processComponents/process-edit/process-edit.component';
-import { DialogFinishProcessComponent } from './components/processComponents/process-area/dialog-finish-process/dialog-finish-process.component';
 import { ProcessAlterationsLogComponent } from './components/processComponents/process-alterations-log/process-alterations-log.component';
+import { DialogDeleteAcordoComponent } from './components/processComponents/process-area/process-area-acordo/dialog-delete-acordo/dialog-delete-acordo.component';
+import { DialogLinkParteContrariaComponent } from './components/management/components/m-parte-contraria/dialog-link-parte-contraria/dialog-link-parte-contraria.component';
+import { DialogChangeStatusProcessComponent } from './components/processComponents/process-area/dialog-change-status-process/dialog-change-status-process.component';
+import { DialogViewStatusProcessComponent } from './components/processComponents/process-area/dialog-view-status-process/dialog-view-status-process.component';
 
 @NgModule({
   declarations: [
@@ -109,8 +112,6 @@ import { ProcessAlterationsLogComponent } from './components/processComponents/p
     ProcessAreaComponent,
     ProcessPanelComponent,
     ProcessCreateComponent,
-    // ProcessCreateProgressComponent,
-    // ProcessCreateAgreementComponent,
     ProcessAreaDetailsComponent,
     ProcessAreaOpposingpartyComponent,
     ProcessAreaAcordoComponent,
@@ -156,6 +157,7 @@ import { ProcessAlterationsLogComponent } from './components/processComponents/p
     DialogAddAcordoComponent,
     DialogEditAcordoComponent,
     DialogViewAcordoComponent,
+    DialogDeleteAcordoComponent,
 
     DialogDeleteTipoDeAndamentoComponent,
     DialogEditTipoDeAndamentoComponent,
@@ -167,14 +169,18 @@ import { ProcessAlterationsLogComponent } from './components/processComponents/p
     DialogAddParteContrariaComponent,
     DialogDeleteParteContrariaComponent,
     DialogEditParteContriaComponent,
+    DialogViewParteContrariaComponent,
+    DialogLinkParteContrariaComponent,
 
     DialogAddEmpresasComponent,
     DialogDeleteEmpresasComponent,
     DialogEditEmpresasComponent,
-    DialogViewParteContrariaComponent,
+
+    ProcessAlterationsLogComponent,
+
     ProcessEditComponent,
-    DialogFinishProcessComponent,
-    ProcessAlterationsLogComponent
+    DialogChangeStatusProcessComponent,
+    DialogViewStatusProcessComponent
   ],
 
   imports: [
@@ -196,7 +202,7 @@ import { ProcessAlterationsLogComponent } from './components/processComponents/p
     NgxMaskDirective,
     NgxMaskPipe
   ],
-  providers: [provideNgxMask()],
+  providers: [provideNgxMask(), { provide: MAT_DIALOG_DATA, useValue: {} }],
   bootstrap: [AppComponent]
 })
 
