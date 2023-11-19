@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Remover Acordo</h1>
+<form #formDir="ngForm">
+    <div mat-dialog-content>
+        <div>
+            <mat-form-field>
+
+                <span class="sm-text">Valor acordo</span>
+                <p style="width: 40% !important; padding:8px 16px !important" class="input mb-2 row-item">
+                    {{
+                    acordoDeleteRequest.VALOR_ACORDO
+                    .toString()
+                    .replace('.',',')
+                    |
+                    mask: 'separator.2': {thousandSeparator: '.',prefix: 'R$ '}
+                    }}
+                </p>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <span class=" sm-text">Condições do acordo</span>
+                <textarea readonly style="height: 400px;" class="w-100" rows="10" name="CONDICOES_TENTATIVA_DE_ACORDO"
+                    [(ngModel)]="acordoDeleteRequest.CONDICOES_TENTATIVA_DE_ACORDO"></textarea>
+            </mat-form-field>
+        </div>
+
+        <div mat-raised-action class="float-right">
+            <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+            <button mat-button mat-dialog-close (click)="deleteAcordo()" class="btn-default">Remover</button>
+        </div>
+    </div>
+</form>

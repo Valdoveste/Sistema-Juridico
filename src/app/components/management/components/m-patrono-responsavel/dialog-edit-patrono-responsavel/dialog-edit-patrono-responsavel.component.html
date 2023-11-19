@@ -1,14 +1,26 @@
-<h1 mat-dialog-title>Editar PatronoResponsavel</h1>
+<h1 mat-dialog-title>Editar Patrono Responsavel</h1>
 <form (ngSubmit)="updatePatronoResponsavel()" #formDir="ngForm" [formGroup]="updatePatronoResponsavelForm">
     <div mat-dialog-content>
-        <mat-form-field>
-            <input name="PATRONORESPONSAVEL" formControlName="PATRONORESPONSAVEL" matInput required
-                [(ngModel)]="updateData.value">
-        </mat-form-field>
+        <div>
+            <mat-form-field class="mb-2">
+                <span class="sm-text">Nome</span>
+                <input matInput name="PATRONO_RESPONSAVEL" formControlName="PATRONO_RESPONSAVEL"
+                    [(ngModel)]="updatePatronoResponsavelRequest.PATRONO_RESPONSAVEL">
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <span class="sm-text">CPF_CNPJ</span>
+                <input name="PATRONO_RESPONSAVEL_CPF_CNPJ" formControlName="PATRONO_RESPONSAVEL_CPF_CNPJ" matInput
+                    mask="000.000.000-00||00.000.000/0000-00"
+                    [(ngModel)]="updatePatronoResponsavelRequest.PATRONO_RESPONSAVEL_CPF_CNPJ">
+            </mat-form-field>
+        </div>
 
         <div mat-raised-action class="float-right" style="padding: 0 16px;">
             <button mat-button mat-dialog-close class="mr-2">Fechar</button>
-            <button mat-buttonclass="btn-default" [disabled]="!updatePatronoResponsavelForm.valid"
+            <button mat-button type="submit" class="btn-default" [disabled]="!updatePatronoResponsavelForm.valid"
                 [ngClass]="{'btn-disabled': !updatePatronoResponsavelForm.valid}">Salvar</button>
         </div>
     </div>

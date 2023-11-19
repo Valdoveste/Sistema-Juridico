@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Editar ParteContria</h1>
+<h1 mat-dialog-title>Editar Parte Contria</h1>
 <form (ngSubmit)="updateParteContria()" #formDir="ngForm" [formGroup]="updateParteContriaForm">
     <ul class="process-create-opposingparty__list" class="mt-2">
         <ng-container [ngSwitch]="componentName">
@@ -90,7 +90,7 @@
 
                     <div mat-raised-action class="float-right" style="padding: 0 16px;">
                         <button mat-button mat-dialog-close class="mr-2">Fechar</button>
-                        <button mat-button type="submit">Adicionar</button>
+                        <button mat-button type="submit" class="btn-default">Salvar</button>
                     </div>
                 </div>
             </ng-template>
@@ -210,8 +210,8 @@
                     </mat-form-field>
 
                     <div mat-raised-action class="float-right" style="padding: 0 16px;">
-                        <button class="btn-default" mat-button mat-dialog-close class="mr-2">Fechar</button>
-                        <button class="btn-default" mat-button type="submit">Adicionar</button>
+                        <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+                        <button mat-button type="submit" class="btn-default">Salvar</button>
                     </div>
                 </div>
             </ng-template>

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AmbitoService } from 'src/app/services/ambito.service';
@@ -9,20 +10,18 @@ import { AmbitoService } from 'src/app/services/ambito.service';
 })
 export class DialogDeleteAmbitoComponent {
   constructor(
-    @Inject(MAT_DIALOG_DATA) public removeData: any,
+    @Inject(MAT_DIALOG_DATA) public deleteData: any,
     private AmbitoService: AmbitoService,
     public dialogRef: MatDialogRef<DialogDeleteAmbitoComponent>
   ) { }
 
   deleteAmbito() {
-    this.AmbitoService.deleteAmbito(this.removeData.id)
+    this.AmbitoService.deleteAmbito(this.deleteData.id)
       .subscribe({
         next: (response) => {
           this.dialogRef.close(true);
         },
-        error: (response) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       });
   }
 }

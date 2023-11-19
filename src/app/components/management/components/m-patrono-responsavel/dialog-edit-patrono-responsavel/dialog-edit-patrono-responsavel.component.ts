@@ -1,7 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
-import { PatronoResponsavelService } from 'src/app/services/patrono-responsavel.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { PatronoResponsavelService } from 'src/app/services/patrono-responsavel.service';
 import { ProcessoPatronoResponsavel } from 'src/app/models/PROCESSO_PATRONO_RESPONSAVEL.model';
 
 @Component({
@@ -26,8 +27,21 @@ export class DialogEditPatronoResponsavelComponent implements OnInit {
 
   ngOnInit(): void {
     this.updatePatronoResponsavelForm = new FormGroup({
-      PATRONORESPONSAVEL: new FormControl("", [Validators.required])
+      PATRONO_RESPONSAVEL: new FormControl("", [Validators.required]),
+      PATRONO_RESPONSAVEL_CPF_CNPJ: new FormControl("", [Validators.required])
     });
+
+    this.loadPatronoResponsavel();
+  }
+
+  loadPatronoResponsavel() {
+    this.patronoResponsavelService.getPatronoResponsavel(this.updateData.id)
+      .subscribe({
+        next: (response: any) => {
+          this.updatePatronoResponsavelRequest = response;
+        },
+        error: (err: HttpErrorResponse) => console.log(err)
+      })
   }
 
   updatePatronoResponsavel() {

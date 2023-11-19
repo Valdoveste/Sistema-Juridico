@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Processo } from 'src/app/models/PROCESSO.model';
-import { ProcessoService } from 'src/app/services/processo.service';
-import { SearchProcessoService } from 'src/app/services/search-processo.service';
+import { ProcessoService } from '../../../services/processo.service';
+import { SearchProcessoService } from '../../../services/search-processo.service';
 
 @Component({
   selector: 'app-process-container',
@@ -22,15 +22,7 @@ export class ProcessContainerComponent implements OnInit {
       .subscribe(
         response => {
           this.processos = [];
-
-          // this.andamentos = response.sort((a, b) => b.DATA_CADASTRO.localeCompare(a.DATA_CADASTRO));
-
-          this.processos = response.sort((a, b) => {
-            const dateA = new Date(a.DATA_CADASTRO_PROCESSO);
-            const dateB = new Date(b.DATA_CADASTRO_PROCESSO);
-
-            return dateB.getDate() - dateA.getDate();
-          });
+          this.processos = response
         }
       )
 
@@ -38,13 +30,7 @@ export class ProcessContainerComponent implements OnInit {
       .subscribe(
         response => {
           this.processos = [];
-
-          this.processos = response.sort((a, b) => {
-            const dateA = new Date(a.DATA_CADASTRO_PROCESSO);
-            const dateB = new Date(b.DATA_CADASTRO_PROCESSO);
-
-            return dateB.getDate() - dateA.getDate();
-          });
+          this.processos = response;
         }
       )
   }

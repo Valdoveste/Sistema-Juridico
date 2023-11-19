@@ -17,17 +17,16 @@ export class ParteContrariaService {
     return this.http.get<ProcessoParteContraria[]>(this.baseApiUrl + '/api/Sistema/parte-contraria')
   }
 
-  getParteContraria(id: String): Observable<ProcessoParteContraria> {
-    return this.http.get<ProcessoParteContraria>(this.baseApiUrl + '/api/Sistema/parte-contraria/' + id)
+  linkParteContraria(linkParteContrariaRequest: ProcessoParteContraria, NUMERO_PROCESSO: String): Observable<ProcessoParteContraria> {
+    return this.http.put<ProcessoParteContraria>(this.baseApiUrl + '/api/Sistema/link-parte-contraria/' + NUMERO_PROCESSO, linkParteContrariaRequest)
   }
 
-  getProcessoParteContraria(id_processo: string): Observable<ProcessoParteContraria> {
-    return this.http.get<ProcessoParteContraria>(this.baseApiUrl + '/api/Sistema/processo/parte-contraria/' + id_processo)
+  getProcessoParteContraria(id_parte_contraria: string): Observable<ProcessoParteContraria> {
+    return this.http.get<ProcessoParteContraria>(this.baseApiUrl + '/api/Sistema/processo/parte-contraria/' + id_parte_contraria)
   }
 
   createParteContraria(createParteContrariaRequest: ProcessoParteContraria): Observable<ProcessoParteContraria> {
-    delete createParteContrariaRequest.ID;
-    return this.http.post<ProcessoParteContraria>(this.baseApiUrl + '/api/Sistema/add-parte-contraria', createParteContrariaRequest);
+    return this.http.post<ProcessoParteContraria>(this.baseApiUrl + '/api/Sistema/add-parte-contraria/', createParteContrariaRequest);
   }
 
   updateParteContraria(id: String, updateParteContrariaRequest: ProcessoParteContraria): Observable<ProcessoParteContraria> {

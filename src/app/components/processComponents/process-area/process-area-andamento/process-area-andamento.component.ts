@@ -1,11 +1,9 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ProcessoAndamento } from '../../../../models/PROCESSO_ANDAMENTO.model'
-
-import { DialogAddAndamentoComponent } from './dialog-add-andamento/dialog-add-andamento.component';
-
-import { ActivatedRoute } from '@angular/router';
 import { AndamentoService } from 'src/app/services/andamento.service';
+import { ProcessoAndamento } from '../../../../models/PROCESSO_ANDAMENTO.model'
+import { DialogAddAndamentoComponent } from './dialog-add-andamento/dialog-add-andamento.component';
 import { DialogViewAndamentoComponent } from './dialog-view-andamento/dialog-view-andamento.component';
 import { DialogEditAndamentoComponent } from './dialog-edit-andamento/dialog-edit-andamento.component';
 
@@ -38,9 +36,7 @@ export class ProcessAreaAndamentoComponent implements OnInit {
             next: (response) => {
               this.andamentos = response.sort((a, b) => b.DATA_CADASTRO.localeCompare(a.DATA_CADASTRO));
             },
-            error: (response) => {
-              console.log(response)
-            }
+            error: (err) => console.log(err)
           })
       }
     })
@@ -57,10 +53,10 @@ export class ProcessAreaAndamentoComponent implements OnInit {
     dialogRefAdd.afterClosed().subscribe(result => { result ? this.loadAndamentos() : null; })
   }
 
-  openDialogView(enterAnimationDuration: string, exitAnimationDuration: string, event: Event, id: String | undefined): void {
+  openDialogView(enterAnimationDuration: string, exitAnimationDuration: string, id: String | undefined): void {
     const dialogRefEdit = this.dialog.open(DialogViewAndamentoComponent, {
       width: '750px',
-      data: { value: (event.currentTarget as HTMLElement).previousElementSibling?.innerHTML, id: id },
+      data: { id: id },
       enterAnimationDuration,
       exitAnimationDuration,
     });
@@ -68,10 +64,10 @@ export class ProcessAreaAndamentoComponent implements OnInit {
     dialogRefEdit.afterClosed().subscribe(result => { result ? this.loadAndamentos() : null; })
   }
 
-  openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string, event: Event, id: String | undefined): void {
+  openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string, id: String | undefined): void {
     const dialogRefEdit = this.dialog.open(DialogEditAndamentoComponent, {
       width: '750px',
-      data: { value: (event.currentTarget as HTMLElement).previousElementSibling?.innerHTML, id: id },
+      data: { id: id },
       enterAnimationDuration,
       exitAnimationDuration,
     });

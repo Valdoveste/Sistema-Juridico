@@ -1,19 +1,32 @@
-<h1 mat-dialog-title>Detalhes acordo</h1>
-<form #formDir="ngForm" style="height: 549px" [formGroup]="viewAcordoForm">
+<h1 mat-dialog-title>Adicionar Acordo</h1>
+<form #formDir="ngForm">
     <div mat-dialog-content>
-        <mat-form-field class="mb-3" style="width: 40%">
-            <input readonly name="VALOR_ACORDO" formControlName="VALOR_ACORDO" matInput mask="separator.2"
-                thousandSeparator="." suffix=",00" [(ngModel)]="acordoDetalhes.VALOR_ACORDO">
-        </mat-form-field>
+        <div>
+            <mat-form-field>
 
-        <mat-form-field>
-            <textarea readonly style="height: 400px;" class="w-100" rows="10" name="CONDICOES_TENTATIVA_DE_ACORDO"
-                formControlName="CONDICOES_TENTATIVA_DE_ACORDO" matInput
-                [(ngModel)]="acordoDetalhes.CONDICOES_TENTATIVA_DE_ACORDO"></textarea>
-        </mat-form-field>
+                <span class="sm-text">Valor acordo</span>
+                <p style="width: 40% !important; padding:8px 16px !important" class="input mb-2 row-item">
+                    {{
+                    acordoDetalhes.VALOR_ACORDO
+                    .toString()
+                    .replace('.',',')
+                    |
+                    mask: 'separator.2': {thousandSeparator: '.',prefix: 'R$ '}
+                    }}
+                </p>
+            </mat-form-field>
+        </div>
 
-        <div mat-raised-action class="float-right" style="padding: 0 16px;">
-            <button mat-button mat-dialog-close class="mr-2">Fechar</button>
+        <div>
+            <mat-form-field>
+                <span class=" sm-text">Condições do acordo</span>
+                <textarea readonly style="height: 400px;" class="w-100" rows="10" name="CONDICOES_TENTATIVA_DE_ACORDO"
+                    [(ngModel)]="acordoDetalhes.CONDICOES_TENTATIVA_DE_ACORDO"></textarea>
+            </mat-form-field>
+        </div>
+
+        <div mat-raised-action class="float-right">
+            <button mat-button mat-dialog-close>Fechar</button>
         </div>
     </div>
 </form>

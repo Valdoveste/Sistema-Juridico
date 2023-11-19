@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ProcessoPatronoResponsavel } from 'src/app/models/PROCESSO_PATRONO_RESPONSAVEL.model';
+import { HttpErrorResponse } from '@angular/common/http';
 import { PatronoResponsavelService } from 'src/app/services/patrono-responsavel.service';
-
+import { ProcessoPatronoResponsavel } from 'src/app/models/PROCESSO_PATRONO_RESPONSAVEL.model';
 import { DialogAddPatronoResponsavelComponent } from './dialog-add-patrono-responsavel/dialog-add-patrono-responsavel.component';
-import { DialogDeletePatronoResponsavelComponent } from './dialog-delete-patrono-responsavel/dialog-delete-patrono-responsavel.component';
 import { DialogEditPatronoResponsavelComponent } from './dialog-edit-patrono-responsavel/dialog-edit-patrono-responsavel.component';
+import { DialogDeletePatronoResponsavelComponent } from './dialog-delete-patrono-responsavel/dialog-delete-patrono-responsavel.component';
 
 @Component({
   selector: 'app-m-patrono-responsavel',
@@ -30,9 +30,7 @@ export class MPatronoResponsavelComponent implements OnInit {
         next: (patronoResponsaveis: ProcessoPatronoResponsavel[]) => {
           this.patronoResponsaveis = patronoResponsaveis;
         },
-        error: (response: any) => {
-          console.log(response);
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       });
   }
 

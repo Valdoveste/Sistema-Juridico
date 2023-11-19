@@ -7,17 +7,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Recebimento de Citação</td>
-                <td>20/05/2023</td>
-            </tr>
-            <tr>
-                <td>Recebimento de Citação</td>
-                <td>20/05/2023</td>
-            </tr>
-            <tr>
-                <td>Recebimento de Citação</td>
-                <td>20/05/2023</td>
+            <tr *ngFor="let patronoAnterior of patronosAlteriores">
+                <td>{{patronoAnterior.PATRONO_RESPONSAVEL_ANTERIOR}}</td>
+                <td>{{patronoAnterior.DATA_ALTERACAO.replaceAll("T", " ás ")}}</td>
             </tr>
         </tbody>
     </table>

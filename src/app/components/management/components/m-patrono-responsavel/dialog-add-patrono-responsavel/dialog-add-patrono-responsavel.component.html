@@ -1,18 +1,22 @@
 <h1 mat-dialog-title>Criar Patrono Responsavel</h1>
 <form (ngSubmit)="createPatronoResponsavel()" #formDir="ngForm" [formGroup]="createPatronoResponsavelForm">
     <div mat-dialog-content>
-        <mat-form-field class="mb-2">
-            <span class="sm-text">Nome</span>
-            <input name="PATRONO_RESPONSAVEL" formControlName="PATRONO_RESPONSAVEL" matInput required
-                [(ngModel)]="createPatronoResponsavelRequest.PATRONO_RESPONSAVEL">
-        </mat-form-field>
+        <div>
+            <mat-form-field class="mb-2">
+                <span class="sm-text">Nome</span>
+                <input name="PATRONO_RESPONSAVEL" formControlName="PATRONO_RESPONSAVEL" matInput required
+                    [(ngModel)]="createPatronoResponsavelRequest.PATRONO_RESPONSAVEL">
+            </mat-form-field>
+        </div>
 
-        <mat-form-field>
-            <span class="sm-text">CPF_CNPJ</span>
-            <input name="PATRONO_RESPONSAVEL_CPF_CNPJ" formControlName="PATRONO_RESPONSAVEL_CPF_CNPJ" matInput
-                mask="000.000.000-00||00.000.000/0000-00"
-                [(ngModel)]="createPatronoResponsavelRequest.PATRONO_RESPONSAVEL_CPF_CNPJ">
-        </mat-form-field>
+        <div>
+            <mat-form-field class="">
+                <span class="sm-text">CPF_CNPJ</span>
+                <input name="PATRONO_RESPONSAVEL_CPF_CNPJ" formControlName="PATRONO_RESPONSAVEL_CPF_CNPJ" matInput
+                    mask="000.000.000-00||00.000.000/0000-00"
+                    [(ngModel)]="createPatronoResponsavelRequest.PATRONO_RESPONSAVEL_CPF_CNPJ">
+            </mat-form-field>
+        </div>
 
         <div mat-raised-action class="float-right" style="padding: 0 16px;">
             <button mat-button mat-dialog-close class="mr-2">Fechar</button>

@@ -1,33 +1,33 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ProcessoService } from '../../../services/processo.service';
-import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AmbitoService } from 'src/app/services/ambito.service';
-import { ProcessoAmbito } from 'src/app/models/PROCESSO_AMBITO.model';
-import { AreaDoDireitoService } from 'src/app/services/area-do-direito.service';
-import { CondicoesTentativaAcordoService } from 'src/app/services/condicoes-tentativa-acordo.service';
-import { FaseService } from 'src/app/services/fase.service';
-import { ForoTribunalOrgaoService } from 'src/app/services/foro-tribunal-orgao.service';
-import { MotivoDoEncerramentoService } from 'src/app/services/motivo-do-encerramento.service';
-import { ProcessoPatronoResponsavel } from 'src/app/models/PROCESSO_PATRONO_RESPONSAVEL.model';
-import { StatusService } from 'src/app/services/status.service';
-import { TipoDeAcaoService } from 'src/app/services/tipo-de-acao.service';
-import { VaraService } from 'src/app/services/vara.service';
-import { ProcessoAreaDoDireito } from 'src/app/models/PROCESSO_AREA_DO_DIREITO.model';
-import { ProcessoCondicoesTentativaAcordo } from 'src/app/models/PROCESSO_CONDICOES_TENTATIVA_ACORDO.model';
-import { ProcessoFase } from 'src/app/models/PROCESSO_FASE.model';
-import { ProcessoForoTribunalOrgao } from 'src/app/models/PROCESSO_FORO_TRIBUNAL_ORGAO.model';
-import { ProcessoMotivoDoEncerramento } from 'src/app/models/PROCESSO_MOTIVO_DO_ENCERRAMENTO.model';
-import { ProcessoStatus } from 'src/app/models/PROCESSO_STATUS.model';
-import { ProcessoTipoDeAcao } from 'src/app/models/PROCESSO_TIPO_DE_ACAO.model';
-import { ProcessoVara } from 'src/app/models/PROCESSO_VARA.model';
-import { PatronoResponsavelService } from 'src/app/services/patrono-responsavel.service';
-import { Processo } from 'src/app/models/PROCESSO.model';
-import { ProcessoEmpresas } from 'src/app/models/PROCESSO_EMPRESAS.model';
-import { EmpresasService } from 'src/app/services/empresas.service';
-import { ProcessoParteContraria } from 'src/app/models/PROCESSO_PARTE_CONTRARIA.model';
-import { ParteContrariaService } from 'src/app/services/parte-contraria.service';
+import { AmbitoService } from '../../../services/ambito.service';
+import { ProcessoAmbito } from '../../../models/PROCESSO_AMBITO.model';
+import { AreaDoDireitoService } from '../../../services/area-do-direito.service';
+import { CondicoesTentativaAcordoService } from '../../../services/condicoes-tentativa-acordo.service';
+import { FaseService } from '../../../services/fase.service';
+import { ForoTribunalOrgaoService } from '../../../services/foro-tribunal-orgao.service';
+import { MotivoDoEncerramentoService } from '../../../services/motivo-do-encerramento.service';
+import { ProcessoPatronoResponsavel } from '../../../models/PROCESSO_PATRONO_RESPONSAVEL.model';
+import { StatusService } from '../../../services/status.service';
+import { TipoDeAcaoService } from '../../../services/tipo-de-acao.service';
+import { VaraService } from '../../../services/vara.service';
+import { ProcessoAreaDoDireito } from '../../../models/PROCESSO_AREA_DO_DIREITO.model';
+import { ProcessoCondicoesTentativaAcordo } from '../../../models/PROCESSO_CONDICOES_TENTATIVA_ACORDO.model';
+import { ProcessoFase } from '../../../models/PROCESSO_FASE.model';
+import { ProcessoForoTribunalOrgao } from '../../../models/PROCESSO_FORO_TRIBUNAL_ORGAO.model';
+import { ProcessoMotivoDoEncerramento } from '../../../models/PROCESSO_MOTIVO_DO_ENCERRAMENTO.model';
+import { ProcessoStatus } from '../../../models/PROCESSO_STATUS.model';
+import { ProcessoTipoDeAcao } from '../../../models/PROCESSO_TIPO_DE_ACAO.model';
+import { ProcessoVara } from '../../../models/PROCESSO_VARA.model';
+import { PatronoResponsavelService } from '../../../services/patrono-responsavel.service';
+import { Processo } from '../../../models/PROCESSO.model';
+import { ProcessoEmpresas } from '../../../models/PROCESSO_EMPRESAS.model';
+import { EmpresasService } from '../../../services/empresas.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MParteContrariaComponent } from '../../management/components/m-parte-contraria/m-parte-contraria.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-process-create',
@@ -37,6 +37,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 export class ProcessCreateComponent implements OnInit {
   constructor(
+    public dialog: MatDialog,
     private router: Router,
     private ProcessoService: ProcessoService,
     private AmbitoService: AmbitoService,
@@ -50,12 +51,9 @@ export class ProcessCreateComponent implements OnInit {
     private Vara: VaraService,
     private PatronoResponsavel: PatronoResponsavelService,
     private EmpresasService: EmpresasService,
-    private ParteContrariaService: ParteContrariaService
   ) { }
 
   createProcessForm!: FormGroup;
-  createParteContrariaFisicalForm!: FormGroup;
-  createParteContrariaLegalForm!: FormGroup;
 
   ambitos: ProcessoAmbito[] = [];
   areasDoDireito: ProcessoAreaDoDireito[] = [];
@@ -76,7 +74,6 @@ export class ProcessCreateComponent implements OnInit {
   }
 
   createProcessRequest: Processo = {
-    // ID_PROCESSO: '',
     NUMERO_PROCESSO: '',
     STATUS: '',
     TIPO_DE_ACAO: '',
@@ -92,6 +89,8 @@ export class ProcessCreateComponent implements OnInit {
     FASE: '',
     DATA_DISTRIBUICAO: '',
     DATA_CITACAO: '',
+    PARTE_CONTRARIA: '',
+    ID_PARTE_CONTRARIA: '',
     PATRONO_RESPONSAVEL: '',
     PATRONOS_ANTERIORES: '',
     TEXTO_DO_OBJETO: '',
@@ -106,47 +105,28 @@ export class ProcessCreateComponent implements OnInit {
     MOTIVO_ENCERRAMENTO: '',
     MOTIVO_BAIXA_PROVISORIA: ''
   }
-
-  createParteContrariaRequest: ProcessoParteContraria = {
-    ID: '',
-    ID_PROCESSO: '',
-    PF_PJ: 0,
-    NOME: '',
-    NOME_FANTASIA: '',
-    CPF: '',
-    CNPJ: '',
-    RG: '',
-    ENDERECO: '',
-    CEP: '',
-    NUMERO: 0,
-    COMPLEMENTO: '',
-    ESTADO: '',
-    PAIS: '',
-    CIDADE: '',
-    OBSERVACAO: '',
-    CARGO: '',
-    DATA_ADMISSAO: '',
-    DATA_DEMISSAO: '',
-    ULTIMO_SALARIO: 0,
-  }
-
   createProcess() {
-    if (this.createProcessForm.valid
-      && (this.createParteContrariaFisicalForm.valid || this.createParteContrariaLegalForm.valid)) {
+    if (this.createProcessForm.valid) {
       this.ProcessoService.createProcess(this.createProcessRequest)
         .subscribe({
           next: (response) => {
-            this.createParteContrariaRequest.ID_PROCESSO = response.ID_PROCESSO!;
-            this.ParteContrariaService.createParteContraria(this.createParteContrariaRequest).subscribe({
-              next: (response) => {
-                this.router.navigate(['/painel-processos', 'processo-detalhes', response.ID_PROCESSO])
-              },
-              error: (err: HttpErrorResponse) => console.log("An error occurred when trying to create an oposing party. Error: " + err)
-            })
+            let id = response.ID_PROCESSO
+            this.openDialogManagement('250ms', '100ms')
+            this.router.navigate(['/painel-processos', 'processo-detalhes', response.ID_PROCESSO])
           },
-          error: (err: HttpErrorResponse) => console.log("An error occurred when trying to create an process. Error: " + err)
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
+  }
+
+  openDialogManagement(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    const dialogRefManagement = this.dialog.open(MParteContrariaComponent, {
+      data: { numero_processo: this.createProcessRequest.NUMERO_PROCESSO },
+      enterAnimationDuration,
+      exitAnimationDuration
+    });
+
+    dialogRefManagement.afterClosed().subscribe({});
   }
 
   ngOnInit(): void {
@@ -155,9 +135,7 @@ export class ProcessCreateComponent implements OnInit {
         next: (ambitos: any) => {
           this.ambitos = ambitos;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.EmpresasService.getAllEmpresas()
@@ -165,20 +143,15 @@ export class ProcessCreateComponent implements OnInit {
         next: (response: any) => {
           this.empresas = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
-
 
     this.AreaDoDireito.getAllAreaDoDireito()
       .subscribe({
         next: (response: any) => {
           this.areasDoDireito = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.CondicoesTentaivaAcordo.getAllCondicoesTentativaAcordo()
@@ -186,9 +159,7 @@ export class ProcessCreateComponent implements OnInit {
         next: (response: any) => {
           this.condicoesTentativaAcordo = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.Fase.getAllFase()
@@ -196,9 +167,7 @@ export class ProcessCreateComponent implements OnInit {
         next: (response: any) => {
           this.fases = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.ForoTribunalOrgao.getAllForoTribunalOrgao()
@@ -206,9 +175,7 @@ export class ProcessCreateComponent implements OnInit {
         next: (response: any) => {
           this.foroTribunalOrgaos = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.MotivoDoEncerramento.getAllMotivoDoEncerramento()
@@ -216,9 +183,7 @@ export class ProcessCreateComponent implements OnInit {
         next: (response: any) => {
           this.motivosDoEncerramento = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.Status.getAllStatus()
@@ -226,9 +191,7 @@ export class ProcessCreateComponent implements OnInit {
         next: (response: any) => {
           this.status = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.TipoDeAcao.getAllTipoDeAcao()
@@ -236,9 +199,7 @@ export class ProcessCreateComponent implements OnInit {
         next: (response: any) => {
           this.tiposDeAcoes = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.Vara.getAllVara()
@@ -246,9 +207,7 @@ export class ProcessCreateComponent implements OnInit {
         next: (response: any) => {
           this.varas = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.PatronoResponsavel.getAllPatronoResponsavel()
@@ -256,43 +215,10 @@ export class ProcessCreateComponent implements OnInit {
         next: (response: any) => {
           this.patronoResponsavel = response;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
 
-    this.createParteContrariaFisicalForm = new FormGroup({
-      NOME: new FormControl('', [Validators.required]),
-      CPF: new FormControl('', [Validators.required]),
-      RG: new FormControl('', [Validators.required]),
-      ENDERECO: new FormControl('', [Validators.required]),
-      CEP: new FormControl('', [Validators.required]),
-      NUMERO: new FormControl('', [Validators.required]),
-      COMPLEMENTO: new FormControl('', [Validators.required]),
-      CARGO: new FormControl('', [Validators.required]),
-      ULTIMO_SALARIO: new FormControl('', [Validators.required]),
-      DATA_ADMISSAO: new FormControl(Date, [Validators.required]),
-      DATA_DEMISSAO: new FormControl(Date, [Validators.required]),
-    });
-
-    this.createParteContrariaLegalForm = new FormGroup({
-      NOME: new FormControl('', [Validators.required]),
-      NOME_FANTASIA: new FormControl('', [Validators.required]),
-      CNPJ: new FormControl('', [Validators.required]),
-      ENDERECO: new FormControl('', [Validators.required]),
-      CEP: new FormControl('', [Validators.required]),
-      NUMERO: new FormControl(0, [Validators.required]),
-      COMPLEMENTO: new FormControl('', [Validators.required]),
-      ESTADO: new FormControl('', [Validators.required]),
-      CIDADE: new FormControl('', [Validators.required]),
-      PAIS: new FormControl('', [Validators.required]),
-      OBSERVACAO: new FormControl('', [Validators.required]),
-    });
-
     this.createProcessForm = new FormGroup({
-      // ID_PROCESSO: new FormControl(''),
-      // EMPRESA_CNPJ: new FormControl('', [Validators.required]),
-      // PATRONOS_ANTERIORES: new FormControl(''),
       NUMERO_PROCESSO: new FormControl('', [Validators.required]),
       STATUS: new FormControl('', [Validators.required]),
       EMPRESA: new FormControl('', [Validators.required]),

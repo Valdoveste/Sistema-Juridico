@@ -5,8 +5,6 @@ import { ProcessoLogAlteracoes } from 'src/app/models/PROCESSO_LOG_ALTERACOES.mo
 import { HttpErrorResponse } from '@angular/common/http';
 import { Processo } from 'src/app/models/PROCESSO.model';
 import { ProcessoService } from 'src/app/services/processo.service';
-import { ContentObserver } from '@angular/cdk/observers';
-import { ConsoleLogger } from '@angular/compiler-cli';
 
 @Component({
   selector: 'app-process-alterations-log',
@@ -39,6 +37,8 @@ export class ProcessAlterationsLogComponent implements OnInit {
     FASE: '',
     DATA_DISTRIBUICAO: '',
     DATA_CITACAO: '',
+    PARTE_CONTRARIA: '',
+    ID_PARTE_CONTRARIA: '',
     PATRONO_RESPONSAVEL: '',
     PATRONOS_ANTERIORES: '',
     TEXTO_DO_OBJETO: '',
@@ -66,7 +66,6 @@ export class ProcessAlterationsLogComponent implements OnInit {
           this.logAlteracoesService.getLogProcesso(ID_PROCESSO).subscribe({
             next: (response: Array<ProcessoLogAlteracoes>) => {
               this.logProcessos = response;
-              console.log(response)
             },
             error: (err: HttpErrorResponse) => console.log(err)
           });

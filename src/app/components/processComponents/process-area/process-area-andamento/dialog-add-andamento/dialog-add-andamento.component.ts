@@ -20,9 +20,8 @@ export class DialogAddAndamentoComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public addData: any,
     private andamentoService: AndamentoService,
-    private route: ActivatedRoute,
     private tipoDeAndamentoService: TipoDeAndamentoService,
-    public dialogRef: MatDialogRef<DialogAddAndamentoComponent>,
+    public dialogRef: MatDialogRef<DialogAddAndamentoComponent>
   ) { }
 
   tiposAndamentos: ProcessoTipoDeAndamento[] = [];
