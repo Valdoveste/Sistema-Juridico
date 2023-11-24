@@ -11,10 +11,11 @@ Veja a aplicação web aqui [Sistema Júridico](https://sistema-juridico.vercel.
  <br><br>
  
 ![Angular](https://img.shields.io/badge/-Angular15-05122A?style=flat&logo=angular)&nbsp;
-![ASP .Net Core](https://img.shields.io/badge/-Asp.NetCore-05122A?style=flat&logo=dotnet)&nbsp;
+![ASP .Net Core](https://img.shields.io/badge/-Asp.NetCoreWebApi-05122A?style=flat&logo=dotnet)&nbsp;
 ![Bootstrap](https://img.shields.io/badge/-Bootstrap-05122A?style=flat&logo=bootstrap)&nbsp;
 ![MySQL](https://img.shields.io/badge/-MySQL-05122A?style=flat&logo=mysql)&nbsp;
 ![Material UI](https://img.shields.io/badge/-MaterialUI-05122A?style=flat&logo=materialui)&nbsp;
+![Azure](https://img.shields.io/badge/-Azure-05122A?style=flat&logo=azure)&nbsp;
 </h3>
 <hr>
 <br>
