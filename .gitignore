@@ -13,7 +13,7 @@ yarn-error.log
 
 # enviroments env
 .enviroments
-.environments/.env
+/.environments/.env
 
 # IDEs and editors
 .idea/
