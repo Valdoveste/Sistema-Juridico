@@ -1,8 +1,6 @@
 
 <h1>Sistema Jurídico - MPA</h1>
-
-Solução ainda desenvolvimento, busca otimizar o setor jurídico empresarial, aprimorando eficiência e reduzindo erros. A migração das planilhas Excel para uma plataforma integrada é enfatizada, proporcionando acesso individualizado a usuários e habilitando gestão abrangente. Isso inclui recursos de inclusão, edição, visualização e histórico de alterações,assim capacitando empresas a priorizarem tarefas estratégicas e impulsionando a eficácia operacional.
-
+Sistema Jurídico é solução que busca otimizar o setor jurídico empresarial, aprimorando eficiência e reduzindo erros. A migração das planilhas Excel para uma plataforma integrada é enfatizada, proporcionando acesso individualizado a usuários e habilitando gestão abrangente. Isso inclui recursos de inclusão, edição, visualização e histórico de alterações,assim capacitando empresas a priorizarem tarefas estratégicas e impulsionando a eficácia operacional.
 <br><br>
 
 Veja a aplicação web aqui [Sistema Júridico](https://sistema-juridico.vercel.app/)
