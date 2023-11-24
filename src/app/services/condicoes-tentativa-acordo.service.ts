@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/.environments/.environment';
+import { environment } from 'env';
 import { Observable } from 'rxjs';
 import { ProcessoCondicoesTentativaAcordo } from '../models/PROCESSO_CONDICOES_TENTATIVA_ACORDO.model';
 
