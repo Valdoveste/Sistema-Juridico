@@ -1,7 +1,7 @@
 const setEnv = () => {
     const fs = require('fs');
     const writeFile = fs.writeFile;
-    const targetPath = './src/environments/environment.ts';
+    const targetPath = '.env.ts';
 
     // `environment.ts` file structure
     const envConfigFile = `export const environment = {
