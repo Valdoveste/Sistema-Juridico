@@ -2,7 +2,7 @@ import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Processo } from '../models/PROCESSO.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/.environments/.environment';
 
 @Injectable({
   providedIn: 'root'
