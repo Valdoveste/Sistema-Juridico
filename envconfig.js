@@ -3,14 +3,10 @@ const setEnv = () => {
     const writeFile = fs.writeFile;
     const targetPath = './src/environments/environment.ts';
 
-    require('dotenv').config({
-        path: 'src/environments/.env'
-    });
-
     // `environment.ts` file structure
     const envConfigFile = `export const environment = {
-    apiKey: '${process.env.URL_API}',
-    production: true,
+    URL_API: '${process.env.URL_API}',
+    production: true
     };`;
 
     writeFile(targetPath, envConfigFile, (err) => {
