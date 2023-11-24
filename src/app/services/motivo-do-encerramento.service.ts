@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { ProcessoMotivoDoEncerramento } from '../models/PROCESSO_MOTIVO_DO_ENCERRAMENTO.model';
 
@@ -9,11 +9,11 @@ import { ProcessoMotivoDoEncerramento } from '../models/PROCESSO_MOTIVO_DO_ENCER
 })
 export class MotivoDoEncerramentoService {
 
-  baseApiUrl: string = environment.baseApiUrl;
+  URL_API: string = environment.URL_API;
 
   constructor(private http: HttpClient) { }
 
   getAllMotivoDoEncerramento(): Observable<ProcessoMotivoDoEncerramento[]> {
-    return this.http.get<ProcessoMotivoDoEncerramento[]>(this.baseApiUrl + '/api/Sistema/ambito')
+    return this.http.get<ProcessoMotivoDoEncerramento[]>(this.URL_API + '/api/Sistema/ambito')
   }
 }
