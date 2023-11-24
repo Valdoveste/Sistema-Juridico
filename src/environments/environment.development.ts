@@ -1,3 +1,3 @@
 export const environment = {
-  baseApiUrl: 'https://localhost:7155'
+  baseApiUrl: 'https://sistema-juridico.azurewebsites.net'
 };
