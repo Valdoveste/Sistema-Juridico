@@ -3,6 +3,7 @@ import { AreaDoDireitoService } from 'src/app/services/area-do-direito.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProcessoAreaDoDireito } from 'src/app/models/PROCESSO_AREA_DO_DIREITO.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-dialog-edit-area-do-direito',
@@ -34,12 +35,10 @@ export class DialogEditAreaDoDireitoComponent implements OnInit {
       this.updateAreaDoDireitoRequest.AREA_DO_DIREITO = this.updateData.value;
       this.areaDoDireitoService.updateAreaDoDireito(this.updateData.id, this.updateAreaDoDireitoRequest)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.dialogRef.close(true);
           },
-          error: (response) => {
-            console.log(response)
-          }
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
     return;

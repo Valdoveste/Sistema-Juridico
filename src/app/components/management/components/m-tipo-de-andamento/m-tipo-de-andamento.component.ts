@@ -6,6 +6,7 @@ import { TipoDeAndamentoService } from 'src/app/services/tipo-de-andamento.servi
 import { DialogAddTipoDeAndamentoComponent } from './dialog-add-tipo-de-andamento/dialog-add-tipo-de-andamento.component';
 import { DialogDeleteTipoDeAndamentoComponent } from './dialog-delete-tipo-de-andamento/dialog-delete-tipo-de-andamento.component';
 import { DialogEditTipoDeAndamentoComponent } from './dialog-edit-tipo-de-andamento/dialog-edit-tipo-de-andamento.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-m-tipo-de-andamento',
@@ -27,12 +28,10 @@ export class MTipoDeAndamentoComponent implements OnInit {
   loadTipoDeAndamentos() {
     this.tipoDeAndamentoService.getAllTipoDeAndamento()
       .subscribe({
-        next: (tipoDeAndamentos: any) => {
+        next: (tipoDeAndamentos: ProcessoTipoDeAndamento[]) => {
           this.tipoDeAndamentos = tipoDeAndamentos;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
   }
 

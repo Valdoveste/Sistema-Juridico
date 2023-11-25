@@ -29,7 +29,7 @@ export class DialogDeleteAcordoComponent implements OnInit {
   ngOnInit(): void {
     this.acordoService.getProcessoAcordo(this.viewData.id)
       .subscribe({
-        next: (response) => {
+        next: (response: ProcessoAcordo) => {
           this.acordoDeleteRequest = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -39,7 +39,7 @@ export class DialogDeleteAcordoComponent implements OnInit {
   deleteAcordo() {
     this.acordoService.deleteAcordo(this.viewData.id)
       .subscribe({
-        next: (response) => {
+        next: () => {
           this.dialogRef.close(true);
         },
         error: (err: HttpErrorResponse) => console.log(err)

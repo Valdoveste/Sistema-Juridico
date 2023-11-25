@@ -3,6 +3,7 @@ import { VaraService } from 'src/app/services/vara.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProcessoVara } from 'src/app/models/PROCESSO_VARA.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-dialog-edit-vara',
@@ -34,12 +35,10 @@ export class DialogEditVaraComponent implements OnInit {
       this.updateVaraRequest.VARA = this.updateData.value;
       this.varaService.updateVara(this.updateData.id, this.updateVaraRequest)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.dialogRef.close(true);
           },
-          error: (response) => {
-            console.log(response)
-          }
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
     return;

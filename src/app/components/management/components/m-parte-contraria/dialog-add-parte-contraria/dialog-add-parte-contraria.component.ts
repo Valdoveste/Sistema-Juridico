@@ -108,7 +108,7 @@ export class DialogAddParteContrariaComponent implements OnInit {
       this.createParteContrariaRequest.PF_PJ = 0;
       this.ParteContrariaService.createParteContraria(this.createParteContrariaRequest)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.dialogRef.close(true);
           },
           error: (err: HttpErrorResponse) => console.log(err)
@@ -122,7 +122,7 @@ export class DialogAddParteContrariaComponent implements OnInit {
       this.createParteContrariaRequest.PF_PJ = 1;
       this.ParteContrariaService.createParteContraria(this.createParteContrariaRequest)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.dialogRef.close(true);
           },
           error: (err: HttpErrorResponse) => console.log(err)

@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProcessoParteContraria } from 'src/app/models/PROCESSO_PARTE_CONTRARIA.model';
 import { DialogEditParteContriaComponent } from '../dialog-edit-parte-contraria/dialog-edit-parte-contraria.component';
 import { ParteContrariaService } from 'src/app/services/parte-contraria.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-dialog-view-parte-contraria',
@@ -48,13 +49,13 @@ export class DialogViewParteContrariaComponent {
 
   ngOnInit(): void {
     this.ParteContrariaService.getProcessoParteContraria(this.updateData.id).subscribe({
-      next: (response) => {
+      next: (response: ProcessoParteContraria) => {
         this.viewParteContriaRequest = response;
         this.componentName = response.PF_PJ;
-      }
+      },
+      error: (err: HttpErrorResponse) => console.log(err)
     }
     )
 
   }
 }
-  

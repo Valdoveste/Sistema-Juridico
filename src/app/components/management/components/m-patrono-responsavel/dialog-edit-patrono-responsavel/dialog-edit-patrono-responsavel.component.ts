@@ -37,7 +37,7 @@ export class DialogEditPatronoResponsavelComponent implements OnInit {
   loadPatronoResponsavel() {
     this.patronoResponsavelService.getPatronoResponsavel(this.updateData.id)
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoPatronoResponsavel) => {
           this.updatePatronoResponsavelRequest = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -49,12 +49,10 @@ export class DialogEditPatronoResponsavelComponent implements OnInit {
       this.updatePatronoResponsavelRequest.PATRONO_RESPONSAVEL = this.updateData.value;
       this.patronoResponsavelService.updatePatronoResponsavel(this.updateData.id, this.updatePatronoResponsavelRequest)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.dialogRef.close(true);
           },
-          error: (response) => {
-            console.log(response)
-          }
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
     return;

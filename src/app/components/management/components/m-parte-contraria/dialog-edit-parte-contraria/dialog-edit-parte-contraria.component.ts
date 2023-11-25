@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -83,12 +84,10 @@ export class DialogEditParteContriaComponent implements OnInit {
     if (this.updateParteContriaForm.valid) {
       this.ParteContrariaService.updateParteContraria(this.updateData.id, this.updateParteContriaRequest)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.dialogRef.close(true);
           },
-          error: (response) => {
-            console.log(response)
-          }
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
     return;

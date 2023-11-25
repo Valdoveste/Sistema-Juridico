@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ForoTribunalOrgaoService } from 'src/app/services/foro-tribunal-orgao.service';
@@ -17,12 +18,10 @@ export class DialogDeleteForoTribunalOrgaoComponent {
   deleteForoTribunalOrgao() {
     this.ForoTribunalOrgaoService.deleteForoTribunalOrgao(this.removeData.id)
       .subscribe({
-        next: (response) => {
+        next: () => {
           this.dialogRef.close(true);
         },
-        error: (response) => {
-          console.log(response);
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       });
   }
 }

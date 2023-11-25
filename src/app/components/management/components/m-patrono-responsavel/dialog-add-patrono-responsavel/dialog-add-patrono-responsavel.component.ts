@@ -35,7 +35,7 @@ export class DialogAddPatronoResponsavelComponent implements OnInit {
     if (this.createPatronoResponsavelForm.valid) {
       this.patronoResponsavelService.createPatronoResponsavel(this.createPatronoResponsavelRequest)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.dialogRef.close(true);
           },
           error: (err: HttpErrorResponse) => console.log(err)

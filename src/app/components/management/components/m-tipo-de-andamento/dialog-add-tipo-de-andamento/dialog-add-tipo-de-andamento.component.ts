@@ -33,7 +33,7 @@ export class DialogAddTipoDeAndamentoComponent implements OnInit {
     if (this.createTipoDeAndamentoForm.valid) {
       this.tipoDeAndamentoService.createTipoDeAndamento(this.createTipoDeAndamentoRequest)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.dialogRef.close(true);
           },
           error: (err: HttpErrorResponse) => console.log(err)

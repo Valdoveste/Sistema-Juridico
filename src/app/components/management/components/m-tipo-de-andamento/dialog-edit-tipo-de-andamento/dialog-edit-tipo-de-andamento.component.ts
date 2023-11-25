@@ -35,7 +35,7 @@ export class DialogEditTipoDeAndamentoComponent implements OnInit {
       this.updateTipoDeAndamentoRequest.TIPO_DE_ANDAMENTO = this.updateData.value;
       this.tipoDeAndamentoService.updateTipoDeAndamento(this.updateData.id, this.updateTipoDeAndamentoRequest)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.dialogRef.close(true);
           },
           error: (err: HttpErrorResponse) => console.log(err)

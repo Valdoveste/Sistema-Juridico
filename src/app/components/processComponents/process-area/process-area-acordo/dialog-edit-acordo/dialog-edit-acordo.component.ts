@@ -40,7 +40,7 @@ export class DialogEditAcordoComponent implements OnInit {
   loadProcessoAcorod() {
     this.acordoService.getProcessoAcordo(this.updateData.id)
       .subscribe({
-        next: (response) => {
+        next: (response: ProcessoAcordo) => {
           this.updateAcordoRequest = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -51,7 +51,7 @@ export class DialogEditAcordoComponent implements OnInit {
     if (this.updateAcordoForm.valid) {
       this.acordoService.updateAcordo(this.updateData.id, this.updateAcordoRequest)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.dialogRef.close(true);
           },
 
