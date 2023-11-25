@@ -18,7 +18,7 @@ export class DialogDeleteAmbitoComponent {
   deleteAmbito() {
     this.AmbitoService.deleteAmbito(this.deleteData.id)
       .subscribe({
-        next: (response) => {
+        next: () => {
           this.dialogRef.close(true);
         },
         error: (err: HttpErrorResponse) => console.log(err)

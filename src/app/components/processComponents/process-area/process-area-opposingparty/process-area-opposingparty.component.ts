@@ -4,6 +4,7 @@ import { ProcessoParteContraria } from 'src/app/models/PROCESSO_PARTE_CONTRARIA.
 import { ActivatedRoute } from '@angular/router';
 import { ProcessoService } from 'src/app/services/processo.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Processo } from 'src/app/models/PROCESSO.model';
 
 @Component({
   selector: 'app-process-area-opposingparty',
@@ -54,7 +55,7 @@ export class ProcessAreaOpposingpartyComponent implements OnInit {
         const ID_PROCESSO = params.get('id');
         if (ID_PROCESSO)
           this.ProcessoService.getProcess(ID_PROCESSO!).subscribe({
-            next: (response) => {
+            next: (response: Processo) => {
               this.loadParteContraria(response.ID_PARTE_CONTRARIA);
             },
             error: (err: HttpErrorResponse) => console.log(err)
@@ -64,10 +65,10 @@ export class ProcessAreaOpposingpartyComponent implements OnInit {
 
   }
 
-  loadParteContraria(ID_PARTE_CONTRARIA: any) {
+  loadParteContraria(ID_PARTE_CONTRARIA: string | String) {
     this.ParteContrariaService.getProcessoParteContraria(ID_PARTE_CONTRARIA)
       .subscribe({
-        next: (response) => {
+        next: (response: ProcessoParteContraria) => {
           this.viewParteContriaRequest = response;
           this.componentName = response.PF_PJ;
         },

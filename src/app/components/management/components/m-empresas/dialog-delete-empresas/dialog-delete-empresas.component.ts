@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { EmpresasService } from 'src/app/services/empresas.service';
@@ -20,9 +21,7 @@ export class DialogDeleteEmpresasComponent {
         next: (response) => {
           this.dialogRef.close(true);
         },
-        error: (response) => {
-          console.log(response);
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       });
   }
 }

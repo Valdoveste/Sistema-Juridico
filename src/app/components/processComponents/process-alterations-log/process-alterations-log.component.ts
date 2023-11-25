@@ -71,7 +71,7 @@ export class ProcessAlterationsLogComponent implements OnInit {
           });
 
           this.ProcessoService.getProcess(ID_PROCESSO).subscribe({
-            next: (response) => {
+            next: (response: Processo) => {
               this.processo = response;
             },
             error: (err: HttpErrorResponse) => console.log(err)

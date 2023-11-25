@@ -18,7 +18,7 @@ export class DialogDeleteTipoDeAndamentoComponent {
   deleteTipoDeAndamento() {
     this.tipoDeAndamentoService.deleteTipoDeAndamento(this.removeData.id)
       .subscribe({
-        next: (response) => {
+        next: () => {
           this.dialogRef.close(true);
         },
         error: (err: HttpErrorResponse) => console.log(err)

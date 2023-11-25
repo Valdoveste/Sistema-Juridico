@@ -3,6 +3,7 @@ import { ProcessoForoTribunalOrgao } from 'src/app/models/PROCESSO_FORO_TRIBUNAL
 import { ForoTribunalOrgaoService } from 'src/app/services/foro-tribunal-orgao.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-dialog-add-foro-tribunal-orgao',
@@ -32,13 +33,11 @@ export class DialogAddForoTribunalOrgaoComponent implements OnInit {
     if (this.createForoTribunalOrgaoForm.valid) {
       this.ForoTribunalOrgaoService.createForoTribunalOrgao(this.createForoTribunalOrgaoRequest)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.dialogRef.close(true);
             this.createForoTribunalOrgaoForm.reset();
           },
-          error: (response) => {
-            console.log(response)
-          }
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
     return;

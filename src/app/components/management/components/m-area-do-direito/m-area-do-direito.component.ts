@@ -6,6 +6,7 @@ import { AreaDoDireitoService } from 'src/app/services/area-do-direito.service';
 import { DialogAddAreaDoDireitoComponent } from './dialog-add-area-do-direito/dialog-add-area-do-direito.component';
 import { DialogDeleteAreaDoDireitoComponent } from './dialog-delete-area-do-direito/dialog-delete-area-do-direito.component';
 import { DialogEditAreaDoDireitoComponent } from './dialog-edit-area-do-direito/dialog-edit-area-do-direito.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-m-area-do-direito',
@@ -27,12 +28,10 @@ export class MAreaDoDireitoComponent implements OnInit {
   loadAreasDoDireito() {
     this.areaDoDireitoService.getAllAreaDoDireito()
       .subscribe({
-        next: (areasDoDireito: any) => {
+        next: (areasDoDireito: ProcessoAreaDoDireito[]) => {
           this.areasDoDireito = areasDoDireito;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
   }
 

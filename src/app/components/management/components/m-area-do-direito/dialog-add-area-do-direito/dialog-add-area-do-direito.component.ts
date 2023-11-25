@@ -3,6 +3,7 @@ import { ProcessoAreaDoDireito } from 'src/app/models/PROCESSO_AREA_DO_DIREITO.m
 import { AreaDoDireitoService } from 'src/app/services/area-do-direito.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-dialog-add-area-do-direito',
@@ -32,13 +33,11 @@ export class DialogAddAreaDoDireitoComponent implements OnInit {
     if (this.createAreaDoDireitoForm.valid) {
       this.areaDoDireitoService.createAreaDoDireito(this.createAreaDoDireitoRequest)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.dialogRef.close(true);
             this.createAreaDoDireitoForm.reset();
           },
-          error: (response) => {
-            console.log(response)
-          }
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
     return;

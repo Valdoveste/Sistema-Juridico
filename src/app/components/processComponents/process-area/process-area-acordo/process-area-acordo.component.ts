@@ -37,8 +37,8 @@ export class ProcessAreaAcordoComponent implements OnInit {
         this.idProcesso = params.get('id');
         this.acordoService.getAllProcessoAcordo(this.idProcesso)
           .subscribe({
-            next: (response) => {
-              this.acordos = response.sort((a, b) => b.DATA_ACORDO.localeCompare(a.DATA_ACORDO));
+            next: (response: ProcessoAcordo[]) => {
+              this.acordos = response;
             },
             error: (err: HttpErrorResponse) => console.log(err)
           })

@@ -59,12 +59,10 @@ export class DialogDeleteParteContrariaComponent implements OnInit {
   deleteParteContraria() {
     this.ParteContrariaService.deleteParteContraria(this.removeData.id)
       .subscribe({
-        next: (response) => {
+        next: () => {
           this.dialogRef.close(true);
         },
-        error: (response) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       });
   }
 } 

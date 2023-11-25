@@ -3,6 +3,7 @@ import { ProcessoAmbito } from 'src/app/models/PROCESSO_AMBITO.model';
 import { AmbitoService } from 'src/app/services/ambito.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-dialog-add-ambito',
@@ -31,13 +32,11 @@ export class DialogAddAmbitoComponent implements OnInit {
     if (this.createAmbitoForm.valid) {
       this.AmbitoService.createAmbito(this.createAmbitoRequest)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.dialogRef.close(true);
             this.createAmbitoForm.reset();
           },
-          error: (response) => {
-            console.log(response)
-          }
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
     return;
