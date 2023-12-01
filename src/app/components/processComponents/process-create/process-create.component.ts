@@ -5,10 +5,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AmbitoService } from '../../../services/ambito.service';
 import { ProcessoAmbito } from '../../../models/PROCESSO_AMBITO.model';
 import { AreaDoDireitoService } from '../../../services/area-do-direito.service';
-import { CondicoesTentativaAcordoService } from '../../../services/condicoes-tentativa-acordo.service';
 import { FaseService } from '../../../services/fase.service';
 import { ForoTribunalOrgaoService } from '../../../services/foro-tribunal-orgao.service';
-import { MotivoDoEncerramentoService } from '../../../services/motivo-do-encerramento.service';
 import { ProcessoPatronoResponsavel } from '../../../models/PROCESSO_PATRONO_RESPONSAVEL.model';
 import { StatusService } from '../../../services/status.service';
 import { TipoDeAcaoService } from '../../../services/tipo-de-acao.service';
@@ -42,10 +40,8 @@ export class ProcessCreateComponent implements OnInit {
     private ProcessoService: ProcessoService,
     private AmbitoService: AmbitoService,
     private AreaDoDireito: AreaDoDireitoService,
-    private CondicoesTentaivaAcordo: CondicoesTentativaAcordoService,
     private Fase: FaseService,
     private ForoTribunalOrgao: ForoTribunalOrgaoService,
-    private MotivoDoEncerramento: MotivoDoEncerramentoService,
     private Status: StatusService,
     private TipoDeAcao: TipoDeAcaoService,
     private Vara: VaraService,
@@ -155,14 +151,6 @@ export class ProcessCreateComponent implements OnInit {
         error: (err: HttpErrorResponse) => console.log(err)
       })
 
-    this.CondicoesTentaivaAcordo.getAllCondicoesTentativaAcordo()
-      .subscribe({
-        next: (response: ProcessoCondicoesTentativaAcordo[]) => {
-          this.condicoesTentativaAcordo = response;
-        },
-        error: (err: HttpErrorResponse) => console.log(err)
-      })
-
     this.Fase.getAllFase()
       .subscribe({
         next: (response: ProcessoFase[]) => {
@@ -175,14 +163,6 @@ export class ProcessCreateComponent implements OnInit {
       .subscribe({
         next: (response: ProcessoForoTribunalOrgao[]) => {
           this.foroTribunalOrgaos = response;
-        },
-        error: (err: HttpErrorResponse) => console.log(err)
-      })
-
-    this.MotivoDoEncerramento.getAllMotivoDoEncerramento()
-      .subscribe({
-        next: (response: ProcessoMotivoDoEncerramento[]) => {
-          this.motivosDoEncerramento = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
       })
