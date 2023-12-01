@@ -30,7 +30,6 @@ import { TipoDeAcaoService } from '../../../services/tipo-de-acao.service';
 import { VaraService } from '../../../services/vara.service';
 import { AmbitoService } from '../../../services/ambito.service';
 import { EmpresasService } from '../../../services/empresas.service';
-import { DialogViewStatusProcessComponent } from '../process-area/dialog-view-status-process/dialog-view-status-process.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogChangeStatusProcessComponent } from '../process-area/dialog-change-status-process/dialog-change-status-process.component';
 
@@ -225,12 +224,13 @@ export class ProcessEditComponent implements OnInit {
       next: (params) => {
         const id_process = params.get('id');
         if (id_process) {
-          this.ProcessoService.getProcess(id_process).subscribe({
-            next: (response: Processo) => {
-              this.updateProcessRequest = response;
-            },
-            error: (err: HttpErrorResponse) => console.log(err)
-          });
+          this.ProcessoService.getProcess(id_process)
+            .subscribe({
+              next: (response: Processo) => {
+                this.updateProcessRequest = response;
+              },
+              error: (err: HttpErrorResponse) => console.log(err)
+            });
         }
       }
     });

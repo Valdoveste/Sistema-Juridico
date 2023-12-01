@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TipoDeAcaoService } from 'src/app/services/tipo-de-acao.service';
@@ -17,12 +18,10 @@ export class DialogDeleteTipoDeAcaoComponent {
   deleteTipoDeAcao() {
     this.tipoDeAcaoService.deleteTipoDeAcao(this.removeData.id)
       .subscribe({
-        next: (response) => {
+        next: () => {
           this.dialogRef.close(true);
         },
-        error: (response) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       });
   }
 }

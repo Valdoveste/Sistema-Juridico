@@ -67,7 +67,7 @@ export class DialogLinkParteContrariaComponent implements OnInit {
 
     this.ParteContrariaService.getProcessoParteContraria(this.linkableData.id)
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoParteContraria) => {
           this.linkableParteContrariaRequest = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)

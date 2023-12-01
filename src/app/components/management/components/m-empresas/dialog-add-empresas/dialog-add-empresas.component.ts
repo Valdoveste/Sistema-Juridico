@@ -3,6 +3,7 @@ import { ProcessoEmpresas } from 'src/app/models/PROCESSO_EMPRESAS.model';
 import { EmpresasService } from 'src/app/services/empresas.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-dialog-add-empresas',
@@ -34,13 +35,11 @@ export class DialogAddEmpresasComponent implements OnInit {
     if (this.createEmpresasForm.valid) {
       this.empresasService.createEmpresas(this.createEmpresasRequest)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.dialogRef.close(true);
             this.createEmpresasForm.reset();
           },
-          error: (response) => {
-            console.log(response);
-          }
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
     return;

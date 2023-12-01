@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './process-panel.component.html',
   styleUrls: ['./process-panel.component.scss']
 })
-export class ProcessPanelComponent {
-
-}
+export class ProcessPanelComponent { }

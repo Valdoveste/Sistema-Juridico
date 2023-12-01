@@ -3,6 +3,7 @@ import { EmpresasService } from 'src/app/services/empresas.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProcessoEmpresas } from 'src/app/models/PROCESSO_EMPRESAS.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-dialog-edit-empresas',
@@ -37,12 +38,10 @@ export class DialogEditEmpresasComponent implements OnInit {
       this.updateEmpresasRequest.CPF_CNPJ = this.updateData.empresas_data[1];
       this.empresasService.updateEmpresas(this.updateData.id, this.updateEmpresasRequest)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.dialogRef.close(true);
           },
-          error: (response) => {
-            console.log(response);
-          }
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
     return;

@@ -7,6 +7,7 @@ import { DialogEditParteContriaComponent } from './dialog-edit-parte-contraria/d
 import { DialogViewParteContrariaComponent } from './dialog-view-parte-contraria/dialog-view-parte-contraria.component';
 import { DialogLinkParteContrariaComponent } from './dialog-link-parte-contraria/dialog-link-parte-contraria.component';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-m-parte-contraria',
@@ -31,12 +32,10 @@ export class MParteContrariaComponent implements OnInit {
   loadParteContrarias() {
     this.ParteContrariaService.getAllParteContraria()
       .subscribe({
-        next: (partecontrarias: any) => {
+        next: (partecontrarias: ProcessoParteContraria[]) => {
           this.partecontrarias = partecontrarias;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
   }
 

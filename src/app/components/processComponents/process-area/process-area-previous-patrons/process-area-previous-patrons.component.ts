@@ -28,7 +28,7 @@ export class ProcessAreaPreviousPatronsComponent implements OnInit {
           if (ID_PROCESSO) {
             this.patronoAlteriorService.getProcessoPatronoAnterior(ID_PROCESSO)
               .subscribe({
-                next: (response) => {
+                next: (response: ProcessoPatronosAnteriors[]) => {
                   this.patronosAlteriores = response;
                 },
                 error: (err: HttpErrorResponse) => console.log(err)

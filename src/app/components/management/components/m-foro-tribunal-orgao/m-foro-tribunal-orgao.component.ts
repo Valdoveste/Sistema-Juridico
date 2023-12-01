@@ -6,6 +6,7 @@ import { ForoTribunalOrgaoService } from 'src/app/services/foro-tribunal-orgao.s
 import { DialogAddForoTribunalOrgaoComponent } from './dialog-add-foro-tribunal-orgao/dialog-add-foro-tribunal-orgao.component';
 import { DialogDeleteForoTribunalOrgaoComponent } from './dialog-delete-foro-tribunal-orgao/dialog-delete-foro-tribunal-orgao.component';
 import { DialogEditForoTribunalOrgaoComponent } from './dialog-edit-foro-tribunal-orgao/dialog-edit-foro-tribunal-orgao.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-m-foro-tribunal-orgao',
@@ -27,12 +28,10 @@ export class MForoTribunalOrgaoComponent implements OnInit {
   loadForoTribunalOrgaos() {
     this.foroTribunalOrgaoService.getAllForoTribunalOrgao()
       .subscribe({
-        next: (foroTribunalOrgaos: any) => {
+        next: (foroTribunalOrgaos: ProcessoForoTribunalOrgao[]) => {
           this.foroTribunalOrgaos = foroTribunalOrgaos;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
   }
 

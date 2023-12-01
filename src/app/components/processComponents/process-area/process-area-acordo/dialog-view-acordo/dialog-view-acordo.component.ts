@@ -28,7 +28,7 @@ export class DialogViewAcordoComponent implements OnInit {
   ngOnInit(): void {
     this.acordoService.getProcessoAcordo(this.viewData.id)
       .subscribe({
-        next: (response) => {
+        next: (response: ProcessoAcordo) => {
           this.acordoDetalhes = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)

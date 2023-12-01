@@ -6,6 +6,7 @@ import { AmbitoService } from 'src/app/services/ambito.service';
 import { DialogAddAmbitoComponent } from './dialog-add-ambito/dialog-add-ambito.component';
 import { DialogDeleteAmbitoComponent } from './dialog-delete-ambito/dialog-delete-ambito.component';
 import { DialogEditAmbitoComponent } from './dialog-edit-ambito/dialog-edit-ambito.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-m-ambito',
@@ -27,12 +28,10 @@ export class MAmbitoComponent implements OnInit {
   loadAmbitos() {
     this.AmbitoService.getAllAmbito()
       .subscribe({
-        next: (ambitos: any) => {
+        next: (ambitos: ProcessoAmbito[]) => {
           this.ambitos = ambitos;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
   }
 

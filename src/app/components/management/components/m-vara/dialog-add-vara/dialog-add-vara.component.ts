@@ -3,6 +3,7 @@ import { ProcessoVara } from 'src/app/models/PROCESSO_VARA.model';
 import { VaraService } from 'src/app/services/vara.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-dialog-add-vara',
@@ -32,13 +33,11 @@ export class DialogAddVaraComponent implements OnInit {
     if (this.createVaraForm.valid) {
       this.VaraService.createVara(this.createVaraRequest)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.dialogRef.close(true);
             this.createVaraForm.reset();
           },
-          error: (response) => {
-            console.log(response)
-          }
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
     return;

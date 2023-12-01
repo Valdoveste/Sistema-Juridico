@@ -29,7 +29,7 @@ export class DialogDeletePatronoResponsavelComponent implements OnInit {
   loadPatronoResponsavel() {
     this.patronoResponsavelService.getPatronoResponsavel(this.deleteData.id)
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoPatronoResponsavel) => {
           this.deletePatronoResponsavelRequest = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -39,7 +39,7 @@ export class DialogDeletePatronoResponsavelComponent implements OnInit {
   deletePatronoResponsavel() {
     this.patronoResponsavelService.deletePatronoResponsavel(this.deleteData.id)
       .subscribe({
-        next: (response) => {
+        next: () => {
           this.dialogRef.close(true);
         },
         error: (err: HttpErrorResponse) => console.log(err)

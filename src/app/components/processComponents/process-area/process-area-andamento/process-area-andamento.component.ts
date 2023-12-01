@@ -6,6 +6,7 @@ import { ProcessoAndamento } from '../../../../models/PROCESSO_ANDAMENTO.model'
 import { DialogAddAndamentoComponent } from './dialog-add-andamento/dialog-add-andamento.component';
 import { DialogViewAndamentoComponent } from './dialog-view-andamento/dialog-view-andamento.component';
 import { DialogEditAndamentoComponent } from './dialog-edit-andamento/dialog-edit-andamento.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-process-area-andamento',
@@ -33,10 +34,10 @@ export class ProcessAreaAndamentoComponent implements OnInit {
         this.idProcesso = params.get('id');
         this.andamentoService.getAllProcessoAndamento(this.idProcesso)
           .subscribe({
-            next: (response) => {
-              this.andamentos = response.sort((a, b) => b.DATA_CADASTRO.localeCompare(a.DATA_CADASTRO));
+            next: (response: ProcessoAndamento[]) => {
+              this.andamentos = response;
             },
-            error: (err) => console.log(err)
+            error: (err: HttpErrorResponse) => console.log(err)
           })
       }
     })

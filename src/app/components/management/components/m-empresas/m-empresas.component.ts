@@ -6,6 +6,7 @@ import { EmpresasService } from 'src/app/services/empresas.service';
 import { DialogAddEmpresasComponent } from './dialog-add-empresas/dialog-add-empresas.component';
 import { DialogDeleteEmpresasComponent } from './dialog-delete-empresas/dialog-delete-empresas.component';
 import { DialogEditEmpresasComponent } from './dialog-edit-empresas/dialog-edit-empresas.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-m-empresas',
@@ -31,12 +32,10 @@ export class MEmpresasComponent implements OnInit {
   loadEmpresas() {
     this.empresasService.getAllEmpresas()
       .subscribe({
-        next: (empresas: any) => {
+        next: (empresas: ProcessoEmpresas[]) => {
           this.empresas = empresas;
         },
-        error: (response: any) => {
-          console.log(response);
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       });
   }
 

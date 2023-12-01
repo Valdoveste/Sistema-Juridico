@@ -60,7 +60,7 @@ export class DialogViewStatusProcessComponent implements OnInit {
 
     this.ProcessoService.getProcess(this.statusData.id_processo)
       .subscribe({
-        next: (response) => {
+        next: (response: Processo) => {
           this.updateProcessRequest = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)

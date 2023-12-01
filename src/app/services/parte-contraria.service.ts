@@ -21,7 +21,7 @@ export class ParteContrariaService {
     return this.http.put<ProcessoParteContraria>(this.URL_API + '/api/Sistema/link-parte-contraria/' + NUMERO_PROCESSO, linkParteContrariaRequest)
   }
 
-  getProcessoParteContraria(id_parte_contraria: string): Observable<ProcessoParteContraria> {
+  getProcessoParteContraria(id_parte_contraria: string | String): Observable<ProcessoParteContraria> {
     return this.http.get<ProcessoParteContraria>(this.URL_API + '/api/Sistema/processo/parte-contraria/' + id_parte_contraria)
   }
 

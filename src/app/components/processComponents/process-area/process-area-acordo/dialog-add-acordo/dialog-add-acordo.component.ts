@@ -3,6 +3,7 @@ import { ProcessoAcordo } from '../../../../../models/PROCESSO_ACORDO.model'
 import { AcordoService } from 'src/app/services/acordo.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-dialog-add-acordo',
@@ -38,12 +39,10 @@ export class DialogAddAcordoComponent implements OnInit {
     if (this.createAcordoForm.valid) {    
       this.acordoService.createAcordo(this.createAcordoRequest, this.addData.id)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.dialogRef.close(true);
           },
-          error: (response) => {
-            console.log(response)
-          }
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
     return;

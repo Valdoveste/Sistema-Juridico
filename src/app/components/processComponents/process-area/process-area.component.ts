@@ -18,6 +18,12 @@ export class ProcessAreaComponent {
     protected processoService: ProcessoService,
   ) { }
 
+  componentName: string = '';
+
+  swapTabs(componentName: string): void {
+    this.componentName = componentName;
+  }
+
   ID_PROCESSO!: string | String;
   STATUS!: string | String;
   MOTIVO_ENCERRAMENTO!: string | String;
@@ -29,26 +35,21 @@ export class ProcessAreaComponent {
         const id = params.get('id');
         if (id) {
           this.ID_PROCESSO = id;
+
+          this.processoService.getProcess(this.ID_PROCESSO)
+            .subscribe({
+              next: (response) => {
+                this.STATUS = response.STATUS;
+                if (response.STATUS == 'Encerrado' || response.STATUS == 'Baixa Provisória') {
+                  this.MOTIVO_BAIXA_PROVISORIA = response.MOTIVO_BAIXA_PROVISORIA;
+                  this.MOTIVO_ENCERRAMENTO = response.MOTIVO_ENCERRAMENTO;
+                }
+              }
+            })
         }
 
-        this.processoService.getProcess(this.ID_PROCESSO)
-          .subscribe({
-            next: (response) => {
-              this.STATUS = response.STATUS;
-              if (response.STATUS == 'Encerrado' || response.STATUS == 'Baixa Provisória') {
-                this.MOTIVO_BAIXA_PROVISORIA = response.MOTIVO_BAIXA_PROVISORIA;
-                this.MOTIVO_ENCERRAMENTO = response.MOTIVO_ENCERRAMENTO;
-              }
-            }
-          })
       }
     })
-
-  componentName: string = '';
-
-  swapTabs(componentName: string): void {
-    this.componentName = componentName;
-  }
 
   openDialogChangeStatus(enterAnimationDuration: string, exitAnimationDuration: string, status: string | String, id_processo: string | String): void {
     const dialogRefAdd = this.dialog.open(DialogChangeStatusProcessComponent, {
