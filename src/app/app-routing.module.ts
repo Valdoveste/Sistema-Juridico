@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProcessPanelComponent } from './components/processComponents/process-panel/process-panel.component';
 import { ProcessCreateComponent } from './components/processComponents/process-create/process-create.component';
 import { ProcessAreaComponent } from './components/processComponents/process-area/process-area.component';
-// import { LoginComponent } from './components/login/login.component';
 import { MAmbitoComponent } from './components/management/components/m-ambito/m-ambito.component';
 import { MVaraComponent } from './components/management/components/m-vara/m-vara.component';
 import { MPatronoResponsavelComponent } from './components/management/components/m-patrono-responsavel/m-patrono-responsavel.component';
@@ -15,83 +14,105 @@ import { MEmpresasComponent } from './components/management/components/m-empresa
 import { MParteContrariaComponent } from './components/management/components/m-parte-contraria/m-parte-contraria.component';
 import { ProcessEditComponent } from './components/processComponents/process-edit/process-edit.component';
 import { ProcessAlterationsLogComponent } from './components/processComponents/process-alterations-log/process-alterations-log.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './services/auth-guard.guard';
 
 const routes: Routes = [
   {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
     path: '',
-    component: ProcessPanelComponent
+    pathMatch: 'full',
+    redirectTo: 'login',
   },
   {
     path: 'painel-processos',
-    component: ProcessPanelComponent
+    component: ProcessPanelComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'log-alteracoes/:id',
-    component: ProcessAlterationsLogComponent
+    component: ProcessAlterationsLogComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'painel-processos/busca-avancada',
-    component: ProcessPanelComponent
+    component: ProcessPanelComponent,
+    canActivate: [AuthGuard]
   },
 
   {
     path: 'criar-processo',
-    component: ProcessCreateComponent
+    component: ProcessCreateComponent,
+    canActivate: [AuthGuard]
   },
 
   {
     path: 'editar-processo/:id',
-    component: ProcessEditComponent
+    component: ProcessEditComponent,
+    canActivate: [AuthGuard]
   },
 
   {
     path: 'painel-processos/processo-detalhes/:id',
-    component: ProcessAreaComponent
+    component: ProcessAreaComponent,
+    canActivate: [AuthGuard]
   },
 
   {
     path: 'gestao/ambito',
-    component: MAmbitoComponent
+    component: MAmbitoComponent,
+    canActivate: [AuthGuard]
   },
 
   {
     path: 'gestao/vara',
-    component: MVaraComponent
+    component: MVaraComponent,
+    canActivate: [AuthGuard]
   },
 
   {
     path: 'gestao/patrono-responsavel',
-    component: MPatronoResponsavelComponent
+    component: MPatronoResponsavelComponent,
+    canActivate: [AuthGuard]
   },
 
   {
     path: 'gestao/area-do-direito',
-    component: MAreaDoDireitoComponent
+    component: MAreaDoDireitoComponent,
+    canActivate: [AuthGuard]
   },
 
   {
     path: 'gestao/tipo-de-acao',
-    component: MTipoDeAcaoComponent
+    component: MTipoDeAcaoComponent,
+    canActivate: [AuthGuard]
   },
 
   {
     path: 'gestao/foro-tribunal-orgao',
-    component: MForoTribunalOrgaoComponent
+    component: MForoTribunalOrgaoComponent,
+    canActivate: [AuthGuard]
   },
 
   {
     path: 'gestao/tipo-de-andamento',
-    component: MTipoDeAndamentoComponent
+    component: MTipoDeAndamentoComponent,
+    canActivate: [AuthGuard]
   },
 
   {
     path: 'gestao/empresas',
-    component: MEmpresasComponent
+    component: MEmpresasComponent,
+    canActivate: [AuthGuard]
   },
 
   {
     path: 'gestao/parte-contraria',
-    component: MParteContrariaComponent
+    component: MParteContrariaComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
