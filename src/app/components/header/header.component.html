@@ -9,12 +9,12 @@
     <ul class="header__navbar__list">
       <li class="header__navbar__item-user-name">
 
-        <div class="dropdown" *ngIf="userRequest.ACESSO_GESTAO == 1">
+        <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">Olá, {{userRequest.NOME_USUARIO}}
             <span class="caret"></span></button>
           <ul class="dropdown-menu">
-            <li class="dropdown-submenu">
+            <li class="dropdown-submenu" *ngIf="userRequest.ACESSO_GESTAO == 1">
               <a class="test dropdown-item" tabindex="-1" href="#">Gestão <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" routerLink="gestao/ambito">Âmbito</a></li>
