@@ -6,6 +6,7 @@ import { TipoDeAcaoService } from 'src/app/services/tipo-de-acao.service';
 import { DialogAddTipoDeAcaoComponent } from './dialog-add-tipo-de-acao/dialog-add-tipo-de-acao.component';
 import { DialogDeleteTipoDeAcaoComponent } from './dialog-delete-tipo-de-acao/dialog-delete-tipo-de-acao.component';
 import { DialogEditTipoDeAcaoComponent } from './dialog-edit-tipo-de-acao/dialog-edit-tipo-de-acao.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-m-tipo-de-acao',
@@ -27,12 +28,10 @@ export class MTipoDeAcaoComponent implements OnInit {
   loadTipoDeAcoes() {
     this.tipoDeAcaoService.getAllTipoDeAcao()
       .subscribe({
-        next: (tipoDeAcoes: any) => {
+        next: (tipoDeAcoes: ProcessoTipoDeAcao[]) => {
           this.tipoDeAcoes = tipoDeAcoes;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
   }
 

@@ -6,6 +6,7 @@ import { VaraService } from 'src/app/services/vara.service';
 import { DialogAddVaraComponent } from './dialog-add-vara/dialog-add-vara.component';
 import { DialogDeleteVaraComponent } from './dialog-delete-vara/dialog-delete-vara.component';
 import { DialogEditVaraComponent } from './dialog-edit-vara/dialog-edit-vara.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-m-vara',
@@ -28,12 +29,10 @@ export class MVaraComponent implements OnInit {
   loadVaras() {
     this.VaraService.getAllVara()
       .subscribe({
-        next: (varas: any) => {
+        next: (varas: ProcessoVara[]) => {
           this.varas = varas;
         },
-        error: (response: any) => {
-          console.log(response)
-        }
+        error: (err: HttpErrorResponse) => console.log(err)
       })
   }
 

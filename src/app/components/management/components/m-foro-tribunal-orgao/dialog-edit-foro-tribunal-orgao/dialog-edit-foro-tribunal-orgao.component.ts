@@ -3,6 +3,7 @@ import { ForoTribunalOrgaoService } from 'src/app/services/foro-tribunal-orgao.s
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProcessoForoTribunalOrgao } from 'src/app/models/PROCESSO_FORO_TRIBUNAL_ORGAO.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-dialog-edit-foro-tribunal-orgao',
@@ -34,12 +35,10 @@ export class DialogEditForoTribunalOrgaoComponent implements OnInit {
       this.updateForoTribunalOrgaoRequest.FORO_TRIBUNAL_ORGAO = this.updateData.value;
       this.ForoTribunalOrgaoService.updateForoTribunalOrgao(this.updateData.id, this.updateForoTribunalOrgaoRequest)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.dialogRef.close(true);
           },
-          error: (response) => {
-            console.log(response)
-          }
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
     return;

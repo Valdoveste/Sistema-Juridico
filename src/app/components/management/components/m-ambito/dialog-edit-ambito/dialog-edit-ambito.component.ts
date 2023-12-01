@@ -3,6 +3,7 @@ import { AmbitoService } from 'src/app/services/ambito.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProcessoAmbito } from 'src/app/models/PROCESSO_AMBITO.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-dialog-edit-ambito',
@@ -34,12 +35,10 @@ export class DialogEditAmbitoComponent implements OnInit {
       this.updateAmbitoRequest.AMBITO = this.updateData.value;
       this.AmbitoService.updateAmbito(this.updateData.id, this.updateAmbitoRequest)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.dialogRef.close(true);
           },
-          error: (response) => {
-            console.log(response)
-          }
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
     return;

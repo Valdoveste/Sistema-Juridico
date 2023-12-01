@@ -23,6 +23,8 @@ export class DialogChangeStatusProcessComponent implements OnInit {
   updateProcessoBaixaProvisoriaForm!: FormGroup;
   updateProcessoEncerramentoForm!: FormGroup;
 
+  status: string | String = "Null";
+
   componentName: string = '';
 
   swapTabs(componentName: string) {

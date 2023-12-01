@@ -3,6 +3,7 @@ import { TipoDeAcaoService } from 'src/app/services/tipo-de-acao.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProcessoTipoDeAcao } from 'src/app/models/PROCESSO_TIPO_DE_ACAO.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-dialog-edit-tipo-de-acao',
@@ -34,12 +35,10 @@ export class DialogEditTipoDeAcaoComponent implements OnInit {
       this.updateTipoDeAcaoRequest.TIPO_DE_ACAO = this.updateData.value;
       this.tipoDeAcaoService.updateTipoDeAcao(this.updateData.id, this.updateTipoDeAcaoRequest)
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.dialogRef.close(true);
           },
-          error: (response) => {
-            console.log(response)
-          }
+          error: (err: HttpErrorResponse) => console.log(err)
         });
     }
     return;

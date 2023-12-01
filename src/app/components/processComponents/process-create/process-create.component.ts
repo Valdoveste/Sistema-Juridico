@@ -5,10 +5,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AmbitoService } from '../../../services/ambito.service';
 import { ProcessoAmbito } from '../../../models/PROCESSO_AMBITO.model';
 import { AreaDoDireitoService } from '../../../services/area-do-direito.service';
-import { CondicoesTentativaAcordoService } from '../../../services/condicoes-tentativa-acordo.service';
 import { FaseService } from '../../../services/fase.service';
 import { ForoTribunalOrgaoService } from '../../../services/foro-tribunal-orgao.service';
-import { MotivoDoEncerramentoService } from '../../../services/motivo-do-encerramento.service';
 import { ProcessoPatronoResponsavel } from '../../../models/PROCESSO_PATRONO_RESPONSAVEL.model';
 import { StatusService } from '../../../services/status.service';
 import { TipoDeAcaoService } from '../../../services/tipo-de-acao.service';
@@ -42,10 +40,8 @@ export class ProcessCreateComponent implements OnInit {
     private ProcessoService: ProcessoService,
     private AmbitoService: AmbitoService,
     private AreaDoDireito: AreaDoDireitoService,
-    private CondicoesTentaivaAcordo: CondicoesTentativaAcordoService,
     private Fase: FaseService,
     private ForoTribunalOrgao: ForoTribunalOrgaoService,
-    private MotivoDoEncerramento: MotivoDoEncerramentoService,
     private Status: StatusService,
     private TipoDeAcao: TipoDeAcaoService,
     private Vara: VaraService,
@@ -105,11 +101,12 @@ export class ProcessCreateComponent implements OnInit {
     MOTIVO_ENCERRAMENTO: '',
     MOTIVO_BAIXA_PROVISORIA: ''
   }
+
   createProcess() {
     if (this.createProcessForm.valid) {
       this.ProcessoService.createProcess(this.createProcessRequest)
         .subscribe({
-          next: (response) => {
+          next: (response: Processo) => {
             let id = response.ID_PROCESSO
             this.openDialogManagement('250ms', '100ms')
             this.router.navigate(['/painel-processos', 'processo-detalhes', response.ID_PROCESSO])
@@ -132,7 +129,7 @@ export class ProcessCreateComponent implements OnInit {
   ngOnInit(): void {
     this.AmbitoService.getAllAmbito()
       .subscribe({
-        next: (ambitos: any) => {
+        next: (ambitos: ProcessoAmbito[]) => {
           this.ambitos = ambitos;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -140,7 +137,7 @@ export class ProcessCreateComponent implements OnInit {
 
     this.EmpresasService.getAllEmpresas()
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoEmpresas[]) => {
           this.empresas = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -148,23 +145,15 @@ export class ProcessCreateComponent implements OnInit {
 
     this.AreaDoDireito.getAllAreaDoDireito()
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoAreaDoDireito[]) => {
           this.areasDoDireito = response;
-        },
-        error: (err: HttpErrorResponse) => console.log(err)
-      })
-
-    this.CondicoesTentaivaAcordo.getAllCondicoesTentativaAcordo()
-      .subscribe({
-        next: (response: any) => {
-          this.condicoesTentativaAcordo = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.Fase.getAllFase()
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoFase[]) => {
           this.fases = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -172,23 +161,15 @@ export class ProcessCreateComponent implements OnInit {
 
     this.ForoTribunalOrgao.getAllForoTribunalOrgao()
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoForoTribunalOrgao[]) => {
           this.foroTribunalOrgaos = response;
-        },
-        error: (err: HttpErrorResponse) => console.log(err)
-      })
-
-    this.MotivoDoEncerramento.getAllMotivoDoEncerramento()
-      .subscribe({
-        next: (response: any) => {
-          this.motivosDoEncerramento = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
       })
 
     this.Status.getAllStatus()
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoStatus[]) => {
           this.status = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -196,7 +177,7 @@ export class ProcessCreateComponent implements OnInit {
 
     this.TipoDeAcao.getAllTipoDeAcao()
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoTipoDeAcao[]) => {
           this.tiposDeAcoes = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -204,7 +185,7 @@ export class ProcessCreateComponent implements OnInit {
 
     this.Vara.getAllVara()
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoVara[]) => {
           this.varas = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
@@ -212,7 +193,7 @@ export class ProcessCreateComponent implements OnInit {
 
     this.PatronoResponsavel.getAllPatronoResponsavel()
       .subscribe({
-        next: (response: any) => {
+        next: (response: ProcessoPatronoResponsavel[]) => {
           this.patronoResponsavel = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)

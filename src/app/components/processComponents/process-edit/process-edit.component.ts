@@ -20,17 +20,14 @@ import { ProcessoStatus } from '../../../models/PROCESSO_STATUS.model';
 import { ProcessoTipoDeAcao } from '../../../models/PROCESSO_TIPO_DE_ACAO.model';
 import { ProcessoVara } from '../../../models/PROCESSO_VARA.model';
 import { AreaDoDireitoService } from '../../../services/area-do-direito.service';
-import { CondicoesTentativaAcordoService } from '../../../services/condicoes-tentativa-acordo.service';
 import { FaseService } from '../../../services/fase.service';
 import { ForoTribunalOrgaoService } from '../../../services/foro-tribunal-orgao.service';
-import { MotivoDoEncerramentoService } from '../../../services/motivo-do-encerramento.service';
 import { PatronoResponsavelService } from '../../../services/patrono-responsavel.service';
 import { StatusService } from '../../../services/status.service';
 import { TipoDeAcaoService } from '../../../services/tipo-de-acao.service';
 import { VaraService } from '../../../services/vara.service';
 import { AmbitoService } from '../../../services/ambito.service';
 import { EmpresasService } from '../../../services/empresas.service';
-import { DialogViewStatusProcessComponent } from '../process-area/dialog-view-status-process/dialog-view-status-process.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogChangeStatusProcessComponent } from '../process-area/dialog-change-status-process/dialog-change-status-process.component';
 
@@ -55,10 +52,8 @@ export class ProcessEditComponent implements OnInit {
     private ProcessoLogAlteracoesService: ProcessoLogAlteracoesService,
     private AmbitoService: AmbitoService,
     private AreaDoDireito: AreaDoDireitoService,
-    private CondicoesTentaivaAcordo: CondicoesTentativaAcordoService,
     private Fase: FaseService,
     private ForoTribunalOrgao: ForoTribunalOrgaoService,
-    private MotivoDoEncerramento: MotivoDoEncerramentoService,
     private Status: StatusService,
     private TipoDeAcao: TipoDeAcaoService,
     private Vara: VaraService,
@@ -157,14 +152,6 @@ export class ProcessEditComponent implements OnInit {
         error: (err: HttpErrorResponse) => console.log(err)
       })
 
-    this.CondicoesTentaivaAcordo.getAllCondicoesTentativaAcordo()
-      .subscribe({
-        next: (response: ProcessoCondicoesTentativaAcordo[]) => {
-          this.condicoesTentativaAcordo = response;
-        },
-        error: (err: HttpErrorResponse) => console.log(err)
-      })
-
     this.Fase.getAllFase()
       .subscribe({
         next: (response: ProcessoFase[]) => {
@@ -177,14 +164,6 @@ export class ProcessEditComponent implements OnInit {
       .subscribe({
         next: (response: ProcessoForoTribunalOrgao[]) => {
           this.foroTribunalOrgaos = response;
-        },
-        error: (err: HttpErrorResponse) => console.log(err)
-      })
-
-    this.MotivoDoEncerramento.getAllMotivoDoEncerramento()
-      .subscribe({
-        next: (response: ProcessoMotivoDoEncerramento[]) => {
-          this.motivosDoEncerramento = response;
         },
         error: (err: HttpErrorResponse) => console.log(err)
       })
@@ -225,12 +204,13 @@ export class ProcessEditComponent implements OnInit {
       next: (params) => {
         const id_process = params.get('id');
         if (id_process) {
-          this.ProcessoService.getProcess(id_process).subscribe({
-            next: (response) => {
-              this.updateProcessRequest = response;
-            },
-            error: (err: HttpErrorResponse) => console.log(err)
-          });
+          this.ProcessoService.getProcess(id_process)
+            .subscribe({
+              next: (response: Processo) => {
+                this.updateProcessRequest = response;
+              },
+              error: (err: HttpErrorResponse) => console.log(err)
+            });
         }
       }
     });

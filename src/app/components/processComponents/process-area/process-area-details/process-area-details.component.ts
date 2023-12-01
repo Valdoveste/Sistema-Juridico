@@ -56,7 +56,7 @@ export class ProcessAreaDetailsComponent extends ProcessAreaComponent implements
         if (id) {
           this.processoService.getProcess(id)
             .subscribe({
-              next: (response) => {
+              next: (response: Processo) => {
                 this.processoDetalhes = response;
 
                 if (response.STATUS == 'Encerrado' || response.STATUS == 'Baixa Provisória') {

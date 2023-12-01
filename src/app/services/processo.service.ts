@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'env';
 import { Processo } from '../models/PROCESSO.model';
 import { Observable, Subject } from 'rxjs';
 @Injectable({
@@ -9,7 +9,7 @@ import { Observable, Subject } from 'rxjs';
 
 export class ProcessoService {
 
-  baseApiUrl: string = environment.baseApiUrl;
+  URL_API: string = environment.URL_API;
 
   constructor(private http: HttpClient) { }
 
@@ -17,7 +17,7 @@ export class ProcessoService {
   processoResponse$ = this._processo.asObservable();
 
   getAllProcess() {
-    this.http.get<Processo[]>(this.baseApiUrl + '/api/Sistema/processo')
+    this.http.get<Processo[]>(this.URL_API + '/api/Processo/processo')
       .subscribe({
         next: (response) => {
           return this._processo.next(response)
@@ -29,15 +29,15 @@ export class ProcessoService {
   }
 
   getProcess(id: String): Observable<Processo> {
-    return this.http.get<Processo>(this.baseApiUrl + '/api/Sistema/processo/' + id)
+    return this.http.get<Processo>(this.URL_API + '/api/Processo/processo/' + id)
   }
 
   createProcess(createProcessResquest: Processo): Observable<Processo> {
-    return this.http.post<Processo>(this.baseApiUrl + '/api/Sistema/add-processo', createProcessResquest)
+    return this.http.post<Processo>(this.URL_API + '/api/Processo/add-processo', createProcessResquest)
   }
 
   updateProcess(id_process: String, updateProcessRequest: Processo): Observable<Processo> {
-    return this.http.put<Processo>(this.baseApiUrl + '/api/Sistema/update-processo/' + id_process, updateProcessRequest)
+    return this.http.put<Processo>(this.URL_API + '/api/Processo/update-processo/' + id_process, updateProcessRequest)
   }
 
   updateProcessEncerramento(id_process: String, motivoEncerramento: string | String): Observable<Processo> {
@@ -46,7 +46,7 @@ export class ProcessoService {
       MOTIVO_ENCERRAMENTO: motivoEncerramento
     };
 
-    return this.http.put<Processo>(this.baseApiUrl + '/api/Sistema/update-encerramento/processo/' + id_process,
+    return this.http.put<Processo>(this.URL_API + '/api/Processo/update-encerramento/processo/' + id_process,
       requestEncerramentoBody,
       {
         headers: new HttpHeaders({
@@ -62,7 +62,7 @@ export class ProcessoService {
       MOTIVO_BAIXA_PROVISORIA: motivoBaixaProvisoria
     };
 
-    return this.http.put<Processo>(this.baseApiUrl + '/api/Sistema/update-baixa-provisoria/processo/' + id_process,
+    return this.http.put<Processo>(this.URL_API + '/api/Processo/update-baixa-provisoria/processo/' + id_process,
       requestBaixaProvisoriaBody,
       {
         headers: new HttpHeaders({

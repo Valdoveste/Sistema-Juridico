@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'env';
 import { Observable } from 'rxjs';
 import { ProcessoTipoDeAndamento } from '../models/PROCESSO_TIPO_DE_ANDAMENTO.model';
 
@@ -9,26 +9,26 @@ import { ProcessoTipoDeAndamento } from '../models/PROCESSO_TIPO_DE_ANDAMENTO.mo
 })
 export class TipoDeAndamentoService {
 
-  baseApiUrl: string = environment.baseApiUrl;
+  URL_API: string = environment.URL_API;
 
   constructor(private http: HttpClient) { }
 
   getAllTipoDeAndamento(): Observable<ProcessoTipoDeAndamento[]> {
-    return this.http.get<ProcessoTipoDeAndamento[]>(this.baseApiUrl + '/api/Sistema/tipo-de-andamento')
+    return this.http.get<ProcessoTipoDeAndamento[]>(this.URL_API + '/api/TipoDeAndamento/tipo-de-andamento')
   }
 
   createTipoDeAndamento(createTipoDeAndamentoRequest: ProcessoTipoDeAndamento): Observable<ProcessoTipoDeAndamento> {
     delete createTipoDeAndamentoRequest.ID;
-    return this.http.post<ProcessoTipoDeAndamento>(this.baseApiUrl + '/api/Sistema/add-tipo-de-andamento', createTipoDeAndamentoRequest);
+    return this.http.post<ProcessoTipoDeAndamento>(this.URL_API + '/api/TipoDeAndamento/add-tipo-de-andamento', createTipoDeAndamentoRequest);
   }
 
   updateTipoDeAndamento(id: String, updateTipoDeAndamentoRequest: ProcessoTipoDeAndamento): Observable<ProcessoTipoDeAndamento> {
     updateTipoDeAndamentoRequest.ID = id;
-    return this.http.put<ProcessoTipoDeAndamento>(this.baseApiUrl + '/api/Sistema/update-tipo-de-andamento/' + id, updateTipoDeAndamentoRequest)
+    return this.http.put<ProcessoTipoDeAndamento>(this.URL_API + '/api/TipoDeAndamento/update-tipo-de-andamento/' + id, updateTipoDeAndamentoRequest)
 
   }
 
   deleteTipoDeAndamento(id: String): Observable<ProcessoTipoDeAndamento> {
-    return this.http.delete<ProcessoTipoDeAndamento>(this.baseApiUrl + '/api/Sistema/delete-tipo-de-andamento/' + id)
+    return this.http.delete<ProcessoTipoDeAndamento>(this.URL_API + '/api/TipoDeAndamento/delete-tipo-de-andamento/' + id)
   }
 }
