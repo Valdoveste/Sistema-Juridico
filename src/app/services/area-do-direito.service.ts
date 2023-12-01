@@ -14,20 +14,20 @@ export class AreaDoDireitoService {
   constructor(private http: HttpClient) { }
 
   getAllAreaDoDireito(): Observable<ProcessoAreaDoDireito[]> {
-    return this.http.get<ProcessoAreaDoDireito[]>(this.URL_API + '/api/Sistema/area-do-direito');
+    return this.http.get<ProcessoAreaDoDireito[]>(this.URL_API + '/api/AreaDoDireito/area-do-direito');
   }
 
   createAreaDoDireito(createAreaDoDireitoRequest: ProcessoAreaDoDireito): Observable<ProcessoAreaDoDireito> {
     delete createAreaDoDireitoRequest.ID;
-    return this.http.post<ProcessoAreaDoDireito>(this.URL_API + '/api/Sistema/add-area-do-direito', createAreaDoDireitoRequest);
+    return this.http.post<ProcessoAreaDoDireito>(this.URL_API + '/api/AreaDoDireito/add-area-do-direito', createAreaDoDireitoRequest);
   }
 
   updateAreaDoDireito(id: string, updateAreaDoDireitoRequest: ProcessoAreaDoDireito): Observable<ProcessoAreaDoDireito> {
     updateAreaDoDireitoRequest.ID = id;
-    return this.http.put<ProcessoAreaDoDireito>(this.URL_API + '/api/Sistema/update-area-do-direito/' + id, updateAreaDoDireitoRequest);
+    return this.http.put<ProcessoAreaDoDireito>(this.URL_API + '/api/AreaDoDireito/update-area-do-direito/' + id, updateAreaDoDireitoRequest);
   }
 
   deleteAreaDoDireito(id: string): Observable<ProcessoAreaDoDireito> {
-    return this.http.delete<ProcessoAreaDoDireito>(this.URL_API + '/api/Sistema/delete-area-do-direito/' + id);
+    return this.http.delete<ProcessoAreaDoDireito>(this.URL_API + '/api/AreaDoDireito/delete-area-do-direito/' + id);
   }
 }

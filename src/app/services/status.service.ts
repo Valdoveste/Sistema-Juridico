@@ -14,6 +14,21 @@ export class StatusService {
   constructor(private http: HttpClient) { }
 
   getAllStatus(): Observable<ProcessoStatus[]> {
-    return this.http.get<ProcessoStatus[]>(this.URL_API + '/api/Sistema/status')
+    return this.http.get<ProcessoStatus[]>(this.URL_API + '/api/Status/status')
   }
+
+  // createStatus(createStatusRequest: ProcessoStatus): Observable<ProcessoStatus> {
+  //   delete createStatusRequest.ID;
+  //   return this.http.post<ProcessoStatus>(this.URL_API + '/api/Status/add-status', createStatusRequest);
+  // }
+
+  // updateStatus(id: String, updateStatusRequest: ProcessoStatus): Observable<ProcessoStatus> {
+  //   updateStatusRequest.ID = id;
+  //   return this.http.put<ProcessoStatus>(this.URL_API + '/api/Status/update-status/' + id, updateStatusRequest)
+
+  // }
+
+  // deleteStatus(id: String): Observable<ProcessoStatus> {
+  //   return this.http.delete<ProcessoStatus>(this.URL_API + '/api/Status/delete-status/' + id)
+  // }
 }

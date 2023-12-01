@@ -14,27 +14,27 @@ export class AndamentoService {
   constructor(private http: HttpClient) { }
 
   getAllAndamento(): Observable<ProcessoAndamento[]> {
-    return this.http.get<ProcessoAndamento[]>(this.URL_API + '/api/Sistema/andamento');
+    return this.http.get<ProcessoAndamento[]>(this.URL_API + '/api/Andamento/andamento');
   }
 
   getProcessoAndamento(id_andamento: string): Observable<ProcessoAndamento> {
-    return this.http.get<ProcessoAndamento>(this.URL_API + '/api/Sistema/processo/andamento/' + id_andamento);
+    return this.http.get<ProcessoAndamento>(this.URL_API + '/api/Andamento/processo/andamento/' + id_andamento);
   }
 
   getAllProcessoAndamento(id_processo: string): Observable<ProcessoAndamento[]> {
-    return this.http.get<ProcessoAndamento[]>(this.URL_API + '/api/Sistema/processo/all/andamento/' + id_processo);
+    return this.http.get<ProcessoAndamento[]>(this.URL_API + '/api/Andamento/processo/all/andamento/' + id_processo);
   }
 
   createAndamento(createAndamentoRequest: ProcessoAndamento, id_processo: String): Observable<ProcessoAndamento> {
     delete createAndamentoRequest.ID;
     createAndamentoRequest.ID_PROCESSO = id_processo;
     createAndamentoRequest.CRIADOR_ANDAMENTO = "Usuario";
-    return this.http.post<ProcessoAndamento>(this.URL_API + '/api/Sistema/add-andamento', createAndamentoRequest);
+    return this.http.post<ProcessoAndamento>(this.URL_API + '/api/Andamento/add-andamento', createAndamentoRequest);
   }
 
   updateAndamento(id_andamento: string, updateAndamentoRequest: ProcessoAndamento): Observable<ProcessoAndamento> {
     updateAndamentoRequest.ID = id_andamento;
-    return this.http.put<ProcessoAndamento>(this.URL_API + '/api/Sistema/update-andamento/' + id_andamento, updateAndamentoRequest);
+    return this.http.put<ProcessoAndamento>(this.URL_API + '/api/Andamento/update-andamento/' + id_andamento, updateAndamentoRequest);
   }
 
   getFileProcessoAndamento(idProcesso: string | String) {

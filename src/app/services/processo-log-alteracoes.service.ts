@@ -15,10 +15,10 @@ export class ProcessoLogAlteracoesService {
 
   addLogProcesso(idProcesso: string, logProcessoRequest: ProcessoLogAlteracoes): Observable<ProcessoLogAlteracoes> {
     logProcessoRequest.ID_PROCESSO = idProcesso;
-    return this.http.post<ProcessoLogAlteracoes>(this.URL_API + '/api/Sistema/add-log-processo/' + idProcesso, logProcessoRequest);
+    return this.http.post<ProcessoLogAlteracoes>(this.URL_API + '/api/Processo/add-log-processo/' + idProcesso, logProcessoRequest);
   }
 
   getLogProcesso(idProcesso: string): Observable<ProcessoLogAlteracoes[]> {
-    return this.http.get<ProcessoLogAlteracoes[]>(this.URL_API + '/api/Sistema/get-log-processo/' + idProcesso);
+    return this.http.get<ProcessoLogAlteracoes[]>(this.URL_API + '/api/Processo/get-log-processo/' + idProcesso);
   }
 }

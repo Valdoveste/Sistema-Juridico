@@ -14,20 +14,20 @@ export class FaseService {
   constructor(private http: HttpClient) { }
 
   getAllFase(): Observable<ProcessoFase[]> {
-    return this.http.get<ProcessoFase[]>(this.URL_API + '/api/Sistema/fase');
+    return this.http.get<ProcessoFase[]>(this.URL_API + '/api/Fase/fase');
   }
 
   // createFase(createFaseRequest: ProcessoFase): Observable<ProcessoFase> {
   //   delete createFaseRequest.ID;
-  //   return this.http.post<ProcessoFase>(this.URL_API + '/api/Sistema/add-fase', createFaseRequest);
+  //   return this.http.post<ProcessoFase>(this.URL_API + '/api/Fase/add-fase', createFaseRequest);
   // }
 
   // updateFase(id: string, updateFaseRequest: ProcessoFase): Observable<ProcessoFase> {
   //   updateFaseRequest.ID = id;
-  //   return this.http.put<ProcessoFase>(this.URL_API + '/api/Sistema/update-fase/' + id, updateFaseRequest);
+  //   return this.http.put<ProcessoFase>(this.URL_API + '/api/Fase/update-fase/' + id, updateFaseRequest);
   // }
 
   // deleteFase(id: string): Observable<ProcessoFase> {
-  //   return this.http.delete<ProcessoFase>(this.URL_API + '/api/Sistema/delete-fase/' + id);
+  //   return this.http.delete<ProcessoFase>(this.URL_API + '/api/Fase/delete-fase/' + id);
   // }
 }

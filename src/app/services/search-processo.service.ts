@@ -17,7 +17,7 @@ export class SearchProcessoService {
   resultSearchResponse$ = this._resultSearch.asObservable();
 
   searchProcesso(queryParams: any) {
-    this.http.get<Processo[]>(this.URL_API + '/api/Sistema/painel-processos/busca-avancada', queryParams)
+    this.http.get<Processo[]>(this.URL_API + '/api/BuscaAvancada/painel-processos/busca-avancada', queryParams)
       .subscribe({
         next: (response: any) => {
           return this._resultSearch.next(response)

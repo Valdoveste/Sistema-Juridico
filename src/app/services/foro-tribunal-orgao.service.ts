@@ -14,20 +14,20 @@ export class ForoTribunalOrgaoService {
   constructor(private http: HttpClient) { }
 
   getAllForoTribunalOrgao(): Observable<ProcessoForoTribunalOrgao[]> {
-    return this.http.get<ProcessoForoTribunalOrgao[]>(this.URL_API + '/api/Sistema/foro-tribunal-orgao')
+    return this.http.get<ProcessoForoTribunalOrgao[]>(this.URL_API + '/api/ForoTribunalOrgao/foro-tribunal-orgao')
   }
 
   createForoTribunalOrgao(createForoTribunalOrgaoRequest: ProcessoForoTribunalOrgao): Observable<ProcessoForoTribunalOrgao> {
     delete createForoTribunalOrgaoRequest.ID;
-    return this.http.post<ProcessoForoTribunalOrgao>(this.URL_API + '/api/Sistema/add-foro-tribunal-orgao', createForoTribunalOrgaoRequest);
+    return this.http.post<ProcessoForoTribunalOrgao>(this.URL_API + '/api/ForoTribunalOrgao/add-foro-tribunal-orgao', createForoTribunalOrgaoRequest);
   }
 
   updateForoTribunalOrgao(id: string, updateForoTribunalOrgaoRequest: ProcessoForoTribunalOrgao): Observable<ProcessoForoTribunalOrgao> {
     updateForoTribunalOrgaoRequest.ID = id;
-    return this.http.put<ProcessoForoTribunalOrgao>(this.URL_API + '/api/Sistema/update-foro-tribunal-orgao/' + id, updateForoTribunalOrgaoRequest);
+    return this.http.put<ProcessoForoTribunalOrgao>(this.URL_API + '/api/ForoTribunalOrgao/update-foro-tribunal-orgao/' + id, updateForoTribunalOrgaoRequest);
   }
 
   deleteForoTribunalOrgao(id: string): Observable<ProcessoForoTribunalOrgao> {
-    return this.http.delete<ProcessoForoTribunalOrgao>(this.URL_API + '/api/Sistema/delete-foro-tribunal-orgao/' + id);
+    return this.http.delete<ProcessoForoTribunalOrgao>(this.URL_API + '/api/ForoTribunalOrgao/delete-foro-tribunal-orgao/' + id);
   }
 }

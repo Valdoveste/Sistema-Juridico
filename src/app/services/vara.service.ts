@@ -14,17 +14,17 @@ export class VaraService {
   constructor(private http: HttpClient) { }
 
   getAllVara(): Observable<ProcessoVara[]> {
-    return this.http.get<ProcessoVara[]>(this.URL_API + '/api/Sistema/vara')
+    return this.http.get<ProcessoVara[]>(this.URL_API + '/api/Vara/vara')
   }
 
   createVara(createVaraRequest: ProcessoVara): Observable<ProcessoVara> {
     delete createVaraRequest.ID;
-    return this.http.post<ProcessoVara>(this.URL_API + '/api/Sistema/add-vara', createVaraRequest);
+    return this.http.post<ProcessoVara>(this.URL_API + '/api/Vara/add-vara', createVaraRequest);
   }
 
   updateVara(id: String, updateVaraRequest: ProcessoVara): Observable<ProcessoVara> {
     updateVaraRequest.ID = id;
-    return this.http.put<ProcessoVara>(this.URL_API + '/api/Sistema/update-vara/' + id, updateVaraRequest)
+    return this.http.put<ProcessoVara>(this.URL_API + '/api/Vara/update-vara/' + id, updateVaraRequest)
 
   }
 
