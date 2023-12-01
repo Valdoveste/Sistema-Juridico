@@ -15,7 +15,7 @@
                 <div mat-raised-action class="float-right" style="padding: 0 16px;">
                     <button mat-button mat-dialog-close class="mr-2">Fechar</button>
                     <button mat-button type="submit" class="btn-default"
-                        [disabled]="!updateProcessoEncerramentoForm.valid"
+                        [disabled]="!updateProcessoEncerramentoForm.valid" (click)="status='BAIXA_PROVISORIA'"
                         [ngClass]="{'btn-disabled': !updateProcessoEncerramentoForm.valid}">Salvar</button>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                 <div mat-raised-action class="float-right" style="padding: 0 16px;">
                     <button mat-button mat-dialog-close class="mr-2">Fechar</button>
                     <button mat-button type="submit" class="btn-default"
-                        [disabled]="!updateProcessoBaixaProvisoriaForm.valid"
+                        [disabled]="!updateProcessoBaixaProvisoriaForm.valid" (click)="status='ENCERRADO'"
                         [ngClass]="{'btn-disabled': !updateProcessoBaixaProvisoriaForm.valid}">Salvar</button>
                 </div>
             </div>
