@@ -226,7 +226,7 @@ export class ProcessEditComponent implements OnInit {
         const id_process = params.get('id');
         if (id_process) {
           this.ProcessoService.getProcess(id_process).subscribe({
-            next: (response) => {
+            next: (response: Processo) => {
               this.updateProcessRequest = response;
             },
             error: (err: HttpErrorResponse) => console.log(err)
