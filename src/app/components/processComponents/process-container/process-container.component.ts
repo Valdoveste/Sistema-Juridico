@@ -1,3 +1,4 @@
+import { delay } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { Processo } from 'src/app/models/PROCESSO.model';
 import { ProcessoService } from '../../../services/processo.service';
@@ -19,6 +20,9 @@ export class ProcessContainerComponent implements OnInit {
 
   ngOnInit(): void {
     this.processoService.processoResponse$
+      .pipe(
+        delay(250)
+      )
       .subscribe(
         response => {
           this.processos = [];
@@ -27,6 +31,9 @@ export class ProcessContainerComponent implements OnInit {
       )
 
     this.searchProcesso.resultSearchResponse$
+      .pipe(
+        delay(250)
+      )
       .subscribe(
         response => {
           this.processos = [];
