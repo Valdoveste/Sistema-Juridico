@@ -11,7 +11,6 @@ export class AppComponent {
   constructor(private router: Router, private _cdr: ChangeDetectorRef) {
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
-        console.log(event.url)
         if (event.url === '/login' || event.url === '/') {
           this.isLoginScreen = false;
         } else {
