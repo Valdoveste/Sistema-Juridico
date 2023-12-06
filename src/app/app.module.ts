@@ -1,8 +1,6 @@
 import { ProcessSearchbarComponent } from './components/processComponents/process-searchbar/process-searchbar.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 
@@ -103,7 +101,6 @@ import { InterceptorModule } from './interceptor/auth-interceptor.model';
   declarations: [
     AppComponent,
     ProcessSearchbarComponent,
-    FooterComponent,
     HeaderComponent,
     MainComponent,
 
