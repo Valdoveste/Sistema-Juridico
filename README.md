@@ -6,7 +6,7 @@ Sistema Jurídico é solução que busca otimizar o setor jurídico empresarial,
 Veja a aplicação web aqui [Sistema Júridico](https://sistema-juridico.vercel.app/)
 
 `
-Usuário: Default  -  
+Usuário: Default  - 
 Senha: default
 `
 
