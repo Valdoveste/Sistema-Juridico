@@ -97,6 +97,7 @@ import { DialogDeleteAcordoComponent } from './components/processComponents/proc
 import { DialogLinkParteContrariaComponent } from './components/management/components/m-parte-contraria/dialog-link-parte-contraria/dialog-link-parte-contraria.component';
 import { DialogChangeStatusProcessComponent } from './components/processComponents/process-area/dialog-change-status-process/dialog-change-status-process.component';
 import { DialogViewStatusProcessComponent } from './components/processComponents/process-area/dialog-view-status-process/dialog-view-status-process.component';
+import { InterceptorModule } from './interceptor/auth-interceptor.model';
 
 @NgModule({
   declarations: [
@@ -200,7 +201,8 @@ import { DialogViewStatusProcessComponent } from './components/processComponents
     MatNativeDateModule,
     NgSelectModule,
     NgxMaskDirective,
-    NgxMaskPipe
+    NgxMaskPipe,
+    InterceptorModule
   ],
   providers: [provideNgxMask(), { provide: MAT_DIALOG_DATA, useValue: {} }],
   bootstrap: [AppComponent]
