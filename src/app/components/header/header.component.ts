@@ -9,7 +9,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private _loginService: LoginService) {}
+  constructor(private _loginService: LoginService) { }
 
   userRequest: Usuario = {
     ID_USUARIO: '',
@@ -29,6 +29,6 @@ export class HeaderComponent implements OnInit {
   }
 
   singOut() {
-    this._loginService.signOut()
+    this._loginService.signOut();
   }
 }
