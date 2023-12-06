@@ -15,7 +15,8 @@ import { MParteContrariaComponent } from './components/management/components/m-p
 import { ProcessEditComponent } from './components/processComponents/process-edit/process-edit.component';
 import { ProcessAlterationsLogComponent } from './components/processComponents/process-alterations-log/process-alterations-log.component';
 import { LoginComponent } from './components/login/login.component';
-import { AuthGuard } from './services/auth-guard.guard';
+import { AuthGuard } from './guard/auth.guard';
+import { ManagementGuard } from './guard/management.guard';
 
 const routes: Routes = [
   {
@@ -64,55 +65,55 @@ const routes: Routes = [
   {
     path: 'gestao/ambito',
     component: MAmbitoComponent,
-    canActivate: [AuthGuard]
+    canActivate: [ManagementGuard]
   },
 
   {
     path: 'gestao/vara',
     component: MVaraComponent,
-    canActivate: [AuthGuard]
+    canActivate: [ManagementGuard]
   },
 
   {
     path: 'gestao/patrono-responsavel',
     component: MPatronoResponsavelComponent,
-    canActivate: [AuthGuard]
+    canActivate: [ManagementGuard]
   },
 
   {
     path: 'gestao/area-do-direito',
     component: MAreaDoDireitoComponent,
-    canActivate: [AuthGuard]
+    canActivate: [ManagementGuard]
   },
 
   {
     path: 'gestao/tipo-de-acao',
     component: MTipoDeAcaoComponent,
-    canActivate: [AuthGuard]
+    canActivate: [ManagementGuard]
   },
 
   {
     path: 'gestao/foro-tribunal-orgao',
     component: MForoTribunalOrgaoComponent,
-    canActivate: [AuthGuard]
+    canActivate: [ManagementGuard]
   },
 
   {
     path: 'gestao/tipo-de-andamento',
     component: MTipoDeAndamentoComponent,
-    canActivate: [AuthGuard]
+    canActivate: [ManagementGuard]
   },
 
   {
     path: 'gestao/empresas',
     component: MEmpresasComponent,
-    canActivate: [AuthGuard]
+    canActivate: [ManagementGuard]
   },
 
   {
     path: 'gestao/parte-contraria',
     component: MParteContrariaComponent,
-    canActivate: [AuthGuard]
+    canActivate: [ManagementGuard]
   }
 ];
 
