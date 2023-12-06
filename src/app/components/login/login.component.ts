@@ -50,7 +50,6 @@ export class LoginComponent implements OnInit {
           this.loginService.saveUserModel(loginResponse.usuarionDTO)
           this.usuarioLogin = this.loginService.getDecodedAccessToken()!
 
-
           this.router.navigate(['/painel-processos']);
 
         },

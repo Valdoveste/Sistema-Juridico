@@ -7,7 +7,7 @@ import { Usuario } from '../models/USUARIO.model';
 import { jwtDecode } from "jwt-decode";
 
 const TOKEN_KEY = 'auth-token';
-const USER_MODEL = 'user-model'
+const USER_MODEL_KEY = 'user-model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,12 +36,12 @@ export class LoginService {
   }
 
   public saveUserModel(userModel: string): void {
-    window.sessionStorage.removeItem(USER_MODEL);
-    window.sessionStorage.setItem(USER_MODEL, JSON.stringify(userModel));
+    window.sessionStorage.removeItem(USER_MODEL_KEY);
+    window.sessionStorage.setItem(USER_MODEL_KEY, JSON.stringify(userModel));
   }
 
   public getUserModel(): string | null {
-    return window.sessionStorage.getItem(USER_MODEL);
+    return window.sessionStorage.getItem(USER_MODEL_KEY);
   }
 
   public getToken(): string | null {
